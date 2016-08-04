@@ -38,12 +38,12 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only">navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">EIQUIA - FIAUES</a>
+                <a class="navbar-brand logo" href="index.php"><b>EIQUIA<span>FIAUES</span></b></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav"> 
@@ -157,7 +157,7 @@
                 <div class="jumbotron">
                     <h1>Bienvenido!!!</h1>
                     <p>Este es sistema informático para la gestión de expediente académico-administrativo del recurso humano de EIQUIA-FIA-UES.</p>
-                    <p><a href="#" class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a>
+                    <p>
                     </p>
                 </div>
                  <div class="page-header">
@@ -212,9 +212,22 @@
 
             </div>
             <!-- /.container-fluid -->
+             <!--main content end-->
+            
 
         </div>
         <!-- /#page-wrapper -->
+        <!--footer start-->
+            <footer class="site-footer">
+                <div class="text-center">
+                    <i class="fa fa-copyright"></i> 2016. Todos los derechos reservados - 
+                    <a  href="https://www.ues.edu.sv/">Universidad de El Salvador</a>
+                    <a href="#" class="go-top">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+            </footer>
+            <!-- Footer Fin-->
 
     </div>
     <!-- /#wrapper -->

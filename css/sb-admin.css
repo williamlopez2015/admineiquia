@@ -17,7 +17,7 @@ body {
     }
 }
 
-
+/* Styles Login */
 #login-dp{
     min-width: 250px;
     padding: 14px 14px 0;
@@ -59,7 +59,7 @@ body {
 } */
 
 
-/* fin login*/
+/* end login*/
 #wrapper {
     padding-left: 0;
 }
@@ -84,6 +84,32 @@ body {
         padding: 10px;
     }
 }
+
+/*Styles Logo*/
+a.logo {
+    font-size: 15px;
+    color: #f2f2f2;
+    float: left;
+    margin-top: 0px;
+    text-transform: uppercase;
+}
+
+a.logo b {
+    font-weight: 900;
+}
+
+a.logo:hover, a.logo:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+a.logo span {
+    color:#d9534f;
+}
+
+
+/*Styles  end Logo*/
+
 
 /* Top Navigation */
 
@@ -194,6 +220,8 @@ ul.alert-dropdown {
     color: #fff;
 }
 
+/*SLogo*/
+
 /* Flot Chart Containers */
 
 .flot-chart {
@@ -264,4 +292,36 @@ ul.alert-dropdown {
 
 .panel-yellow a:hover {
     color: #df8a13;
+}
+
+/*footer*/
+.site-footer {
+    background: #222;
+    color: #fff;
+    padding: 10px 0;
+    margin-top: 0px;
+}
+
+/*footer*/
+.site-footer a{
+    color: #b52b27;
+    
+}
+
+.go-top {
+    margin-right: 1%;
+    float: right;
+    background: rgba(255,255,255,.5);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+
+.go-top i {
+    color: #2A3542;
+}
+
+.go-top a {
+    color: #101010;
 }
