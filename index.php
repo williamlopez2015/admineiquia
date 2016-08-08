@@ -47,86 +47,23 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav"> 
-                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Login<b class="caret"></b></a>
-                    <ul id="login-dp" class="dropdown-menu">
-                        <li>
-        
-                                    <div class="col-md-12">
-                                         <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                                <div class="form-group">
-                                                     <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                                     <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-                                                </div>
-                                                <div class="form-group">
-                                                     <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                                     <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                                </div>
-                                                <div class="form-group">
-                                                     <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                                                </div>
-                                                
-                                                <div class="alert alert-info">
-                                                  <strong>Info!</strong> Error en login.
-                                                </div>
-                                         </form>
-                                    </div>
-                             
-                        </li>
-                    </ul>
-                </li>  
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Administrador<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                       
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Configuracion</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar session</a>
-                        </li>
-                    </ul>
-                </li>
+            <!-- Aqui va el login--> 
+            <?php
+            include 'mod-login/login.php';
+            ?>
 
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
+            <!--navegacion-->    
                     <li>
                         <a href="index.php"><i class="fa fa-fw fa-home"></i> Inicio</a>
                     </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-paperclip"></i> Gestion de empleados <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#"><i class="fa fa-plus"></i> Agregar Empleados</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-users"></i> Administrar Empleados</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-file"></i> Nomina Empleados</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-paperclip"></i> Control de Asistencia<i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo1" class="collapse">
-                            <li>
-                                <a href="#"><i class="fa fa-plus"></i> Agregar Asistencia</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-file"></i> Reporte de asistencia</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-file"></i> Pagina Blanca</a>
-                    </li>
-                    
+                    <?php include 'mod-login/navegation.php'; ?>
                 </ul>
             </div>
+
             
             <!-- /.navbar-collapse -->
         </nav>
@@ -161,17 +98,17 @@
                     </p>
                 </div>
                  <div class="page-header">
-                    <h1>Descripcion</h1>
+                    <h1>Descripción</h1>
                 </div>
                 <div class="row">
                     <!-- /.col-sm-4 -->
                     <div class="col-sm-4">
                         <div class="panel panel-red">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Panel title</h3>
+                                <h3 class="panel-title">Control de Empleados</h3>
                             </div>
                             <div class="panel-body">
-                                Panel content
+                                Adminitracion de Expediente de los Empleados.
                             </div>
                         </div>
                     </div>
@@ -179,10 +116,10 @@
                     <div class="col-sm-4">
                         <div class="panel panel-red">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Panel title</h3>
+                                <h3 class="panel-title">Control de Asistencie</h3>
                             </div>
                             <div class="panel-body">
-                                Panel content
+                                Administrar el registro de asistencia y permisos de los empleados.
                             </div>
                         </div>
                     </div>
@@ -190,10 +127,10 @@
                     <div class="col-sm-4">
                         <div class="panel panel-red">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Panel title</h3>
+                                <h3 class="panel-title">Reportes</h3>
                             </div>
                             <div class="panel-body">
-                                Panel content
+                                Reportes Sencillos y facil de generar.
                             </div>
                         </div>
                     </div>
@@ -213,8 +150,6 @@
             </div>
             <!-- /.container-fluid -->
              <!--main content end-->
-            
-
         </div>
         <!-- /#page-wrapper -->
         <!--footer start-->
@@ -228,6 +163,7 @@
                 </div>
             </footer>
             <!-- Footer Fin-->
+        
 
     </div>
     <!-- /#wrapper -->
@@ -237,6 +173,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="mod-login/js/scriptsvalidarlogin.js"></script>
 
 </body>
 
