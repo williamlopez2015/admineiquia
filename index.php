@@ -1,3 +1,7 @@
+<?php
+//error_reporting(0);
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -49,8 +53,17 @@
             <ul class="nav navbar-right top-nav"> 
             <!-- Aqui va el login--> 
             <?php
-            include 'mod-login/login.php';
-            ?>
+            if (strlen(isset($_SESSION["admin"])) < 1){
+                //if (0 < 1){
+                include 'mod-login/login.php';
+            }else{?>
+                
+            <!--Termina el login -->
+                <?php
+                include 'mod-login/logeado.php';            
+                } ?>
+
+           
 
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
@@ -168,13 +181,16 @@
     </div>
     <!-- /#wrapper -->
 
+    <!-- funciones de validacion -->
+    <script src="mod-login/js/funciones.js"></script>
+
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="mod-login/js/scriptsvalidarlogin.js"></script>
-
+    
 </body>
 
 </html>
