@@ -3,7 +3,7 @@
         <ul id="login-dp" class="dropdown-menu">
             <li>
                 <div class="col-md-12">
-                     <form class="form" name="formu"role="form" method="post" action="mod-login/autenticacion.php" accept-charset="UTF-8" id="login-nav">
+                     <form class="form" name="formu"role="form" method="post" action="mod/mod-login/autenticacion.php" accept-charset="UTF-8" id="login-nav">
                             <div class="form-group">
                                  <label class="sr-only" for="usuario_login">Usuario</label>
                                  <input type="text" class="form-control" id="usuario_login" name="usuario_login" placeholder="Usuario" required>

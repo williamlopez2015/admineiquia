@@ -1,6 +1,5 @@
 <?php
 //error_reporting(0);
-session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,13 +15,13 @@ session_start();
     <title>EIQUIA - FIAUES</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="../css/sb-admin.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -53,9 +52,18 @@ session_start();
             <ul class="nav navbar-right top-nav"> 
             <!-- Aqui va el login--> 
             <?php
-                include 'mod/mod-login/login.php';
-            ?>
+            //if (!(strlen(isset($_SESSION["admin"])) < 1){
+                //if (0 < 1){
+                //include 'mod-login/login.php';
+            //}else{?>
+                
             <!--Termina el login -->
+                <?php
+                include 'mod-login/logeado.php';            
+                //} ?>
+
+           
+
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -64,8 +72,11 @@ session_start();
                     <li>
                         <a href="index.php"><i class="fa fa-fw fa-home"></i> Inicio</a>
                     </li>
+                    <?php include 'mod-login/navegation.php'; ?>
                 </ul>
             </div>
+
+            
             <!-- /.navbar-collapse -->
         </nav>
 
@@ -174,10 +185,10 @@ session_start();
 
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     
 </body>
 
