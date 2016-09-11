@@ -39,14 +39,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($empleados as $emp)
+                                 @foreach ($empleados as $emp)
                                     <tr>
-                                    	<td>{{ $emp->idempleado}}</td>
-                                        <td>{{ $emp->foto}}</td>
-                                        <td>{{ $emp->primernombre}}</td>
-                                        <td>{{ $emp->dui}}</td>
-                                        <td>{{ $emp->nit}}</td>
-                                        <td>{{ $emp->estado}}</td>
+                                    	<td>{{ $emp->IDEMPLEADO }}</td>
+                                        <td>{{ $emp->FOTO }}</td>
+                                        <td>{{ $emp->PRIMERNOMBRE }}</td>
+                                        <td>{{ $emp->DUI }}</td>
+                                        <td>{{ $emp->NIT }}</td>
+                                        <td>{{ $emp->ESTADO }}</td>
                                         <td><div class="form-group">
                                 		<button type="button" class="btn btn-sm btn-success">Cambiar</button>
                                 		<select class="form-control">
@@ -57,7 +57,9 @@
                                         <td><button type="button" class="btn btn-sm btn-primary">Editar</button></td>
                                         <td><button type="button" class="btn btn-sm btn-danger">Ficha</button></td>
                                     </tr>
-                                @endforeach
+                                @endforeach 
+                                 
+                                
                                 </tbody>
                             </table>
                         </div>

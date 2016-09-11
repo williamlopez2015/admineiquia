@@ -29,10 +29,12 @@ class EmpleadoController extends Controller
     	if ($request)
         {
             $query=trim($request->get('searchText'));
-            $empleados=DB::table('Empleado')->where('primernombre','LIKE','%'.$query.'%')
+            $empleados=DB::table('empleado')->where('primernombre','LIKE','%'.$query.'%')
             ->orderBy('estado','desc')
             ->paginate(7);
+            //
             return view('admin.empleado.index',["empleados"=>$empleados,"searchText"=>$query]);
+            
         }
     }
 
