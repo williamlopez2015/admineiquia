@@ -4,7 +4,7 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-home"></i> <a href="index.php"> Administrar Empleados</a>
+                                <i class="fa fa-home"></i> <a href="empleado/"> Administrar Empleados</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-desktop"></i>
@@ -15,7 +15,7 @@
                 </div>
                 <!-- /.row -->
                 <div class="col-lg-12">
-                <label><a href="empleado/create" class="btn btn-primary btn-lg" role="button">Nuevo Empleado</a></label>
+                <label><a href="empleado/create/" class="btn btn-primary btn-lg" role="button">Nuevo Empleado</a></label>
                 @include('admin.empleado.search')
                  </div>
                 <!-- /.row -->
@@ -47,16 +47,13 @@
                                         <td>{{ $emp->DUI }}</td>
                                         <td>{{ $emp->NIT }}</td>
                                         <td>{{ $emp->ESTADO }}</td>
-                                        <td><div class="form-group">
-                                		<button type="button" class="btn btn-sm btn-success">Cambiar</button>
-                                		<select class="form-control">
-                                    	<option>0</option>
-                                    	<option>1</option>
-                                		</select>
-                           				 </div></td>
-                                        <td><button type="button" class="btn btn-sm btn-primary">Editar</button></td>
-                                        <td><button type="button" class="btn btn-sm btn-danger">Ficha</button></td>
+                                        <td>
+                                		<a href="" data-target="#modal-delete-{{ $emp->IDEMPLEADO}}" data-toggle="modal"><button  class="btn btn-sm btn-success">Cambiar</button></a></td>
+                                        <td><a href="{{URL::action('EmpleadoController@edit',$emp->IDEMPLEADO)}}"><button type="button" class="btn btn-sm btn-primary">Editar</button></a></td>
+                                        <td>
+<button type="button" class="btn btn-sm btn-danger">Ficha</button></a></td>
                                     </tr>
+                                    @include('admin.empleado.modal')
                                 @endforeach 
                                  
                                 

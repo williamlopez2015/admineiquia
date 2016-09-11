@@ -12,6 +12,6 @@ class Empleado extends Model
     protected $primaryKey='idempleado';
     public $timestamps=false;
 
-    protected $fillable=['primernombre','segundonombre','primerapellido','segundoapellido','dui','nit','isss','afp','foto','estado'];
+    protected $fillable=['foto','primernombre','segundonombre','primerapellido','segundoapellido','dui','nit','isss','afp','estado'];
 
 }

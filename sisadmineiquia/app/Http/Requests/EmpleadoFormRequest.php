@@ -25,17 +25,15 @@ class EmpleadoFormRequest extends Request
     {
         return [
             //
-        'PrimerNombre'=>'required|max:50',
-        'SegundoNombre'=>'max:50'
-        'PrimerApellido'=>'required|max:50',
-        'SegundoApellido'=>'max:50',
-        'PrimerApellido'=>'required|max:50',
-        'Dui'=>'required|max:10',
-        'Nit'=>'required|max:20',
-        'Isss'=>'required|max:10',
-        'Afp'=>'required|max:12',
-        'Foto'=>'max:250',
-        'Foto'=>'max:1',
+        'primernombre'=>'required|max:50',
+        'segundonombre'=>'max:50',
+        'primerapellido'=>'required|max:50',
+        'segundoapellido'=>'max:50',
+        'primerapellido'=>'required|max:50',
+        'dui'=>'required|max:10',
+        'nit'=>'required|max:20',
+        'isss'=>'required|max:10',
+        'afp'=>'required|max:12',
         ];
     }
 }

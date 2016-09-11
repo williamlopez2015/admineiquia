@@ -10,7 +10,7 @@ use sisadmineiquia\Empleado;
 
 use Illuminate\Support\Facades\Redirect;
 
-use Illuminate\Http\Requests\EmpleadoFormRequest;
+use sisadmineiquia\Http\Requests\EmpleadoFormRequest;
 
 use DB;
 
@@ -42,8 +42,9 @@ class EmpleadoController extends Controller
     	return view("admin.empleado.create");
     }
 
-    public function store(){
+    public function store(EmpleadoFormRequest $request){
     	$empleados=new Empleado;
+    	$empleados->foto=$request->get('foto');
     	$empleados->primernombre=$request->get('primernombre');
     	$empleados->segundonombre=$request->get('segundonombre');
     	$empleados->primerapellido=$request->get('primerapellido');
@@ -52,9 +53,10 @@ class EmpleadoController extends Controller
     	$empleados->nit=$request->get('nit');
     	$empleados->isss=$request->get('isss');
     	$empleados->afp=$request->get('afp');
-    	$empleados->foto=$request->get('foto');
+    	$empleados->estado='1';
+    	
     	$empleados->save();
-    	return Redirect::to(admin/empleado);
+    	return Redirect::to('admin/empleado');
 
     }
     public function show($id){
@@ -63,25 +65,26 @@ class EmpleadoController extends Controller
     public function edit($id){
     	return view("admin.empleado.edit",["empleado"=>Empleado::findOrFail($id)]);
     }
-    public function update(EmpleadoFormRequest $request,$id){
+    public function update(EmpleadoFormRequest $request, $id){
     	$empleado=Empleado::findOrFail($id);
-    	$empleado->primernombre=$request->get('primernombre');
-    	$empleado->segundonombre=$request->get('segundonombre');
-    	$empleado->primerapellido=$request->get('primerapellido');
-    	$empleado->segundoapellido=$request->get('segundoapellido');
-    	$empleado->dui=$request->get('dui');
-    	$empleado->nit=$request->get('nit');
-    	$empleado->isss=$request->get('isss');
-    	$empleado->afp=$request->get('afp');
-    	$empleado->foto=$request->get('foto');
+    	$empleados->foto=$request->get('foto');
+    	$empleados->primernombre=$request->get('primernombre');
+    	$empleados->segundonombre=$request->get('segundonombre');
+    	$empleados->primerapellido=$request->get('primerapellido');
+    	$empleados->segundoapellido=$request->get('segundoapellido');
+    	$empleados->dui=$request->get('dui');
+    	$empleados->nit=$request->get('nit');
+    	$empleados->isss=$request->get('isss');
+    	$empleados->afp=$request->get('afp');
+    	$empleado->estado=$request->get('estado');
     	$empleado->update();
-    	return Redirect::to(admin/empleado);
+    	return Redirect::to('admin/empleado');
     }
     public function destroy($id){
     	$empleado=Empleado::findOrFail($id);
     	$empleado->estado='0';
     	$empleado->update();
-    	return Redirect::to(admin/empleado);
+    	return Redirect::to('admin/empleado');
     }
 
 }
