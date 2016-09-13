@@ -24,7 +24,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <h2>Listado de Empleados</h2>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
+                            <table class="table table-bordered table-hover" id="tablaempleado">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
@@ -33,9 +33,7 @@
                                         <th>Dui</th>
                                         <th>Nit</th>
                                         <th>Estado</th>
-                                        <th>Cambiar Estado</th>
-                                        <th>Editar</th>
-                                        <th>Ficha Resumen</th>
+                                        <th>Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,23 +46,15 @@
                                         <td>{{ $emp->NIT }}</td>
                                         <td>{{ $emp->ESTADO }}</td>
                                         <td>
-                                		<a href="" data-target="#modal-delete-{{ $emp->IDEMPLEADO}}" data-toggle="modal"><button  class="btn btn-sm btn-success">Cambiar</button></a></td>
-                                        <td><a href="{{URL::action('EmpleadoController@edit',$emp->IDEMPLEADO)}}"><button type="button" class="btn btn-sm btn-primary">Editar</button></a></td>
-                                        <td>
-<button type="button" class="btn btn-sm btn-danger">Ficha</button></a></td>
+                                        <a href="" data-target="#modal-delete-{{ $emp->IDEMPLEADO }}" data-toggle="modal"><button  class="btn btn-sm btn-success">Cambiar</button></a>
+                                        <a href="{{URL::action('EmpleadoController@edit',$emp->IDEMPLEADO)}}"><button type="button" class="btn btn-sm btn-primary">Editar</button></a>
+                                        <a href=""><button type="button" class="btn btn-sm btn-danger">Ficha</button></a></td>
                                     </tr>
                                     @include('admin.empleado.modal')
                                 @endforeach 
-                                 
-                                
                                 </tbody>
                             </table>
                         </div>
-                        {{$empleados->render()}}
-                        @foreach ($errors as $e)
-                        <h1>{{$e}}</h1>
-                        @endforeach
-                        
-                    </div>
-                 
+                        {{$empleados->render()}}    
+                    </div>    
 @endsection

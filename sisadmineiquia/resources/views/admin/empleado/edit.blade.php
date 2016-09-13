@@ -74,16 +74,13 @@
 			</div>
 			<div class="form-group">
 			<label>Estado</label>
-				<select class="form-control" type="input" name="estado" class="form-control" value="{{$empleado->ESTADO}}">
+				<select class="form-control" type="input" name="estado" class="form-control" value=" {{ $empleado->ESTADO }}">
 					<option>0</option>
 					<option>1</option>
 				</select>
-			</div>
-
-                            
-                            
+			</div>               
 		</div>
-                    {!!Form::close()!!}		
+		{!!Form::close()!!}		
 
 </div>
 

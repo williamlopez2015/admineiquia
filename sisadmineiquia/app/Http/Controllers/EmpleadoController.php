@@ -30,8 +30,7 @@ class EmpleadoController extends Controller
         {
             $query=trim($request->get('searchText'));
             $empleados=DB::table('empleado')->where('primernombre','LIKE','%'.$query.'%')
-            ->orderBy('estado','desc')
-            ->paginate(7);
+            ->orderBy('estado','desc')->paginate();
             //
             return view('admin.empleado.index',["empleados"=>$empleados,"searchText"=>$query]);
             
@@ -76,7 +75,7 @@ class EmpleadoController extends Controller
     	$empleados->nit=$request->get('nit');
     	$empleados->isss=$request->get('isss');
     	$empleados->afp=$request->get('afp');
-    	$empleado->estado=$request->get('estado');
+    	$empleados->estado=$request->get('estado');
     	$empleado->update();
     	return Redirect::to('admin/empleado');
     }

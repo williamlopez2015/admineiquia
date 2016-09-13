@@ -18,11 +18,20 @@
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
+  
 
     <!-- Custom Fonts -->
     <link href="{{asset('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+
+    <!-- Custom datatable CSS -->
+    <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">
+
+      <!-- Custom CSS -->
+    <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
+
+
+
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -47,7 +56,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand logo" href="index.php"><b>SEIQUIA<span>FIAUES</span></b></a>
+                <a class="navbar-brand logo" href="/"><b>SEIQUIA<span>FIAUES</span></b></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav"> 
@@ -93,7 +102,7 @@
                 <ul class="nav navbar-nav side-nav">
             <!--navegacion-->    
                     <li>
-                        <a href="index.php"><i class="fa fa-fw fa-home"></i> Inicio</a>
+                        <a href="/"><i class="fa fa-fw fa-home"></i> Inicio</a>
                     </li>
                 </ul>
             </div>
@@ -134,16 +143,21 @@
         </div>
          <!-- Footer Fin-->
 
-    <!-- funciones de validacion -->
-    <script src="{{asset('mod-login/js/funciones.js')}}"></script>
-
 
     <!-- jQuery -->
     <script src="{{asset('js/jquery.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    
+
+    <!-- Plugin jquery dataTables CJavaScript -->
+    <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+    <script > $(document).ready(function(){
+    $('#tablaempleado').DataTable();
+    });
+    </script>
+   
+
 </body>
 
 </html>
