@@ -4,7 +4,7 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-home"></i> <a href="empleado/"> Administrar Empleados</a>
+                                <i class="fa fa-home"></i> <a href="/admin/empleado"> Administrar Empleados</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-desktop"></i>
@@ -15,9 +15,12 @@
                 </div>
                 <!-- /.row -->
                 <div class="col-lg-12">
-                <label><a href="empleado/create/" class="btn btn-primary btn-lg" role="button">Nuevo Empleado</a></label>
+                <label><a href="empleado/create" class="btn btn-primary btn-lg" role="button">Nuevo Empleado</a></label>
+                <!--
                 @include('admin.empleado.search')
+                -->
                  </div>
+                 
                 <!-- /.row -->
 
                 <div class="row">

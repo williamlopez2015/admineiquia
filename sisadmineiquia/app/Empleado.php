@@ -4,6 +4,7 @@
 namespace sisadmineiquia;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Empleado extends Model
 {
@@ -13,5 +14,4 @@ class Empleado extends Model
     public $timestamps=false;
 
     protected $fillable=['foto','primernombre','segundonombre','primerapellido','segundoapellido','dui','nit','isss','afp','estado'];
-
 }
