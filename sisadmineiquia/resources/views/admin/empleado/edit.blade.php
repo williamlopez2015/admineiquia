@@ -30,6 +30,7 @@
 
 			{!!Form::model($empleado,['method'=>'PATCH','route'=>['admin.empleado.update',$empleado->IDEMPLEADO]])!!}
             {{Form::token()}}
+            <form id="formulario" onsubmit="return validar();">
             <div class="form-group">
             	<label for="foto">Foto</label>
             	<input type="file" name="foto">
@@ -80,6 +81,7 @@
 				</select>
 			</div>               
 		</div>
+		</form>
 		{!!Form::close()!!}		
 
 </div>
