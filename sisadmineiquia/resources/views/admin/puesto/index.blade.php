@@ -20,7 +20,7 @@
 				</thead>
                @foreach ($puestos as $pues)
 				<tr>
-					<td>{{ $pues->idpuesto}}</td>
+					<td>{{ $pues->IDPUESTO}}</td>
 					<td>{{ $pues->nombrepuesto}}</td>
 					<td>{{ $pues->descripcionpuesto}}</td>
 				    <td>{{ $pues->salariopuesto}}</td>

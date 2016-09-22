@@ -71,30 +71,8 @@
 			<div class="form-group">
 				<label>Numero de AFP</label>
 				<input class="form-control" name="afp" class="form-control" placeholder="000000">
-			</div>
-			<div class="form-group">
-				<label>Observacion</label>
-				<input class="form-control" name="descripcionadmin" class="form-control" placeholder="">
-			</div>           
-		</div>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">     
-			<div class="form-group">
-				<label>Fecha Apertura Expediente Administrativo</label>
-				<input  type="datetime" class="form-control" name="fechaapertura" min="01-01-2013T00:00Z" max="31-12-2013T12:00Z"class="form-control" placeholder="">
-			</div>
-			<div class="form-group">
-				<label>Codigo Contrato</label>
-				<input class="form-control" name="codigocontrato" class="form-control" placeholder="">
-			</div>
-			<div class="form-group">
-				<label>Tiempo Adicional</label>
-				<input class="form-control" name="tiempoadicional" class="form-control" placeholder="">
-			</div>
-			<div class="form-group">
-				<label>Tiempo Integral</label>
-				<input class="form-control" name="tiempointegral" class="form-control" placeholder="">
-			</div>
-            
+			</div>        
+		</div>            
 		</div>
                     {!!Form::close()!!}		
 

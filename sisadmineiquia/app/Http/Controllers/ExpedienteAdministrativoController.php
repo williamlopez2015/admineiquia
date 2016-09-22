@@ -20,10 +20,10 @@ use DB;
 
 use Carbon\Carbon;
 
-
-class EmpleadoController extends Controller
+class ExpedienteAdministrativoController extends Controller
 {
     //
+     //
     public function __construct(){
 
     }
@@ -44,41 +44,42 @@ class EmpleadoController extends Controller
     }
 
     public function create(){
-    	return view("admin.empleado.create");
+    	//$empleado = Empleado::lists('primernombre','idempleado');
+    	$empleado  = DB::table('empleado')->select('idempleado','primernombre')->get();
+    	$puesto = DB::table('puesto')->select('idpuesto','nombrepuesto')->get();
+    	//return view("admin.expedienteadministrativo.create",["empleados"=>$empleado,"puestos"=>$puesto]);
+    	return view("admin.expedienteadministrativo.create",["empleados"=>$empleado,"puestos"=>$puesto]);
     }
 
-    public function store(EmpleadoFormRequest $request){
+    public function store(Request $request){
     	
-    	$empleados=new Empleado;
-    	//obtenemos el campo foto definido en el formulario
-    	/*$path=$request->get('foto');
-    	var_dump($path);*/
-    	//obtenemos el nombre de la foto
-       	/*$nombre = $path->getClientOriginalName();
-    	$name = Carbon::now()->second.$nombre;
-		$empleados->foto = $name;
-		\Storage::disk('local')->put($name, \File::get($path));*/
-		$pnombre=$request->get('primernombre');
-		$snombre=$request->get('segundonombre');
-		$papellido=$request->get('primerapellido');
-		$sapellido=$request->get('segundoapellido');
-		$empleados->primernombre=ucfirst($pnombre);
-    	$empleados->segundonombre=ucfirst($snombre);
-    	$empleados->primerapellido=ucfirst($papellido);
-    	$empleados->segundoapellido=ucfirst($sapellido);
-    	$empleados->dui=$request->get('dui');
-    	$empleados->nit=$request->get('nit');
-    	$empleados->isss=$request->get('isss');
-    	$empleados->afp=$request->get('afp');
-    	$empleados->estado='1';
-    	$empleados->save();
-    	return Redirect::to('admin/empleado');
+    	
+    	if ($request)
+        {
+            $query=trim($request->get('idempleado'));
+            $empleado=Empleado::find($query);
+	        var_dump($empleado);
+	    	$p1=ucfirst($empleado->PRIMERAPELLIDO);
+	    	$p2=ucfirst($empleado->SEGUNDOAPELLIDO);
+	    	$expedienteadministrativo=new ExpedienteAdministrativo;
+	    	$expedienteadministrativo->idexpediente=$p1[0].$p2[0].$request->get('idempleado');
+	    	$expedienteadministrativo->idempleado=$request->get('idempleado');
+	    	$expedienteadministrativo->idpuesto=$request->get('idpuesto');
+	    	$expedienteadministrativo->fechaapertura=$request->get('fechaapertura');
+	    	$expedienteadministrativo->codigocontrato=$request->get('codigocontrato');
+	    	$expedienteadministrativo->tiempoadicional=$request->get('tiempoadicional');
+	    	$expedienteadministrativo->tiempointegral=$request->get('tiempointegral');
+	    	$expedienteadministrativo->descripcionadmin=$request->get('descripcionadmin');
+	    	$expedienteadministrativo->save();
+	    	return Redirect::to('admin/empleado');
+   		}
+
     }
     public function show($id){
     	return view("admin.empleado.show",["empleado"=>Empleado::findOrFail($id)]);
     }
     public function edit($id){
-    	return view("admin.empleado.edit",["empleado"=>Empleado::findOrFail($id)]);
+    	return view("admin/expedienteadministrativo.edit",["empleado"=>Empleado::findOrFail($id)]);
     }
     public function update(EmpleadoFormRequest $request, $id){
     	$empleados=Empleado::find($id);
@@ -95,12 +96,4 @@ class EmpleadoController extends Controller
     	$empleados->save();
     	return Redirect::to('admin/empleado');
     }
-    public function destroy($id){
-    	$empleados=new Empleado;
-    	$empleado=Empleado::find($id);
-    	$empleado->estado=0;
-    	$empleado->save();
-    	return Redirect::to('admin/empleado');
-    }
-
 }
