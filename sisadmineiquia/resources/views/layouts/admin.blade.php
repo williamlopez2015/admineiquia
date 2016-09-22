@@ -160,11 +160,19 @@
     $('#tablaempleado').DataTable();
     });
     </script>
+<<<<<<< HEAD
     <script src="{{asset('js/validarJS.js')}}"></script>
     <script src="{{asset('js/validarJQue.js')}}"></script>
     <script src="{{asset('css/estilos.css')}}"></script>
 
 
+=======
+    <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+    </script>
+>>>>>>> origin/bautista
 </body>
 
 </html>

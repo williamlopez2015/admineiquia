@@ -16,6 +16,7 @@
                 <!-- /.row -->
                 <div class="col-lg-12">
                 <label><a href="empleado/create" class="btn btn-primary btn-lg" role="button">Nuevo Empleado</a></label>
+                <label><a href="expedienteadministrativo/create" class="btn btn-primary btn-lg" role="button">Expediente Administrativo</a></label>
                 <!--
                 @include('admin.empleado.search')
                 -->
