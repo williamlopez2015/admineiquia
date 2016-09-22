@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Nuevo Puesto</h3>
+			<h3>Editar Puesto: {{ $puesto->nombrepuesto}}</h3>
 			@if (count($errors)>0)
 			<div class="alert alert-danger">
 				<ul>
@@ -12,28 +12,32 @@
 				</ul>
 			</div>
 			@endif
-       
-			{!!Form::open(array('url'=>'admin/puesto','method'=>'POST','autocomplete'=>'off'))!!}
-            {{Form::token()}}   
+
+			{!!Form::model($puesto,['method'=>'PATCH','route'=>['admin.puesto.update',$puesto->idpuesto]])!!}
+            {{Form::token()}}     
 
             <div class="form-group">
             	<label for="nombre">Nombre</label>
-            	<input type="text" name="nombrepuesto" required value="{{old('nombrepuesto')}}" class="form-control" placeholder="Nombre Puesto...">
+            	<input type="text" name="nombrepuesto" required value="{{$puesto->nombrepuesto}}" class="form-control">
             </div>
             <div class="form-group">
             	<label for="descripcion">Descripción</label>
-            	<input type="text" name="descripcionpuesto" required value="{{old('descripcionpuesto')}}" class="form-control" placeholder="Descripción Puesto...">
+            	<input type="text" name="descripcionpuesto" required value="{{$puesto->descripcionpuesto}}" class="form-control" placeholder="Descripción Puesto...">
             </div>
             <div class="form-group">
             	<label for="salario">Salario</label>
-            	<input type="text" name="salariopuesto" required value="{{old('salariopuesto')}}" class="form-control" placeholder="Salrio Puesto...">
+            	<input type="text" name="salariopuesto" required value="{{$puesto->salariopuesto}}" class="form-control">
             </div>
 
             <div class="form-group">
                   <label> Departamento</label>
                   <select name="iddepartamento" class="form-control">
                    @foreach ($departamentos as $dep)
-                         <option value="{{$dep->iddepartamento}}">{{$dep->nombredepartamento}}</option>
+                         @if ($dep->iddepartamento==$puesto->iddepartamento)
+                         <option value="{{$dep->iddepartamento}}" selected>{{$dep->nombredepartamento}}</option>
+                         @else
+                          <option value="{{$dep->iddepartamento}}">{{$dep->nombredepartamento}}</option>
+                         @endif
                    @endforeach
                   </select>     
             </div>

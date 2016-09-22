@@ -16,6 +16,7 @@
 					<th>Nombre</th>
 					<th>Descripción</th>
 					<th>Salario</th>
+					<th>Departamento</th>
 					<th>Opciones</th>
 				</thead>
                @foreach ($puestos as $pues)
@@ -24,12 +25,13 @@
 					<td>{{ $pues->nombrepuesto}}</td>
 					<td>{{ $pues->descripcionpuesto}}</td>
 				    <td>{{ $pues->salariopuesto}}</td>
+				    <td>{{ $pues->departamento}}</td>
 					<td>
-						<a href="{{URL::action('CategoriaController@edit',$cat->idcategoria)}}"><button class="btn btn-info">Editar</button></a>
-                         <a href="" data-target="#modal-delete-{{$cat->idcategoria}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+						<a href="{{URL::action('PuestoController@edit','$pues->idpuesto')}}"><button class="btn btn-info">Editar</button></a>
+                         <a href="" data-target="#modal-delete-{{$pues->idpuesto}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
 					</td>
 				</tr>
-				
+				@include('admin.puesto.modal')
 				@endforeach
 			</table>
 		</div>

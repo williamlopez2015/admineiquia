@@ -24,10 +24,10 @@ class PuestoFormRequest extends Request
     public function rules()
     {
         return [
-            'iddepartamento'=>'max:50',
+            'iddepartamento'=>'required',
             'nombrepuesto'=>'required|max:50',
             'descripcionpuesto'=>'max:250',
-            'salariopuesto'=>'required|max:5',
+            'salariopuesto'=>'required|numeric',
         ];
     }
 }
