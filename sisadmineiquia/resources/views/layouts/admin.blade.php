@@ -25,6 +25,9 @@
 
     <!-- Custom datatable CSS -->
     <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">
+    <!-- <link href="{{asset('css/dataTables.bootstrap.min.css')}}" rel="stylesheet">-->
+
+    
 
       <!-- Custom CSS -->
     <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
@@ -152,6 +155,7 @@
 
     <!-- Plugin jquery dataTables CJavaScript -->
     <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('js/dataTables.bootstrap.min.js')}}"></script>
     <script > $(document).ready(function(){
     $('#tablaempleado').DataTable();
     });
