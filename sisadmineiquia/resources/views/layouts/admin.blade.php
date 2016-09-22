@@ -160,8 +160,10 @@
     $('#tablaempleado').DataTable();
     });
     </script>
-   
-    @yield('scripts')
+    <script src="{{asset('js/validarJS.js')}}"></script>
+    <script src="{{asset('js/validarJQue.js')}}"></script>
+    <script src="{{asset('css/estilos.css')}}"></script>
+
 </body>
 
 </html>
