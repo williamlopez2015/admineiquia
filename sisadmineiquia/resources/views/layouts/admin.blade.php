@@ -164,6 +164,7 @@
     <script src="{{asset('js/validarJQue.js')}}"></script>
     <script src="{{asset('css/estilos.css')}}"></script>
 
+
 </body>
 
 </html>
