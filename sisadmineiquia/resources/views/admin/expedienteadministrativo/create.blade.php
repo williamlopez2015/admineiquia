@@ -17,7 +17,7 @@
 	</div>
  </div>
  <div class="row">
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 		
 			@if (count($errors)>0)
 			<div class="alert alert-danger">
@@ -60,6 +60,12 @@
                   <div id="mensajePue" class="errores">No se ha seleccionado un puesto</div>     
 			</div>
 			<div class="form-group">
+            	<button class="btn btn-primary" type="submit" id="guardarExp">Guardar</button>
+            	<button class="btn btn-danger" type="reset">Cancelar</button>
+            </div>    
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+			<div class="form-group">
 			    <label>Tiempo Adicional Inicio:</label>
                 <div class='input-group date' id='datetimepicker1'>
                     <input type='text' name="tiempoadicionalinicio" class="tcal form-control" placeholder="00/00/0000" id="fechaAdInicio" onkeyup="corregirFecha2();"/>
@@ -87,10 +93,6 @@
                 <label>Observacion</label>
                 <textarea  name="descripcionadmin" class="form-control"  rows="3" placeholder="Descripcion de el empleado"></textarea>
             </div>
-			<div class="form-group">
-            	<button class="btn btn-primary" type="submit" id="guardarExp">Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
-            </div>    
 		</div>
                     {!!Form::close()!!}		
 
