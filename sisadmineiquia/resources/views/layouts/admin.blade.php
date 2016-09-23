@@ -166,6 +166,7 @@
     </script>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker();
@@ -179,6 +180,11 @@
     <script > $(document).ready(function(){
     $('#tablapuesto').DataTable();
     });
+=======
+    <script> 
+    $(document).ready(function(){
+    $('#tablaempleado').DataTable();});
+>>>>>>> origin/wen
     </script>
    
 >>>>>>> origin/walter
