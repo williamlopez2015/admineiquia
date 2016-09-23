@@ -32,7 +32,7 @@
             {{Form::token()}}    
 			<div class="form-group">
 				<label>Fecha Apertura Expediente Administrativo</label>
-				<input  type="date" class="form-control" name="fechaapertura" class="form-control" placeholder="">
+				<input  type="text" name="fechaapertura" class="tcal form-control" placeholder="00/00/0000" id="fechaApertura" onkeyup="corregirFecha();">
 			</div>
 			<div class="form-group">
 				<label>Codigo Contrato</label>
@@ -57,37 +57,25 @@
 			<div class="form-group">
 			    <label>Tiempo Adicional Inicio:</label>
                 <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' name="tiempoadicionalinicio" class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+                    <input type='text' name="tiempoadicionalinicio" class="tcal form-control" placeholder="00/00/0000" id="fechaAdInicio" onkeyup="corregirFecha2();"/>
                 </div>
             </div>
             <div class="form-group">
 			    <label>Tiempo Adicional Fin:</label>
                 <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' name="tiempoadicionalfin" class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+                    <input type='text' name="tiempoadicionalfin" class="tcal form-control" placeholder="00/00/0000" id="fechaAdFin" onkeyup="corregirFecha3();"/>
                 </div>
             </div>
 			<div class="form-group">
 			    <label>Tiempo Integral Inicio:</label>
                 <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' name="tiempointegralinicio" class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+                    <input type='text' name="tiempointegralinicio" class="tcal form-control" placeholder="00/00/0000" id="fechaInInicio" onkeyup="corregirFecha4();"/>
                 </div>
             </div>
             <div class="form-group">
 			    <label>Tiempo Integral Fin:</label>
                 <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' name="tiempointegralfin" class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+                    <input type='text' name="tiempointegralfin" class="tcal form-control" placeholder="00/00/0000" id="fechaInFin" onkeyup="corregirFecha5();"/>
                 </div>
             </div>
 			<div class="form-group">
