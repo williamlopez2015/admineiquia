@@ -20,6 +20,8 @@
                 <!--
                 @include('admin.empleado.search')
                 -->
+                @include('mensajes.messages') 
+
                  </div>
                  
                 <!-- /.row -->
@@ -32,7 +34,6 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Foto</th>
                                         <th>Nombre</th>
                                         <th>Dui</th>
                                         <th>Nit</th>
@@ -44,7 +45,6 @@
                                  @foreach ($empleados as $emp)
                                     <tr>
                                     	<td>{{ $emp->IDEMPLEADO }}</td>
-                                        <td>{{ $emp->FOTO }}</td>
                                         <td>{{ $emp->PRIMERNOMBRE }}</td>
                                         <td>{{ $emp->DUI }}</td>
                                         <td>{{ $emp->NIT }}</td>

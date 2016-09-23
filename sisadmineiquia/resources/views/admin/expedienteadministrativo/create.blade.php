@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+extends('layouts.admin')
 @section('contenido')
 <div class="row">
 	<div class="col-lg-12">
@@ -42,7 +42,7 @@
                   <label>Empleado</label>
                   <select name="idempleado" class="form-control">
                    @foreach ($empleados as $emp)
-                         <option value="{{$emp->idempleado}}">{{$emp->nombre}}</option>
+                         <option value="{{$emp->idempleado}}">{{$emp->primernombre}}</option>
                    @endforeach
                   </select>     
 			</div>

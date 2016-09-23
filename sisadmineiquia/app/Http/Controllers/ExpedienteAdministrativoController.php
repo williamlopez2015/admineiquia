@@ -20,6 +20,9 @@ use DB;
 
 use Carbon\Carbon;
 
+use Session;
+
+
 class ExpedienteAdministrativoController extends Controller
 {
     //
@@ -57,22 +60,35 @@ class ExpedienteAdministrativoController extends Controller
     	if ($request)
         {
             $query=trim($request->get('idempleado'));
+
             $empleado=Empleado::find($query);
-	        var_dump($empleado);
-	    	$p1=ucfirst($empleado->PRIMERAPELLIDO);
-	    	$p2=ucfirst($empleado->SEGUNDOAPELLIDO);
-	    	$expedienteadministrativo=new ExpedienteAdministrativo;
-	    	$expedienteadministrativo->idexpediente=$p1[0].$p2[0].$request->get('idempleado');
-	    	$expedienteadministrativo->idempleado=$request->get('idempleado');
-	    	$expedienteadministrativo->idpuesto=$request->get('idpuesto');
-	    	$expedienteadministrativo->fechaapertura=$request->get('fechaapertura');
-	    	$expedienteadministrativo->codigocontrato=$request->get('codigocontrato');
-	    	$expedienteadministrativo->tiempoadicional=$request->get('tiempoadicional');
-	    	$expedienteadministrativo->tiempointegral=$request->get('tiempointegral');
-	    	$expedienteadministrativo->descripcionadmin=$request->get('descripcionadmin');
-	    	$expedienteadministrativo->save();
-	    	return Redirect::to('admin/empleado');
+	        //var_dump($empleado);
+	        $expamin  = DB::table('expedienteadminist')->select('idempleado')->get();
+	        if ($expamin){
+	        	//echo '<script>alert("El Expediente ya existe");</script>';
+	        	//return Redirect::to('admin/expedienteadministrativo/create','<script>alert("El Expediente ya existe");</script>');
+	        	Session::flash('store','El Expediente ya existe!!!');
+
+	        }else{
+			    	$p1=ucfirst($empleado->PRIMERAPELLIDO);
+			    	$p2=ucfirst($empleado->SEGUNDOAPELLIDO);
+			    	$expedienteadministrativo=new ExpedienteAdministrativo;
+			    	$expedienteadministrativo->idexpediente=$p1[0].$p2[0].$request->get('idempleado');
+			    	$expedienteadministrativo->idempleado=$request->get('idempleado');
+			    	$expedienteadministrativo->idpuesto=$request->get('idpuesto');
+			    	$expedienteadministrativo->fechaapertura=$request->get('fechaapertura');
+			    	$expedienteadministrativo->codigocontrato=$request->get('codigocontrato');
+			    	$expedienteadministrativo->tiempoadicionalinicio=$request->get('tiempoadicionalinicio');
+			    	$expedienteadministrativo->tiempoadicionalfin=$request->get('tiempoadicionalfin');
+			    	$expedienteadministrativo->tiempointegralinicio=$request->get('tiempointegralinicio');
+			    	$expedienteadministrativo->tiempointegralfin=$request->get('tiempointegralfin');
+			    	$expedienteadministrativo->descripcionadmin=$request->get('descripcionadmin');
+			    	$expedienteadministrativo->save();
+			    	Session::flash('store','El Expediente creado correctamente!!!');
+			    	return Redirect::to('admin/empleado');
+			    }
    		}
+   		return Redirect::to('admin/expedienteadministrativo/create');
 
     }
     public function show($id){

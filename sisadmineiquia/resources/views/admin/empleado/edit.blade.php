@@ -28,7 +28,7 @@
 			</div>
 			@endif
 
-			{!!Form::model($empleado,['method'=>'PATCH','route'=>['admin.empleado.update',$empleado->IDEMPLEADO]])!!}
+			{!!Form::model($empleado,['method'=>'put','action'=>['EmpleadoController@update',$empleado->IDEMPLEADO]])!!}
             {{Form::token()}}
             <div class="form-group">
             	<label for="foto">Foto</label>
@@ -71,14 +71,7 @@
 			<div class="form-group">
 				<label>Numero de AFP</label>
 				<input class="form-control" name="afp" class="form-control" value="{{$empleado->AFP}}"  placeholder="000000">
-			</div>
-			<div class="form-group">
-			<label>Estado</label>
-				<select class="form-control" type="input" name="estado" class="form-control" value=" {{ $empleado->ESTADO }}">
-					<option>0</option>
-					<option>1</option>
-				</select>
-			</div>               
+			</div>            
 		</div>
 		{!!Form::close()!!}		
 

@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::resource('admin/empleado','EmpleadoController');
 
+Route::put('admin/empleado/update/{id}','EmpleadoController@update');
+
 Route::resource('admin/puesto','PuestoController');
 
 Route::resource('admin/expedienteadministrativo','expedienteadministrativoController');
