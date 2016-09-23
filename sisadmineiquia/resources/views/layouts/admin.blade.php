@@ -32,7 +32,8 @@
       <!-- Custom CSS -->
     <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
 
-
+    <!-- Estilo a mensajes de errores -->
+    <link rel="stylesheet" href="{{asset('css/estilos.css')}}"></script>
 
 
 
@@ -148,7 +149,7 @@
 
 
     <!-- jQuery -->
-    <script src="{{asset('js/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery-3.1.1.min.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
@@ -160,11 +161,16 @@
     $('#tablaempleado').DataTable();
     });
     </script>
+
     <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker();
             });
     </script>
+
+    <script type="text/javascript" src="{{asset('js/validarJS.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/validarJQue.js')}}"></script>
+
 </body>
 
 </html>
