@@ -42,7 +42,7 @@
                   <label>Empleado</label>
                   <select name="idempleado" class="form-control">
                    @foreach ($empleados as $emp)
-                         <option value="{{$emp->idempleado}}">{{$emp->nombre}}</option>
+                         <option value="{{$emp->idempleado}}">{{$emp->primernombre}}</option>
                    @endforeach
                   </select>     
 			</div>

@@ -1,4 +1,4 @@
-var primernombre=document.getElementById("primernombre");
+	var primernombre=document.getElementById("primernombre");
 	var segundonombre = document.getElementById("segundonombre");
 	var primerapellido = document.getElementById("primerapellido");
 	var segundoapellido = document.getElementById("segundoapellido");
@@ -160,3 +160,5 @@ var primernombre=document.getElementById("primernombre");
 			nup.value = value;
 		}
 	}
+
+	

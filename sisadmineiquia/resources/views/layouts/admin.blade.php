@@ -32,7 +32,8 @@
       <!-- Custom CSS -->
     <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
 
-
+    <!-- Estilo a mensajes de errores -->
+    <link rel="stylesheet" href="{{asset('css/estilos.css')}}"></script>
 
 
 
@@ -160,19 +161,15 @@
     $('#tablaempleado').DataTable();
     });
     </script>
-<<<<<<< HEAD
-    <script src="{{asset('js/validarJS.js')}}"></script>
-    <script src="{{asset('js/validarJQue.js')}}"></script>
-    <script src="{{asset('css/estilos.css')}}"></script>
 
-
-=======
     <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker();
             });
     </script>
->>>>>>> origin/bautista
+
+    <script type="text/javascript" src="{{asset('js/validarJS.js')}}"></script>
+
 </body>
 
 </html>
