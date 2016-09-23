@@ -149,7 +149,7 @@
 
 
     <!-- jQuery -->
-    <script src="{{asset('js/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery-3.1.1.min.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
@@ -169,6 +169,7 @@
     </script>
 
     <script type="text/javascript" src="{{asset('js/validarJS.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/validarJQue.js')}}"></script>
 
 </body>
 
