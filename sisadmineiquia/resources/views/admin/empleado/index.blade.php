@@ -50,7 +50,7 @@
                                         <td>{{ $emp->NIT }}</td>
                                         <td>{{ $emp->ESTADO }}</td>
                                         <td>
-                                        <a href="" data-target="#modal-delete-{{ $emp->IDEMPLEADO }}" data-toggle="modal"><button  class="btn btn-sm btn-success">Cambiar</button></a>
+                                        <a href="" data-target="#modal-delete-{{ $emp->IDEMPLEADO }}" data-toggle="modal"><button class="btn btn-sm btn-success">Cambiar</button></a>
                                         <a href="{{URL::action('EmpleadoController@edit',$emp->IDEMPLEADO)}}"><button type="button" class="btn btn-sm btn-primary">Editar</button></a>
                                         <a href=""><button type="button" class="btn btn-sm btn-danger">Ficha</button></a></td>
                                     </tr>

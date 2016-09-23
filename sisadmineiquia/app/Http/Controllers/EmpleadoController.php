@@ -84,12 +84,13 @@ class EmpleadoController extends Controller
     	return view("admin.empleado.edit",["empleado"=>Empleado::findOrFail($id)]);
     }
     public function update(EmpleadoFormRequest $request, $id){
-    	
+
     	$affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => $request->get('primernombre'),'segundonombre' =>$request->get('segundonombre'),'primerapellido' =>$request->get('primerapellido'),'segundoapellido' =>$request->get('segundoapellido'),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp')]);
     	Session::flash('update','El Empleado actualizado correctamente!!!');
     	return Redirect::to('admin/empleado');
     }
     public function destroy($id){
+    	echo $id;
     	$affectedRows = Empleado::where('idempleado','=',$id)->update(['estado' => 0]);
     	return Redirect::to('admin/empleado');
     }
