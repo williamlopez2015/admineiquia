@@ -165,6 +165,7 @@
     });
     </script>
 
+<<<<<<< HEAD
     <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker();
@@ -174,6 +175,13 @@
     <script type="text/javascript" src="{{asset('js/validarJS.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/validarJQue.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/tcal.js')}}"></script>
+=======
+    <script > $(document).ready(function(){
+    $('#tablapuesto').DataTable();
+    });
+    </script>
+   
+>>>>>>> origin/walter
 
 </body>
 
