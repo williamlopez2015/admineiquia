@@ -18,15 +18,7 @@
 
             <div class="form-group">
             	<label for="nombre">Nombre</label>
-            	<input type="text" name="nombrepuesto" required value="{{$puesto->nombrepuesto}}" class="form-control">
-            </div>
-            <div class="form-group">
-            	<label for="descripcion">Descripción</label>
-            	<input type="text" name="descripcionpuesto" required value="{{$puesto->descripcionpuesto}}" class="form-control" placeholder="Descripción Puesto...">
-            </div>
-            <div class="form-group">
-            	<label for="salario">Salario</label>
-            	<input type="text" name="salariopuesto" required value="{{$puesto->salariopuesto}}" class="form-control">
+            	<input type="text" name="nombrepuesto" class="form-control" required value="{{$puesto->nombrepuesto}}" >
             </div>
 
             <div class="form-group">
@@ -40,6 +32,15 @@
                          @endif
                    @endforeach
                   </select>     
+            </div>
+            
+            <div class="form-group">
+            	<label for="descripcion">Descripción</label>
+            	<input type="text" name="descripcionpuesto" class="form-control" required value="{{$puesto->descripcionpuesto}}"  placeholder="Descripción Puesto...">
+            </div>
+            <div class="form-group">
+            	<label for="salario">Salario</label>
+            	<input type="text" name="salariopuesto" class="form-control" required value="{{$puesto->salariopuesto}}" >
             </div>
 
             <div class="form-group">

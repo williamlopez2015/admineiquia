@@ -27,7 +27,7 @@ class PuestoController extends Controller
             ->select('p.idpuesto','p.nombrepuesto','p.descripcionpuesto','p.salariopuesto','d.nombredepartamento as departamento')
             ->where('nombrepuesto','LIKE','%'.$query.'%')
             ->orderBy('idpuesto','desc')
-            ->paginate(8);
+            ->paginate();
             
             return view('admin.puesto.index',["puestos"=>$puestos,"searchText"=>$query]);
         }
@@ -69,6 +69,7 @@ class PuestoController extends Controller
     public function update(PuestoFormRequest $request,$id)
     {
     	$puesto=Puesto::findOrFail($id);
+
         $puesto->iddepartamento=$request->get('iddepartamento');
         $puesto->nombrepuesto=$request->get('nombrepuesto');
         $puesto->descripcionpuesto=$request->get('descripcionpuesto');
@@ -81,8 +82,7 @@ class PuestoController extends Controller
     public function destroy($id)
     {
     	$puesto=Puesto::findOrFail($id);
-        //$puesto->condicion='0';
-        $puesto->update();
+        $puesto->delete();
         return Redirect::to('admin/puesto');
     }
 }
