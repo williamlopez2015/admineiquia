@@ -19,11 +19,7 @@
 
             <div class="form-group">
             	<label for="nombre">Nombre</label>
-<<<<<<< HEAD
-            	<input type="text" name="nombrepuesto" class="form-control" required value="{{$puesto->nombrepuesto}}" >
-=======
             	<input type="text" name="nombrepuesto" required value="{{$puesto->NOMBREPUESTO}}" class="form-control">
->>>>>>> origin/wen
             </div>
 
 
@@ -42,19 +38,11 @@
             
             <div class="form-group">
             	<label for="descripcion">Descripción</label>
-<<<<<<< HEAD
-            	<input type="text" name="descripcionpuesto" class="form-control" required value="{{$puesto->descripcionpuesto}}"  placeholder="Descripción Puesto...">
-            </div>
-            <div class="form-group">
-            	<label for="salario">Salario</label>
-            	<input type="text" name="salariopuesto" class="form-control" required value="{{$puesto->salariopuesto}}" >
-=======
             	<input type="text" name="descripcionpuesto" required value="{{$puesto->DESCRIPCIONPUESTO}}" class="form-control" placeholder="Descripción Puesto...">
             </div>
             <div class="form-group">
             	<label for="salario">Salario</label>
             	<input type="text" name="salariopuesto" required value="{{$puesto->SALARIOPUESTO}}" class="form-control">
->>>>>>> origin/wen
             </div>
 
             <div class="form-group">

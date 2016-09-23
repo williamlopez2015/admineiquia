@@ -3,13 +3,6 @@
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 		<h3>Listado de Puestos <a href="puesto/create"><button class="btn btn-success">Nuevo</button></a></h3>
-<<<<<<< HEAD
-		
-=======
-		<div>
-
-	    </div>
->>>>>>> origin/wen
 	</div>
 </div>
 
@@ -27,7 +20,7 @@
 				</thead>
                @foreach ($puestos as $pues)
 				<tr>
-					<td>{{ $pues->IDPUESTO}}</td>
+					<td>{{ $pues->idpuesto}}</td>
 					<td>{{ $pues->nombrepuesto}}</td>
 					<td>{{ $pues->descripcionpuesto}}</td>
 				    <td>{{ $pues->salariopuesto}}</td>

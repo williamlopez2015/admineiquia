@@ -164,31 +164,15 @@
     $('#tablaempleado').DataTable();
     });
     </script>
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
+    <script > $(document).ready(function(){
+    $('#tablapuesto').DataTable();
+    });
     </script>
+
 
     <script type="text/javascript" src="{{asset('js/validarJS.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/validarJQue.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/tcal.js')}}"></script>
-=======
-    <script > $(document).ready(function(){
-    $('#tablapuesto').DataTable();
-    });
-=======
-    <script> 
-    $(document).ready(function(){
-    $('#tablaempleado').DataTable();});
->>>>>>> origin/wen
-    </script>
-   
->>>>>>> origin/walter
-
 </body>
 
 </html>

@@ -28,12 +28,7 @@ class PuestoController extends Controller
             ->join('departamento as d','p.iddepartamento','=','d.iddepartamento')
             ->select('p.idpuesto','p.nombrepuesto','p.descripcionpuesto','p.salariopuesto','d.nombredepartamento as departamento')
             ->where('nombrepuesto','LIKE','%'.$query.'%')
-            ->orderBy('idpuesto','desc')
-<<<<<<< HEAD
-            ->paginate();
-=======
-            ->paginate(5);
->>>>>>> origin/wen
+            ->orderBy('idpuesto','desc')->paginate();
             
             return view('admin.puesto.index',["puestos"=>$puestos,"searchText"=>$query]);
         }
@@ -80,24 +75,13 @@ class PuestoController extends Controller
         
     public function update(PuestoFormRequest $request,$id)
     {
-<<<<<<< HEAD
-    	$puesto=Puesto::findOrFail($id);
 
-        $puesto->iddepartamento=$request->get('iddepartamento');
-        $puesto->nombrepuesto=$request->get('nombrepuesto');
-        $puesto->descripcionpuesto=$request->get('descripcionpuesto');
-        $puesto->salariopuesto=$request->get('salariopuesto');
-    	
-        $puesto->update();
-=======
     	$affectedRows = Puesto::where('idpuesto','=',$id)
         ->update(['nombrepuesto'=> $request->get('nombrepuesto'),
             'descripcionpuesto'=>$request->get('descripcionpuesto'),
             'iddepartamento' =>$request->get('iddepartamento'),
             'salariopuesto'=>$request->get('salariopuesto')]);
-        Session::flash('update','El puesto se ha actualizado');
-        
->>>>>>> origin/wen
+        Session::flash('update','El puesto se ha actualizado');       
         return Redirect::to('admin/puesto');
 
         //$puesto=Puesto::findOrFail($id);
@@ -111,17 +95,10 @@ class PuestoController extends Controller
 
     public function destroy($id)
     {
-<<<<<<< HEAD
-    	$puesto=Puesto::findOrFail($id);
-        $puesto->delete();
-=======
-    	//$puesto=Puesto::findOrFail($id);
-        //$puesto->condicion='0';
-        //$puesto->update();
+
         $affectedRows = Puesto::where('idpuesto','=',$id)
         ->delete();
 
->>>>>>> origin/wen
         return Redirect::to('admin/puesto');
     }
 }
