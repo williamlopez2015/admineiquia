@@ -23,3 +23,7 @@ Route::resource('admin/expedienteadministrativo','expedienteadministrativoContro
 
 
 
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
