@@ -16,7 +16,7 @@
 	</div>
  </div>
  <div class="row">
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 		
 			@if (count($errors)>0)
 			<div class="alert alert-danger">
@@ -30,10 +30,6 @@
 
 			{!!Form::open(array('url'=>'admin/empleado','method'=>'POST','autocomplete'=>'off','files'=>true, 'id' => 'my-dropzone'))!!}
             {{Form::token()}}
-            <div class="form-group">
-			{!!Form::label('Foto','Foto:')!!}
-			{!!Form::file('foto')!!}
-			</div>
             <div class="form-group">
             	<label for="primernombre">Primer Nombre</label>
             	<input type="text" name="primernombre" class="form-control" placeholder="Primer Nombre..." id="primernombre" onkeyup="corregirPrimerNombre();">
@@ -60,7 +56,7 @@
             	<button class="btn btn-danger" type="reset">Cancelar</button>
             </div>
 		</div>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">     
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">    
 			<div class="form-group">
 				<label>Documento de Identidad</label>
 				<input class="form-control" name="dui" class="form-control" placeholder="00000000-0" id="dui" onkeyup="corregirDui();">
@@ -87,6 +83,3 @@
 
 </div>
 @endsection
-
-
-

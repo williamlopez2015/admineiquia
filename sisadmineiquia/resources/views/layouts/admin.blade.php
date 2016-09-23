@@ -152,6 +152,7 @@
 
     <!-- jQuery -->
     <script type="text/javascript" src="{{asset('js/jquery-3.1.1.min.js')}}"></script>
+    <script src="{{asset('js/jquery.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>

@@ -20,6 +20,8 @@ use DB;
 
 use Carbon\Carbon;
 
+use Session;
+
 
 class EmpleadoController extends Controller
 {
@@ -72,6 +74,7 @@ class EmpleadoController extends Controller
     	$empleados->afp=$request->get('afp');
     	$empleados->estado='1';
     	$empleados->save();
+    	Session::flash('store','El Empleado creado correctamente!!!');
     	return Redirect::to('admin/empleado');
     }
     public function show($id){
@@ -81,26 +84,23 @@ class EmpleadoController extends Controller
     	return view("admin.empleado.edit",["empleado"=>Empleado::findOrFail($id)]);
     }
     public function update(EmpleadoFormRequest $request, $id){
-    	$empleados=Empleado::find($id);
-    	//$empleados->foto=$request->get('foto');
-    	$empleados->primernombre=$request->get('primernombre');
-    	$empleados->segundonombre=$request->get('segundonombre');
-    	$empleados->primerapellido=$request->get('primerapellido');
-    	$empleados->segundoapellido=$request->get('segundoapellido');
-    	$empleados->dui=$request->get('dui');
-    	$empleados->nit=$request->get('nit');
-    	$empleados->isss=$request->get('isss');
-    	$empleados->afp=$request->get('afp');
-    	$empleados->estado=$request->get('estado');
-    	$empleados->save();
+
+    	$affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => $request->get('primernombre'),'segundonombre' =>$request->get('segundonombre'),'primerapellido' =>$request->get('primerapellido'),'segundoapellido' =>$request->get('segundoapellido'),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp')]);
+    	Session::flash('update','El Empleado actualizado correctamente!!!');
     	return Redirect::to('admin/empleado');
     }
     public function destroy($id){
-    	$empleados=new Empleado;
-    	$empleado=Empleado::find($id);
-    	$empleado->estado=0;
-    	$empleado->save();
-    	return Redirect::to('admin/empleado');
+    	$empleado=Empleado::findOrFail($id);
+    	//var_dump($empleado);
+    	if($empleado->ESTADO=='1')
+    	{
+    		$affectedRows = Empleado::where('idempleado','=',$id)->update(['estado' => 0]);
+    		Redirect::to('admin/empleado');
+    	}else{
+    		$affectedRows = Empleado::where('idempleado','=',$id)->update(['estado' => 1]);
+    		Redirect::to('admin/empleado');
+    	}
+    	Redirect::to('admin/empleado');
     }
 
 }
