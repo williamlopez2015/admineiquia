@@ -160,6 +160,11 @@
     $('#tablaempleado').DataTable();
     });
     </script>
+
+    <script> 
+    $(document).ready(function(){
+    $('#tablaempleado').DataTable();});
+    </script>
    
 
 </body>

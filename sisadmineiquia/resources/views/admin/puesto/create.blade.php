@@ -20,14 +20,6 @@
             	<label for="nombre">Nombre</label>
             	<input type="text" name="nombrepuesto" required value="{{old('nombrepuesto')}}" class="form-control" placeholder="Nombre Puesto...">
             </div>
-            <div class="form-group">
-            	<label for="descripcion">Descripción</label>
-            	<input type="text" name="descripcionpuesto" required value="{{old('descripcionpuesto')}}" class="form-control" placeholder="Descripción Puesto...">
-            </div>
-            <div class="form-group">
-            	<label for="salario">Salario</label>
-            	<input type="text" name="salariopuesto" required value="{{old('salariopuesto')}}" class="form-control" placeholder="Salrio Puesto...">
-            </div>
 
             <div class="form-group">
                   <label> Departamento</label>
@@ -36,6 +28,16 @@
                          <option value="{{$dep->iddepartamento}}">{{$dep->nombredepartamento}}</option>
                    @endforeach
                   </select>     
+            </div>
+
+            <div class="form-group">
+            	<label for="descripcion">Descripción</label>
+            	<input type="text" name="descripcionpuesto" required value="{{old('descripcionpuesto')}}" class="form-control" placeholder="Descripción Puesto...">
+            </div>
+            
+            <div class="form-group">
+            	<label for="salario">Salario</label>
+            	<input type="text" name="salariopuesto" required value="{{old('salariopuesto')}}" class="form-control" placeholder="Salrio Puesto...">
             </div>
 
             <div class="form-group">
