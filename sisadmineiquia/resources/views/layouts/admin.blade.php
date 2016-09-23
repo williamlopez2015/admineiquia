@@ -32,9 +32,12 @@
       <!-- Custom CSS -->
     <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
 
+    <!-- Estilo a mensajes de errores -->
+    <link rel="stylesheet" href="{{asset('css/estilos.css')}}"></script>
 
 
-
+    <!-- Estilo de calendarios -->
+    <link rel="stylesheet" href="{{asset('css/tcal.css')}}"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -148,6 +151,7 @@
 
 
     <!-- jQuery -->
+    <script type="text/javascript" src="{{asset('js/jquery-3.1.1.min.js')}}"></script>
     <script src="{{asset('js/jquery.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
@@ -160,8 +164,15 @@
     $('#tablaempleado').DataTable();
     });
     </script>
-   
+    <script > $(document).ready(function(){
+    $('#tablapuesto').DataTable();
+    });
+    </script>
 
+
+    <script type="text/javascript" src="{{asset('js/validarJS.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/validarJQue.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/tcal.js')}}"></script>
 </body>
 
 </html>

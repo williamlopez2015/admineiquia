@@ -16,9 +16,12 @@
                 <!-- /.row -->
                 <div class="col-lg-12">
                 <label><a href="empleado/create" class="btn btn-primary btn-lg" role="button">Nuevo Empleado</a></label>
+                <label><a href="expedienteadministrativo/create" class="btn btn-primary btn-lg" role="button">Expediente Administrativo</a></label>
                 <!--
                 @include('admin.empleado.search')
                 -->
+                @include('mensajes.messages') 
+
                  </div>
                  
                 <!-- /.row -->
@@ -31,7 +34,6 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Foto</th>
                                         <th>Nombre</th>
                                         <th>Dui</th>
                                         <th>Nit</th>
@@ -43,13 +45,12 @@
                                  @foreach ($empleados as $emp)
                                     <tr>
                                     	<td>{{ $emp->IDEMPLEADO }}</td>
-                                        <td>{{ $emp->FOTO }}</td>
                                         <td>{{ $emp->PRIMERNOMBRE }}</td>
                                         <td>{{ $emp->DUI }}</td>
                                         <td>{{ $emp->NIT }}</td>
                                         <td>{{ $emp->ESTADO }}</td>
                                         <td>
-                                        <a href="" data-target="#modal-delete-{{ $emp->IDEMPLEADO }}" data-toggle="modal"><button  class="btn btn-sm btn-success">Cambiar</button></a>
+                                        <a href="" data-target="#modal-delete-{{ $emp->IDEMPLEADO }}" data-toggle="modal"><button class="btn btn-sm btn-success">Cambiar</button></a>
                                         <a href="{{URL::action('EmpleadoController@edit',$emp->IDEMPLEADO)}}"><button type="button" class="btn btn-sm btn-primary">Editar</button></a>
                                         <a href=""><button type="button" class="btn btn-sm btn-danger">Ficha</button></a></td>
                                     </tr>
