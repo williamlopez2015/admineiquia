@@ -12,6 +12,7 @@
 	var fechaAdFin = document.getElementById("fechaAdFin");
 	var fechaInInicio = document.getElementById("fechaInInicio");
 	var fechaInFin = document.getElementById("fechaInFin");
+	var codCon = document.getElementById("codCon");
 
 	function corregirPrimerNombre(){
 		var value = primernombre.value;
@@ -228,6 +229,34 @@
 			}
 
 			fechaInFin.value = value;
+		}
+	}
+
+	function corregirCodCon(){
+		var value = codCon.value;
+		var longitudActual = value.length;
+		if(longitudActual){
+			var ultimoCaracter = value.substring(longitudActual - 1);
+			switch (longitudActual){
+				case 1:
+				case 2:	
+					if(!/[aA-zZ]/.test(ultimoCaracter)){
+						value = value.substring(0, longitudActual - 1);
+					}
+				break;
+				case 3:
+				case 4:
+				case 5:
+				case 6:
+					if(!/\d/.test(ultimoCaracter)){
+						value = value.substring(0, longitudActual - 1);
+					}
+				break;
+			}
+			if(longitudActual > 6) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			codCon.value = value;
 		}
 	}
 	

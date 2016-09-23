@@ -33,26 +33,30 @@
 			<div class="form-group">
 				<label>Fecha Apertura Expediente Administrativo</label>
 				<input  type="text" name="fechaapertura" class="tcal form-control" placeholder="00/00/0000" id="fechaApertura" onkeyup="corregirFecha();">
+				<div id="mensajeFechaAper" class="errores">Fecha invalida</div> 
 			</div>
 			<div class="form-group">
 				<label>Codigo Contrato</label>
-				<input class="form-control" name="codigocontrato" class="form-control" placeholder="">
+				<input class="form-control" name="codigocontrato" class="form-control" placeholder="AA0000" id="codCon" onkeyup="corregirCodCon();">
+        <div id="mensajeCodCon" class="errores">Código invalido</div>
 			</div>
 			<div class="form-group">
                   <label>Empleado</label>
-                  <select name="idempleado" class="form-control">
+                  <select name="idempleado" class="form-control" id="idempleados">
                    @foreach ($empleados as $emp)
                          <option value="{{$emp->idempleado}}">{{$emp->primernombre}}</option>
                    @endforeach
-                  </select>     
+                  </select>  
+                  <div id="mensajeEmp" class="errores">No se ha seleccionado un empleado</div>      
 			</div>
 			<div class="form-group">
                   <label>Puesto</label>
-                  <select name="idpuesto" class="form-control">
+                  <select name="idpuesto" class="form-control" id="idpuestos">
                    @foreach ($puestos as $pues)
                          <option value="{{$pues->idpuesto}}">{{$pues->nombrepuesto}}</option>
                    @endforeach
-                  </select>     
+                  </select>
+                  <div id="mensajePue" class="errores">No se ha seleccionado un puesto</div>     
 			</div>
 			<div class="form-group">
 			    <label>Tiempo Adicional Inicio:</label>
@@ -83,7 +87,7 @@
                 <textarea  name="descripcionadmin" class="form-control"  rows="3" placeholder="Descripcion de el empleado"></textarea>
             </div>
 			<div class="form-group">
-            	<button class="btn btn-primary" type="submit">Guardar</button>
+            	<button class="btn btn-primary" type="submit" id="guardarExp">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>
             </div>    
 		</div>

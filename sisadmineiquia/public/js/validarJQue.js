@@ -3,6 +3,7 @@
 	var exprNit = /^\d{4}-\d{6}-\d{3}-\d{1}$/;
 	var exprIsss = /^\d{9}$/;
 	var exprAfp = /^\d{12}$/;
+	var exprCodCon = /^[aA-zZ]{2}\d{4}$/;
 
 	$(document).ready(function(){
 		$("#guardar").click(function(){
@@ -98,5 +99,54 @@
 				}	
 			}
 
+		});
+	});
+
+	$(document).ready(function(){
+		$("#guardarExp").click(function(){
+			var codCon = $("#codCon").val();
+			var selectPuestos = $("#idpuestos option:selected").val();
+			var selectEmpleados = $("#idempleados option:selected").val();
+			var fechaApertura = $("#fechaApertura").val();
+
+			if(fechaApertura == ""){
+
+				$("#mensajeFechaAper").fadeIn();
+					return false;
+
+				}else{
+
+					$("#mensajeFechaAper").fadeOut();
+
+					if(codCon == "" || !exprCodCon.test(codCon)){
+
+						$("#mensajeCodCon").fadeIn();
+						return false;
+
+					}else{
+
+						$("#mensajeCodCon").fadeOut();
+
+						if(selectEmpleados == ""){
+
+							$("#mensajeEmp").fadeIn();
+							return false;
+
+						}else{
+
+							$("#mensajeEmp").fadeOut();
+
+							if(selectPuestos == ""){
+
+								$("#mensajePue").fadeIn();
+								return false;
+
+							}else{
+
+								$("#mensajePue").fadeOut();
+							}
+						}
+					}
+				}
 		});
 	});
