@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::resource('admin/empleado','EmpleadoController');
 
 
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
