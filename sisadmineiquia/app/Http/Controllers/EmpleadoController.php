@@ -90,9 +90,17 @@ class EmpleadoController extends Controller
     	return Redirect::to('admin/empleado');
     }
     public function destroy($id){
-    	echo $id;
-    	$affectedRows = Empleado::where('idempleado','=',$id)->update(['estado' => 0]);
-    	return Redirect::to('admin/empleado');
+    	$empleado=Empleado::findOrFail($id);
+    	//var_dump($empleado);
+    	if($empleado->ESTADO=='1')
+    	{
+    		$affectedRows = Empleado::where('idempleado','=',$id)->update(['estado' => 0]);
+    		Redirect::to('admin/empleado');
+    	}else{
+    		$affectedRows = Empleado::where('idempleado','=',$id)->update(['estado' => 1]);
+    		Redirect::to('admin/empleado');
+    	}
+    	Redirect::to('admin/empleado');
     }
 
 }
