@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-lg-12">
 	<ol class="breadcrumb">
-		<li> <i class="fa fa-home"></i> <a href="admin/empleado">Administrar Empleados</a>
+		<li> <i class="fa fa-home"></i> <a href="../../admin/empleado">Administrar Empleados</a>
 		</li>
  		<li class="active">
  		<i class="fa fa-desktop"></i> Nuevo Expediente Administrativo</li>
@@ -14,6 +14,7 @@
  <div class="row">
 	<div class="col-lg-12">
 			<h3>Nuevo Expediente Administrativo de Empleado</h3>
+
 	</div>
  </div>
  <div class="row">
@@ -28,6 +29,7 @@
 				</ul>
 			</div>
 			@endif
+			@include('mensajes.messages')
 
 			{!!Form::open(array('url'=>'admin/expedienteadministrativo','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}    
@@ -39,13 +41,13 @@
 			<div class="form-group">
 				<label>Codigo Contrato</label>
 				<input class="form-control" name="codigocontrato" class="form-control" placeholder="AA0000" id="codCon" onkeyup="corregirCodCon();">
-        <div id="mensajeCodCon" class="errores">Código invalido</div>
+        	<div id="mensajeCodCon" class="errores">Código invalido</div>
 			</div>
 			<div class="form-group">
                   <label>Empleado</label>
                   <select name="idempleado" class="form-control" id="idempleados">
                    @foreach ($empleados as $emp)
-                         <option value="{{$emp->idempleado}}">{{$emp->primernombre}}</option>
+                         <option value="{{$emp->idempleado}}">{{$emp->nombrecompleto}}</option>
                    @endforeach
                   </select>  
                   <div id="mensajeEmp" class="errores">No se ha seleccionado un empleado</div>      
@@ -65,29 +67,21 @@
             </div>    
 		</div>
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<div class="form-group">
-			    <label>Tiempo Adicional Inicio:</label>
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' name="tiempoadicionalinicio" class="tcal form-control" placeholder="00/00/0000" id="fechaAdInicio" onkeyup="corregirFecha2();"/>
-                </div>
-            </div>
             <div class="form-group">
-			    <label>Tiempo Adicional Fin:</label>
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' name="tiempoadicionalfin" class="tcal form-control" placeholder="00/00/0000" id="fechaAdFin" onkeyup="corregirFecha3();"/>
-                </div>
-            </div>
+				<label>Tiempo Adicional Inicio:</label>
+				<input  type="text" name="tiempoadicionalinicio" class="tcal form-control" placeholder="00/00/0000" id="tiempoadicionalinicio" onkeyup="corregirFecha2();">
+			</div>
 			<div class="form-group">
-			    <label>Tiempo Integral Inicio:</label>
-                <div class='input-group date' id='datetimepicker1'>
+				<label>Tiempo Adicional Fin:</label>
+				<input type='text' name="tiempoadicionalfin" class="tcal form-control" placeholder="00/00/0000" id="fechaAdFin" onkeyup="corregirFecha3();"/>
+			</div>
+			<div class="form-group">
+				<label>Tiempo Integral Inicio:</label>
                     <input type='text' name="tiempointegralinicio" class="tcal form-control" placeholder="00/00/0000" id="fechaInInicio" onkeyup="corregirFecha4();"/>
-                </div>
-            </div>
-            <div class="form-group">
+			</div>
+			<div class="form-group">
 			    <label>Tiempo Integral Fin:</label>
-                <div class='input-group date' id='datetimepicker1'>
                     <input type='text' name="tiempointegralfin" class="tcal form-control" placeholder="00/00/0000" id="fechaInFin" onkeyup="corregirFecha5();"/>
-                </div>
             </div>
 			<div class="form-group">
                 <label>Observacion</label>

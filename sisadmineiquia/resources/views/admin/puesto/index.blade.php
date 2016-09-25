@@ -57,7 +57,6 @@
 				@endforeach
 			</table>
 		</div>
-		{{$puestos->render()}}
 	</div>
 </div>
 

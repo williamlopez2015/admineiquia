@@ -19,10 +19,7 @@ Route::resource('admin/empleado','EmpleadoController');
 
 Route::resource('admin/puesto','PuestoController');
 
-Route::resource('admin/expedienteadministrativo','expedienteadministrativoController');
-
-
-
+Route::resource('admin/expedienteadministrativo','ExpedienteAdministrativoController');
 
 Route::auth();
 

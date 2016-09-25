@@ -36,12 +36,18 @@ class EmpleadoController extends Controller
     	
     	if ($request)
         {
-            $query=trim($request->get('searchText'));
+            /*$query=trim($request->get('searchText'));
             $empleados=DB::table('empleado')->where('primernombre','LIKE','%'.$query.'%')
             ->orderBy('estado','desc')->paginate();
             //
-            return view('admin.empleado.index',["empleados"=>$empleados,"searchText"=>$query]);
+            return view('admin.empleado.index',["empleados"=>$empleados,"searchText"=>$query]);*/
             
+            // Llamamos al método raw y le pasamos nuestra parte de consulta que queremos realizar.
+			$raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado");
+		
+			// Llamamos a Persona, utilizamos el método select y le pasamos el $raw almacenado en la linea superior.
+			$empleados = Empleado::select($raw)->get();
+			return view('admin.empleado.index',["empleados"=>$empleados]);
         }
     }
 
@@ -95,12 +101,11 @@ class EmpleadoController extends Controller
     	if($empleado->ESTADO=='1')
     	{
     		$affectedRows = Empleado::where('idempleado','=',$id)->update(['estado' => 0]);
-    		Redirect::to('admin/empleado');
+    		return  Redirect::to('admin/empleado');
     	}else{
     		$affectedRows = Empleado::where('idempleado','=',$id)->update(['estado' => 1]);
-    		Redirect::to('admin/empleado');
+    		return  Redirect::to('admin/empleado');
     	}
-    	Redirect::to('admin/empleado');
     }
 
 }

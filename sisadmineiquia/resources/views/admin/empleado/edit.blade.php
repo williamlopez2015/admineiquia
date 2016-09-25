@@ -28,7 +28,7 @@
 			</div>
 			@endif
 
-			{!!Form::model($empleado,['method'=>'PATCH','route'=>['admin.empleado.update',$empleado->IDEMPLEADO]])!!}
+			{!!Form::model($empleado,['method'=>'PATCH','route'=>['admin.expedienteadministrativo.update',$empleado->IDEMPLEADO]])!!}
             {{Form::token()}}
             <div class="form-group">
             	<label for="primernombre">Primer Nombre</label>
