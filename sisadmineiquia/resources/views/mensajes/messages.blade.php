@@ -35,3 +35,10 @@
 		<strong>{{Session::get('store')}}</strong>
 	</div>
 @endif
+
+
+@if (Session::has('edit'))
+	<div class="alert alert-success" role='alert'>
+		<strong>{{Session::get('edit')}}</strong>
+	</div>
+@endif

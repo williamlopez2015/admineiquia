@@ -99,23 +99,32 @@ class ExpedienteAdministrativoController extends Controller
 
     public function edit($id){
     	$query=trim($id);
-    	/*$users = DB::table('users')
+
+            $empleado=Empleado::find($query);
+	        //var_dump($empleado);
+	        $expadmin  = DB::table('expedienteadminist')->select('idempleado')->where('idempleado','=',$query)->get();
+	        if ($expadmin){
+	        	
+    	        /*$users = DB::table('users')
                      ->select(DB::raw('count(*) as user_count, status'))
                      ->where('status', '<>', 1)
                      ->groupBy('status')
                      ->get();*/
     	// Llamamos al método raw y le pasamos nuestra parte de consulta que queremos realizar.
-    	$raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto");
-		
-		// Llamamos a Empleado, utilizamos el método select y le pasamos el $raw almacenado en la linea superior.
-		$empleado  = Empleado::select($raw)->where('idempleado', '=',$query)->get();
-    	
-    	$expadmin  = DB::table('expedienteadminist')->select('idexpediente')->where('idempleado','=',$query)->get();
-    	//var_dump($empleado);
-    	$expadminid=$expadmin[0]->idexpediente;
-    	$puesto = DB::table('puesto')->select('idpuesto','nombrepuesto')->get();
-    	return view("admin/expedienteadministrativo.edit",["empleados"=>$empleado,"expedienteadministrativo"=>ExpedienteAdministrativo::findOrFail($expadminid),"puestos"=>$puesto]);
+                     $raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto");
+                     // Llamamos a Empleado, utilizamos el método select y le pasamos el $raw almacenado en la linea superior.
+                     $empleado  = Empleado::select($raw)->where('idempleado', '=',$query)->get();
+                     $expadmin  = DB::table('expedienteadminist')->select('idexpediente')->where('idempleado','=',$query)->get();
+                     $expadminid=$expadmin[0]->idexpediente;
+                     $puesto = DB::table('puesto')->select('idpuesto','nombrepuesto')->get();
+                     return view("admin/expedienteadministrativo.edit",["empleados"=>$empleado,"expedienteadministrativo"=>ExpedienteAdministrativo::findOrFail($expadminid),"puestos"=>$puesto]);
+	        }else{
+	        	Session::flash('edit','Aun no existe Expediente!!!');
+	        	return Redirect::to('admin/empleado');
+
+	        }
     }
+
     public function update(Request $request, $id){
     
     	$affectedRows = ExpedienteAdministrativo::where('idexpediente','=',$id)->update(['fechaapertura' =>$request->get('fechaapertura'),'codigocontrato' =>$request->get('codigocontrato'),'tiempoadicionalinicio' =>$request->get('tiempoadicionalinicio'),'tiempoadicionalfin' =>$request->get('tiempoadicionalfin'),'tiempointegralinicio' =>$request->get('tiempointegralinicio'),'tiempointegralfin' => $request->get('tiempointegralfin'),'descripcionadmin' => $request->get('descripcionadmin')]);
