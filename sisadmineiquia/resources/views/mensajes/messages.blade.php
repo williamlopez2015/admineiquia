@@ -11,6 +11,12 @@
 	</div>
 @endif
 
+@if (Session::has('destroy'))
+	<div class="alert alert-success" role='alert'>
+		<strong>{{Session::get('destroy')}}</strong>
+	</div>
+@endif
+
 
 @if (Session::has('save'))
 	<div class="alert alert-success" role='alert'>

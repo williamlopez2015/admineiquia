@@ -95,10 +95,15 @@ class PuestoController extends Controller
 
     public function destroy($id)
     {
-
-        $affectedRows = Puesto::where('idpuesto','=',$id)
-        ->delete();
-
-        return Redirect::to('admin/puesto');
+    	$query=trim($id);
+		$expadmin  = DB::table('expedienteadminist')->select('idpuesto')->where('idpuesto','=',$query)->get();
+		if ($expadmin){
+			Session::flash('destroy','El puesto no se puede eliminar esta asignado a varios empleados!!!');
+			return Redirect::to('admin/puesto');
+		}else{
+			$affectedRows = Puesto::where('idpuesto','=',$id)->delete();
+			Session::flash('destroy','El puesto eliminado correctamente!!!');
+			return Redirect::to('admin/puesto');
+		}
     }
 }

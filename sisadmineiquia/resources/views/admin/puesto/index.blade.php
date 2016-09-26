@@ -19,6 +19,8 @@
                 <!--
                 @include('admin.empleado.search')
                 -->
+                
+                @include('mensajes.messages')
                  </div>
                  
                 <!-- /.row -->
