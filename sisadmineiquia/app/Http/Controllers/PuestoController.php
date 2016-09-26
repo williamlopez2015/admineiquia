@@ -50,6 +50,7 @@ class PuestoController extends Controller
         $puesto->descripcionpuesto=$request->get('descripcionpuesto');
         $puesto->salariopuesto=$request->get('salariopuesto');
         $puesto->save();
+        Session::flash('store','El puesto fue creado correctamente!!!');
         return Redirect::to('admin/puesto');
     }
         
@@ -81,7 +82,7 @@ class PuestoController extends Controller
             'descripcionpuesto'=>$request->get('descripcionpuesto'),
             'iddepartamento' =>$request->get('iddepartamento'),
             'salariopuesto'=>$request->get('salariopuesto')]);
-        Session::flash('update','El puesto se ha actualizado');       
+        Session::flash('update','El puesto se ha actualizado correctamente!!!');       
         return Redirect::to('admin/puesto');
 
         //$puesto=Puesto::findOrFail($id);
