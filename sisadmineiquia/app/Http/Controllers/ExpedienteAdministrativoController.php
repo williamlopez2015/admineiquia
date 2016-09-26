@@ -128,7 +128,7 @@ class ExpedienteAdministrativoController extends Controller
     public function update(Request $request, $id){
     
     	$affectedRows = ExpedienteAdministrativo::where('idexpediente','=',$id)->update(['fechaapertura' =>$request->get('fechaapertura'),'codigocontrato' =>$request->get('codigocontrato'),'tiempoadicionalinicio' =>$request->get('tiempoadicionalinicio'),'tiempoadicionalfin' =>$request->get('tiempoadicionalfin'),'tiempointegralinicio' =>$request->get('tiempointegralinicio'),'tiempointegralfin' => $request->get('tiempointegralfin'),'descripcionadmin' => $request->get('descripcionadmin')]);
-    	Session::flash('store','El Expediente actualizado correctamente!!!');
+    	Session::flash('update','El Expediente actualizado correctamente!!!');
     	return Redirect::to('admin/empleado');
     }
 }
