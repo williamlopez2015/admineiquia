@@ -51,8 +51,8 @@
 				    <td>{{ $pues->salariopuesto}}</td>
 				    <td>{{ $pues->departamento}}</td>
 					<td>
-						<a href="{{URL::action('PuestoController@edit',$pues->idpuesto)}}"><button class="btn btn-info">Editar</button></a>
-                         <a href="" data-target="#modal-delete-{{$pues->idpuesto}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+						<a href="{{URL::action('PuestoController@edit',$pues->idpuesto)}}"><button class="btn btn-xs btn-primary">Editar</button></a>
+                         <a href="" data-target="#modal-delete-{{$pues->idpuesto}}" data-toggle="modal"><button class="btn btn-xs btn-danger">Eliminar</button></a>
 					</td>
 				</tr>
 				@include('admin.puesto.modal')

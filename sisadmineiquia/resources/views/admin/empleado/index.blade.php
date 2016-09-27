@@ -48,10 +48,10 @@
                                         <td>{{ $emp->nit }}</td>
                                         <td>{{ $emp->estado }}</td>
                                         <td>
-                                        <a href="" data-target="#modal-delete-{{$emp->idempleado}}" data-toggle="modal"><button  class="btn btn-sm btn-danger">Cambiar</button></a>
-                                        <a href="{{URL::action('EmpleadoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-sm btn-primary">Editar</button></a>
+                                        <a href="" data-target="#modal-delete-{{$emp->idempleado}}" data-toggle="modal"><button  class="btn btn-xs btn-danger">Cambiar</button></a>
+                                        <a href="{{URL::action('EmpleadoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-primary">Editar</button></a>
                                         <!--<a href=""><button type="button" class="btn btn-sm btn-info">Ficha</button></a></td>-->
-                                        <a href="{{URL::action('ExpedienteAdministrativoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-sm btn-primary">Editar Expediente Administrativo</button></a>
+                                        <a href="{{URL::action('ExpedienteAdministrativoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-info">Expediente Administrativo</button></a>
                                     </tr>
                                     @include('admin.empleado.modal')
                                 @endforeach 

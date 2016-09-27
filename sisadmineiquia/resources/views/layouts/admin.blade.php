@@ -107,12 +107,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
             <!--navegacion-->    
-                    <li>
-                        <a href="/"><i class="fa fa-fw fa-home"></i> Inicio</a>
-                    </li>
+                    
+                    @include('layouts.navadminsist')
                 </ul>
+
             </div>
             <!-- /.navbar-collapse -->
+
         </nav>
 
 
