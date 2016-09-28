@@ -15,11 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('admin/empleado','EmpleadoController');
+Route::group(['middleware' => 'auth'], function () {
+      Route::resource('admin/empleado','EmpleadoController');
+});
 
-Route::resource('admin/puesto','PuestoController');
+Route::group(['middleware' => 'auth'], function () {
+      Route::resource('admin/puesto','PuestoController');
+});
 
-Route::resource('admin/expedienteadministrativo','ExpedienteAdministrativoController');
+Route::group(['middleware' => 'auth'], function () {
+      Route::resource('admin/expedienteadministrativo','ExpedienteAdministrativoController');
+});
+
 
 Route::auth();
 

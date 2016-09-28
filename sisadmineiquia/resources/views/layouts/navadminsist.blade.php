@@ -1,5 +1,5 @@
     <li>
-        <a href="/"><i class="fa fa-fw fa-home"></i> Inicio</a>
+        <a href="/home"><i class="fa fa-fw fa-home"></i> Inicio</a>
     </li>
     <li>
         <a href="{{ url('/register') }}"><i class="fa fa-fw fa-user"></i> Registrar Usuario</a>
