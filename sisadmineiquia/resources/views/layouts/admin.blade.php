@@ -120,7 +120,7 @@
                     <ul class="dropdown-menu">
                        
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Configuracion</a>
+                            <a href="{{URL::action('HomeController@edit',Auth::user()->id)}}"><i class="fa fa-fw fa-gear"></i> Configuracion</a>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -141,7 +141,17 @@
                         <a href="/"><i class="fa fa-fw fa-home"></i> Inicio</a>
                     </li>
                     @else
-                    @include('layouts.navadminsist')
+                        @if (Auth::user()->type=="secret")
+                            @include('layouts.navsecret')
+                        @endif
+
+                        @if (Auth::user()->type=="admin")
+                            @include('layouts.navadmin')
+                        @endif
+
+                        @if (Auth::user()->type=="adminsist")
+                             @include('layouts.navadminsist')
+                        @endif
                     @endif
                 </ul>
 
@@ -159,6 +169,7 @@
                 <!-- Page Heading -->
                  <!--Contenido -->
                  @yield('contenido')
+
              <!-- Fin Contenido-->
             </div>
             <!-- /.container-fluid -->
@@ -205,6 +216,10 @@
     </script>
     <script > $(document).ready(function(){
     $('#tablaexpadmin').DataTable();
+    });
+    </script>
+    <script > $(document).ready(function(){
+    $('#tablausers').DataTable();
     });
     </script>
 

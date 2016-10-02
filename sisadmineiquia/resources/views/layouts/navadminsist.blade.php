@@ -2,7 +2,7 @@
         <a href="/home"><i class="fa fa-fw fa-home"></i> Inicio</a>
     </li>
     <li>
-        <a href="{{ url('/register') }}"><i class="fa fa-fw fa-user"></i> Registrar Usuario</a>
+        <a href="admin/users"><i class="fa fa-fw fa-user"></i> Administrar Usuario</a>
     </li>
     <li >
         <a href="#" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-paperclip"></i> <span>Administrar Expediente</span> <i class="fa fa-angle-left pull-right"></i></a>

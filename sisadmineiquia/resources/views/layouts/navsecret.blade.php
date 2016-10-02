@@ -17,7 +17,7 @@
             </li>
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-paperclip"></i> Control de Asistencia<i class="fa fa-angle-left pull-right"></i></a>
-                <ul id="demo4" class="collapse">
+                <ul id="demo1" class="collapse">
                     <li>
                         <a href="#"><i class="fa fa-plus"></i> Agregar Asistencia</a>
                     </li>
@@ -28,7 +28,7 @@
             </li>
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-paperclip"></i> Gestionar Permisos Expediente <i class="fa fa-angle-left pull-right"></i></a>
-                <ul id="demo3" class="collapse">
+                <ul id="demo2" class="collapse">
                     <li>
                         <a href="#"><i class="fa fa-plus"></i> Agregar Permiso</a>
                     </li>
