@@ -14,7 +14,8 @@ class UsersTableSeeder extends Seeder
         \DB:: table('users')->insert(array(
             'name' =>'JW'  ,
             'email'=>'rogelwilliam@gmail.com',
-            'password'=>\Hash::make('secret')
+            'password'=>\Hash::make('secret'),
+            'type'=>'adminsist',
         	));
     }
 }
