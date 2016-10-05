@@ -16,13 +16,14 @@
                 <!-- /.row -->
                 <div class="col-lg-12">
                 <label><a href="empleado/create" class="btn btn-primary btn-lg" role="button">Nuevo Empleado</a></label>
+                <label><a href="expedienteadministrativo/create" class="btn btn-primary btn-lg" role="button">Expediente Administrativo</a></label>
                 <!--
-                @include('admin.empleado.search')
-                -->
+                @include('admin.empleado.search')-->
+                @include('mensajes.messages')
+            
                  </div>
                  
                 <!-- /.row -->
-
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <h2>Listado de Empleados</h2>
@@ -31,7 +32,6 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Foto</th>
                                         <th>Nombre</th>
                                         <th>Dui</th>
                                         <th>Nit</th>
@@ -42,22 +42,21 @@
                                 <tbody>
                                  @foreach ($empleados as $emp)
                                     <tr>
-                                    	<td>{{ $emp->IDEMPLEADO }}</td>
-                                        <td>{{ $emp->FOTO }}</td>
-                                        <td>{{ $emp->PRIMERNOMBRE }}</td>
-                                        <td>{{ $emp->DUI }}</td>
-                                        <td>{{ $emp->NIT }}</td>
-                                        <td>{{ $emp->ESTADO }}</td>
+                                    	<td>{{ $emp->idempleado }}</td>
+                                        <td>{{ $emp->nombrecompleto }}</td>
+                                        <td>{{ $emp->dui}}</td>
+                                        <td>{{ $emp->nit }}</td>
+                                        <td>{{ $emp->estado }}</td>
                                         <td>
-                                        <a href="" data-target="#modal-delete-{{ $emp->IDEMPLEADO }}" data-toggle="modal"><button  class="btn btn-sm btn-success">Cambiar</button></a>
-                                        <a href="{{URL::action('EmpleadoController@edit',$emp->IDEMPLEADO)}}"><button type="button" class="btn btn-sm btn-primary">Editar</button></a>
-                                        <a href=""><button type="button" class="btn btn-sm btn-danger">Ficha</button></a></td>
+                                        <a href="" data-target="#modal-delete-{{$emp->idempleado}}" data-toggle="modal"><button  class="btn btn-xs btn-danger">Cambiar</button></a>
+                                        <a href="{{URL::action('EmpleadoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-primary">Editar</button></a>
+                                        <!--<a href=""><button type="button" class="btn btn-sm btn-info">Ficha</button></a></td>-->
+                                        <a href="{{URL::action('ExpedienteAdministrativoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-info">Expediente Administrativo</button></a>
                                     </tr>
                                     @include('admin.empleado.modal')
                                 @endforeach 
                                 </tbody>
                             </table>
-                        </div>
-                        {{$empleados->render()}}    
+                        </div>   
                     </div>    
 @endsection

@@ -1,6 +1,6 @@
 <div class="modal fade modal-slide-in-right" aria-hidden="true"
-role="dialog" tabindex="-1" id="modal-delete-{{$emp->idempleado}}">
-{{Form::Open(array('action'=>array('EmpleadoController@destroy',$emp->idempleado),'method'=>'delete'))}}
+role="dialog" tabindex="-1" id="modal-delete-{{$u->id}}">
+{{Form::Open(array('action'=>array('UsersController@destroy',$u->id),'method'=>'delete'))}}
 	
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -9,10 +9,10 @@ role="dialog" tabindex="-1" id="modal-delete-{{$emp->idempleado}}">
 				aria-label="Close">
                      <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title">Cambiar Estado del Empleado</h4>
+                <h4 class="modal-title">Eliminar Usuario</h4>
 			</div>
 			<div class="modal-body">
-				<p>Confirme si desea Cambiar el Estado</p>
+				<p>Confirme si desea eliminar el usuario</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

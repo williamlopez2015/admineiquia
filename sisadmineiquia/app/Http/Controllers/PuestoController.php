@@ -28,8 +28,7 @@ class PuestoController extends Controller
             ->join('departamento as d','p.iddepartamento','=','d.iddepartamento')
             ->select('p.idpuesto','p.nombrepuesto','p.descripcionpuesto','p.salariopuesto','d.nombredepartamento as departamento')
             ->where('nombrepuesto','LIKE','%'.$query.'%')
-            ->orderBy('idpuesto','desc')
-            ->paginate(5);
+            ->orderBy('idpuesto','desc')->paginate();
             
             return view('admin.puesto.index',["puestos"=>$puestos,"searchText"=>$query]);
         }
@@ -51,6 +50,7 @@ class PuestoController extends Controller
         $puesto->descripcionpuesto=$request->get('descripcionpuesto');
         $puesto->salariopuesto=$request->get('salariopuesto');
         $puesto->save();
+        Session::flash('store','El puesto fue creado correctamente!!!');
         return Redirect::to('admin/puesto');
     }
         
@@ -76,13 +76,13 @@ class PuestoController extends Controller
         
     public function update(PuestoFormRequest $request,$id)
     {
+
     	$affectedRows = Puesto::where('idpuesto','=',$id)
         ->update(['nombrepuesto'=> $request->get('nombrepuesto'),
             'descripcionpuesto'=>$request->get('descripcionpuesto'),
             'iddepartamento' =>$request->get('iddepartamento'),
             'salariopuesto'=>$request->get('salariopuesto')]);
-        Session::flash('update','El puesto se ha actualizado');
-        
+        Session::flash('update','El puesto se ha actualizado correctamente!!!');       
         return Redirect::to('admin/puesto');
 
         //$puesto=Puesto::findOrFail($id);
@@ -96,12 +96,15 @@ class PuestoController extends Controller
 
     public function destroy($id)
     {
-    	//$puesto=Puesto::findOrFail($id);
-        //$puesto->condicion='0';
-        //$puesto->update();
-        $affectedRows = Puesto::where('idpuesto','=',$id)
-        ->delete();
-
-        return Redirect::to('admin/puesto');
+    	$query=trim($id);
+		$expadmin  = DB::table('expedienteadminist')->select('idpuesto')->where('idpuesto','=',$query)->get();
+		if ($expadmin){
+			Session::flash('destroy','El puesto no se puede eliminar esta asignado a varios empleados!!!');
+			return Redirect::to('admin/puesto');
+		}else{
+			$affectedRows = Puesto::where('idpuesto','=',$id)->delete();
+			Session::flash('destroy','El puesto eliminado correctamente!!!');
+			return Redirect::to('admin/puesto');
+		}
     }
 }

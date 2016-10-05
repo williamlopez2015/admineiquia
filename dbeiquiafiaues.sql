@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     21/8/2016 9:16:55 p. m.                      */
+/* Created on:     20/9/2016 1:56:55 p. m.                      */
 /*==============================================================*/
 
 
@@ -13,10 +13,6 @@ drop table if exists ASIGNACIONACADEMIC;
 drop table if exists ASISTENCIA;
 
 drop table if exists DEPARTAMENTO;
-
-drop table if exists DETALLEEXPACAD;
-
-drop table if exists DETALLEEXPADMIN;
 
 drop table if exists EMPLEADO;
 
@@ -48,6 +44,7 @@ create table ACCESO
 create table ACUERDOADMINISTRAT
 (
    IDACUERDO            varchar(10) not null,
+   IDEXPEDIENTE         varchar(6),
    MOTIVOACUERDO        varchar(50) not null,
    DESCRIPCIONACUERDO   varchar(1024) not null,
    ESTADOACUERDO        varchar(10) not null,
@@ -61,6 +58,7 @@ create table ACUERDOADMINISTRAT
 create table ASIGNACIONACADEMIC
 (
    IDASIGNACIONACAD     int(6) not null auto_increment,
+   IDEXPEDIENTEACADEM   varchar(6),
    CICLO                int,
    ANO                  varchar(10),
    CODASIGNATURA        varchar(6),
@@ -79,6 +77,7 @@ create table ASIGNACIONACADEMIC
 create table ASISTENCIA
 (
    IDASISTENCIA         int(6) not null auto_increment,
+   IDEXPEDIENTE         varchar(6),
    HORAENTRADA          time not null,
    HORASALIDA           time not null,
    FECHAASISTENCIA      date not null,
@@ -91,38 +90,10 @@ create table ASISTENCIA
 /*==============================================================*/
 create table DEPARTAMENTO
 (
-   IDDEPARTAMENTO       varchar(5) not null,
+   IDDEPARTAMENTO       int not null auto_increment,
    NOMBREDEPARTAMENTO   varchar(50) not null,
    DESCRIPCIONDEPARTA   varchar(250) not null,
    primary key (IDDEPARTAMENTO)
-);
-
-/*==============================================================*/
-/* Table: DETALLEEXPACAD                                        */
-/*==============================================================*/
-create table DETALLEEXPACAD
-(
-   IDDETALLEEXPACAD     varchar(6) not null,
-   IDEXPLABACADEMICA    int,
-   IDASIGNACIONACAD     int,
-   IDEXPEDIENTEACADEM   varchar(6),
-   DESCRIPCIONDETALLEACAD varchar(255),
-   primary key (IDDETALLEEXPACAD)
-);
-
-/*==============================================================*/
-/* Table: DETALLEEXPADMIN                                       */
-/*==============================================================*/
-create table DETALLEEXPADMIN
-(
-   IDDETALLEADMIN       int not null,
-   IDEXPEDIENTE         varchar(6),
-   IDPUESTO             int,
-   IDPERMISO            int,
-   IDACUERDO            varchar(10),
-   IDASISTENCIA         int,
-   DESCRIPCIONDETALLE   varchar(0),
-   primary key (IDDETALLEADMIN)
 );
 
 /*==============================================================*/
@@ -157,6 +128,7 @@ create table EXPEDIENTEACADEMIC
    TITULOOBTENIDO       varchar(50),
    TITULOESTUDIO        varchar(50),
    DIRECCIONINSTITUCION varchar(50),
+   DESCRIPCIONACADEMICA varchar(250),
    primary key (IDEXPEDIENTEACADEM)
 );
 
@@ -167,10 +139,12 @@ create table EXPEDIENTEADMINIST
 (
    IDEXPEDIENTE         varchar(6) not null,
    IDEMPLEADO           int,
+   IDPUESTO             int,
    FECHAAPERTURA        varchar(20) not null,
    CODIGOCONTRATO       varchar(20) not null,
    TIEMPOADICIONAL      varchar(20),
    TIEMPOINTEGRAL       varchar(20),
+   DESCRIPCIONADMIN     varchar(250),
    primary key (IDEXPEDIENTE)
 );
 
@@ -180,6 +154,7 @@ create table EXPEDIENTEADMINIST
 create table EXPERIENCIALABORAL
 (
    IDEXPLABACADEMICA    int(6) not null auto_increment,
+   IDEXPEDIENTEACADEM   varchar(6),
    DESCRIPCIONEXPLAB    varchar(250),
    NOMBREINTITUCIONEXPLABACAD varchar(50),
    FECHAINICIOEXPLABACAD date,
@@ -193,6 +168,7 @@ create table EXPERIENCIALABORAL
 create table PERMISO
 (
    IDPERMISO            int(6) not null auto_increment,
+   IDEXPEDIENTE         varchar(6),
    FECHAPERMISO         date,
    MOTIVOPERMISO        varchar(50),
    DESCRIPCIONPERMISO   varchar(250),
@@ -207,8 +183,8 @@ create table PERMISO
 /*==============================================================*/
 create table PUESTO
 (
-   IDPUESTO             int not null,
-   IDDEPARTAMENTO       varchar(5),
+   IDPUESTO             int not null auto_increment,
+   IDDEPARTAMENTO       int,
    NOMBREPUESTO         varchar(50) not null,
    DESCRIPCIONPUESTO    varchar(250) not null,
    SALARIOPUESTO        float not null,
@@ -227,39 +203,33 @@ create table USER
    primary key (IDUSUARIO)
 );
 
-alter table DETALLEEXPACAD add constraint FK_TIENE_ASIGNADO foreign key (IDASIGNACIONACAD)
-      references ASIGNACIONACADEMIC (IDASIGNACIONACAD) on delete restrict on update restrict;
+alter table ACUERDOADMINISTRAT add constraint FK_FK_EXPEDIENTEACAD_ACUERDADMIN foreign key (IDEXPEDIENTE)
+      references EXPEDIENTEADMINIST (IDEXPEDIENTE) on delete restrict on update restrict;
 
-alter table DETALLEEXPACAD add constraint FK_TIENE_SU foreign key (IDEXPEDIENTEACADEM)
+alter table ASIGNACIONACADEMIC add constraint FK_FK_EXPEDIENTEACAD_ASIGNACAD foreign key (IDEXPEDIENTEACADEM)
       references EXPEDIENTEACADEMIC (IDEXPEDIENTEACADEM) on delete restrict on update restrict;
 
-alter table DETALLEEXPACAD add constraint FK_TIENE_UNA foreign key (IDEXPLABACADEMICA)
-      references EXPERIENCIALABORAL (IDEXPLABACADEMICA) on delete restrict on update restrict;
-
-alter table DETALLEEXPADMIN add constraint FK_REGISTRA foreign key (IDPERMISO)
-      references PERMISO (IDPERMISO) on delete restrict on update restrict;
-
-alter table DETALLEEXPADMIN add constraint FK_SE_ASIGNA foreign key (IDACUERDO)
-      references ACUERDOADMINISTRAT (IDACUERDO) on delete restrict on update restrict;
-
-alter table DETALLEEXPADMIN add constraint FK_TIENE foreign key (IDASISTENCIA)
-      references ASISTENCIA (IDASISTENCIA) on delete restrict on update restrict;
-
-alter table DETALLEEXPADMIN add constraint FK_TIENEASIGNADO foreign key (IDPUESTO)
-      references PUESTO (IDPUESTO) on delete restrict on update restrict;
-
-alter table DETALLEEXPADMIN add constraint FK_TIENE_SU foreign key (IDEXPEDIENTE)
+alter table ASISTENCIA add constraint FK_FK_EXPEDIENTEADMIN_ASISTENCIA foreign key (IDEXPEDIENTE)
       references EXPEDIENTEADMINIST (IDEXPEDIENTE) on delete restrict on update restrict;
 
 alter table EXPEDIENTEACADEMIC add constraint FK_TIENE foreign key (IDEMPLEADO)
       references EMPLEADO (IDEMPLEADO) on delete restrict on update restrict;
 
+alter table EXPEDIENTEADMINIST add constraint FK_FK_PUESTO_EXPEDIENTEADMINISTRATIVO foreign key (IDPUESTO)
+      references PUESTO (IDPUESTO) on delete restrict on update restrict;
+
 alter table EXPEDIENTEADMINIST add constraint FK_POSEE foreign key (IDEMPLEADO)
       references EMPLEADO (IDEMPLEADO) on delete restrict on update restrict;
 
-alter table PUESTO add constraint FK_SE_ENCUENTRA foreign key (IDDEPARTAMENTO)
+alter table EXPERIENCIALABORAL add constraint FK_FK_EXPEDIENTEACAD_EPXLABACAD foreign key (IDEXPEDIENTEACADEM)
+      references EXPEDIENTEACADEMIC (IDEXPEDIENTEACADEM) on delete restrict on update restrict;
+
+alter table PERMISO add constraint FK_FK_EXPEDIENTEADMIN_PERMISO foreign key (IDEXPEDIENTE)
+      references EXPEDIENTEADMINIST (IDEXPEDIENTE) on delete restrict on update restrict;
+
+alter table PUESTO add constraint FK_FK_DEPARTAMENTO_PUESTO foreign key (IDDEPARTAMENTO)
       references DEPARTAMENTO (IDDEPARTAMENTO) on delete restrict on update restrict;
 
-alter table USER add constraint FK_POSEE foreign key (IDACCESO)
+alter table USER add constraint FK_FK_USER_ACCESO foreign key (IDACCESO)
       references ACCESO (IDACCESO) on delete restrict on update restrict;
 
