@@ -32,9 +32,12 @@
       <!-- Custom CSS -->
     <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
 
+    <!-- Estilo a mensajes de errores -->
+    <link rel="stylesheet" href="{{asset('css/estilos.css')}}"></script>
 
 
-
+    <!-- Estilo de calendarios -->
+    <link rel="stylesheet" href="{{asset('css/tcal.css')}}"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -63,53 +66,98 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav"> 
+            @if (Auth::guest())
             <!-- Aqui va el login--> 
             <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Login<b class="caret"></b></a>
                     <ul id="login-dp" class="dropdown-menu">
                         <li>
                             <div class="col-md-12">
-                                 <form class="form" name="formu"role="form" method="post" action="mod/mod-login/autenticacion.php" accept-charset="UTF-8" id="login-nav">
+                                 <form class="form" name="formu"role="form" method="post" action="{{ url('/login') }}" accept-charset="UTF-8" id="login-nav">
+                                 {{ csrf_field() }}
                                         <div class="form-group">
                                              <label class="sr-only" for="usuario_login">Usuario</label>
-                                             <input type="text" class="form-control" id="usuario_login" name="usuario_login" placeholder="Usuario" required>
+                                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Usuario">
+                                            @if ($errors->has('email'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('email') }}</strong>
+                                                </span>
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                              <label class="sr-only" for="password_login">Password</label>
-                                             <input type="password" class="form-control" id="password_login" name="password_login" placeholder="Password" required>
+                                             <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+
+                                            @if ($errors->has('password'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('password') }}</strong>
+                                                </span>
+                                            @endif
                                         </div>
                                         <div class="form-group">
-                                             <button type="submit" class="btn btn-primary btn-block" onsubmit="validarlogin();">Entrar</button>
+                                        <div class="col-md-6 col-md-offset-4">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="remember"> Remember Me
+                                                </label>
+                                            </div>
                                         </div>
-                                        <?php
-                                        if(isset($_GET["error"])){
-                                            if ($_GET["error"]=="true"){ ?>
-                                        <div class="alert alert-info">
-                                        <label class="mensaje" for="mensaje" id="mensaje">Acceso Denegado!!Revise que sus datos y vuelva a intentarlo.</label>   
+                                        <div class="form-group">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fa fa-btn fa-sign-in"></i> Login
+                                                </button>
+                                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
                                         </div>
-                                        <?php 
-                                        } 
-                                        }
-                                        ?>
-                                        
-                                        
                                  </form>
                             </div>            
                         </li>            
                     </ul>
              </li>
             <!--Termina el login -->
+            @else
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ Auth::user()->name }}<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                       
+                        <li>
+                            <a href="{{URL::action('HomeController@edit',Auth::user()->id)}}"><i class="fa fa-fw fa-gear"></i> Configuracion</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ url('/logout') }}"><i class="fa fa-fw fa-power-off"></i> Cerrar session</a>
+                        </li>
+                    </ul>
+             </li>
+            @endif
             </ul>
+
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
             <!--navegacion-->    
+                    
+                    @if (Auth::guest())
                     <li>
                         <a href="/"><i class="fa fa-fw fa-home"></i> Inicio</a>
                     </li>
+                    @else
+                        @if (Auth::user()->type=="secret")
+                            @include('layouts.navsecret')
+                        @endif
+
+                        @if (Auth::user()->type=="admin")
+                            @include('layouts.navadmin')
+                        @endif
+
+                        @if (Auth::user()->type=="adminsist")
+                             @include('layouts.navadminsist')
+                        @endif
+                    @endif
                 </ul>
+
             </div>
             <!-- /.navbar-collapse -->
+
         </nav>
 
 
@@ -121,6 +169,7 @@
                 <!-- Page Heading -->
                  <!--Contenido -->
                  @yield('contenido')
+
              <!-- Fin Contenido-->
             </div>
             <!-- /.container-fluid -->
@@ -148,7 +197,8 @@
 
 
     <!-- jQuery -->
-    <script src="{{asset('js/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery-3.1.1.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
@@ -160,13 +210,23 @@
     $('#tablaempleado').DataTable();
     });
     </script>
-
-    <script> 
-    $(document).ready(function(){
-    $('#tablapuesto').DataTable();});
+    <script > $(document).ready(function(){
+    $('#tablapuesto').DataTable();
+    });
     </script>
-   
+    <script > $(document).ready(function(){
+    $('#tablaexpadmin').DataTable();
+    });
+    </script>
+    <script > $(document).ready(function(){
+    $('#tablausers').DataTable();
+    });
+    </script>
 
+
+    <script type="text/javascript" src="{{asset('js/validarJS.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/validarJQue.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/tcal.js')}}"></script>
 </body>
 
 </html>
