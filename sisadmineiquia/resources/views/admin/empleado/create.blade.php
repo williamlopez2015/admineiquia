@@ -76,6 +76,11 @@
 				<label>Numero de AFP</label>
 				<input class="form-control" name="afp" class="form-control" placeholder="000000000000" id="nup" onkeyup="corregirNup();">
 				<div id="mensaje8" class="errores">No. AFP invalido</div>
+			</div> 
+
+			<div class="form-group">
+				<label for="foto"> Foto Empleado </label>
+				<input type="file"  class="form-control" name="foto"  >
 			</div>        
 		</div>            
 		</div>

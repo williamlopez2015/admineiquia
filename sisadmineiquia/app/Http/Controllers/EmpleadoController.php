@@ -22,6 +22,8 @@ use Carbon\Carbon;
 
 use Session;
 
+use Illuminate\Support\Facades\Input;
+
 
 class EmpleadoController extends Controller
 {
@@ -41,9 +43,10 @@ class EmpleadoController extends Controller
             ->orderBy('estado','desc')->paginate();
             //
             return view('admin.empleado.index',["empleados"=>$empleados,"searchText"=>$query]);*/
+            //$empleados=DB::table('empleado as emp')->select('emp.idempleado','emp.foto','emp.primernombre as nombrecompleto','emp.dui', 'emp.nit','emp.estado');
             
             // Llamamos al método raw y le pasamos nuestra parte de consulta que queremos realizar.
-			$raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado");
+			$raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto");
 		
 			// Llamamos a Persona, utilizamos el método select y le pasamos el $raw almacenado en la linea superior.
 			$empleados = Empleado::select($raw)->get();
@@ -58,6 +61,13 @@ class EmpleadoController extends Controller
     public function store(EmpleadoFormRequest $request){
     	
     	$empleados=new Empleado;
+
+        if(Input::hasfile('foto')){
+            $file=Input::file('foto');
+            $file->move(public_path().'/fotos/empleados',$file->getClientOriginalName());
+            $empleados->foto=$file->getClientOriginalName();
+        }
+
     	//obtenemos el campo foto definido en el formulario
     	/*$path=$request->get('foto');
     	var_dump($path);*/
@@ -91,7 +101,15 @@ class EmpleadoController extends Controller
     }
     public function update(EmpleadoFormRequest $request, $id){
 
-    	$affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => $request->get('primernombre'),'segundonombre' =>$request->get('segundonombre'),'primerapellido' =>$request->get('primerapellido'),'segundoapellido' =>$request->get('segundoapellido'),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp')]);
+        if(Imput::hasfile('foto')){
+            $file=Input::file('foto');
+            $file->move(public_path(),'/fotos/empleados',$file->getClientOriginalName());
+            $empleados->foto=$file->getClientOriginalName();
+        }
+
+    	$affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => $request->get('primernombre'),'segundonombre' =>$request->get('segundonombre'),'primerapellido' =>$request->get('primerapellido'),'segundoapellido' =>$request->get('segundoapellido'),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp'),
+            'foto'=> $request->get('foto')]);
+        
     	Session::flash('update','El Empleado actualizado correctamente!!!');
     	return Redirect::to('admin/empleado');
     }
