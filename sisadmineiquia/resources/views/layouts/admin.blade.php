@@ -163,7 +163,7 @@
 
     <script> 
     $(document).ready(function(){
-    $('#tablaempleado').DataTable();});
+    $('#tablapuesto').DataTable();});
     </script>
    
 
