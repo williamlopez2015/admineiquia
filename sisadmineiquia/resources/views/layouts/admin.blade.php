@@ -222,6 +222,10 @@
     $('#tablausers').DataTable();
     });
     </script>
+     <script > $(document).ready(function(){
+    $('#tablaperfilpuesto').DataTable();
+    });
+    </script>
 
 
     <script type="text/javascript" src="{{asset('js/validarJS.js')}}"></script>

@@ -32,6 +32,7 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
+                                        <th>Foto</th>
                                         <th>Nombre</th>
                                         <th>Dui</th>
                                         <th>Nit</th>
@@ -43,6 +44,10 @@
                                  @foreach ($empleados as $emp)
                                     <tr>
                                     	<td>{{ $emp->idempleado }}</td>
+                                        <td>
+                                            <img src="{{asset('fotos/empleados/'.$emp->foto)}}" alt="{{$emp->nombrecompleto}}" height="110px" width="110px" class="img-thumbnail">
+
+                                        </td>
                                         <td>{{ $emp->nombrecompleto }}</td>
                                         <td>{{ $emp->dui}}</td>
                                         <td>{{ $emp->nit }}</td>
@@ -52,6 +57,7 @@
                                         <a href="{{URL::action('EmpleadoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-primary">Editar</button></a>
                                         <!--<a href=""><button type="button" class="btn btn-sm btn-info">Ficha</button></a></td>-->
                                         <a href="{{URL::action('ExpedienteAdministrativoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-info">Expediente Administrativo</button></a>
+                                        </td>
                                     </tr>
                                     @include('admin.empleado.modal')
                                 @endforeach 
