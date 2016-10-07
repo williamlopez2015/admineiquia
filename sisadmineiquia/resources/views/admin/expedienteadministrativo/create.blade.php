@@ -61,33 +61,16 @@
                   </select>
                   <div id="mensajePue" class="errores">No se ha seleccionado un puesto</div>     
 			</div>
-			<div class="form-group">
+			
+                       
+                         {{ Form::checkbox('tiempointegral', 1,null, ['class' => 'field']) }}Tiempo Integral
+                
+			<div class="form-group" align=right>
             	<button class="btn btn-primary" type="submit" id="guardarExp">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>
             </div>    
 		</div>
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <div class="form-group">
-				<label>Tiempo Adicional Inicio:</label>
-				<input  type="text" name="tiempoadicionalinicio" class="tcal form-control" placeholder="00/00/0000" id="tiempoadicionalinicio" onkeyup="corregirFecha2();">
-			</div>
-			<div class="form-group">
-				<label>Tiempo Adicional Fin:</label>
-				<input type='text' name="tiempoadicionalfin" class="tcal form-control" placeholder="00/00/0000" id="fechaAdFin" onkeyup="corregirFecha3();"/>
-			</div>
-			<div class="form-group">
-				<label>Tiempo Integral Inicio:</label>
-                    <input type='text' name="tiempointegralinicio" class="tcal form-control" placeholder="00/00/0000" id="fechaInInicio" onkeyup="corregirFecha4();"/>
-			</div>
-			<div class="form-group">
-			    <label>Tiempo Integral Fin:</label>
-                    <input type='text' name="tiempointegralfin" class="tcal form-control" placeholder="00/00/0000" id="fechaInFin" onkeyup="corregirFecha5();"/>
-            </div>
-			<div class="form-group">
-                <label>Observacion</label>
-                <textarea  name="descripcionadmin" class="form-control"  rows="3" placeholder="Descripcion de el empleado"></textarea>
-            </div>
-		</div>
+		
                     {!!Form::close()!!}		
 
 </div>
