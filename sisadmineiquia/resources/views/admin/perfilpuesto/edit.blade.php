@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Editar Puesto: {{$puesto->NOMBREPUESTO}}</h3>
+			<h3>Editar Perfil del Puesto: {{$perfil->PROFESION}}</h3>
 			@if (count($errors)>0)
 			<div class="alert alert-danger">
 				<ul>
@@ -12,46 +12,60 @@
 				</ul>
 			</div>
 			@endif
+            </div>
+      </div>
                   
 
-			{!!Form::model($puesto,['method'=>'PATCH','route'=>['admin.puesto.update',$puesto->IDPUESTO]])!!}
-            {{Form::token()}}     
+			{!!Form::model($perfil,['method'=>'PATCH','route'=>['admin.perfilpuesto.update',$perfil->IDPERFILPUESTO]])!!}
+            {{Form::token()}} 
 
-            <div class="form-group">
-            	<label for="nombre">Nombre</label>
-            	<input type="text" name="nombrepuesto" required value="{{$puesto->NOMBREPUESTO}}" class="form-control">
-            </div>
+             <div class="row">
+               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">    
 
+                  <div class="form-group">
+            	     <label for="profesion">Profesion</label>
+            	     <input type="text" name="profesion" required value="{{$perfil->PROFESION}}" class="form-control">
+                  </div>
 
-            <div class="form-group">
-                  <label> Departamento</label>
-                  <select name="iddepartamento" class="form-control">
-                   @foreach ($departamentos as $dep)
-                         @if ($dep->iddepartamento==$puesto->IDDEPARTAMENTO)
-                         <option value="{{$dep->iddepartamento}}" selected>{{$dep->nombredepartamento}}</option>
-                         @else
-                          <option value="{{$dep->iddepartamento}}">{{$dep->nombredepartamento}}</option>
-                         @endif
-                   @endforeach
-                  </select>     
-            </div>
             
-            <div class="form-group">
-            	<label for="descripcion">Descripción</label>
-            	<input type="text" name="descripcionpuesto" required value="{{$puesto->DESCRIPCIONPUESTO}}" class="form-control" placeholder="Descripción Puesto...">
-            </div>
-            <div class="form-group">
-            	<label for="salario">Salario</label>
-            	<input type="text" name="salariopuesto" required value="{{$puesto->SALARIOPUESTO}}" class="form-control">
-            </div>
+                  <div class="form-group">
+            	     <label for="reporta">Reporta a</label>
+            	     <input type="text" name="reporta" required value="{{$perfil->REPORTA}}" class="form-control">
+                  </div>
 
-            <div class="form-group">
-            	<button class="btn btn-primary" type="submit">Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
-            </div>
+                  <div class="form-group">
+                        <label for="sustituto">Sustituto</label>
+                        <input type="text" name="sustituto" required value="{{$perfil->SUSTITUTO}}" class="form-control">
+                  </div>
 
-			{!!Form::close()!!}		
+                  <div class="form-group">
+            	     <label for="relaciones">Relaciones Internas</label>
+            	     <input type="text" name="relaciones" required value="{{$perfil->RELACIONES}}" class="form-control">
+                  </div>
+
+               </div>
+
+               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">  
+
+                  <div class="form-group">
+                        <label for="sustituye">Sustituye a</label>
+                        <input type="text" name="sustituye" required value="{{$perfil->SUSTITUYE}}" class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                        <label for="responsabilidades">Responsabilidades Principales</label>
+                        <input type="text" name="responsabilidades" required value="{{$perfil->RESPONSABILIDADES}}" class="form-control">
+                  </div>
+
+
+                  <div class="form-group">
+            	     <button class="btn btn-primary" type="submit">Guardar</button>
+            	     <button class="btn btn-danger" type="reset">Cancelar</button>
+                  </div>
+               </div>
+             </div>     
+
+		{!!Form::close()!!}		
             
-		</div>
-	</div>
+		
 @endsection
