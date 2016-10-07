@@ -20,6 +20,10 @@ Route::group(['middleware' => ['auth','admin:adminsist','alltype']], function ()
 });
 
 Route::group(['middleware' =>  ['auth','admin']], function () {
+      Route::resource('admin/tiempo','TiempoAdicionalController');
+});
+
+Route::group(['middleware' =>  ['auth','admin']], function () {
       Route::resource('admin/puesto','PuestoController');
 });
 
