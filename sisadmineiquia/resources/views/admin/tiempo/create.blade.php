@@ -68,6 +68,10 @@
                 <label>Descripcion</label>
                 <textarea  name="descripcion" class="form-control"  rows="3" placeholder="Descripcion de el Tiempo Adicional"></textarea>
             </div>
+            <div class="form-group">
+                <label>Descripcion II</label>
+                <textarea  name="descripcion2" class="form-control"  rows="3" placeholder="Descripcion de el Tiempo Adicional 2"></textarea>
+            </div>
 		</div>
                     {!!Form::close()!!}		
 
