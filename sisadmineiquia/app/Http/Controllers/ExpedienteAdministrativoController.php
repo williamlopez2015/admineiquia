@@ -75,10 +75,15 @@ class ExpedienteAdministrativoController extends Controller
                     $p1=ucfirst($empleado->PRIMERAPELLIDO);
                     $p2=ucfirst($empleado->SEGUNDOAPELLIDO);
                     $expedienteadministrativo=new ExpedienteAdministrativo;
+                    $expedienteadministrativo->idexpediente=$p1[0].$p2[0].$request->get('idempleado');
                     $expedienteadministrativo->idempleado=$request->get('idempleado');
                     $expedienteadministrativo->idpuesto=$request->get('idpuesto');
                     $expedienteadministrativo->fechaapertura=$request->get('fechaapertura');
-                    $expedienteadministrativo->tiempointegral=$request->get('tiempointegral');
+                    if ($request->get('tiempointegral')==null){
+                        $expedienteadministrativo->tiempointegral="0";
+                    }else{
+                        $expedienteadministrativo->tiempointegral=$request->get('tiempointegral');
+                    }
                     $expedienteadministrativo->codigocontrato=$request->get('codigocontrato');
                     $expedienteadministrativo->save();
                     Session::flash('store','El Expediente creado correctamente!!!');
@@ -121,9 +126,18 @@ class ExpedienteAdministrativoController extends Controller
     }
 
     public function update(Request $request, $id){
-    
-        $affectedRows = ExpedienteAdministrativo::where('idexpediente','=',$id)->update(['fechaapertura' =>$request->get('fechaapertura'),'codigocontrato' =>$request->get('codigocontrato'),'tiempoadicionalinicio' =>$request->get('tiempoadicionalinicio'),'tiempoadicionalfin' =>$request->get('tiempoadicionalfin'),'tiempointegralinicio' =>$request->get('tiempointegralinicio'),'tiempointegralfin' => $request->get('tiempointegralfin'),'descripcionadmin' => $request->get('descripcionadmin')]);
+
+        if ($request->get('tiempointegral')==null){
+                        $expedienteadministrativotiempointegral="0";
+                        $affectedRows = ExpedienteAdministrativo::where('idexpediente','=',$id)->update(['fechaapertura' =>$request->get('fechaapertura'),'codigocontrato' =>$request->get('codigocontrato'),'tiempointegral' =>$expedienteadministrativotiempointegral]);
         Session::flash('update','El Expediente actualizado correctamente!!!');
         return Redirect::to('admin/empleado');
+                    }else{
+                        $expedienteadministrativotiempointegral=$request->get('tiempointegral');
+                        $affectedRows = ExpedienteAdministrativo::where('idexpediente','=',$id)->update(['fechaapertura' =>$request->get('fechaapertura'),'codigocontrato' =>$request->get('codigocontrato'),'tiempointegral' => $expedienteadministrativotiempointegral]);
+        Session::flash('update','El Expediente actualizado correctamente!!!');
+        return Redirect::to('admin/empleado');
+                    }
+    
     }
 }

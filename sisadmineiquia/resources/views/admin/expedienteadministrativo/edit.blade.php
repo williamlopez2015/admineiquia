@@ -38,14 +38,14 @@
             {{Form::token()}}
 			<div class="form-group">
 				<label>Fecha Apertura Expediente Administrativo</label>
-				<input  type="text" name="fechaapertura" class="tcal form-control" placeholder="00/00/0000" id="fechaApertura" onkeyup="corregirFecha();">
+				<input  type="text" name="fechaapertura" value="{{$expedienteadministrativo->FECHAAPERTURA}}" class="tcal form-control"placeholder="00/00/0000" id="fechaApertura" onkeyup="corregirFecha();">
 				<div id="mensajeFechaAper" class="errores">Fecha invalida</div> 
 			</div>
 			<div class="form-group">
 				<label>Codigo Contrato</label>
-				<input class="form-control" name="codigocontrato" class="form-control" placeholder="AA0000" id="codCon" onkeyup="corregirCodCon();">
+				<input class="form-control" name="codigocontrato" class="form-control" value="{{$expedienteadministrativo->CODIGOCONTRATO}}"placeholder="AA0000" id="codCon" onkeyup="corregirCodCon();">
         	<div id="mensajeCodCon" class="errores">Código invalido</div>
-			</div>
+             </div>
 			<div class="form-group">
                   <label>Empleado</label>
                   <select name="idempleado" class="form-control" id="idempleados">
@@ -63,11 +63,17 @@
                    @endforeach
                   </select>
                   <div id="mensajePue" class="errores">No se ha seleccionado un puesto</div>     
-			</div>
-			
+                </div>            
+                       <div class="form-group">
+                         <label>Tiempo Integral</label>
+                         <div class="checkbox">
+                         	<label>
+                         		<input type="checkbox" value="{{$expedienteadministrativo->TIEMPOINTEGRAL}}" name="tiempointegral" id="tiempointegral" checked> Posee
+                         	</label>
+                         </div>
                        
-                         {{ Form::checkbox('tiempointegral', 1,null, ['class' => 'field']) }}Tiempo Integral
-                
+                        
+                         </div>
 			<div class="form-group" align=right>
             	<button class="btn btn-primary" type="submit" id="guardarExp">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>

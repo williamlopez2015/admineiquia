@@ -61,9 +61,16 @@
                   </select>
                   <div id="mensajePue" class="errores">No se ha seleccionado un puesto</div>     
 			</div>
-			
-                       
-                         {{ Form::checkbox('tiempointegral', 1,null, ['class' => 'field']) }}Tiempo Integral
+                         <div class="form-group">
+                         <label>Tiempo Integral</label>
+                         <div class="checkbox">
+                         	<label>
+                         		<input type="checkbox" value="1" name="tiempointegral" id="tiempointegral"> Posee
+                         	</label>
+                         </div>
+                        <!-- {{ Form::checkbox('tiempointegral', 1,null, ['class' => 'field']) }}Tiempo Integral-->
+                        
+                         </div>
                 
 			<div class="form-group" align=right>
             	<button class="btn btn-primary" type="submit" id="guardarExp">Guardar</button>

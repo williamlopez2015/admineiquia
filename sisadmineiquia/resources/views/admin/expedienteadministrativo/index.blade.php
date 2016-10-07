@@ -32,7 +32,7 @@
                                         <th>Id</th>
                                         <th>Fecha Apertura</th>
                                         <th>Puesto</th>
-                                        <th>Observacion</th>
+                                        <th>Tiempo Integral</th>
                                         <th>Opciones</th>
                                     </tr>
                                 </thead>
@@ -42,7 +42,7 @@
                                     	<td>{{ $exp->IDEXPEDIENTE}}</td>
                                         <td>{{ $exp->FECHAAPERTURA}}</td>
                                         <td>{{ $exp->IDPUESTO}}</td>
-                                        <td>{{ $exp->DESCRIPCIONADMIN}}</td>
+                                        <td>{{ $exp->TIEMPOINTEGRAL}}</td>
                                         <td>
                                         <a href="{{URL::action('ExpedienteAdministrativoController@edit',$exp->IDEXPEDIENTE)}}"><button type="button" class="btn btn-sm btn-primary">Editar Expediente Administrativo</button></a>
                                         </td>
