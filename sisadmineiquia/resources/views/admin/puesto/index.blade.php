@@ -38,18 +38,20 @@
 				<thead>
 					<th>Id</th>
 					<th>Nombre</th>
-					<th>Descripción</th>
-					<th>Salario</th>
 					<th>Departamento</th>
+					<th>Descripción</th>
+					<th>Profesion</th>
+					<th>Reporta a:</th>
 					<th>Opciones</th>
 				</thead>
                @foreach ($puestos as $pues)
 				<tr>
 					<td>{{ $pues->idpuesto}}</td>
 					<td>{{ $pues->nombrepuesto}}</td>
+					<td>{{ $pues->departamento}}</td>
 					<td>{{ $pues->descripcionpuesto}}</td>
-				    <td>{{ $pues->salariopuesto}}</td>
-				    <td>{{ $pues->departamento}}</td>
+				    <td>{{ $pues->profesion}}</td>
+				    <td>{{ $pues->reporta}}</td>
 					<td>
 						<a href="{{URL::action('PuestoController@edit',$pues->idpuesto)}}"><button class="btn btn-xs btn-primary">Editar</button></a>
                          <a href="" data-target="#modal-delete-{{$pues->idpuesto}}" data-toggle="modal"><button class="btn btn-xs btn-danger">Eliminar</button></a>

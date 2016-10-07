@@ -35,6 +35,19 @@
                    @endforeach
                   </select>     
             </div>
+
+            <div class="form-group">
+                  <label> Perfil del Puesto</label>
+                  <select name="idperfilpuesto" class="form-control">
+                   @foreach ($perfil as $per)
+                         @if ($per->idperfilpuesto==$puesto->IDPERFILPUESTO)
+                         <option value="{{$per->idperfilpuesto}}" selected>{{$per->profesion}}</option>
+                         @else
+                          <option value="{{$per->idperfilpuesto}}">{{$per->profesion}}</option>
+                         @endif
+                   @endforeach
+                  </select>     
+            </div>
             
             <div class="form-group">
             	<label for="descripcion">Descripción</label>
