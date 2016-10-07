@@ -35,8 +35,12 @@
                 <a href="#"><i class="fa fa-plus"></i> Agregar Puesto</a>
             </li>
             <li>
+                <a href="/admin/perfilpuesto"><i class="fa fa-users"></i> Administrar Perfiles</a>
+            </li>
+            <li>
                 <a href="#"><i class="fa fa-users"></i> Administrar Puestos</a>
             </li>
+
         </ul>
     </li>
     <li>

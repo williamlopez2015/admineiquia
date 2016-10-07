@@ -51,13 +51,10 @@
                         <label for="sustituye">Sustituye a</label>
                         <input type="text" name="sustituye" required value="{{$perfil->SUSTITUYE}}" class="form-control">
                   </div>
-
                   <div class="form-group">
-                        <label for="responsabilidades">Responsabilidades Principales</label>
-                        <input type="text" name="responsabilidades" required value="{{$perfil->RESPONSABILIDADES}}" class="form-control">
+                     <label for="responsabilidades">Responsabilidades Principales</label>
+                     <textarea  type="text" name="responsabilidades" required value="{{old('responsabilidades')}}" class="form-control"  rows=""  placeholder="Responsabilidades Principales...">{{$perfil->RESPONSABILIDADES}}</textarea>
                   </div>
-
-
                   <div class="form-group">
             	     <button class="btn btn-primary" type="submit">Guardar</button>
             	     <button class="btn btn-danger" type="reset">Cancelar</button>

@@ -44,15 +44,13 @@
                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
                   <div class="form-group">
-                        <label for="sustituye">Relaciones Internas</label>
+                        <label for="sustituye">Sustituye a</label>
                         <input type="text" name="sustituye" required value="{{old('sustituye')}}" class="form-control" placeholder="Sustituye a...">
                   </div>
-
                   <div class="form-group">
-                        <label for="responsabilidades">Responsabilidades Principales</label>
-                        <input textarea  type="text" name="responsabilidades" required value="{{old('responsabilidades')}}" class="form-control" placeholder="Responsabilidades Principales..." class="field" name="responsabilidades" cols="50" rows="10"></input>
-                        
-                  </div> 
+                     <label for="responsabilidades">Responsabilidades Principales</label>
+                     <textarea  type="text" name="responsabilidades" required value="{{old('responsabilidades')}}" class="form-control"  rows="3"  placeholder="Responsabilidades Principales..."></textarea>
+                  </div>
 
                   <div class="form-group">
                         <button class="btn btn-primary" type="submit">Guardar</button>
