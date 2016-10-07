@@ -21,7 +21,10 @@ Route::group(['middleware' => ['auth','admin:adminsist','alltype']], function ()
 
 Route::group(['middleware' =>  ['auth','admin']], function () {
       Route::resource('admin/puesto','PuestoController');
-      Route::resource('admin/perfilpuesto','PerfilPuestoController');
+});
+
+Route::group(['middleware' =>  ['auth','admin']], function () {
+  Route::resource('admin/perfilpuesto','PerfilPuestoController');
 });
 
 Route::group(['middleware' => ['auth','admin:adminsist','alltype']], function () {

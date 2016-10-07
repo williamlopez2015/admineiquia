@@ -31,21 +31,14 @@ class EmpleadoController extends Controller
     public function __construct(){
 
     }
-
-    
+ 
 
     public function index(Request $request){
     	
     	if ($request)
         {
-            /*$query=trim($request->get('searchText'));
-            $empleados=DB::table('empleado')->where('primernombre','LIKE','%'.$query.'%')
-            ->orderBy('estado','desc')->paginate();
-            //
-            return view('admin.empleado.index',["empleados"=>$empleados,"searchText"=>$query]);*/
-            //$empleados=DB::table('empleado as emp')->select('emp.idempleado','emp.foto','emp.primernombre as nombrecompleto','emp.dui', 'emp.nit','emp.estado');
             
-            // Llamamos al método raw y le pasamos nuestra parte de consulta que queremos realizar.
+             // Llamamos al método raw y le pasamos nuestra parte de consulta que queremos realizar.
 			$raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto");
 		
 			// Llamamos a Persona, utilizamos el método select y le pasamos el $raw almacenado en la linea superior.
@@ -68,14 +61,6 @@ class EmpleadoController extends Controller
             $empleados->foto=$file->getClientOriginalName();
         }
 
-    	//obtenemos el campo foto definido en el formulario
-    	/*$path=$request->get('foto');
-    	var_dump($path);*/
-    	//obtenemos el nombre de la foto
-       	/*$nombre = $path->getClientOriginalName();
-    	$name = Carbon::now()->second.$nombre;
-		$empleados->foto = $name;
-		\Storage::disk('local')->put($name, \File::get($path));*/
 		$pnombre=$request->get('primernombre');
 		$snombre=$request->get('segundonombre');
 		$papellido=$request->get('primerapellido');
@@ -93,12 +78,15 @@ class EmpleadoController extends Controller
     	Session::flash('store','El Empleado creado correctamente!!!');
     	return Redirect::to('admin/empleado');
     }
+   
     public function show($id){
     	return view("admin.empleado.show",["empleado"=>Empleado::findOrFail($id)]);
     }
+    
     public function edit($id){
     	return view("admin.empleado.edit",["empleado"=>Empleado::findOrFail($id)]);
     }
+   
     public function update(EmpleadoFormRequest $request, $id){
 
         if(Imput::hasfile('foto')){
@@ -113,6 +101,7 @@ class EmpleadoController extends Controller
     	Session::flash('update','El Empleado actualizado correctamente!!!');
     	return Redirect::to('admin/empleado');
     }
+   
     public function destroy($id){
     	$empleado=Empleado::findOrFail($id);
     	//var_dump($empleado);

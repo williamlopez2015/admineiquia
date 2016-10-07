@@ -25,7 +25,7 @@ class PerfilPuestoController extends Controller
         {
             $query=trim($request->get('searchText'));
             $perfil=DB::table('perfilpuesto as p')
-            ->select('p.idperfilpuesto','p.profesion','p.reporta','p.sustituto','p.relaciones','p.resposabilidades','p.sustituye')
+            ->select('p.idperfilpuesto','p.profesion','p.reporta','p.sustituto','p.relaciones','p.responsabilidades','p.sustituye')
             ->where('profesion','LIKE','%'.$query.'%')
             ->orderBy('idperfilpuesto','desc')->paginate();
             
@@ -38,7 +38,7 @@ class PerfilPuestoController extends Controller
        	return view("admin.perfilpuesto.create");
     }
 
-    public function store(PuestoFormRequest $request)
+    public function store(PerfilPuestoRequest $request)
     {
     	$perfil=new PerfilPuesto;
         $perfil->profesion=$request->get('profesion');
@@ -46,9 +46,9 @@ class PerfilPuestoController extends Controller
         $perfil->sustituto=$request->get('sustituto');
         $perfil->relaciones=$request->get('relaciones');
         $perfil->responsabilidades=$request->get('responsabilidades');
-        $perfil->sustituye=$request->get('iddepartamento');
+        $perfil->sustituye=$request->get('sustituye');
         $perfil->save();
-        Session::flash('store','¡El pefil del puesto fue creado correctamente!');
+        Session::flash('store','¡El perfil del puesto fue creado correctamente!');
         return Redirect::to('admin/perfilpuesto');
     }
         
@@ -67,7 +67,7 @@ class PerfilPuestoController extends Controller
 
     }
         
-    public function update(PuestoFormRequest $request,$id)
+    public function update(PerfilPuestoRequest $request,$id)
     {
 
     	$affectedRows = PerfilPuesto::where('idperfilpuesto','=',$id)
@@ -84,13 +84,13 @@ class PerfilPuestoController extends Controller
     public function destroy($id)
     {
     	$query=trim($id);
-		$expadmin  = DB::table('puesto')->select('idperfilpuesto')->where('idperfilpuesto','=',$query)->get();
-		if ($expadmin){
-			Session::flash('destroy','¡El perfil no puede ser eliminado, esta asignado a varios puestos!');
+		$puesto = DB::table('puesto')->select('idperfilpuesto')->where('idperfilpuesto','=',$query)->get();
+		if ($puesto){
+			Session::flash('destroy','¡El perfil no puede ser eliminado, ya ha sido asignado!');
 			return Redirect::to('admin/perfilpuesto');
 		}else{
-			$affectedRows = Puesto::where('idpuesto','=',$id)->delete();
-			Session::flash('destroy','¡El perfil de puesto se ha eliminado correctamente!');
+			$affectedRows = PerfilPuesto::where('idperfilpuesto','=',$id)->delete();
+			Session::flash('destroy','¡El perfil del puesto se ha eliminado correctamente!');
 			return Redirect::to('admin/perfilpuesto');
 		}
     }
