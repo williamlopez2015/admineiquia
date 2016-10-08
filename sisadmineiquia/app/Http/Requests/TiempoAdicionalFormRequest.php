@@ -28,7 +28,7 @@ class TiempoAdicionalFormRequest extends Request
             'idciclo'=>'required|max:2',
             'tiempoadicionalinicio'=>'max:10',
             'tiempoadicionfin'=>'max:10',
-            'descripcion'=>'max:250',
+            'descripcion'=>'max:250'
         ];
     }
 }

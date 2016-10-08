@@ -35,7 +35,7 @@
         <a href="#" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-paperclip"></i> Gestionar Puestos <i class="fa fa-angle-left pull-right"></i></a>
         <ul id="demo2" class="collapse">
             <li>
-                <a href="#"><i class="fa fa-plus"></i> Agregar Puesto</a>
+                <a href="/admin/puesto/create"><i class="fa fa-plus"></i> Agregar Puesto</a>
             </li>
             <li>
                 <a href="/admin/perfilpuesto"><i class="fa fa-users"></i> Administrar Perfiles</a>

@@ -1,24 +1,36 @@
-@extends ('layouts.admin')
-@section ('contenido')
-	<div class="row">
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Nuevo Perfil de Puesto</h3>
-			@if (count($errors)>0)
-			<div class="alert alert-danger">
-				<ul>
-				@foreach ($errors->all() as $error)
-					<li>{{$error}}</li>
-				@endforeach
-				</ul>
-			</div>
-			@endif
-            </div>
-      </div>
+@extends('layouts.admin')
+@section('contenido')
+<div class="row">
+<div class="row">
+   <div class="col-lg-12">
+   <ol class="breadcrumb">
+      <li> <i class="fa fa-home"></i> <a href="/admin/perfilpuesto">Gestion de perfil Puestos</a>
+      </li>
+      <li class="active">
+      <i class="fa fa-desktop"></i> Nuevo Perfil de Puesto</li>
+    </ol>
+   </div>
+ </div>
+ <div class="row">
+   <div class="col-lg-12">
+         <h3>Nuevo Perfil de Puesto</h3>
+
+   </div>
+ </div>
+ <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      @if (count($errors)>0)
+         <div class="alert alert-danger">
+            <ul>
+            @foreach ($errors->all() as $error)
+               <li>{{$error}}</li>
+            @endforeach
+            </ul>
+         </div>
+         @endif
+         @include('mensajes.messages')
 			{!!Form::open(array('url'=>'admin/perfilpuesto','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
-
-            <div class="row">
-               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
                   <div class="form-group">
                         <label for="profesion">Profesion</label>
@@ -49,7 +61,7 @@
                   </div>
                   <div class="form-group">
                      <label for="responsabilidades">Responsabilidades Principales</label>
-                     <textarea  type="text" name="responsabilidades" required value="{{old('responsabilidades')}}" class="form-control"  rows="3"  placeholder="Responsabilidades Principales..."></textarea>
+                     <textarea  type="text" name="responsabilidades" required value="{{old('responsabilidades')}}" class="form-control"  rows=""  placeholder="Responsabilidades Principales..."></textarea>
                   </div>
 
                   <div class="form-group">

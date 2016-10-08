@@ -10,6 +10,8 @@ use sisadmineiquia\Empleado;
 
 use sisadmineiquia\Ciclo;
 
+use sisadmineiquia\Tiempo;
+
 use sisadmineiquia\ExpedienteAdministrativo;
 
 use Illuminate\Support\Facades\Redirect;
@@ -55,11 +57,10 @@ class TiempoAdicionalController extends Controller
 
             $empleado=Empleado::find($query);
             //var_dump($empleado);
-            $expadmin  = DB::table('expedienteadminist')->select('idexpediente,idempleado')->where('idempleado','=',$query)->get();
+            $expadmin  = DB::table('expedienteadminist')->select('idexpediente','idempleado')->where('idempleado','=',$query)->get();
             if ($expadmin){
                 $tiempo=new Tiempo;
-                dd($expadmin);
-                $tiempo->idexpediente=$expadmin;
+                $tiempo->idexpediente=$expadmin[0]->idexpediente;
                 $tiempo->idciclo=$request->get('idciclo');
                 $tiempo->fechainicio=$request->get('tiempoadicionalinicio');
                 $tiempo->fechafin=$request->get('tiempoadicionalfin');
