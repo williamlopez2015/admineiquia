@@ -1,18 +1,36 @@
-@extends ('layouts.admin')
-@section ('contenido')
+@extends('layouts.admin')
+@section('contenido')
+ <div class="row">
+  <div class="col-lg-12">
+  <ol class="breadcrumb">
+    <li> <i class="fa fa-home"></i> <a href="/admin/puesto"> Gestionar Puesto</a>
+    </li>
+    <li class="active">
+    <i class="fa fa-desktop"></i> Crear Puesto</li>
+    </ol>
+  </div>
+ </div>
+ 
+ <div class="row">
+  <div class="col-lg-12">
+      <h3>Nuevo Puesto</h3>
+  </div>
+    
+      @if (count($errors)>0)
+      <div class="alert alert-danger">
+        <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{$error}}</li>
+        @endforeach
+        </ul>
+      </div>
+  
+      @endif
+       @include('mensajes.messages')
+ </div>
+
 	<div class="row">
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Nuevo Puesto</h3>
-			@if (count($errors)>0)
-			<div class="alert alert-danger">
-				<ul>
-				@foreach ($errors->all() as $error)
-					<li>{{$error}}</li>
-				@endforeach
-				</ul>
-			</div>
-			@endif
-       
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> 
 			{!!Form::open(array('url'=>'admin/puesto','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}   
 

@@ -1,27 +1,36 @@
-@extends ('layouts.admin')
-@section ('contenido')
-	<div class="row">
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Editar Perfil del Puesto: {{$perfil->PROFESION}}</h3>
-			@if (count($errors)>0)
-			<div class="alert alert-danger">
-				<ul>
-				@foreach ($errors->all() as $error)
-					<li>{{$error}}</li>
-				@endforeach
-				</ul>
-			</div>
-			@endif
-            </div>
-      </div>
-                  
+@extends('layouts.admin')
+@section('contenido')
+<div class="row">
+<div class="row">
+   <div class="col-lg-12">
+   <ol class="breadcrumb">
+      <li> <i class="fa fa-home"></i> <a href="/admin/perfilpuesto">Administrar Perfiles</a>
+      </li>
+      <li class="active">
+      <i class="fa fa-desktop"></i> Editar Perfil de Puesto</li>
+    </ol>
+   </div>
+ </div>
+ <div class="row">
+   <div class="col-lg-12">
+         <h3>Editar Perfil de Puesto</h3>
 
+   </div>
+ </div>
+ <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      @if (count($errors)>0)
+         <div class="alert alert-danger">
+            <ul>
+            @foreach ($errors->all() as $error)
+               <li>{{$error}}</li>
+            @endforeach
+            </ul>
+         </div>
+         @endif
+         @include('mensajes.messages')
 			{!!Form::model($perfil,['method'=>'PATCH','route'=>['admin.perfilpuesto.update',$perfil->IDPERFILPUESTO]])!!}
             {{Form::token()}} 
-
-             <div class="row">
-               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">    
-
                   <div class="form-group">
             	     <label for="profesion">Profesion</label>
             	     <input type="text" name="profesion" required value="{{$perfil->PROFESION}}" class="form-control">
@@ -51,13 +60,10 @@
                         <label for="sustituye">Sustituye a</label>
                         <input type="text" name="sustituye" required value="{{$perfil->SUSTITUYE}}" class="form-control">
                   </div>
-
                   <div class="form-group">
-                        <label for="responsabilidades">Responsabilidades Principales</label>
-                        <input type="text" name="responsabilidades" required value="{{$perfil->RESPONSABILIDADES}}" class="form-control">
+                     <label for="responsabilidades">Responsabilidades Principales</label>
+                     <textarea  type="text" name="responsabilidades" required value="{{old('responsabilidades')}}" class="form-control"  rows=""  placeholder="Responsabilidades Principales...">{{$perfil->RESPONSABILIDADES}}</textarea>
                   </div>
-
-
                   <div class="form-group">
             	     <button class="btn btn-primary" type="submit">Guardar</button>
             	     <button class="btn btn-danger" type="reset">Cancelar</button>

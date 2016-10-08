@@ -15,8 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => ['auth','admin:adminsist','alltype']], function () {
+Route::group(['middleware' => ['auth','alltype']], function () {
       Route::resource('admin/empleado','EmpleadoController');
+});
+
+Route::group(['middleware' =>  ['auth','alltype']], function () {
+      Route::resource('admin/tiempo','TiempoAdicionalController');
 });
 
 Route::group(['middleware' =>  ['auth','admin']], function () {
@@ -27,7 +31,7 @@ Route::group(['middleware' =>  ['auth','admin']], function () {
   Route::resource('admin/perfilpuesto','PerfilPuestoController');
 });
 
-Route::group(['middleware' => ['auth','admin:adminsist','alltype']], function () {
+Route::group(['middleware' => ['auth','alltype']], function () {
       Route::resource('admin/expedienteadministrativo','ExpedienteAdministrativoController');
 });
 

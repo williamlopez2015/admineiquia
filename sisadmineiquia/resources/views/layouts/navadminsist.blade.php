@@ -2,18 +2,21 @@
         <a href="/home"><i class="fa fa-fw fa-home"></i> Inicio</a>
     </li>
     <li>
-        <a href="admin/users"><i class="fa fa-fw fa-user"></i> Administrar Usuario</a>
+        <a href="/admin/users"><i class="fa fa-fw fa-user"></i> Administrar Usuario</a>
     </li>
     <li >
         <a href="#" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-paperclip"></i> <span>Administrar Expediente</span> <i class="fa fa-angle-left pull-right"></i></a>
 
         <ul id="demo" class="collapse">
 
-            <li>
+           <li>
                 <a href="/admin/empleado/create"><i class="fa fa-plus"></i> Agregar Empleados</a>
             </li>
             <li>
                 <a href="/admin/empleado"><i class="fa fa-users"></i> Gestionar Empleados</a>
+            </li>
+            <li>
+                <a href="/admin/tiempo/create"><i class="fa fa-plus"></i> Agregar Tiempo Adicional</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-file"></i> Nomina Empleados</a>
@@ -38,8 +41,12 @@
                 <a href="/admin/puesto/create"><i class="fa fa-plus"></i> Agregar Puesto</a>
             </li>
             <li>
+                <a href="/admin/perfilpuesto"><i class="fa fa-users"></i> Administrar Perfiles</a>
+            </li>
+            <li>
                 <a href="/admin/puesto"><i class="fa fa-users"></i> Administrar Puestos</a>
             </li>
+            
         </ul>
     </li>
     <li>

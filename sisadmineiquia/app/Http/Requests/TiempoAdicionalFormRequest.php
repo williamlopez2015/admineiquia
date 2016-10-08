@@ -4,7 +4,7 @@ namespace sisadmineiquia\Http\Requests;
 
 use sisadmineiquia\Http\Requests\Request;
 
-class EmpleadoFormRequest extends Request
+class TiempoAdicionalFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,11 @@ class EmpleadoFormRequest extends Request
     public function rules()
     {
         return [
-            //
-        'primernombre'=>'required|max:50',
-        'segundonombre'=>'max:50',
-        'primerapellido'=>'required|max:50',
-        'segundoapellido'=>'max:50',
-        'primerapellido'=>'required|max:50',
-        'dui'=>'required|max:10',
-        'nit'=>'required|max:20',
-        'isss'=>'required|max:10',
-        'afp'=>'required|max:12'
+            'idempleado'=>'required',
+            'idciclo'=>'required|max:2',
+            'tiempoadicionalinicio'=>'max:10',
+            'tiempoadicionfin'=>'max:10',
+            'descripcion'=>'max:250'
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+
+
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -12,9 +14,9 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         \DB:: table('users')->insert(array(
-            'name' =>'JW'  ,
-            'email'=>'rogelwilliam@gmail.com',
-            'password'=>\Hash::make('secret'),
+            'name' =>'Administrador',
+            'email'=>'admin2@gmail.com',
+            'password'=>\Hash::make('admin2'),
             'type'=>'adminsist',
         	));
     }
