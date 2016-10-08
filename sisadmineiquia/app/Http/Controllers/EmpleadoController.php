@@ -98,6 +98,21 @@ class EmpleadoController extends Controller
         }
 
         $affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => $request->get('primernombre'),'segundonombre' =>$request->get('segundonombre'),'primerapellido' =>$request->get('primerapellido'),'segundoapellido' =>$request->get('segundoapellido'),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp')]);
+
+        //dd($request->get('foto'));
+        //dd(Input::hasfile('foto'));
+        if(Input::hasfile('foto')){
+            $file=Input::file('foto');
+            $file->move(public_path(),'/fotos/empleados',$file->getClientOriginalName());
+            $actualizacionfoto=$file->getClientOriginalName();
+            $affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => $request->get('primernombre'),'segundonombre' =>$request->get('segundonombre'),'primerapellido' =>$request->get('primerapellido'),'segundoapellido' =>$request->get('segundoapellido'),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp'),'foto' =>$actualizacionfoto]);
+                Session::flash('update','El Empleado actualizado correctamente!!!');
+                return Redirect::to('admin/empleado');
+        }else{
+            $affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => $request->get('primernombre'),'segundonombre' =>$request->get('segundonombre'),'primerapellido' =>$request->get('primerapellido'),'segundoapellido' =>$request->get('segundoapellido'),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp')]);
+                Session::flash('update','El Empleado actualizado correctamente!!!');
+                return Redirect::to('admin/empleado');
+        }
         
         Session::flash('update','¡El empleado se ha actualizado correctamente!');
         return Redirect::to('admin/empleado');

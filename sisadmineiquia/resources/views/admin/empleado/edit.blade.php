@@ -29,6 +29,9 @@
 			@endif
 
 			{!!Form::model($empleado,['method'=>'PATCH','route'=>['admin.empleado.update',$empleado->IDEMPLEADO],'files'=>'true'])!!}
+			
+			{!!Form::model($empleado,['method'=>'PATCH','route'=>['admin.empleado.update',$empleado->IDEMPLEADO]])!!}
+
             {{Form::token()}}
             
             <div class="form-group">
