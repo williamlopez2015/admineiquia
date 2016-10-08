@@ -28,7 +28,7 @@
 			</div>
 			@endif
 
-			{!!Form::model($empleado,['method'=>'PATCH','route'=>['admin.expedienteadministrativo.update',$empleado->IDEMPLEADO]])!!}
+			{!!Form::model($empleado,['method'=>'PATCH','route'=>['admin.empleado.update',$empleado->IDEMPLEADO],'files'=>'true'])!!}
             {{Form::token()}}
             
             <div class="form-group">
@@ -95,9 +95,5 @@
             
 
 			{!!Form::close()!!}		
-
-</div>
-
-
 
 @endsection
