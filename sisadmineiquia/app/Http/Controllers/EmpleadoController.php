@@ -1,38 +1,22 @@
 <?php
-
 namespace sisadmineiquia\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use sisadmineiquia\Http\Requests;
-
 use sisadmineiquia\Empleado;
-
 use sisadmineiquia\ExpedienteAdministrativo;
-
 use sisadmineiquia\Puesto;
-
 use Illuminate\Support\Facades\Redirect;
-
 use sisadmineiquia\Http\Requests\EmpleadoFormRequest;
-
 use DB;
-
 use Carbon\Carbon;
-
 use Session;
-
 use Illuminate\Support\Facades\Input;
-
-
 class EmpleadoController extends Controller
 {
     //
     public function __construct(){
-
     }
  
-
     public function index(Request $request){
         
         if ($request)
@@ -46,21 +30,17 @@ class EmpleadoController extends Controller
             return view('admin.empleado.index',["empleados"=>$empleados]);
         }
     }
-
     public function create(){
         return view("admin.empleado.create");
     }
-
     public function store(EmpleadoFormRequest $request){
         
         $empleados=new Empleado;
-
         if(Input::hasfile('foto')){
             $file=Input::file('foto');
             $file->move(public_path().'/fotos/empleados',$file->getClientOriginalName());
             $empleados->foto=$file->getClientOriginalName();
         }
-
         $pnombre=$request->get('primernombre');
         $snombre=$request->get('segundonombre');
         $papellido=$request->get('primerapellido');
@@ -75,7 +55,7 @@ class EmpleadoController extends Controller
         $empleados->afp=$request->get('afp');
         $empleados->estado='1';
         $empleados->save();
-        Session::flash('store','¡El empleado fue creado correctamente!');
+        Session::flash('store','El Empleado creado correctamente!!!');
         return Redirect::to('admin/empleado');
     }
    
@@ -88,17 +68,6 @@ class EmpleadoController extends Controller
     }
    
     public function update(EmpleadoFormRequest $request, $id){
-        
-        $fotoemp=new Empleado;
-
-         if(Input::hasfile('foto')){
-            $file=Input::file('foto');
-            $file->move(public_path().'/fotos/empleados',$file->getClientOriginalName());
-            $affectedRows = Empleado::where('idempleado','=',$id)->update(['foto'=>$file->getClientOriginalName()]);
-        }
-
-        $affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => $request->get('primernombre'),'segundonombre' =>$request->get('segundonombre'),'primerapellido' =>$request->get('primerapellido'),'segundoapellido' =>$request->get('segundoapellido'),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp')]);
-
         //dd($request->get('foto'));
         //dd(Input::hasfile('foto'));
         if(Input::hasfile('foto')){
@@ -113,9 +82,6 @@ class EmpleadoController extends Controller
                 Session::flash('update','El Empleado actualizado correctamente!!!');
                 return Redirect::to('admin/empleado');
         }
-        
-        Session::flash('update','¡El empleado se ha actualizado correctamente!');
-        return Redirect::to('admin/empleado');
     }
    
     public function destroy($id){
@@ -130,5 +96,4 @@ class EmpleadoController extends Controller
             return  Redirect::to('admin/empleado');
         }
     }
-
 }
