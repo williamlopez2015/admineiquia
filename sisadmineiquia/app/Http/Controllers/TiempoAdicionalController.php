@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 use sisadmineiquia\Http\Requests;
 
-use sisadmineiquia\Tiempo;
+use sisadmineiquia\Empleado;
+
+use sisadmineiquia\Ciclo;
 
 use sisadmineiquia\ExpedienteAdministrativo;
-
-use sisadmineiquia\Puesto;
 
 use Illuminate\Support\Facades\Redirect;
 
@@ -24,96 +24,74 @@ use Session;
 
 class TiempoAdicionalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //
+     public function __construct(){
+
+    } 
+
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
      
-
      $raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto");
      $empleado  = Empleado::select($raw)->get();
 
+     $ciclo=Ciclo::all();
         
-    return view("admin.tiempo.create",["empleado"=>$empleado]);
-     
-
+    return view("admin.tiempo.create",["empleados"=>$empleado,"ciclos"=>$ciclo]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * $departamentos=DB::table('departamento as d')
-        ->select('d.iddepartamento','d.nombredepartamento')->get();
-        
-        return view("admin.puesto.create",["departamentos"=>$departamentos]);
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+   
+
+    public function store(TiempoAdicionalFormRequest $request)
     {
-        $tiempo=new Tiempo;
-        $tiempo->idempleado=$request->get('idempleado');
-        $tiempo->idciclo=$request->get('idciclo');
-        $tiempo->fechainicio=$request->get('tiempoadicionalinicio');
-        $tiempo->fechafin=$request->get('tiempoadicionalfin');
-        $tiempo->descripcion=$request->get('descripcion');
-        $tiempo->save();
-        Session::flash('store','El tiempo fue anexado  correctamente!!!');
-        return Redirect::to('admin/tiempo');
+        if ($request)
+        {
+            $query=trim($request->get('idempleado'));
+
+            $empleado=Empleado::find($query);
+            //var_dump($empleado);
+            $expadmin  = DB::table('expedienteadminist')->select('idexpediente,idempleado')->where('idempleado','=',$query)->get();
+            if ($expadmin){
+                $tiempo=new Tiempo;
+                dd($expadmin);
+                $tiempo->idexpediente=$expadmin;
+                $tiempo->idciclo=$request->get('idciclo');
+                $tiempo->fechainicio=$request->get('tiempoadicionalinicio');
+                $tiempo->fechafin=$request->get('tiempoadicionalfin');
+                $tiempo->descripcion=$request->get('descripcion');
+                $tiempo->save();
+                Session::flash('store','El tiempo adicional fue anexado  correctamente!!!');
+                return Redirect::to('admin/tiempo/create');
+            }else{
+                    Session::flash('store','aun no existe Expediente Administrativo del Empleado!!!');
+                    return Redirect::to('admin/tiempo/create');
+                }
+        }
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

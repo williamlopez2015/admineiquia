@@ -7,10 +7,13 @@
         <ul id="demo" class="collapse">
 
             <li>
-                <a href="#"><i class="fa fa-plus"></i> Agregar Empleados</a>
+                <a href="/admin/empleado/create"><i class="fa fa-plus"></i> Agregar Empleados</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-users"></i> Gestionar Empleados</a>
+                <a href="/admin/empleado"><i class="fa fa-users"></i> Gestionar Empleados</a>
+            </li>
+            <li>
+                <a href="/admin/tiempo/create"><i class="fa fa-plus"></i> Agregar Tiempo Adicional</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-file"></i> Nomina Empleados</a>
@@ -38,7 +41,7 @@
                 <a href="/admin/perfilpuesto"><i class="fa fa-users"></i> Administrar Perfiles</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-users"></i> Administrar Puestos</a>
+                <a href="/admin/puesto"><i class="fa fa-users"></i> Administrar Puestos</a>
             </li>
 
         </ul>
