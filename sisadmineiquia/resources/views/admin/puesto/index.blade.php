@@ -4,11 +4,11 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-home"></i> <a href="/admin/puesto"> Administrar Empleados</a>
+                                <i class="fa fa-home"></i> <a href="/admin/puesto"> Gestionar Puesto</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-desktop"></i>
-                                Gestion General de los empleados
+                                Gestion General de los Puestos
                             </li>
                         </ol>
                     </div>

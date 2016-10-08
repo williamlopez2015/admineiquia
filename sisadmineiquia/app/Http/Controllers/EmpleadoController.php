@@ -89,7 +89,7 @@ class EmpleadoController extends Controller
    
     public function update(EmpleadoFormRequest $request, $id){
         //dd($request->get('foto'));
-        dd(Input::hasfile('foto'));
+        //dd(Input::hasfile('foto'));
         if(Input::hasfile('foto')){
             $file=Input::file('foto');
             $file->move(public_path(),'/fotos/empleados',$file->getClientOriginalName());
