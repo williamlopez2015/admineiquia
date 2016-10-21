@@ -27,7 +27,7 @@
 				</ul>
 			</div>
 			@endif
-			{!!Form::model($empleado,['method'=>'PATCH','route'=>['admin.empleado.update',$empleado->IDEMPLEADO]])!!}
+			{!!Form::model($empleado,['method'=>'PATCH','route'=>['admin.empleado.update',$empleado->IDEMPLEADO],'files'=>'true'])!!}
             {{Form::token()}}
             <div class="form-group">
 				<label for="foto"> Foto Empleado </label>

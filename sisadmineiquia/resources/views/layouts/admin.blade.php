@@ -69,7 +69,7 @@
             @if (Auth::guest())
             <!-- Aqui va el login--> 
             <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Login<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Ingresar<b class="caret"></b></a>
                     <ul id="login-dp" class="dropdown-menu">
                         <li>
                             <div class="col-md-12">
@@ -77,7 +77,7 @@
                                  {{ csrf_field() }}
                                         <div class="form-group">
                                              <label class="sr-only" for="usuario_login">Usuario</label>
-                                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Usuario">
+                                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="ejemplo@gmail.com">
                                             @if ($errors->has('email'))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first('email') }}</strong>
@@ -86,7 +86,7 @@
                                         </div>
                                         <div class="form-group">
                                              <label class="sr-only" for="password_login">Password</label>
-                                             <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                                             <input id="password" type="password" class="form-control" name="password" placeholder="contraseña">
 
                                             @if ($errors->has('password'))
                                                 <span class="help-block">
@@ -95,18 +95,9 @@
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                        <div class="col-md-6 col-md-offset-4">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="remember"> Remember Me
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="fa fa-btn fa-sign-in"></i> Login
+                                                    <i class="fa fa-btn fa-sign-in"></i> Ingresar
                                                 </button>
-                                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
                                         </div>
                                  </form>
                             </div>            

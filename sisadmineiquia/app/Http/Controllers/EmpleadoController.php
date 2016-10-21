@@ -92,9 +92,12 @@ class EmpleadoController extends Controller
         //dd(Input::hasfile('foto'));
         if(Input::hasfile('foto')){
             $file=Input::file('foto');
-            $file->move(public_path(),'/fotos/empleados',$file->getClientOriginalName());
-            $actualizacionfoto=$file->getClientOriginalName();
-            $affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => $request->get('primernombre'),'segundonombre' =>$request->get('segundonombre'),'primerapellido' =>$request->get('primerapellido'),'segundoapellido' =>$request->get('segundoapellido'),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp'),'foto' =>$actualizacionfoto]);
+            //dd($file->getClientOriginalName());
+            $empleado=Empleado::findOrFail($id);
+            $fotovieja=$empleado->FOTO;
+            unlink(public_path().'/fotos/empleados/'.$fotovieja);
+            $file->move(public_path().'/fotos/empleados',$file->getClientOriginalName());
+            $affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => $request->get('primernombre'),'segundonombre' =>$request->get('segundonombre'),'primerapellido' =>$request->get('primerapellido'),'segundoapellido' =>$request->get('segundoapellido'),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp'),'foto'=>$file->getClientOriginalName()]);
                 Session::flash('update','El Empleado actualizado correctamente!!!');
                 return Redirect::to('admin/empleado');
         }else{
