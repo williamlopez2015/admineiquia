@@ -1,9 +1,6 @@
 <?php
-
 namespace sisadmineiquia\Http\Requests;
-
 use sisadmineiquia\Http\Requests\Request;
-
 class EmpleadoFormRequest extends Request
 {
     /**
@@ -15,7 +12,6 @@ class EmpleadoFormRequest extends Request
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -33,9 +29,7 @@ class EmpleadoFormRequest extends Request
         'dui'=>'required|max:10',
         'nit'=>'required|max:20',
         'isss'=>'required|max:10',
-        'afp'=>'required|max:12',
-        'foto'=>'mimes:jpg,bmp,png'
-        
+        'afp'=>'required|max:12'
         ];
     }
 }
