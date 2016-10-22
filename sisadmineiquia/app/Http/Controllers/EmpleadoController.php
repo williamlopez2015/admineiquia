@@ -75,7 +75,7 @@ class EmpleadoController extends Controller
     	$empleados->afp=$request->get('afp');
     	$empleados->estado='1';
     	$empleados->save();
-    	Session::flash('store','El Empleado creado correctamente!!!');
+    	Session::flash('store','¡El empleado fue creado correctamente!');
     	return Redirect::to('admin/empleado');
     }
    
@@ -88,17 +88,18 @@ class EmpleadoController extends Controller
     }
    
     public function update(EmpleadoFormRequest $request, $id){
+        
+        $fotoemp=new Empleado;
 
-        if(Imput::hasfile('foto')){
+         if(Input::hasfile('foto')){
             $file=Input::file('foto');
-            $file->move(public_path(),'/fotos/empleados',$file->getClientOriginalName());
-            $empleados->foto=$file->getClientOriginalName();
+            $file->move(public_path().'/fotos/empleados',$file->getClientOriginalName());
+            $affectedRows = Empleado::where('idempleado','=',$id)->update(['foto'=>$file->getClientOriginalName()]);
         }
 
-    	$affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => $request->get('primernombre'),'segundonombre' =>$request->get('segundonombre'),'primerapellido' =>$request->get('primerapellido'),'segundoapellido' =>$request->get('segundoapellido'),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp'),
-            'foto'=> $request->get('foto')]);
+    	$affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => $request->get('primernombre'),'segundonombre' =>$request->get('segundonombre'),'primerapellido' =>$request->get('primerapellido'),'segundoapellido' =>$request->get('segundoapellido'),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp')]);
         
-    	Session::flash('update','El Empleado actualizado correctamente!!!');
+    	Session::flash('update','¡El empleado se ha actualizado correctamente!');
     	return Redirect::to('admin/empleado');
     }
    

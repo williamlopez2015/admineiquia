@@ -70,7 +70,7 @@ class ExpedienteAdministrativoController extends Controller
 	        //var_dump($empleado);
 	        $expadmin  = DB::table('expedienteadminist')->select('idempleado')->where('idempleado','=',$query)->get();
 	        if ($expadmin){
-	        	Session::flash('store','El Expediente ya existe!!!');
+	        	Session::flash('store','¡El expediente ya existe!');
 	        }else{
 			    	$p1=ucfirst($empleado->PRIMERAPELLIDO);
 			    	$p2=ucfirst($empleado->SEGUNDOAPELLIDO);
@@ -86,7 +86,7 @@ class ExpedienteAdministrativoController extends Controller
 			    	$expedienteadministrativo->tiempointegralfin=$request->get('tiempointegralfin');
 			    	$expedienteadministrativo->descripcionadmin=$request->get('descripcionadmin');
 			    	$expedienteadministrativo->save();
-			    	Session::flash('store','El Expediente creado correctamente!!!');
+			    	Session::flash('store','¡Expediente creado correctamente!');
 			    	return Redirect::to('admin/empleado');
 			    }
    		}
@@ -119,7 +119,7 @@ class ExpedienteAdministrativoController extends Controller
                      $puesto = DB::table('puesto')->select('idpuesto','nombrepuesto')->get();
                      return view("admin/expedienteadministrativo.edit",["empleados"=>$empleado,"expedienteadministrativo"=>ExpedienteAdministrativo::findOrFail($expadminid),"puestos"=>$puesto]);
 	        }else{
-	        	Session::flash('edit','Aun no existe Expediente!!!');
+	        	Session::flash('edit','¡Aun no existe expediente!');
 	        	return Redirect::to('admin/empleado');
 
 	        }
@@ -128,7 +128,7 @@ class ExpedienteAdministrativoController extends Controller
     public function update(Request $request, $id){
     
     	$affectedRows = ExpedienteAdministrativo::where('idexpediente','=',$id)->update(['fechaapertura' =>$request->get('fechaapertura'),'codigocontrato' =>$request->get('codigocontrato'),'tiempoadicionalinicio' =>$request->get('tiempoadicionalinicio'),'tiempoadicionalfin' =>$request->get('tiempoadicionalfin'),'tiempointegralinicio' =>$request->get('tiempointegralinicio'),'tiempointegralfin' => $request->get('tiempointegralfin'),'descripcionadmin' => $request->get('descripcionadmin')]);
-    	Session::flash('update','El Expediente actualizado correctamente!!!');
+    	Session::flash('update','¡Expediente actualizado correctamente!');
     	return Redirect::to('admin/empleado');
     }
 }

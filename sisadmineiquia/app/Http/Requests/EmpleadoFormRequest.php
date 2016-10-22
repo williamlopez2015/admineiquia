@@ -34,7 +34,7 @@ class EmpleadoFormRequest extends Request
         'nit'=>'required|max:20',
         'isss'=>'required|max:10',
         'afp'=>'required|max:12',
-        'foto'=>'mimes:JPG,bmp,png'
+        'foto'=>'mimes:jpg,bmp,png'
         
         ];
     }
