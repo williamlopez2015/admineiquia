@@ -79,7 +79,15 @@
 				<label>Numero de AFP</label>
 				<input class="form-control" name="afp" value="{{old('afp')}}" class="form-control" placeholder="000000000000" id="nup" onkeyup="corregirNup();">
 				<div id="mensaje8" class="errores">No. AFP invalido</div>
-			</div> 
+			</div>
+			<div class="form-group">
+                  <label>Sexo</label>
+                  <select name="sexo" class="form-control" id="sexo">
+                         <option value="F">Femenino</option>
+                         <option value="M">Masculino</option>
+                  </select>
+                  <div id="mensajeSex" class="errores">No se ha seleccionado un puesto</div>     
+			</div>  
 			<div class="form-group">
             	<button class="btn btn-primary" type="submit" id="guardar">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>
