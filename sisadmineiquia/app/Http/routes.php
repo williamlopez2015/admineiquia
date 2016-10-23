@@ -16,8 +16,12 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['auth','alltype']], function () {
+	  Route::get('admin/empleado/report/{id}', 'EmpleadoController@perfilreport');
+	  Route::get('admin/empleado/nominareport', 'EmpleadoController@nominareport');
+	  Route::get('admin/empleado/reportdownload/{id}', 'EmpleadoController@perfilreportdownload');
       Route::resource('admin/empleado','EmpleadoController');
 });
+
 
 Route::group(['middleware' =>  ['auth','alltype']], function () {
       Route::resource('admin/tiempo','TiempoAdicionalController');

@@ -24,6 +24,9 @@ use Session;
 
 use Illuminate\Support\Facades\Input;
 
+use PDF;
+
+use Illuminate\Http\Response;
 
 class EmpleadoController extends Controller
 {
@@ -83,7 +86,40 @@ class EmpleadoController extends Controller
     public function show($id){
     	return view("admin.empleado.show",["empleado"=>Empleado::findOrFail($id)]);
     }
-    
+
+    public function perfilreport($id){
+        //dd($id);
+        /*$pdf = new PDF();    
+        $pdf::loadHtml('hello world');
+        $pdf::setPaper('A4', 'landscape');
+        dd($pdf);
+
+        return $pdf::stream();*/
+        //$perfil1::Output(public_path("/documentos/pdf/".'perfil'. $id . '.pdf'),'I');
+        //$perfil1::reset();
+        $pdf = PDF::loadView('admin.empleado.show',["empleado"=>Empleado::findOrFail($id)]);
+        return $pdf->stream('show.pdf');
+
+    }
+
+    public function nominareport(){
+
+            
+             // Llamamos al método raw y le pasamos nuestra parte de consulta que queremos realizar.
+        $raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto");
+        
+            // Llamamos a Persona, utilizamos el método select y le pasamos el $raw almacenado en la linea superior.
+        $empleados = Empleado::select($raw)->get();
+        $pdf = PDF::loadView('admin.empleado.nomina',["empleados"=>$empleados]);
+        return $pdf->stream('show.pdf');
+
+    }
+
+    public function perfilreportdownload($id){
+        //dd($id);
+        
+    }
+
     public function edit($id){
     	return view("admin.empleado.edit",["empleado"=>Empleado::findOrFail($id)]);
     }
