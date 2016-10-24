@@ -84,7 +84,8 @@ class EmpleadoController extends Controller
     }
    
     public function show($id){
-    	return view("admin.empleado.show",["empleado"=>Empleado::findOrFail($id)]);
+        $empleado = DB::table('empleado')->select(DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto"))->where('idempleado', '<>', $id)->get();
+    	return view("admin.empleado.show",["empleado"=>$empleado]);
     }
 
     public function perfilreport($id){
@@ -97,19 +98,25 @@ class EmpleadoController extends Controller
         return $pdf::stream();*/
         //$perfil1::Output(public_path("/documentos/pdf/".'perfil'. $id . '.pdf'),'I');
         //$perfil1::reset();
-        $pdf = PDF::loadView('admin.empleado.show',["empleado"=>Empleado::findOrFail($id)]);
+        // Llamamos al método raw y le pasamos nuestra parte de consulta que queremos realizar.
+
+        /*$users = DB::table('users')
+                     ->select(DB::raw('count(*) as user_count, status'))
+                     ->where('status', '<>', 1)
+                     ->groupBy('status')
+                     ->get();*/
+            //$raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto")->where('idempleado', '<>', $id);
+        
+            // Llamamos a Persona, utilizamos el método select y le pasamos el $raw almacenado en la linea superior.
+            $empleado = DB::table('empleado')->select(DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto"))->where('idempleado', '=', $id)->get();
+        $pdf = PDF::loadView('admin.empleado.show',["empleado"=>$empleado]);
         return $pdf->stream('show.pdf');
 
     }
 
     public function nominareport(){
+        $empleados = DB::table('empleado')->select(DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto"))->where('estado', '=', '1')->get();
 
-            
-             // Llamamos al método raw y le pasamos nuestra parte de consulta que queremos realizar.
-        $raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto");
-        
-            // Llamamos a Persona, utilizamos el método select y le pasamos el $raw almacenado en la linea superior.
-        $empleados = Empleado::select($raw)->get();
         $pdf = PDF::loadView('admin.empleado.nomina',["empleados"=>$empleados]);
         return $pdf->stream('show.pdf');
 
@@ -136,7 +143,9 @@ class EmpleadoController extends Controller
             //dd($file->getClientOriginalName());
             $empleado=Empleado::findOrFail($id);
             $fotovieja=$empleado->FOTO;
+            if (is_file(public_path().'/fotos/empleados/'.$fotovieja)) {
             unlink(public_path().'/fotos/empleados/'.$fotovieja);
+            } 
             $file->move(public_path().'/fotos/empleados',Carbon::now()->second.$file->getClientOriginalName());
             $affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => ucfirst($pnombre),'segundonombre' =>ucfirst($snombre),'primerapellido' =>ucfirst($papellido),'segundoapellido' =>ucfirst($sapellido),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp'),'foto'=>Carbon::now()->second.$file->getClientOriginalName()]);
                 Session::flash('update','El Empleado actualizado correctamente!!!');

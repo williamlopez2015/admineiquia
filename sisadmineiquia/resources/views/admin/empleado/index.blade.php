@@ -16,19 +16,19 @@
                 <!-- /.row -->
                 <div class="col-lg-12">
                 <label><a href="expedienteadministrativo/create" class="btn btn-primary btn-lg" role="button">Expediente Administrativo</a></label>
-                <!--
-                @include('admin.empleado.search')-->
-                @include('mensajes.messages')
-            
                 </div>
+                <div class="col-lg-12">
+                @include('mensajes.messages')
+                </div>
+                <div class="col-lg-12">
                 <!-- /.row -->
-                <div class="row-fluid">
+                <div class="row">
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
                                 <div class="muted pull-left"><h1>Listado de Empleados</h1></div>
+
                             </div>
-                            <div class="block-content collapse in">
                                 <div class="span12">
                                    <div class="table-toolbar">
                                       <div class="btn-group">
@@ -78,7 +78,7 @@
                                             </tbody>
                                         </table>
                                 </div>
-                            </div>
                         </div>   
-                    </div>    
+                    </div>
+                    </div>     
 @endsection
