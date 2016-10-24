@@ -24,6 +24,9 @@ use Session;
 
 use Illuminate\Support\Facades\Input;
 
+use PDF;
+
+use Illuminate\Http\Response;
 
 class EmpleadoController extends Controller
 {
@@ -57,8 +60,8 @@ class EmpleadoController extends Controller
 
         if(Input::hasfile('foto')){
             $file=Input::file('foto');
-            $file->move(public_path().'/fotos/empleados',$file->getClientOriginalName());
-            $empleados->foto=$file->getClientOriginalName();
+            $file->move(public_path().'/fotos/empleados',Carbon::now()->second.$file->getClientOriginalName());
+            $empleados->foto=Carbon::now()->second.$file->getClientOriginalName();
         }
 
 		$pnombre=$request->get('primernombre');
@@ -73,6 +76,7 @@ class EmpleadoController extends Controller
     	$empleados->nit=$request->get('nit');
     	$empleados->isss=$request->get('isss');
     	$empleados->afp=$request->get('afp');
+        $empleados->sexo=$request->get('sexo');
     	$empleados->estado='1';
     	$empleados->save();
     	Session::flash('store','El Empleado creado correctamente!!!');
@@ -82,7 +86,40 @@ class EmpleadoController extends Controller
     public function show($id){
     	return view("admin.empleado.show",["empleado"=>Empleado::findOrFail($id)]);
     }
-    
+
+    public function perfilreport($id){
+        //dd($id);
+        /*$pdf = new PDF();    
+        $pdf::loadHtml('hello world');
+        $pdf::setPaper('A4', 'landscape');
+        dd($pdf);
+
+        return $pdf::stream();*/
+        //$perfil1::Output(public_path("/documentos/pdf/".'perfil'. $id . '.pdf'),'I');
+        //$perfil1::reset();
+        $pdf = PDF::loadView('admin.empleado.show',["empleado"=>Empleado::findOrFail($id)]);
+        return $pdf->stream('show.pdf');
+
+    }
+
+    public function nominareport(){
+
+            
+             // Llamamos al método raw y le pasamos nuestra parte de consulta que queremos realizar.
+        $raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto");
+        
+            // Llamamos a Persona, utilizamos el método select y le pasamos el $raw almacenado en la linea superior.
+        $empleados = Empleado::select($raw)->get();
+        $pdf = PDF::loadView('admin.empleado.nomina',["empleados"=>$empleados]);
+        return $pdf->stream('show.pdf');
+
+    }
+
+    public function perfilreportdownload($id){
+        //dd($id);
+        
+    }
+
     public function edit($id){
     	return view("admin.empleado.edit",["empleado"=>Empleado::findOrFail($id)]);
     }
@@ -90,15 +127,22 @@ class EmpleadoController extends Controller
     public function update(EmpleadoFormRequest $request, $id){
         //dd($request->get('foto'));
         //dd(Input::hasfile('foto'));
+        $pnombre=$request->get('primernombre');
+        $snombre=$request->get('segundonombre');
+        $papellido=$request->get('primerapellido');
+        $sapellido=$request->get('segundoapellido');
         if(Input::hasfile('foto')){
             $file=Input::file('foto');
-            $file->move(public_path(),'/fotos/empleados',$file->getClientOriginalName());
-            $actualizacionfoto=$file->getClientOriginalName();
-            $affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => $request->get('primernombre'),'segundonombre' =>$request->get('segundonombre'),'primerapellido' =>$request->get('primerapellido'),'segundoapellido' =>$request->get('segundoapellido'),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp'),'foto' =>$actualizacionfoto]);
+            //dd($file->getClientOriginalName());
+            $empleado=Empleado::findOrFail($id);
+            $fotovieja=$empleado->FOTO;
+            unlink(public_path().'/fotos/empleados/'.$fotovieja);
+            $file->move(public_path().'/fotos/empleados',Carbon::now()->second.$file->getClientOriginalName());
+            $affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => ucfirst($pnombre),'segundonombre' =>ucfirst($snombre),'primerapellido' =>ucfirst($papellido),'segundoapellido' =>ucfirst($sapellido),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp'),'foto'=>Carbon::now()->second.$file->getClientOriginalName()]);
                 Session::flash('update','El Empleado actualizado correctamente!!!');
                 return Redirect::to('admin/empleado');
         }else{
-            $affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => $request->get('primernombre'),'segundonombre' =>$request->get('segundonombre'),'primerapellido' =>$request->get('primerapellido'),'segundoapellido' =>$request->get('segundoapellido'),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp')]);
+            $affectedRows = Empleado::where('idempleado','=',$id)->update(['primernombre' => ucfirst($pnombre),'segundonombre' =>ucfirst($snombre),'primerapellido' =>ucfirst($papellido),'segundoapellido' =>ucfirst($sapellido),'dui' =>$request->get('dui'),'nit' => $request->get('nit'),'isss' => $request->get('isss'),'afp' => $request->get('afp')]);
                 Session::flash('update','El Empleado actualizado correctamente!!!');
                 return Redirect::to('admin/empleado');
         }

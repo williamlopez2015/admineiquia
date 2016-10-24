@@ -27,7 +27,7 @@
 				</ul>
 			</div>
 			@endif
-			{!!Form::model($empleado,['method'=>'PATCH','route'=>['admin.empleado.update',$empleado->IDEMPLEADO]])!!}
+			{!!Form::model($empleado,['method'=>'PATCH','route'=>['admin.empleado.update',$empleado->IDEMPLEADO],'files'=>'true'])!!}
             {{Form::token()}}
             <div class="form-group">
 				<label for="foto"> Foto Empleado </label>
@@ -78,6 +78,17 @@
 				<label>Numero de AFP</label>
 				<input class="form-control" name="afp" class="form-control" value="{{$empleado->AFP}}" placeholder="000000000000" id="nup" onkeyup="corregirNup();">
 				<div id="mensaje8" class="errores">No. AFP invalido</div>
+			</div>
+			<div class="form-group">
+                  <label>Sexo</label>
+                  <select name="sexo" class="form-control" id="sexo">
+                         @if ($empleado->SEXO=="M")
+                         <option value="$empleado->SEXO">Masculino</option>
+                         @else
+                         <option value="$empleado->SEXO">Femenino</option>
+                         @endif
+                  </select>
+                  <div id="mensajeSex" class="errores">No se ha seleccionado un puesto</div>     
 			</div> 
 			<div class="form-group">
             	<button class="btn btn-primary" type="submit" id="guardar">Guardar</button>
