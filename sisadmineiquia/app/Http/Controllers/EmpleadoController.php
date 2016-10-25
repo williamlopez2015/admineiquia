@@ -84,7 +84,7 @@ class EmpleadoController extends Controller
     }
    
     public function show($id){
-        $empleado = DB::table('empleado')->select(DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto"))->where('idempleado', '<>', $id)->get();
+        $empleado = DB::table('empleado')->select(DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto,isss,afp,sexo"))->where('idempleado', '<>', $id)->get();
     	return view("admin.empleado.show",["empleado"=>$empleado]);
     }
 
@@ -108,7 +108,7 @@ class EmpleadoController extends Controller
             //$raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto")->where('idempleado', '<>', $id);
         
             // Llamamos a Persona, utilizamos el método select y le pasamos el $raw almacenado en la linea superior.
-            $empleado = DB::table('empleado')->select(DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto"))->where('idempleado', '=', $id)->get();
+            $empleado = DB::table('empleado')->select(DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto,isss,afp,sexo"))->where('idempleado', '=', $id)->get();
         $pdf = PDF::loadView('admin.empleado.show',["empleado"=>$empleado]);
         return $pdf->stream('show.pdf');
 
@@ -118,7 +118,15 @@ class EmpleadoController extends Controller
         $empleados = DB::table('empleado')->select(DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto"))->where('estado', '=', '1')->get();
 
         $pdf = PDF::loadView('admin.empleado.nomina',["empleados"=>$empleados]);
-        return $pdf->stream('show.pdf');
+        return $pdf->stream('nomina.pdf');
+
+    }
+
+    public function nominareportdownload(){
+        $empleados = DB::table('empleado')->select(DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto"))->where('estado', '=', '1')->get();
+
+        $pdf = PDF::loadView('admin.empleado.nomina',["empleados"=>$empleados]);
+        return $pdf->download('nomina.pdf');
 
     }
 

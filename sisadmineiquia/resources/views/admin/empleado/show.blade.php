@@ -36,33 +36,46 @@
 
 </head>
 <body>
-<div class="container-fluid">
+<div id="contenedor">
 <!--Contenido -->
 @foreach ($empleado as $emp)
-@if(is_file(public_path().'/fotos/empleados/'.$emp->foto))
-<div class="foto">
-    <img src="{{ public_path()}}/fotos/empleados/{{$emp->foto}}" alt="{{$emp->nombrecompleto}}" height="110px" width="110px" class="img-thumbnail">
+<header>
+    <div id="titulo">
+        <div id="logo">
+        @if(is_file(public_path().'/fotos/empleados/'.$emp->foto))
+        <div class="foto">
+            <img src="{{ public_path()}}/fotos/empleados/{{$emp->foto}}" alt="{{$emp->nombrecompleto}}" height="110px" width="110px" class="img-thumbnail">
+        </div>
+        @else
+        <div class="foto">
+            <img src=""  class="img-thumbnail">
+        </div>
+        @endif
+        </div>
+        <h1>{{$emp->nombrecompleto}}</h1>
+        @if($emp->estado=='1')
+        <h2><b>ESTADO:</b> Activo</h2>
+        @else
+        <h2><b>ESTADO:</b> De Baja</h2>
+        @endif
+    </div>
+    <div style="clear:both;"></div>
+</header>
+<section>
+<div id="datospersonales">
+    <h2><b>DATOS PERSONALES<b></h2>
+     @if($emp->sexo=='M')
+    <h3><b><i>SEXO:</i></b><i>Masculino</i></h3>
+    @else
+    <h3><b><i>SEXO:</i></b><i>Femenino</i></h3>
+    @endif
+    <h3><b><i>DUI:</i></b><i>{{$emp->dui}}</i></h3>
+    <h3><b><i>NIT:</i></b><i>{{$emp->nit}}</i></h3>
+    <h3><b><i>ISSS:</i></b><i>{{$emp->isss}}</i></h3>
+    <h3><b><i>AFP:</i></b><i>{{$emp->afp}}</i></h3>
 </div>
-@else
- <div class="foto">
-    <img src=""  class="img-thumbnail">
-</div>
-@endif
-<div style="text-align: center;">
-    <b><i>{{$emp->nombrecompleto}}</i></b>
-</div>
-
-<div class="dui" itemprop="articleBody"><div style="text-align: left;">
-    <b><i>DUI:</i></b><i>{{$emp->dui}}</i>
-</div>
-<p></p>
-<div class="nit" itemprop="articleBody"><div style="text-align: left;">
-    <b><i>NIT:</i></b><i>{{$emp->nit}}</i>
-</div>
-<p></p>
-<div class="dui" itemprop="articleBody"><div style="text-align: left;">
-    <b><i>ESTADO:</i></b><i>{{$emp->estado}}</i>
-</div>        
+</section>
+            <div style="clear:both"></div>
 <!-- Fin Contenido-->
  @endforeach
 </div>
