@@ -23,3 +23,5 @@ Route::resource('admin/expedienteadministrativo','expedienteadministrativoContro
 
 Route::resource('admin/puesto','PuestoController');
 
+Route::resource('admin/acuerdos','AcuerdosController');
+
