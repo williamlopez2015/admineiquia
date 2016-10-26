@@ -33,8 +33,7 @@ class EmpleadoFormRequest extends Request
         'dui'=>'required|max:10',
         'nit'=>'required|max:20',
         'isss'=>'required|max:10',
-        'afp'=>'required|max:12',
-        
+        'afp'=>'required|max:12'
         ];
     }
 }

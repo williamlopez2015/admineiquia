@@ -1,9 +1,33 @@
 @extends ('layouts.admin')
 @section ('contenido')
 <div class="row">
-	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-		<h3>Listado de Puestos <a href="puesto/create"><button class="btn btn-success">Nuevo</button></a></h3>
-		
+                    <div class="col-lg-12">
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-home"></i> <a href="/admin/puesto"> Gestionar Puesto</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-desktop"></i>
+                                Gestion General de los Puestos
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="col-lg-12">
+                <label><a href="puesto/create" class="btn btn-primary btn-lg" role="button">Nuevo Puesto</a></label>
+                <!--
+                @include('admin.empleado.search')
+                -->
+                
+                @include('mensajes.messages')
+                 </div>
+                 
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h2>Listado de Puesto</h2>
 	</div>
 </div>
 
@@ -14,28 +38,29 @@
 				<thead>
 					<th>Id</th>
 					<th>Nombre</th>
-					<th>Descripción</th>
-					<th>Salario</th>
 					<th>Departamento</th>
+					<th>Descripción</th>
+					<th>Profesion</th>
+					<th>Reporta a:</th>
 					<th>Opciones</th>
 				</thead>
                @foreach ($puestos as $pues)
 				<tr>
 					<td>{{ $pues->idpuesto}}</td>
 					<td>{{ $pues->nombrepuesto}}</td>
+					<td>{{ $pues->departamento}}</td>
 					<td>{{ $pues->descripcionpuesto}}</td>
-				    <td>{{ $pues->salariopuesto}}</td>
-				    <td>{{ $pues->departamento}}</td>
+				    <td>{{ $pues->profesion}}</td>
+				    <td>{{ $pues->reporta}}</td>
 					<td>
-						<a href="{{URL::action('PuestoController@edit',$pues->idpuesto)}}"><button class="btn btn-info">Editar</button></a>
-                         <a href="" data-target="#modal-delete-{{$pues->idpuesto}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+						<a href="{{URL::action('PuestoController@edit',$pues->idpuesto)}}"><button class="btn btn-xs btn-primary">Editar</button></a>
+                         <a href="" data-target="#modal-delete-{{$pues->idpuesto}}" data-toggle="modal"><button class="btn btn-xs btn-danger">Eliminar</button></a>
 					</td>
 				</tr>
 				@include('admin.puesto.modal')
 				@endforeach
 			</table>
 		</div>
-		{{$puestos->render()}}
 	</div>
 </div>
 

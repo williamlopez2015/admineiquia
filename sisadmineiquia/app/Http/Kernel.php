@@ -49,5 +49,10 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
         'guest' => \sisadmineiquia\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'adminsist' => \sisadmineiquia\Http\Middleware\AdminSist::class,
+        'admin' => \sisadmineiquia\Http\Middleware\Admin::class,
+        'secret' => \sisadmineiquia\Http\Middleware\Secret::class,
+        'alltype' => \sisadmineiquia\Http\Middleware\AdminSistAdminSecret::class,
+
     ];
 }

@@ -12,16 +12,44 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::resource('admin/empleado','EmpleadoController');
+Route::group(['middleware' => ['auth','alltype']], function () {
+	  Route::get('admin/empleado/report/{id}', 'EmpleadoController@perfilreport');
+	  Route::get('admin/empleado/nominareport', 'EmpleadoController@nominareport');
+    Route::get('admin/empleado/nominareportdownload', 'EmpleadoController@nominareportdownload');
+	  Route::get('admin/empleado/reportdownload/{id}', 'EmpleadoController@perfilreportdownload');
+      Route::resource('admin/empleado','EmpleadoController');
+});
 
-Route::resource('admin/puesto','PuestoController');
 
-Route::resource('admin/expedienteadministrativo','expedienteadministrativoController');
+Route::group(['middleware' =>  ['auth','alltype']], function () {
+      Route::resource('admin/tiempo','TiempoAdicionalController');
+});
 
-Route::resource('admin/puesto','PuestoController');
+Route::group(['middleware' =>  ['auth','admin']], function () {
+      Route::resource('admin/puesto','PuestoController');
+});
+
+Route::group(['middleware' =>  ['auth','admin']], function () {
+  Route::resource('admin/perfilpuesto','PerfilPuestoController');
+});
+
+Route::group(['middleware' => ['auth','alltype']], function () {
+      Route::resource('admin/expedienteadministrativo','ExpedienteAdministrativoController');
+});
+
+
+Route::auth();
+
+Route::resource('/home','HomeController');
+//Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@edit','id');
+
+Route::group(['middleware' => ['auth','adminsist']], function () {
+	Route::resource('admin/users','UsersController');
+});
 
 Route::resource('admin/acuerdos','AcuerdosController');
 

@@ -8,10 +8,6 @@
 	var nup = document.getElementById("nup");
 	var alerta = document.getElementById("alerta");
 	var fechaApertura = document.getElementById("fechaApertura");
-	var fechaAdInicio = document.getElementById("fechaAdInicio");
-	var fechaAdFin = document.getElementById("fechaAdFin");
-	var fechaInInicio = document.getElementById("fechaInInicio");
-	var fechaInFin = document.getElementById("fechaInFin");
 	var codCon = document.getElementById("codCon");
 
 	function corregirPrimerNombre(){
@@ -180,58 +176,7 @@
 		}
 	}
 
-	function corregirFecha2(){
-		var value = fechaAdInicio.value;
-		var longitudActual = value.length;
-		if(longitudActual){
-			var ultimoCaracter = value.substring(longitudActual - 1);
-			if(longitudActual == 1){
-				value = "";
-			}
-
-			fechaAdInicio.value = value;
-		}
-	}
-
-	function corregirFecha3(){
-		var value = fechaAdFin.value;
-		var longitudActual = value.length;
-		if(longitudActual){
-			var ultimoCaracter = value.substring(longitudActual - 1);
-			if(longitudActual == 1){
-				value = "";
-			}
-
-			fechaAdFin.value = value;
-		}
-	}
-
-	function corregirFecha4(){
-		var value = fechaInInicio.value;
-		var longitudActual = value.length;
-		if(longitudActual){
-			var ultimoCaracter = value.substring(longitudActual - 1);
-			if(longitudActual == 1){
-				value = "";
-			}
-
-			fechaInInicio.value = value;
-		}
-	}
-
-	function corregirFecha5(){
-		var value = fechaInFin.value;
-		var longitudActual = value.length;
-		if(longitudActual){
-			var ultimoCaracter = value.substring(longitudActual - 1);
-			if(longitudActual == 1){
-				value = "";
-			}
-
-			fechaInFin.value = value;
-		}
-	}
-
+	
 	function corregirCodCon(){
 		var value = codCon.value;
 		var longitudActual = value.length;
