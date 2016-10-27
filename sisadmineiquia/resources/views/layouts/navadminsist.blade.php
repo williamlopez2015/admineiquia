@@ -75,10 +75,10 @@
         <a href="#" data-toggle="collapse" data-target="#demo5"><i class="fa fa-fw fa-paperclip"></i> Gestionar de Acuerdo<i class="fa fa-angle-left pull-right"></i></a>
         <ul id="demo5" class="collapse">
             <li>
-                <a href="#"><i class="fa fa-plus"></i> Agregar Acuerdo</a>
+                <a href="/admin/acuerdos/create"><i class="fa fa-plus"></i> Agregar Acuerdo</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-file"></i> Administar de acuerdos</a>
+                <a href="/admin/acuerdos"><i class="fa fa-file"></i> Administar de acuerdos</a>
             </li>
         </ul>
     </li>

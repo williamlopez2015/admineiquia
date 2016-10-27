@@ -16,7 +16,7 @@
 
     <div class="col-lg-12">
         <label><a href="acuerdos/create" class="btn btn-primary btn-lg" role="button">Nuevo Acuerdo Administrativo</a></label>
-        <label><a href="expedienteadministrativo/create" class="btn btn-primary btn-lg" role="button">Expediente Administrativo</a></label>
+        
                 <!--
         @include('admin.acuerdos.search')
                 -->

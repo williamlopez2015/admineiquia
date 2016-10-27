@@ -28,32 +28,35 @@
 			</div>
 			@endif
 
-			{!!Form::open(array('url'=>'admin/acuerdos','method'=>'POST','autocomplete'=>'off','files'=>true, 'id' => 'my-dropzone'))!!}
+			{!!Form::open(array('url'=>'admin/acuerdos','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
             <div class="form-group">
             	<label for="idacuerdo">Código:</label>
-            	<input type="text" name="idacuerdo" class="form-control" placeholder="Código Acuerdo..." id="idacuerdo";">
+            	<input type="text" name="idacuerdo" class="form-control" required value="{{old('idacuerdo')}}" placeholder="Código Acuerdo..." id="idacuerdo";">
             </div>
             <div class="form-group">
             	<label for="idexpediente">Empleado:</label>
             	<select name="idexpediente" class="form-control" id="idexpediente">
+	            	@foreach ($empleados as $emp)
+	                        <option value="{{$emp->idexpediente}}">{{$emp->primernombre}}</option>
+	                @endforeach
             	</select>
             </div>
             <div class="form-group">
             	<label for="motivoacuerdo">Motivo:</label>
-            	<input type="text" name="motivoacuerdo" class="form-control" placeholder="Escribir motivo..." id="motivoacuerdo">
+            	<input type="text" name="motivoacuerdo" class="form-control" required value="{{old('motivoacuerdo')}}" placeholder="Escribir motivo..." id="motivoacuerdo">
             </div>
             <div class="form-group">
 				<label for="descripcionacuerdo">Descripción:</label>
-				<textarea class="form-control" placeholder="Escribir descripción" name="descripcionacuerdo" id="descripcionacuerdo"></textarea>
+				<textarea class="form-control" required value="{{old('descripcionacuerdo')}}" placeholder="Escribir descripción" name="descripcionacuerdo" id="descripcionacuerdo"></textarea>
 			</div>
             <div class="form-group">
             	<label for="estadoacuerdo">Estado:</label>
-            	<input type="text" name="estadoacuerdo" class="form-control" placeholder="Estado..." id="estadoacuerdo">
+            	<input type="text" name="estadoacuerdo" class="form-control" required value="{{old('estadoacuerdo')}}" placeholder="Estado..." id="estadoacuerdo">
             </div>
             <div class="form-group">
 				<label for="fechaacuerdo">Fecha:</label>
-				<input class="form-control" name="fechaacuerdo" class="form-control" placeholder="00/00/0000" id="fechaacuerdo">
+				<input name="fechaacuerdo" class="form-control" required value="{{old('fechaacuerdo')}}" placeholder="00/00/0000" id="fechaacuerdo">
 			</div>
             <div class="form-group">
             	<button class="btn btn-primary" type="submit" id="guardar">Guardar</button>

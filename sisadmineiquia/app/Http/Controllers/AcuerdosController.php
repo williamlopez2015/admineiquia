@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use sisadmineiquia\Http\Requests;
 use sisadmineiquia\Empleado;
 use sisadmineiquia\Acuerdos;
+use sisadmineiquia\ExpedienteAdministrativo;
 use Illuminate\Support\Facades\Redirect;
 use sisadmineiquia\Http\Requests\AcuerdosFormRequest;
 use DB;
@@ -34,7 +35,9 @@ class AcuerdosController extends Controller
 
     public function create(){
 
-    	return view("admin.acuerdos.create");
+        $empleados=DB::table('empleado as em')->join('expedienteadminist as ex','em.idempleado','=','ex.idempleado')->select('ex.idexpediente','em.primernombre')->get();
+
+    	return view("admin.acuerdos.create",["empleados"=>$empleados]);
 
     }
 
@@ -77,8 +80,8 @@ class AcuerdosController extends Controller
 
      public function destroy($id)
     {
-        $acuerdos=Acuerdos::findOrFail($id);
-        $acuerdos->delete();
+        $acuerdos=Acuerdos::where('idacuerdo','=',$id)->delete();
+        Session::flash('destroy','Acuerdo Administrativo eliminado correctamente!');
         return Redirect::to('admin/acuerdos');
     }
 }

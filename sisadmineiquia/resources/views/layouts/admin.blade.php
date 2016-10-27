@@ -213,11 +213,14 @@
     $('#tablausers').DataTable();
     });
     </script>
-     <script > $(document).ready(function(){
+    <script > $(document).ready(function(){
     $('#tablaperfilpuesto').DataTable();
     });
     </script>
-
+    <script > $(document).ready(function(){
+    $('#tablaacuerdos').DataTable();
+    });
+    </script>
 
     <script type="text/javascript" src="{{asset('js/validarJS.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/validarJQue.js')}}"></script>
