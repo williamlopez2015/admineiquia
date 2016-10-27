@@ -16,19 +16,19 @@
                 <!-- /.row -->
                 <div class="col-lg-12">
                 <label><a href="expedienteadministrativo/create" class="btn btn-primary btn-lg" role="button">Expediente Administrativo</a></label>
-                <!--
-                @include('admin.empleado.search')-->
-                @include('mensajes.messages')
-            
                 </div>
+                <div class="col-lg-12">
+                @include('mensajes.messages')
+                </div>
+                <div class="col-lg-12">
                 <!-- /.row -->
-                <div class="row-fluid">
+                <div class="row">
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
                                 <div class="muted pull-left"><h1>Listado de Empleados</h1></div>
+
                             </div>
-                            <div class="block-content collapse in">
                                 <div class="span12">
                                    <div class="table-toolbar">
                                       <div class="btn-group">
@@ -37,7 +37,8 @@
                                       <div class="btn-group pull-right">
                                          <button data-toggle="dropdown" class="btn dropdown-toggle">Opciones <span class="caret"></span></button>
                                          <ul class="dropdown-menu">
-                                            <li><a href="empleado/nominareport">Guardar Nomina Como PDF</a></li>
+                                            <li><a href="empleado/nominareport">Generar Nomina Como PDF</a></li>
+                                            <li><a href="empleado/nominareportdownload">Descargar Nomina Como PDF</a></li>
                                             <li><a href="#">Exportar Nomina a Excel</a></li>
                                          </ul>
                                       </div>
@@ -65,11 +66,16 @@
                                                     <td>{{ $emp->nombrecompleto }}</td>
                                                     <td>{{ $emp->dui}}</td>
                                                     <td>{{ $emp->nit }}</td>
-                                                    <td>{{ $emp->estado }}</td>
+                                                    @if($emp->estado=='1')
+                                                    <td>Activo</td>
+                                                    @else
+                                                     <td>De Baja</td>
+                                                    @endif
                                                     <td>
                                                     <a href="" data-target="#modal-delete-{{$emp->idempleado}}" data-toggle="modal"><button  class="btn btn-xs btn-danger">Cambiar</button></a>
                                                     <a href="{{URL::action('EmpleadoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-primary">Editar</button></a>
                                                     <!--<a href=""><button type="button" class="btn btn-sm btn-info">Ficha</button></a></td>-->
+                                                    <a href="{{URL::action('EmpleadoController@perfilreport',$emp->idempleado)}}"><button class="btn btn-xs btn-success">Perfil</button></a>
                                                     <a href="{{URL::action('ExpedienteAdministrativoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-info">Expediente Administrativo</button></a>
                                                     </td>
                                                 </tr>
@@ -78,7 +84,7 @@
                                             </tbody>
                                         </table>
                                 </div>
-                            </div>
                         </div>   
-                    </div>    
+                    </div>
+                    </div>     
 @endsection
