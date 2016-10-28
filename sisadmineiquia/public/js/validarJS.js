@@ -185,11 +185,12 @@
 			switch (longitudActual){
 				case 1:
 				case 2:	
-					if(!/[aA-zZ]/.test(ultimoCaracter)){
+					
+				case 3:
+				if(!/[aA-zZ]/.test(ultimoCaracter)){
 						value = value.substring(0, longitudActual - 1);
 					}
 				break;
-				case 3:
 				case 4:
 				case 5:
 				case 6:

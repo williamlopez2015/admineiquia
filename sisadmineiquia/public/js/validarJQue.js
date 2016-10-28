@@ -9,7 +9,7 @@
 		$("#guardar").click(function(){
 
 			var primernombre = $("#primernombre").val();
-			var segundonombre = $("#segundonombre").val();
+			//var segundonombre = $("#segundonombre").val();
 			var primerapellido = $("#primerapellido").val();
 			var segundoapellido = $("#segundoapellido").val();
 			var dui = $("#dui").val();
@@ -26,14 +26,14 @@
 
 				$("#mensaje1").fadeOut();
 
-				if(segundonombre == "" || !expr.test(segundonombre)){
+				/*if(segundonombre == "" || !expr.test(segundonombre)){
 
 					$("#mensaje2").fadeIn();
 					return false;
 
 				}else{
 
-					$("#mensaje2").fadeOut();
+					$("#mensaje2").fadeOut();*/
 				
 					if(primerapellido == "" || !expr.test(primerapellido)){
 

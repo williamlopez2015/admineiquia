@@ -14,7 +14,7 @@ use sisadmineiquia\Puesto;
 
 use Illuminate\Support\Facades\Redirect;
 
-use sisadmineiquia\Http\Requests\EmpleadoFormRequest;
+use sisadmineiquia\Http\Requests\ExpedienteAdministrativoFormRequest;
 
 use DB;
 
@@ -59,7 +59,7 @@ class ExpedienteAdministrativoController extends Controller
         return view("admin.expedienteadministrativo.create",["empleados"=>$empleado,"puestos"=>$puesto]);
     }
 
-    public function store(Request $request){
+    public function store(ExpedienteAdministrativoFormRequest $request){
         
         
         if ($request)
@@ -125,7 +125,7 @@ class ExpedienteAdministrativoController extends Controller
             }
     }
 
-    public function update(Request $request, $id){
+    public function update(ExpedienteAdministrativoFormRequest $request, $id){
 
         if ($request->get('tiempointegral')==null){
                         $expedienteadministrativotiempointegral="0";
