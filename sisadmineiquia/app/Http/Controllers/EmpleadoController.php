@@ -110,7 +110,10 @@ class EmpleadoController extends Controller
             // Llamamos a Persona, utilizamos el método select y le pasamos el $raw almacenado en la linea superior.
             $empleado = DB::table('empleado')->select(DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto,isss,afp,sexo"))->where('idempleado', '=', $id)->get();
 
-        $pdf = PDF::loadView('admin.empleado.show',["empleado"=>$empleado]);
+
+            $expadmin=DB::table('expedienteadminist')->select(DB::raw("idexpediente,idempleado,idpuesto,fechaapertura,codigocontrato,tiempointegral,descripcionadmin"))->where('idempleado', '=', $id)->get();
+
+        $pdf = PDF::loadView('admin.empleado.show',["empleado"=>$empleado,"expedienteadministrativo"=>$expadmin]);
         //215.9 × 279.4
         $papel_tamaño = array(0,0,216,279);
         $pdf->setPaper("letter" ,'portrait');

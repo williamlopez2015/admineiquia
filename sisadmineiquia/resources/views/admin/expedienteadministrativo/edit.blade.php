@@ -56,14 +56,24 @@
                 </div>            
                        <div class="form-group">
                          <label>Tiempo Integral</label>
+                         @if($expedienteadministrativo->TIEMPOINTEGRAL=='1')
                          <div class="checkbox">
-                         	<label>
-                         		<input type="checkbox" value="{{$expedienteadministrativo->TIEMPOINTEGRAL}}" name="tiempointegral" id="tiempointegral"> Posee
+                          <label>
+                         		<input type="checkbox" value="1" name="tiempointegral" id="tiempointegral" checked> Posee
                          	</label>
-                         </div>
-                       
-                        
-                         </div>
+                          </div>
+                          @else
+                          <div class="checkbox">
+                          <label>
+                            <input type="checkbox" value="1" name="tiempointegral" id="tiempointegral"> Posee
+                          </label>
+                           </div>
+                          @endif
+                        </div>
+                      <div class="form-group">
+                     <label for="descripcionadmin">Descripcion</label>
+                     <textarea  type="text" name="descripcionadmin" required value="{{old('descripcionadmin')}}" class="form-control"  rows=""  placeholder="Descripcion...">{{$expedienteadministrativo->DESCRIPCIONADMIN}}</textarea>
+            </div>
 			<div class="form-group" align=right>
             	<button class="btn btn-primary" type="submit" id="guardarExp">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>
