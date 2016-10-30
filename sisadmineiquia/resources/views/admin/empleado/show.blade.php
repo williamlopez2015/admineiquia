@@ -76,8 +76,30 @@
 </div>
 </section>
             <div style="clear:both"></div>
-<!-- Fin Contenido-->
  @endforeach
+ @if($expedienteadministrativo==null)
+ <section>
+ </section>
+ @else
+ @foreach ($expedienteadministrativo as $expadmin)
+<section>
+<div id="datosexpadmin">
+    <h2><b>Expediente Administrativo<b></h2>
+    <h3><b><i>Cod Expediente:</i></b><i>{{$expadmin->idexpediente}}</i></h3>
+    <h3><b><i>Fecha de Creacion:</i></b><i>{{$expadmin->fechaapertura}}</i></h3>
+    <h3><b><i>Codigo de Contrato:</i></b><i>{{$expadmin->codigocontrato}}</i></h3>
+    @if($expadmin->tiempointegral=='1')
+    <h3><b><i>TIEMPO INTEGRAL:</i></b><i>Si</i></h3>
+    @else
+    <h3><b><i>TIEMPO INTEGRAL:</i></b><i>No</i></h3>
+    @endif
+    <h3><b><i>DESCRIPCION:</i></b><i>{{$expadmin->descripcionadmin}}</i></h3>
+</div>
+</section>
+            <div style="clear:both"></div>
+ @endforeach
+ @endif
+<!-- Fin Contenido-->
 </div>
 </body>
 </html>

@@ -26,8 +26,8 @@ class TiempoAdicionalFormRequest extends Request
         return [
             'idempleado'=>'required',
             'idciclo'=>'required|max:2',
-            'tiempoadicionalinicio'=>'max:10',
-            'tiempoadicionfin'=>'max:10',
+            'tiempoadicionalinicio'=>'max:12',
+            'tiempoadicionfin'=>'max:12',
             'descripcion'=>'max:250'
         ];
     }
