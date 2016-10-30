@@ -12,6 +12,7 @@ use sisadmineiquia\Http\Requests\AcuerdosFormRequest;
 use DB;
 use Carbon\Carbon;
 use Session;
+use Illuminate\Support\Facades\Input;
 
 class AcuerdosController extends Controller
 {
@@ -24,10 +25,16 @@ class AcuerdosController extends Controller
     	
     	if ($request)
         {
+
+            $raw = DB::raw("CONCAT(em.primernombre,' ', em.segundonombre,' ',em.primerapellido,' ',em.segundoapellido) as nombrecompleto");
             $query=trim($request->get('searchText'));
-            $acuerdos=DB::table('acuerdoadministrat')->where('idacuerdo','LIKE','%'.$query.'%')
+            $acuerdos=DB::table('acuerdoadministrat as a')
+            ->join('expedienteadminist as ex','ex.idexpediente','=','a.idexpediente')
+            ->join('empleado as em','em.idempleado','=','ex.idempleado')
+            ->select($raw,'a.idacuerdo','a.motivoacuerdo','a.estadoacuerdo','a.fechaacuerdo','a.archivoacuerdo')
+            ->where('idacuerdo','LIKE','%'.$query.'%')
             ->orderBy('fechaacuerdo','desc')->paginate();
-            //
+
             return view('admin.acuerdos.index',["acuerdos"=>$acuerdos,"searchText"=>$query]);
             
         }
@@ -35,20 +42,29 @@ class AcuerdosController extends Controller
 
     public function create(){
 
-        $empleados=DB::table('empleado as em')->join('expedienteadminist as ex','em.idempleado','=','ex.idempleado')->select('ex.idexpediente','em.primernombre')->get();
+        $raw = DB::raw("CONCAT(em.primernombre,' ', em.segundonombre,' ',em.primerapellido,' ',em.segundoapellido) as nombrecompleto");
+        $empleados=DB::table('empleado as em')
+        ->join('expedienteadminist as ex','em.idempleado','=','ex.idempleado')
+        ->select('ex.idexpediente',$raw)->get();
 
     	return view("admin.acuerdos.create",["empleados"=>$empleados]);
 
     }
 
     public function store(AcuerdosFormRequest $request){
-    	
+
     	$acuerdos=new Acuerdos;
-		$acuerdos->idacuerdo=$request->get('idacuerdo');
+        if(Input::hasfile('archivoacuerdo')){
+            $file=Input::file('archivoacuerdo');
+            $file->move(public_path().'/acuerdos',Carbon::now()->second.$file->getClientOriginalName());
+            $acuerdos->archivoacuerdo=Carbon::now()->second.$file->getClientOriginalName();
+        }
+        $idacuerdo=$request->get('idacuerdo');
+        $acuerdos->idacuerdo=strtoupper($idacuerdo);
 		$acuerdos->idexpediente=$request->get('idexpediente');
 		$acuerdos->motivoacuerdo=$request->get('motivoacuerdo');
 		$acuerdos->descripcionacuerdo=$request->get('descripcionacuerdo');
-        $acuerdos->estadoacuerdo=$request->get('estadoacuerdo');
+        $acuerdos->estadoacuerdo='1';
     	$acuerdos->fechaacuerdo=$request->get('fechaacuerdo');
     	$acuerdos->save();
     	Session::flash('store','Acuerdo Administrativo creado correctamente!!!');
@@ -56,32 +72,66 @@ class AcuerdosController extends Controller
 
     }
 
-    public function show($id){
-
-    	return view("admin.acuerdos.show",["acuerdos"=>Acuerdos::findOrFail($id)]);
-
-    }
-
     public function edit($id){
 
-    	return view("admin.acuerdos.edit",["acuerdos"=>Acuerdos::findOrFail($id)]);
+        $raw = DB::raw("CONCAT(em.primernombre,' ', em.segundonombre,' ',em.primerapellido,' ',em.segundoapellido) as nombrecompleto");
+        $empleados=DB::table('empleado as em')
+        ->join('expedienteadminist as ex','em.idempleado','=','ex.idempleado')
+        ->select('ex.idexpediente',$raw)->get();
+
+    	return view("admin.acuerdos.edit",["acuerdos"=>Acuerdos::findOrFail($id),"empleados"=>$empleados]);
 
     }
 
     public function update(AcuerdosFormRequest $request, $id){
 
-    	$affectedRows = Acuerdos::where('idacuerdo','=',$id)->update(['motivoacuerdo' => $request->get('motivoacuerdo'),'descripcionacuerdo' =>$request->get('descripcionacuerdo'),'estadoacuerdo' =>$request->get('estadoacuerdo'),'fechaacuerdo' =>$request->get('fechaacuerdo')]);
-    	
-        Session::flash('update','Acuerdo Administrativo actualizado correctamente!!!');
+        if(Input::hasfile('archivoacuerdo')){
 
-    	return Redirect::to('admin/acuerdos');
+            $file=Input::file('archivoacuerdo');
+            $acuerdos=Acuerdos::findOrFail($id);
+            $fotovieja=$acuerdos->ARCHIVOACUERDO;
+
+            if (is_file(public_path().'/acuerdos'.$fotovieja)) {
+                unlink(public_path().'/acuerdos'.$fotovieja);
+            } 
+
+            $file->move(public_path().'/acuerdos',Carbon::now()->second.$file->getClientOriginalName());
+    	    $affectedRows = Acuerdos::where('idacuerdo','=',$id)
+            ->update(['motivoacuerdo' => $request->get('motivoacuerdo'),'descripcionacuerdo' =>$request->get('descripcionacuerdo'),'estadoacuerdo' =>$request->get('estadoacuerdo'),'fechaacuerdo' =>$request->get('fechaacuerdo'),'archivoacuerdo'=>Carbon::now()->second.$file->getClientOriginalName()]);
+    	    Session::flash('update','Acuerdo Administrativo actualizado correctamente!!!');
+
+            return Redirect::to('admin/acuerdos');
+        }else{
+
+            $affectedRows = Acuerdos::where('idacuerdo','=',$id)
+            ->update(['motivoacuerdo' => $request->get('motivoacuerdo'),'descripcionacuerdo' =>$request->get('descripcionacuerdo'),'estadoacuerdo' =>$request->get('estadoacuerdo'),'fechaacuerdo' =>$request->get('fechaacuerdo')]);
+            Session::flash('update','Acuerdo Administrativo actualizado correctamente!!!');
+
+            return Redirect::to('admin/acuerdos');
+
+        }
 
     }
 
-     public function destroy($id)
+    public function destroy2($id)
+    {
+        $acuerdos = Acuerdos::findOrFail($id);
+
+        if($acuerdos -> ESTADOACUERDO == '1')
+        {
+            $affectedRows = Acuerdos::where('idacuerdo','=',$id)->update(['estadoacuerdo' => 0]);
+            return  Redirect::to('admin/acuerdos');
+        }else{
+            $affectedRows = Acuerdos::where('idacuerdo','=',$id)->update(['estadoacuerdo' => 1]);
+            return  Redirect::to('admin/acuerdos');
+        }
+    }
+
+    public function destroy($id)
     {
         $acuerdos=Acuerdos::where('idacuerdo','=',$id)->delete();
-        Session::flash('destroy','Acuerdo Administrativo eliminado correctamente!');
+        Session::flash('destroy','Acuerdo Administrativo eliminado correctamente!!!');
         return Redirect::to('admin/acuerdos');
     }
+
 }

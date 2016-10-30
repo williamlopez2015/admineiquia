@@ -17,9 +17,6 @@
     <div class="col-lg-12">
         <label><a href="acuerdos/create" class="btn btn-primary btn-lg" role="button">Nuevo Acuerdo Administrativo</a></label>
         
-                <!--
-        @include('admin.acuerdos.search')
-                -->
         @include('mensajes.messages') 
 
     </div>
@@ -32,6 +29,7 @@
                     <thead>
                         <tr>
                             <th>Código</th>
+                            <th>Foto</th>
                             <th>Empleado</th>
                             <th>Motivo</th>
                             <th>Estado</th>
@@ -42,14 +40,23 @@
                     <tbody>
                         @foreach ($acuerdos as $ac)
                             <tr>
-                                <td>{{ $ac->IDACUERDO }}</td>
-                                <td>{{ $ac->IDEXPEDIENTE }}</td>
-                                <td>{{ $ac->MOTIVOACUERDO }}</td>
-                                <td>{{ $ac->ESTADOACUERDO }}</td>
-                                <td>{{ $ac->FECHAACUERDO }}</td>
+                                <td>{{ $ac->idacuerdo }}</td>
                                 <td>
-                                    <a href="{{URL::action('AcuerdosController@edit',$ac->IDACUERDO)}}"><button type="button" class="btn btn-sm btn-primary">Editar</button></a>
-                                    <a href="" data-target="#modal-delete-{{$ac->IDACUERDO}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+                                    <img src="{{asset('acuerdos/'.$ac->archivoacuerdo)}}" alt="{{$ac->idacuerdo}}" height="110px" width="110px" class="img-thumbnail">
+
+                                </td>
+                                <td>{{ $ac->nombrecompleto }}</td>
+                                <td>{{ $ac->motivoacuerdo }}</td>
+                                @if($ac->estadoacuerdo=='1')
+                                                    <td>Aprobado</td>
+                                                    @else
+                                                     <td>No Aprobado</td>
+                                                    @endif
+                                <td>{{ $ac->fechaacuerdo }}</td>
+                                <td>
+                                    <a href="" data-target="#modal-delete2-{{$ac->idacuerdo}}" data-toggle="modal"><button  class="btn btn-sm btn-success">Cambiar Estado</button></a>
+                                    <a href="{{URL::action('AcuerdosController@edit',$ac->idacuerdo)}}"><button type="button" class="btn btn-sm btn-primary">Editar</button></a>
+                                    <a href="" data-target="#modal-delete-{{$ac->idacuerdo}}" data-toggle="modal"><button class="btn btn-sm btn-danger">Eliminar</button></a>
                                 @include('admin.acuerdos.modal')
                         @endforeach 
                     </tbody>

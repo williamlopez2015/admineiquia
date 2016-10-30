@@ -51,5 +51,7 @@ Route::group(['middleware' => ['auth','adminsist']], function () {
 	Route::resource('admin/users','UsersController');
 });
 
-Route::resource('admin/acuerdos','AcuerdosController');
-
+Route::group(['middleware' =>  ['auth','alltype']], function () {
+    Route::get('admin/acuerdos/destroy2/{id}', 'AcuerdosController@destroy2');
+    Route::resource('admin/acuerdos','AcuerdosController');
+});

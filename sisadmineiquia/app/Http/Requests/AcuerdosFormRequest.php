@@ -29,7 +29,6 @@ class AcuerdosFormRequest extends Request
         'idexpediente'=>'required|max:6',
         'motivoacuerdo'=>'required|max:50',
         'descripcionacuerdo'=>'required|max:250',
-        'estadoacuerdo'=>'required|max:10',
         'fechaacuerdo'=>'required|max:10',
         ];
     }

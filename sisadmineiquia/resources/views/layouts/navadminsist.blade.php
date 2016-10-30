@@ -78,7 +78,7 @@
                 <a href="/admin/acuerdos/create"><i class="fa fa-plus"></i> Agregar Acuerdo</a>
             </li>
             <li>
-                <a href="/admin/acuerdos"><i class="fa fa-file"></i> Administar de acuerdos</a>
+                <a href="/admin/acuerdos"><i class="fa fa-users"></i> Administar Acuerdos</a>
             </li>
         </ul>
     </li>

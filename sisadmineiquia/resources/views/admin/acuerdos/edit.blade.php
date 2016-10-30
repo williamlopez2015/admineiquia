@@ -12,7 +12,7 @@
  </div>
  <div class="row">
       <div class="col-lg-12">
-            <h3>Editar Acuerdo Administrativo: {{$acuerdos->IDACUERDO}}</h3>
+            <h3>Editar Acuerdo Administrativo</h3>
       </div>
  </div>
  <div class="row">
@@ -28,39 +28,43 @@
                   </div>
             @endif
 
-            {!!Form::model($acuerdos,['method'=>'PATCH','route'=>['admin.acuerdos.update',$acuerdos->IDACUERDO]])!!}
+            {!!Form::model($acuerdos,['method'=>'PATCH','route'=>['admin.acuerdos.update',$acuerdos->IDACUERDO],'files'=>true])!!}
 
             {{Form::token()}}
-
+            
             <div class="form-group">
-                  <label for="idacuerdo">Código:</label>
-                  <input type="text" name="idacuerdo" class="form-control" value="{{$acuerdos->IDACUERDO}}" id="idacuerdo">
+                  <label for="idacuerdo">Código</label>
+                  <input type="text" name="idacuerdo" class="form-control" required value="{{$acuerdos->IDACUERDO}}" id="idacuerdo" readonly="readonly">
             </div> 
             <div class="form-group">
-                  <label for="idexpediente">Empleado:</label>
-                  <input type="text" name="idexpediente" class="form-control" value="{{$acuerdos->IDEXPEDIENTE}}"
-                  id="idexpediente">
+                  <label for="foto"> Documento Acuerdo Administrativo</label>
+                  <input type="file"  class="form-control" name="archivoacuerdo">
+                        @if(($acuerdos->archivoacuerdo)!=" ")
+                              <img class="img-thumbnail" src="{{asset('acuerdos/'.$acuerdos->ARCHIVOACUERDO)}}" alt="{{$acuerdos->IDACUERDO}}" height="110px" width="110px">
+                        @endif
+            </div>
+            <div class="form-group">
+                  <label for="idexpediente">Empleado</label>
                   <select name="idexpediente" class="form-control" id="idexpediente">
+                        @foreach ($empleados as $emp)
+                              <option required value="{{$emp->idexpediente}}">{{$emp->nombrecompleto}}</option>
+                        @endforeach
                   </select>
             </div>
             <div class="form-group">
-                  <label for="motivoacuerdo">Motivo:</label>
-                  <input type="text" name="motivoacuerdo" class="form-control" value="{{$acuerdos->MOTIVOACUERDO}}" id="motivoacuerdo">
+                  <label for="motivoacuerdo">Motivo</label>
+                  <input type="text" name="motivoacuerdo" class="form-control" required value="{{$acuerdos->MOTIVOACUERDO}}" id="motivoacuerdo">
             </div>
              <div class="form-group">
-                  <label for="descripcionacuerdo">Descripción:</label>
-                  <input class="form-control" name="descripcionacuerdo" class="form-control" value="{{$acuerdos->DESCRIPCIONACUERDO}}" id="descripcionacuerdo">
+                  <label for="descripcionacuerdo">Descripción</label>
+                  <input class="form-control" name="descripcionacuerdo" class="form-control" required value="{{$acuerdos->DESCRIPCIONACUERDO}}" id="descripcionacuerdo">
             </div>
             <div class="form-group">
-                  <label for="estadoacuerdo">Estado:</label>
-                  <input type="textarea" name="estadoacuerdo" class="form-control" value="{{$acuerdos->ESTADOACUERDO}}" id="estadoacuerdo">
-            </div>
-            <div class="form-group">
-                  <label for="fechaacuerdo">Fecha:</label>
-                  <input class="form-control" name="fechaacuerdo" class="form-control" value="{{$acuerdos->FECHAACUERDO}}" id="fechaacuerdo">
+                  <label for="fechaacuerdo">Fecha</label>
+                  <input name="fechaacuerdo" class="tcal form-control" required value="{{$acuerdos->FECHAACUERDO}}" id="fechaacuerdo">
             </div>
             <div class="form-Sroup">
-                  <button class="btn btn-primary" type="submit" id="guardar">Guardar</button>
+                  <button class="btn btn-primary" type="submit">Guardar</button>
                   <button class="btn btn-danger" type="reset">Cancelar</button>
             </div>
       </div>
