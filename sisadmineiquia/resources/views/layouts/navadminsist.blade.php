@@ -27,10 +27,10 @@
         <a href="#" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-paperclip"></i> <span>Administrar Carga Academica</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul id="demo1" class="collapse">
             <li>
-                <a href="#"><i class="fa fa-plus"></i> Agregar Carga</a>
+                <a href="/admin/cargaacademica/create"><i class="fa fa-plus"></i> Agregar Carga</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-users"></i> Gestionar Carga</a>
+                <a href="/admin/cargaacademica"><i class="fa fa-users"></i> Gestionar Carga</a>
             </li>
         </ul>
     </li>

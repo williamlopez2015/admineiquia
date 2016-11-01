@@ -16,6 +16,7 @@
                 <!-- /.row -->
                 <div class="col-lg-12">
                 <label><a href="expedienteadministrativo/create" class="btn btn-primary btn-lg" role="button">Expediente Administrativo</a></label>
+                <label><a href="expedienteacademico/create" class="btn btn-primary btn-lg" role="button">Expediente Academico</a></label>
                 </div>
                 <div class="col-lg-12">
                 @include('mensajes.messages')
@@ -77,6 +78,7 @@
                                                     <!--<a href=""><button type="button" class="btn btn-sm btn-info">Ficha</button></a></td>-->
                                                     <a href="{{URL::action('EmpleadoController@perfilreport',$emp->idempleado)}}"><button class="btn btn-xs btn-success">Perfil</button></a>
                                                     <a href="{{URL::action('ExpedienteAdministrativoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-info">Expediente Administrativo</button></a>
+                                                    <a href="{{URL::action('ExpedienteAcademicoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-info">Expediente Academico</button></a>
                                                     </td>
                                                 </tr>
                                                 @include('admin.empleado.modal')

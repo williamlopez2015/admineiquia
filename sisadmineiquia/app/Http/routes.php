@@ -40,6 +40,14 @@ Route::group(['middleware' => ['auth','alltype']], function () {
       Route::resource('admin/expedienteadministrativo','ExpedienteAdministrativoController');
 });
 
+Route::group(['middleware' => ['auth','alltype']], function () {
+      Route::resource('admin/expedienteacademico','ExpedienteAcademicoController');
+});
+
+Route::group(['middleware' => ['auth','alltype']], function () {
+      Route::resource('admin/cargaacademica','AsignacionAcademicaController');
+});
+
 
 Route::auth();
 
