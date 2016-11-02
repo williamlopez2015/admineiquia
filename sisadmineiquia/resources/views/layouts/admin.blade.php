@@ -204,14 +204,17 @@
     <!-- Plugin jquery dataTables CJavaScript -->
     <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('js/dataTables.bootstrap.min.js')}}"></script>
+
     <script > $(document).ready(function(){
     $('#tablaempleado').DataTable();
     });
     </script>
+
     <script > $(document).ready(function(){
     $('#tablapuesto').DataTable();
     });
     </script>
+
     <script > $(document).ready(function(){
     $('#tablaexpadmin').DataTable();
     });
@@ -220,7 +223,7 @@
     $('#tablausers').DataTable();
     });
     </script>
-     <script > $(document).ready(function(){
+    <script > $(document).ready(function(){
     $('#tablaperfilpuesto').DataTable();
     });
     </script>
@@ -232,6 +235,10 @@
     $('#tablapermiso').DataTable();
     });
     </script>
+    <script > $(document).ready(function(){
+    $('#tablaacuerdos').DataTable();
+    });
+    </script>  
 
     <script > $(document).ready(function(){
     $('#horaentrada').timepicker({ 'timeFormat': 'h:i A',
@@ -256,7 +263,7 @@
      <!-- picker -->
      <script src="{{asset('js/jquery.timepicker.js')}}"></script>
      <script src="{{asset('js/jquery.timepicker.min.js')}}"></script>
-      
+    
 
     <script type="text/javascript" src="{{asset('js/validarJS.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/validarJQue.js')}}"></script>
