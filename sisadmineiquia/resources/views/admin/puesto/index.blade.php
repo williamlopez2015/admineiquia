@@ -1,33 +1,21 @@
 @extends ('layouts.admin')
 @section ('contenido')
 <div class="row">
-                    <div class="col-lg-12">
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-home"></i> <a href="/admin/puesto"> Gestionar Puesto</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-desktop"></i>
-                                Gestion General de los Puestos
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-                <!-- /.row -->
-                <div class="col-lg-12">
-                <label><a href="puesto/create" class="btn btn-primary btn-lg" role="button">Nuevo Puesto</a></label>
-                <!--
-                @include('admin.empleado.search')
-                -->
-                
-                @include('mensajes.messages')
-                 </div>
-                 
-                <!-- /.row -->
-
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <h2>Listado de Puesto</h2>
+   <div class="col-lg-12">
+       <ol class="breadcrumb">
+          <li><i class="fa fa-home"></i> <a href="/admin/puesto"> Gestionar Puesto</a></li>
+          <li class="active"><i class="fa fa-desktop"></i> Gestion General de los Puestos</li>
+       </ol>
+    </div>
+</div>
+               
+  <div class="col-lg-12">
+  	 <label><a href="puesto/create" class="btn btn-primary btn-lg" role="button">Nuevo Puesto</a></label>
+     @include('mensajes.messages')
+  </div>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <h2>Listado de Puesto</h2>
 	</div>
 </div>
 

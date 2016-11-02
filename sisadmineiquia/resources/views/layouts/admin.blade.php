@@ -27,6 +27,12 @@
     <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">
     <!-- <link href="{{asset('css/dataTables.bootstrap.min.css')}}" rel="stylesheet">-->
 
+    <!-- Select-->
+    <link href="{{asset('css/bootstrap-select.min.css')}}" rel="stylesheet">
+
+    <!-- Picker -->
+    <link href="{{asset('css/jquery.timepicker.css')}}" rel="stylesheet">
+
     
 
       <!-- Custom CSS -->
@@ -190,6 +196,7 @@
     <!-- jQuery -->
     <script type="text/javascript" src="{{asset('js/jquery-3.1.1.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
+    @stack('scripts')
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
@@ -217,7 +224,39 @@
     $('#tablaperfilpuesto').DataTable();
     });
     </script>
+    <script > $(document).ready(function(){
+    $('#tablaasistencia').DataTable();
+    });
+    </script>
+    <script > $(document).ready(function(){
+    $('#tablapermiso').DataTable();
+    });
+    </script>
 
+    <script > $(document).ready(function(){
+    $('#horaentrada').timepicker({ 'timeFormat': 'h:i A',
+    'minTime': '6:00am',
+    'maxTime': '8:00pm',    
+    'disableTimeRanges': [['12:01pm','1pm'],['8pm','7am']],
+    'step': 15 
+    }); });
+    </script>
+
+    <script > $(document).ready(function(){
+    $('#horasalida').timepicker({ 'timeFormat': 'h:i A',
+    'minTime': '6:00am',
+    'maxTime': '8:00pm',    
+    'disableTimeRanges': [['12:01pm','1pm'],['8pm','7am']],
+    'step': 15
+    }); });
+    </script>
+
+     <!-- select -->
+     <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
+     <!-- picker -->
+     <script src="{{asset('js/jquery.timepicker.js')}}"></script>
+     <script src="{{asset('js/jquery.timepicker.min.js')}}"></script>
+      
 
     <script type="text/javascript" src="{{asset('js/validarJS.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/validarJQue.js')}}"></script>

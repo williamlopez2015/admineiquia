@@ -1,7 +1,5 @@
 <?php
-
 namespace sisadmineiquia\Http\Requests;
-
 use sisadmineiquia\Http\Requests\Request;
 
 
@@ -16,7 +14,6 @@ class EmpleadoFormRequest extends Request
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -40,6 +37,7 @@ class EmpleadoFormRequest extends Request
         ];
     }
 
+
     public function messages()
     {
     	return ['primernombre.required' =>'El campo Primer Nombre es obligatorio',
@@ -47,4 +45,8 @@ class EmpleadoFormRequest extends Request
     			'segundopellido.required' =>'El campo Segundo Apellido es obligatorio',
     			'sexo.in'=>'Seleccione un Sexo Valido'];
  	}
+
 }
+
+}
+
