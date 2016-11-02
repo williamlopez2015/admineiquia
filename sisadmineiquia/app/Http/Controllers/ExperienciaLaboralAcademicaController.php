@@ -8,13 +8,11 @@ use sisadmineiquia\Http\Requests;
 
 use sisadmineiquia\Empleado;
 
-use sisadmineiquia\ExpedienteAdministrativo;
-
-use sisadmineiquia\Puesto;
+use sisadmineiquia\ExperienciaLaboralAcademica;
 
 use Illuminate\Support\Facades\Redirect;
 
-use sisadmineiquia\Http\Requests\ExpedienteAdministrativoFormRequest;
+use sisadmineiquia\Http\Requests\ExperienciaLaboralAcademicaFormRequest;
 
 use DB;
 
@@ -22,11 +20,9 @@ use Carbon\Carbon;
 
 use Session;
 
-
-class ExpedienteAdministrativoController extends Controller
+class ExperienciaLaboralAcademicaController extends Controller
 {
     //
-     //
     public function __construct(){
 
     }
@@ -34,14 +30,19 @@ class ExpedienteAdministrativoController extends Controller
     
 
     public function index(Request $request){
+    	/*$users = DB::table('users')
+            ->join('contacts', 'users.id', '=', 'contacts.user_id')
+            ->join('orders', 'users.id', '=', 'orders.user_id')
+            ->select('users.*', 'contacts.phone', 'orders.price')
+            ->get();*/
         
         if ($request)
         {
            
             //
-            $expedienteadmin=DB::table('expedienteadminist')->get();
+            $experiencia=DB::table('experiencialaboral')->join('expedienteacademic','experiencialaboral.idexpedienteacadem','=','expedienteacademic.idexpedienteacadem')->join('empleado', 'expedienteacademic.idempleado', '=', 'empleado.idempleado')->get();
             //var_dump($expedienteadmin);
-            return view('admin.expedienteadministrativo.index',["expedienteadministrativos"=>$expedienteadmin]);
+            return view('admin.experiencialaboralacademica.index',["experiencias"=>$experiencia]);
             
         }
     }
@@ -56,7 +57,7 @@ class ExpedienteAdministrativoController extends Controller
         $puesto = DB::table('puesto')->select('idpuesto','nombrepuesto')->get();
         //return view("admin.expedienteadministrativo.create",["empleados"=>$empleado,"puestos"=>$puesto]);
         
-        return view("admin.expedienteadministrativo.create",["empleados"=>$empleado,"puestos"=>$puesto]);
+        return view("admin.experiencialaboralacademica.create",["empleados"=>$empleado,"puestos"=>$puesto]);
     }
 
     public function store(ExpedienteAdministrativoFormRequest $request){

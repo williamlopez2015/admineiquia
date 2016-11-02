@@ -23,7 +23,7 @@
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         	<div class="form-group">
 				<label for="foto"> Foto Empleado </label>
-				<input type="file"  required class="form-control" name="foto"  >
+				<input type="file"  class="form-control" name="foto"  >
 			</div>
             <div class="form-group">
             	<label for="primernombre">Primer Nombre</label>
@@ -66,7 +66,7 @@
 			</div>
 			<div class="form-group">
 				<label>Numero de AFP</label>
-				<input class="form-control" name="afp" value="{{old('afp')}}" required class="form-control" placeholder="000000000000" id="nup" onkeyup="corregirNup();">
+				<input class="form-control" name="afp" value="{{old('afp')}}" required class="form-control" placeholder="000000" id="nup" onkeyup="corregirNup();">
 				<div id="mensaje8" class="errores">No. AFP invalido</div>
 			</div>
 			<div class="form-group">

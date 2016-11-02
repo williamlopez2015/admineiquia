@@ -63,7 +63,7 @@
 </header>
 <section>
 <div id="datospersonales">
-    <h2><b>DATOS PERSONALES<b></h2>
+    <h2><b>DatosPersonales<b></h2>
      @if($emp->sexo=='M')
     <h3><b><i>SEXO:</i></b><i>Masculino</i></h3>
     @else
@@ -89,9 +89,9 @@
     <h3><b><i>Fecha de Creacion:</i></b><i>{{$expadmin->fechaapertura}}</i></h3>
     <h3><b><i>Codigo de Contrato:</i></b><i>{{$expadmin->codigocontrato}}</i></h3>
     @if($expadmin->tiempointegral=='1')
-    <h3><b><i>TIEMPO INTEGRAL:</i></b><i>Si</i></h3>
+    <h3><b><i>TIEMPO INTEGRAL:</i></b><i>Si Posee</i></h3>
     @else
-    <h3><b><i>TIEMPO INTEGRAL:</i></b><i>No</i></h3>
+    <h3><b><i>TIEMPO INTEGRAL:</i></b><i>No Posee</i></h3>
     @endif
     <h3><b><i>DESCRIPCION:</i></b><i>{{$expadmin->descripcionadmin}}</i></h3>
 </div>

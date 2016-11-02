@@ -156,7 +156,7 @@
 			if(!/\d/.test(ultimoCaracter)) {
 				value = value.substring(0, longitudActual - 1);
 			}
-			if(longitudActual > 12) {
+			if(longitudActual > 6) {
 				value = value.substring(0, longitudActual - 1);
 			}
 			nup.value = value;
@@ -178,7 +178,7 @@
 
 	
 	function corregirCodCon(){
-		var value = codCon.value;
+		var value = codCon.value.toUpperCase();
 		var longitudActual = value.length;
 		if(longitudActual){
 			var ultimoCaracter = value.substring(longitudActual - 1);

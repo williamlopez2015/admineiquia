@@ -22,7 +22,7 @@
             {{Form::token()}}
             <div class="form-group">
 				<label for="foto"> Foto Empleado </label>
-				<input type="file" name="foto" required class="form-control">
+				<input type="file" name="foto" class="form-control">
 				@if(($empleado->foto)!=" ")
 					<img class="img-thumbnail" src="{{asset('fotos/empleados/'.$empleado->FOTO)}}" alt="{{$empleado->NOMBRECOMPLETO}}" height="110px" width="110px">
 				@endif
