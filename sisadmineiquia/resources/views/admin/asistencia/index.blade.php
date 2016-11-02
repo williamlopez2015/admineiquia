@@ -4,7 +4,7 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-home"></i> <a href="/admin/asistencia"> Gestionar asistencia</a>
+                                <i class="fa fa-home"></i> <a href="/admin/asistencia"> Gestionar Asistencia</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-desktop"></i>
@@ -15,7 +15,7 @@
                 </div>
                 <!-- /.row -->
                 <div class="col-lg-12">
-                <label><a href="asistencia/create" class="btn btn-primary btn-lg" role="button">Nueva Aistencia</a></label>
+                <label><a href="asistencia/create" class="btn btn-primary btn-lg" role="button">Nueva Asistencia</a></label>
                 <!--
                 @include('admin.empleado.search')
                 -->
