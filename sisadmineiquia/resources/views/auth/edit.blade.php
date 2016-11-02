@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-12">
 	<ol class="breadcrumb">
-		<li> <i class="fa fa-home"></i> <a href="home/"> Inicio</a>
+		<li> <i class="fa fa-home"></i> <a href="/"> Inicio</a>
 		</li>
  		<li class="active">
  		<i class="fa fa-desktop"></i> Actualizar Datos</li>
