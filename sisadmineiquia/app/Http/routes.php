@@ -31,6 +31,14 @@ Route::group(['middleware' =>  ['auth','admin']], function () {
   Route::resource('admin/perfilpuesto','PerfilPuestoController');
 });
 
+Route::group(['middleware' =>  ['auth','admin']], function () {
+  Route::resource('admin/asistencia','AsistenciaController');
+});
+
+Route::group(['middleware' =>  ['auth','admin']], function () {
+  Route::resource('admin/permiso','PermisoController');
+});
+
 Route::group(['middleware' => ['auth','alltype']], function () {
       Route::resource('admin/expedienteadministrativo','ExpedienteAdministrativoController');
 });
