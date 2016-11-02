@@ -138,7 +138,6 @@ class EmpleadoController extends Controller
         $pdf = PDF::loadView('admin.empleado.nomina',["empleados"=>$empleados]);
         $papel_tamaño = array(0,0,216,279);
         $pdf->setPaper("letter" ,'portrait');
-        $pdf::render();
         return $pdf->download('nomina.pdf');
 
     }

@@ -36,11 +36,11 @@ Route::group(['middleware' =>  ['auth','admin']], function () {
   Route::resource('admin/perfilpuesto','PerfilPuestoController');
 });
 
-Route::group(['middleware' =>  ['auth','admin']], function () {
+Route::group(['middleware' =>  ['auth','secret']], function () {
   Route::resource('admin/asistencia','AsistenciaController');
 });
 
-Route::group(['middleware' =>  ['auth','admin']], function () {
+Route::group(['middleware' =>  ['auth','alltype']], function () {
   Route::resource('admin/permiso','PermisoController');
 });
 
@@ -50,6 +50,13 @@ Route::group(['middleware' => ['auth','alltype']], function () {
 
 Route::group(['middleware' => ['auth','alltype']], function () {
       Route::resource('admin/experiencialaboralacademica','ExperienciaLaboralAcademicaController');
+});
+Route::group(['middleware' => ['auth','alltype']], function () {
+      Route::resource('admin/expedienteacademico','ExpedienteAcademicoController');
+});
+
+Route::group(['middleware' => ['auth','alltype']], function () {
+      Route::resource('admin/cargaacademica','AsignacionAcademicaController');
 });
 
 Route::auth();

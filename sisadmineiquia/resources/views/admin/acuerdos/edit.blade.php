@@ -15,19 +15,10 @@
             <h3>Editar Acuerdo Administrativo</h3>
       </div>
  </div>
+@include('mensajes.errores')
  <div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            
-            @if (count($errors)>0)
-                  <div class="alert alert-danger">
-                        <ul>
-                              @foreach ($errors->all() as $error)
-                                    <li>{{$error}}</li>
-                              @endforeach
-                        </ul>
-                  </div>
-            @endif
-
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      @include('mensajes.messages')
             {!!Form::model($acuerdos,['method'=>'PATCH','route'=>['admin.acuerdos.update',$acuerdos->IDACUERDO],'files'=>true])!!}
 
             {{Form::token()}}

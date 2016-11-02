@@ -46,14 +46,15 @@
 
         </ul>
     </li>
+
     <li>
-        <a href="#" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-paperclip"></i> Gestionar Permisos Expediente <i class="fa fa-angle-left pull-right"fa fa-angle-left pull-right></i></a>
+        <a href="#" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-paperclip"></i> Gestionar Permisos Expediente <i class="fa fa-angle-left pull-right"></i></a>
         <ul id="demo3" class="collapse">
             <li>
-                <a href="#"><i class="fa fa-plus"></i> Agregar Permiso</a>
+                <a href="admin/permiso/create"><i class="fa fa-plus"></i> Agregar Permiso</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-users"></i> Gestionar Permisos</a>
+                <a href="admin/permiso"><i class="fa fa-users"></i> Gestionar Permisos</a>
             </li>
         </ul>
     </li>
