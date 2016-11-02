@@ -13,26 +13,17 @@
     <div class="col-lg-12">
        <h3>Solicitud de Permiso</h3>
     </div>
-    
-      @if (count($errors)>0)
-         <div class="alert alert-danger">
-           <ul>
-           @foreach ($errors->all() as $error)
-             <li>{{$error}}</li>
-           @endforeach
-           </ul>
-         </div>
-      @endif
-     
-      @include('mensajes.messages')
  </div>
-
+  @include('mensajes.errores')
+<div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+         @include('mensajes.messages')
+      </div>
+</div>
   @foreach ($permiso as $per)         
   @endforeach
   {!!Form::model($permiso,['method'=>'PATCH','route'=>['admin.permiso.update',$per->idpermiso]])!!}
-  {{Form::token()}}
-
-          
+  {{Form::token()}}          
   <div class="row col-xs-10">
     <div class="panel panel-primary">
       <div class="panel-body">
