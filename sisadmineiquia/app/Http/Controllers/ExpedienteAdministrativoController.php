@@ -34,12 +34,16 @@ class ExpedienteAdministrativoController extends Controller
     
 
     public function index(Request $request){
+        /*$users = DB::table('users')
+            ->join('contacts', 'users.id', '=', 'contacts.user_id')
+            ->join('orders', 'users.id', '=', 'orders.user_id')
+            ->select('users.*', 'contacts.phone', 'orders.price')
+            ->get();*/
         
         if ($request)
         {
-           
-            //
-            $expedienteadmin=DB::table('expedienteadminist')->get();
+                       //
+            $expedienteadmin=DB::table('expedienteadminist')->select( DB::raw("expedienteadminist.idexpediente,expedienteadminist.fechaapertura,expedienteadminist.fechaapertura,expedienteadminist.idpuesto,expedienteadminist.tiempointegral,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.dui,empleado.nit,empleado.estado,empleado.foto,puesto.idpuesto,puesto.nombrepuesto"))->join('empleado', 'expedienteadminist.idempleado', '=', 'empleado.idempleado')->join('puesto', 'expedienteadminist.idpuesto', '=', 'puesto.idpuesto')->get();
             //var_dump($expedienteadmin);
             return view('admin.expedienteadministrativo.index',["expedienteadministrativos"=>$expedienteadmin]);
             
@@ -89,7 +93,7 @@ class ExpedienteAdministrativoController extends Controller
                     $expedienteadministrativo->descripcionadmin=$request->get('descripcionadmin');
                     $expedienteadministrativo->save();
                     Session::flash('store','El Expediente creado correctamente!!!');
-                    return Redirect::to('admin/empleado');
+                    return Redirect::to('admin/expedienteadministrativo');
                 }
         }
         return Redirect::to('admin/expedienteadministrativo/create');

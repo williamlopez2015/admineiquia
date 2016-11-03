@@ -15,7 +15,7 @@
                 </div>
                 <!-- /.row -->
                 <div class="col-lg-12">
-                <label><a href="expedienteadministrativo/create" class="btn btn-primary btn-lg" role="button">Expediente Administrativo</a></label>
+                <label><a href="expedienteadministrativo/create" class="btn btn-primary btn-lg" role="button">Nuevo Expediente Administrativo</a></label>
                 <!--
                 @include('admin.empleado.search')-->
                 @include('mensajes.messages')
@@ -30,6 +30,7 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
+                                        <th>Empleado</th>
                                         <th>Fecha Apertura</th>
                                         <th>Puesto</th>
                                         <th>Tiempo Integral</th>
@@ -39,12 +40,13 @@
                                 <tbody>
                                  @foreach ($expedienteadministrativos as $exp)
                                     <tr>
-                                    	<td>{{ $exp->IDEXPEDIENTE}}</td>
-                                        <td>{{ $exp->FECHAAPERTURA}}</td>
-                                        <td>{{ $exp->IDPUESTO}}</td>
-                                        <td>{{ $exp->TIEMPOINTEGRAL}}</td>
+                                    	<td>{{ $exp->idexpediente}}</td>
+                                        <td>{{ $exp->nombrecompleto}}</td>
+                                        <td>{{ $exp->fechaapertura}}</td>
+                                        <td>{{ $exp->nombrepuesto}}</td>
+                                        <td>{{ $exp->tiempointegral}}</td>
                                         <td>
-                                        <a href="{{URL::action('ExpedienteAdministrativoController@edit',$exp->IDEXPEDIENTE)}}"><button type="button" class="btn btn-sm btn-primary">Editar Expediente Administrativo</button></a>
+                                        <a href="{{URL::action('ExpedienteAdministrativoController@edit',$exp->idempleado)}}"><button type="button" class="btn btn-xs btn-info">Editar Expediente Administrativo</button></a>
                                         </td>
                                     </tr>
                                 @endforeach 

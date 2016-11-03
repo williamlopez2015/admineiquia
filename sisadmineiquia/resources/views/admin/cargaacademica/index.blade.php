@@ -21,7 +21,7 @@
                 @include('admin.empleado.search')-->
                 @include('mensajes.messages')
  
-                 
+
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -31,22 +31,29 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
+                                        <th>Empleado</th>
+                                        <th>Codigo Asignatura</th>
                                         <th>Nombre Asignatura</th>
-                                        <th>AÑO</th>
-                                        <th>OPCIONES</th>
-                                
+                                        <th>Ciclo</th>
+                                        <th>Año</th>
+                                        <th>Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                  @foreach ($cargaacademicas as $cargaacad)
                                     <tr>
-                                    	<td>{{ $cargaacad->IDASIGNACIONACAD}}</td>
-                                        <td>{{ $cargaacad->NOMBREASIGNATURA}}</td>
-                                        <td>{{ $cargaacad->ANO}}</td>
+                                        <td>{{ $cargaacad->idasignacionacad}}</td>
+                                        <td>{{ $cargaacad->nombrecompleto}}</td>
+                                    	<td>{{ $cargaacad->codasignatura}}</td>
+                                        <td>{{ $cargaacad->nombreasignatura}}</td>
+                                        <td>{{ $cargaacad->idciclo}}</td>
+                                        <td>{{ $cargaacad->ano}}</td>
                                         <td>
-                                     <a href="{{URL::action('AsignacionAcademicaController@edit',$cargaacad->IDASIGNACIONACAD)}}"><button type="button" class="btn btn-sm btn-primary">Editar Carga Academica</button></a>
+                                         <a href="{{URL::action('AsignacionAcademicaController@edit',$cargaacad->idasignacionacad)}}"><button type="button" class="btn btn-xs btn-primary">Editar Carga Academica</button></a>
+                                         <a href="" data-target="#modal-delete-{{$cargaacad->idasignacionacad}}" data-toggle="modal"><button class="btn btn-xs btn-danger">Eliminar</button></a>
                                         </td>
                                     </tr>
+                                    @include('admin.cargaacademica.modal')
                                 @endforeach 
                                 </tbody>
                             </table>

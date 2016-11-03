@@ -8,8 +8,8 @@ class CargaAcademica extends Model
 {
     //
     protected $table='asignacionacademic';
-    protected $primaryKey='idexpedienteacadem';
+    protected $primaryKey='idasignacionacad';
     public $timestamps=false;
 
-    protected $fillable=['idciclo','ano','codasignatura','nombreasignatura','gteorico','gdiscusion','glaboratorio','tiempototal','responsabilidadadmin'];
+    protected $fillable=['idexpedienteacadem','idciclo','ano','codasignatura','nombreasignatura','gteorico','gdiscusion','glaboratorio','tiempototal','responsabilidadadmin'];
 }

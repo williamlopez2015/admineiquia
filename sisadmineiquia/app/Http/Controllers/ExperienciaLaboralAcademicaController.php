@@ -101,12 +101,13 @@ class ExperienciaLaboralAcademicaController extends Controller
     }
 
     public function edit($id){
+        /*****/
         $query=trim($id);
 
             $empleado=Empleado::find($query);
             //var_dump($empleado);
-            $expadmin  = DB::table('expedienteadminist')->select('idempleado')->where('idempleado','=',$query)->get();
-            if ($expadmin){
+            $expacad  = DB::table('expedienteadminist')->select('idempleado')->where('idempleado','=',$query)->get();
+            if ($expacad){
                 
                 /*$users = DB::table('users')
                      ->select(DB::raw('count(*) as user_count, status'))

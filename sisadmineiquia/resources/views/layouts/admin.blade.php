@@ -238,7 +238,11 @@
     <script > $(document).ready(function(){
     $('#tablaacuerdos').DataTable();
     });
-    </script>  
+    </script>
+    <script > $(document).ready(function(){
+    $('#tablaexpacad ').DataTable();
+    });
+    </script>
 
     <script > $(document).ready(function(){
     $('#horaentrada').timepicker({ 'timeFormat': 'h:i A',

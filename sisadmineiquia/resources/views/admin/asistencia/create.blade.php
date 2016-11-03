@@ -19,7 +19,6 @@
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
       @include('mensajes.messages')
     </div>
-
  {!!Form::open(array('url'=>'admin/asistencia','method'=>'POST','autocomplete'=>'off'))!!}
     {{Form::token()}}
 

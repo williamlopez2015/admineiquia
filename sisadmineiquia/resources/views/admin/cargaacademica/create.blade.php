@@ -45,10 +45,16 @@
 
 			<div class="form-group">
             	<label for="anocarga">Año</label>
-            	<input type="text" name="anocarga" value="{{old('anocarga')}}" class="form-control" placeholder="Año de carga..." id="anocarga">
-            	<div id="mensaje1" class="errores">Año Invalido</div>
+              <select name="anocarga" class="form-control" id="anocarga">
+                @for($i=date('o'); $i>=1910; $i--)
+                @if ($i == date('o'))
+                <option value="{{$i}}" selected>{{$i}}</option>
+                @else
+                <option value="{{$i}}">{{$i}}</option>
+                @endif
+                @endfor
+                </select>
             </div>
-
             <div class="form-group">
             	<label for="codigoasignatura">Codigo Asignatura</label>
             	<input type="text" name="codigoasignatura" value="{{old('codigoasignatura')}}" class="form-control" placeholder="Codigo Asignatura..." id="codigoasignatura" >
@@ -103,8 +109,6 @@
             </div>
 
 		</div>
-
-		
                     {!!Form::close()!!}		
 
 </div>
