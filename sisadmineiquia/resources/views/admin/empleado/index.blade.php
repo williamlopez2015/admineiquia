@@ -78,7 +78,6 @@
                                                     <a href="" data-target="#modal-delete-{{$emp->idempleado}}" data-toggle="modal"><button  class="btn btn-xs btn-danger">Cambiar</button></a>
                                                     <a href="{{URL::action('EmpleadoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-primary">Editar</button></a>
                                                     <a href="{{URL::action('EmpleadoController@perfilreport',$emp->idempleado)}}"><button class="btn btn-xs btn-success">Perfil</button></a>
-                                                    <a href="{{URL::action('ExpedienteAcademicoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-info">Expediente Academico</button></a>
                                                     </td>
                                                 </tr>
                                                 @include('admin.empleado.modal')
