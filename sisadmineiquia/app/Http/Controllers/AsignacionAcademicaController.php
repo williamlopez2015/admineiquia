@@ -29,7 +29,7 @@ class AsignacionAcademicaController extends Controller
     public function __construct(){ }
 
 
-public function index(Request $request){
+    public function index(Request $request){
         
         if ($request)
         {
@@ -88,11 +88,11 @@ public function index(Request $request){
     }
 
     public function edit($id)
-    {   
-       $ciclos = DB::table('ciclo')->select('idciclo','nombreciclo')->get();
-       $empleados = DB::table('empleado')->select('idempleado','primernombre','segundonombre','primerapellido','segundoapellido')->get();
-        //dd($empleados);
-        return view("admin.cargaacademica.edit",["cargaacademica"=>CargaAcademica::findOrFail($id),"empleados"=>$empleados,"ciclos"=>$ciclos]);    
+    { 
+     
+
+        return view("admin.cargaacademica.edit",["cargaacademica"=>CargaAcademica::findOrFail($id)]);
+
 
     }//Fin del EDIT
 
@@ -113,8 +113,4 @@ public function index(Request $request){
                          Session::flash('update','La carga fue actualizada correctamente!!!');
                          return Redirect::to('admin/cargaacademica');
                 }// END UPDATE
-    
-
-
-    
 } //Llave Final
