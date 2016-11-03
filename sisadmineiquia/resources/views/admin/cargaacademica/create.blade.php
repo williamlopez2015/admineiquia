@@ -32,7 +32,7 @@
                    @endforeach
                   </select>  
                   <div id="mensajeEmp" class="errores">No se ha seleccionado un empleado</div>      
-      </div>  
+          </div>  
 	           <div class="form-group">
                   <label>Nombre de Ciclo</label>
                   <select name="idciclo" class="form-control" id="idciclo">

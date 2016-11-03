@@ -243,6 +243,10 @@
     $('#tablaexpacad ').DataTable();
     });
     </script>
+    <script > $(document).ready(function(){
+    $('#tablaexplabacad ').DataTable();
+    });
+    </script>
 
     <script > $(document).ready(function(){
     $('#horaentrada').timepicker({ 'timeFormat': 'h:i A',
