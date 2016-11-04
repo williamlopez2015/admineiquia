@@ -39,8 +39,7 @@ class TiempoAdicionalController extends Controller
     public function create()
     {
      
-     $raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto");
-     $empleado  = Empleado::select($raw)->get();
+     $empleado  = DB::table('empleado')->Select( DB::raw("expedienteadminist.idexpediente,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto"))->join('expedienteadminist', 'empleado.idempleado', '=', 'expedienteadminist.idempleado')->get();
 
      $ciclo=Ciclo::all();
         
@@ -61,6 +60,7 @@ class TiempoAdicionalController extends Controller
             if ($expadmin){
                 $tiempo=new Tiempo;
                 $tiempo->idexpediente=$expadmin[0]->idexpediente;
+                $tiempo->ano=$request->get('ano');
                 $tiempo->idciclo=$request->get('idciclo');
                 $tiempo->fechainicio=$request->get('tiempoadicionalinicio');
                 $tiempo->fechafin=$request->get('tiempoadicionalfin');

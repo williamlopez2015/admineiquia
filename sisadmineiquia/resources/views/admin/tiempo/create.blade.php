@@ -30,8 +30,20 @@
                   </select>       
             </div>
             <div class="form-group">
+              <label for="ano">Año</label>
+              <select name="ano" class="form-control" required id="ano">
+                @for($i=date('o'); $i>=1910; $i--)
+                @if ($i == date('o'))
+                <option value="{{$i}}" selected>{{$i}}</option>
+                @else
+                <option value="{{$i}}">{{$i}}</option>
+                @endif
+                @endfor
+                </select>
+            </div>
+            <div class="form-group">
                   <label>Codigo Ciclo</label>
-                  <select name="idciclo" class="form-control" id="idciclo">
+                  <select name="idciclo" class="form-control" required id="idciclo">
                    @foreach ($ciclos as $c)
                          <option value="{{$c->IDCICLO}}">{{$c->NOMBRECICLO}}</option>
                    @endforeach
@@ -39,11 +51,11 @@
             </div>
             <div class="form-group">
                 <label>Tiempo Adicional Inicio:</label>
-                <input  type="text" name="tiempoadicionalinicio" id="tiempoadicionalinicio" class="tcal form-control" value="{{old('tiempoadicionalinicio')}}" placeholder="00/00/0000" id="tiempoadicionalinicio">
+                <input  type="text" name="tiempoadicionalinicio" id="tiempoadicionalinicio" class="tcal form-control" required  value="{{old('tiempoadicionalinicio')}}" placeholder="00/00/0000" id="tiempoadicionalinicio">
             </div>
             <div class="form-group">
                 <label>Tiempo Adicional Fin:</label>
-                <input type='text' name="tiempoadicionalfin" id="tiempoadicionalfin" class="tcal form-control" value="{{old('tiempoadicionalfin')}}" placeholder="00/00/0000" id="tiempoadicionalfin"/>
+                <input type='text' name="tiempoadicionalfin" id="tiempoadicionalfin" class="tcal form-control" required value="{{old('tiempoadicionalfin')}}" placeholder="00/00/0000" id="tiempoadicionalfin"/>
             </div>
                     
             <div class="form-group">

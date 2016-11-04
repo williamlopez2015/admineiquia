@@ -47,6 +47,8 @@
                                         <td>{{ $exp->tiempointegral}}</td>
                                         <td>
                                         <a href="{{URL::action('ExpedienteAdministrativoController@edit',$exp->idempleado)}}"><button type="button" class="btn btn-xs btn-info">Editar Expediente Administrativo</button></a>
+                                        <a href="{{URL::action('ExpedienteAdministrativoController@show',$exp->idexpediente)}}"><button class="btn btn-xs btn-success">Detalle</button></a>
+                                        <a href="{{URL::action('EmpleadoController@perfilreport',$exp->idempleado)}}"><button class="btn btn-xs btn-success">Perfil</button></a>
                                         </td>
                                     </tr>
                                 @endforeach 
