@@ -87,7 +87,20 @@ public function index(Request $request){
     }
 
     public function show($id){
-        return view("admin.empleado.show",["empleado"=>Empleado::findOrFail($id)]);
+        $expedienteacad=DB::table('expedienteacademic')->Select( DB::raw("expedienteacademic.idexpedienteacadem,expedienteacademic.fechaaperturaexpacad,expedienteacademic.nombreinstitucion,expedienteacademic.tituloobtenido,tituloestudio,expedienteacademic.direccioninstitucion,expedienteacademic.descripcionacademica,
+        empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.estado,empleado.foto"))
+        ->join('empleado', 'expedienteacademic.idempleado', '=', 'empleado.idempleado')
+        ->where('idexpedienteacadem','=',$id)->get();
+
+        $queryexplabacad = DB::raw("idexplabacademica,descripcionexplab,nombreinstitucionexplabacad,fechainicioexplabacad,fechafinalizacionexplabacad");
+        $explabacad=DB::table('experiencialaboral')->select($queryexplabacad)
+        ->where('idexpedienteacadem', '=',$id)->get();
+
+        $queryasignacion = DB::raw("idasignacionacad,idciclo,ano,codasignatura,nombreasignatura,gteorico,gdiscusion,glaboratorio,tiempototal,responsabilidadadmin");
+        $asignacion=DB::table('asignacionacademic')->select($queryasignacion)
+        ->where('idexpedienteacadem', '=',$id)->orderBy('ano', 'desc')->orderBy('idciclo', 'desc')->get();;
+
+        return view("admin.expedienteacademico.show",["expedienteacademico"=>$expedienteacad,"experiencialaboral"=>$explabacad,"asignacionacademica"=>$asignacion]);
     }
 
 

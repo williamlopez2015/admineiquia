@@ -41,7 +41,8 @@
                                         <td>{{ $expacad->fechaaperturaexpacad}}</td>
                                         <td>{{ $expacad->tituloobtenido}}</td>
                                         <td>
-                                        <a href="{{URL::action('ExpedienteAcademicoController@edit',$expacad->idempleado)}}"><button type="button" class="btn btn-xs btn-info">Editar Expediente Academico</button></a>                            
+                                        <a href="{{URL::action('ExpedienteAcademicoController@edit',$expacad->idempleado)}}"><button type="button" class="btn btn-xs btn-info">Editar Expediente Academico</button></a>
+                                        <a href="{{URL::action('ExpedienteAcademicoController@show',$expacad->idexpedienteacadem)}}"><button type="button" class="btn btn-xs btn-success">Detalle</button></a>
                                         </td>
                                     </tr>
                                 @endforeach 

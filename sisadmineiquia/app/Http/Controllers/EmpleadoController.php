@@ -85,7 +85,10 @@ class EmpleadoController extends Controller
    
     public function show($id){
         $empleado = DB::table('empleado')->select(DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto,isss,afp,sexo"))->where('idempleado', '=', $id)->get();
-    	return view("admin.empleado.show",["empleado"=>$empleado]);
+
+
+        $expadmin=DB::table('expedienteadminist')->select(DB::raw("idexpediente,idempleado,idpuesto,fechaapertura,codigocontrato,tiempointegral,descripcionadmin"))->where('idempleado', '=', $id)->get();
+    	return view("admin.empleado.show",["empleado"=>$empleado,"expedienteadministrativo"=>$expadmin]);
     }
 
     public function perfilreport($id){

@@ -114,6 +114,7 @@
                         </div>   
                     </div>
                 </div>
+                @if(count($acuerdos)!=0)
                 <div class="page-header">
                 	<h1>Acuerdos Asociados</h1>
                 </div>
@@ -148,6 +149,8 @@
             	</div>
         		</div> 
         		</div>
+                @endif
+                @if(count($tiempo)!=0)
         		<div class="page-header">
                 	<h1>Tiempo Adicional Asociados</h1>
                 </div>
@@ -178,5 +181,6 @@
                 </table>
             	</div>
         		</div> 
-        		</div>                  
+        		</div>
+                @endif                  
 @endsection
