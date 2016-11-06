@@ -27,6 +27,7 @@
                                         <th>Nombre</th>
                                         <th>Sexo</th>
                                         <th>Fecha Apertura</th>
+                                        <th>Modalidad Contratacion</th>
                                         <th>Estado</th>
                                     </tr>
                                 </thead>
@@ -38,6 +39,7 @@
                                         <td>{{ $exp->nombrecompleto}}</td>
                                         <td>{{ $exp->sexo}}</td>
                                         <td>{{ $exp->fechaapertura}}</td>
+                                        <td>{{ $exp->modalidadcontratacion}}</td>
                                        	@if($exp->estado=='1')
                                         <td>Activo</td>
                                         @else
@@ -50,7 +52,7 @@
                     </div>
                 </div>
                 <div class="page-header">
-                	<h1>Documentos</h1>
+                	<h3>Documentos</h3>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -79,7 +81,7 @@
                     </div>
                 </div>
                 <div class="page-header">
-                	<h1>Datos Expediente</h1>
+                	<h3>Datos Expediente</h3>
                 </div>    
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -92,6 +94,7 @@
                                         <th>Tiempo Integral</th>
                                         <th>Descripcion Exp.</th>
                                         <th>Puesto</th>
+                                        <th>Salario del Puesto</th>
                                         <th>Departamento</th>
                                     </tr>
                                 </thead>
@@ -106,6 +109,7 @@
                                         @endif
                                         <td>{{ $exp->descripcionadmin}}</td>
                                         <td>{{ $exp->nombrepuesto}}</td>
+                                        <td>{{ $exp->salariopuesto}}</td>
                                         <td>{{ $exp->nombredepartamento}}</td>
                                     </tr>
                                 @endforeach 
@@ -116,7 +120,7 @@
                 </div>
                 @if(count($acuerdos)!=0)
                 <div class="page-header">
-                	<h1>Acuerdos Asociados</h1>
+                	<h3>Acuerdos Asociados</h3>
                 </div>
                 <div class="row">
         		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
