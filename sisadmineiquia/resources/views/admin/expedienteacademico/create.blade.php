@@ -1,11 +1,10 @@
 @extends('layouts.admin')
 @section('contenido')
 <div class="row">
-<div class="row">
-	<div class="col-lg-12">
-	<ol class="breadcrumb">
-		<li> <i class="fa fa-home"></i> <a href="/admin/empleado">Administrar Empleados</a>
-		</li>
+    <div class="col-lg-12">
+    <ol class="breadcrumb">
+        <li> <i class="fa fa-home"></i> <a href="/admin/expedienteacademico">Administrar Expediente Academico</a>
+        </li>
  		<li class="active">
  		<i class="fa fa-desktop"></i> Nuevo Expediente Academico</li>
     </ol>
@@ -64,7 +63,7 @@
             </div>
 
         <div class="form-group">
-            	<label for="tituloestudio">Titulo Estudio</label>
+            	<label for="tituloestudio">Maestria</label>
             	<input type="text" name="tituloestudio" value="{{old('tituloestudio')}}" class="form-control" placeholder="Titulo Estudio..." id="tituloestudio" onkeyup="tituloestudio();">
             	<div id="mensaje1" class="errores">Nombre invalido</div>
             </div>

@@ -1,10 +1,9 @@
 @extends('layouts.admin')
 @section('contenido')
 <div class="row">
-<div class="row">
 	<div class="col-lg-12">
 	<ol class="breadcrumb">
-		<li> <i class="fa fa-home"></i> <a href="/admin/empleado">Administrar Empleados</a>
+		<li> <i class="fa fa-home"></i> <a href="/admin/expedienteacademico">Administrar Expediente Academico</a>
 		</li>
  		<li class="active">
  		<i class="fa fa-desktop"></i> Editar Expediente Academico
@@ -29,13 +28,13 @@
             {{Form::token()}}
            <div class="form-group">
 				<label>Fecha Apertura Expediente Academico</label>
-				<input  type="text" name="fechaaperturaexpacad" class="tcal form-control" placeholder="00/00/0000" id="fechaaperturaexpacad">
+				<input  type="text" name="fechaaperturaexpacad" value="{{$expedienteacademico->FECHAAPERTURAEXPACAD}}" class="tcal form-control" required placeholder="00/00/0000" id="fechaaperturaexpacad">
 				<div id="mensajeFechaAper" class="errores">Fecha invalida</div> 
 			</div>
 			
 			<div class="form-group">
                   <label>Empleado</label>
-                  <select name="idempleado" class="form-control" id="idempleados">
+                  <select name="idempleado" required class="form-control" id="idempleados">
                    @foreach ($empleados as $emp)
                          <option value="{{$emp->idempleado}}">{{$emp->nombrecompleto}}</option>
                    @endforeach
@@ -45,13 +44,13 @@
 
 			<div class="form-group">
             	<label for="nombreinstitucion">Nombre Institucion</label>
-            	<input type="text" name="nombreinstitucion" value="{{old('nombreinstitucion')}}" class="form-control" placeholder="Nombre Institucion..." id="nombreinstitucion" >
+            	<input type="text" name="nombreinstitucion" value="{{$expedienteacademico->NOMBREINSTITUCION}}" required class="form-control" placeholder="Nombre Institucion..." id="nombreinstitucion" >
             	<div id="mensaje1" class="errores">Nombre invalido</div>
             </div>
 
             <div class="form-group">
 				<label>Año de Titulacion</label>
-				<input  type="text" name="anotitulacion" class="tcal form-control" placeholder="00/00/0000" id="anotitulacion" >
+				<input  type="text" name="anotitulacion" required class="tcal form-control" value="{{$expedienteacademico->ANOTITULACION}}" placeholder="00/00/0000" id="anotitulacion" >
 				<div id="mensajeFechaAper" class="errores">Fecha invalida</div> 
 			</div>
 			<div class="container">
@@ -64,25 +63,25 @@
 
 		<div class="form-group">
             	<label for="tituloobtenido">Titulo Obtenido</label>
-            	<input type="text" name="tituloobtenido" value="{{old('tituloobtenido')}}" class="form-control" placeholder="Titulo Obtenido..." id="tituloobtenido" >
+            	<input type="text" name="tituloobtenido" value="{{$expedienteacademico->TITULOOBTENIDO}}" required class="form-control" placeholder="Titulo Obtenido..." id="tituloobtenido" >
             	<div id="mensaje1" class="errores">Nombre invalido</div>
             </div>
 
         <div class="form-group">
             	<label for="tituloestudio">Titulo Estudio</label>
-            	<input type="text" name="tituloestudio" value="{{old('tituloestudio')}}" class="form-control" placeholder="Titulo Estudio..." id="tituloestudio" >
+            	<input type="text" name="tituloestudio" value="{{$expedienteacademico->TITULOESTUDIO}}" required  class="form-control" placeholder="Titulo Estudio..." id="tituloestudio" >
             	<div id="mensaje1" class="errores">Nombre invalido</div>
             </div>
 
             <div class="form-group">
             	<label for="direccioninstitucion">Direccion Institucion </label>
-            	<input type="text" name="direccioninstitucion" value="{{old('direccioninstitucion')}}" class="form-control" placeholder="Direccion Institucion..." id="direccioninstitucion" >
+            	<input type="text" name="direccioninstitucion" value="{{$expedienteacademico->DIRECCIONINSTITUCION}}" required class="form-control" placeholder="Direccion Institucion..." id="direccioninstitucion" >
             	<div id="mensaje1" class="errores">Direccion invalida</div>
             </div>
 
             <div class="form-group">
                 <label>Descripcion Academica</label>
-                <textarea  name="descripcionacademica" id="descripcionacademica" class="form-control"  rows="3" placeholder="Descripcion Academica">{{old('descripcionacademica')}}</textarea>
+                <textarea  name="descripcionacademica" id="descripcionacademica" required  class="form-control"  rows="3" placeholder="Descripcion Academica">{{$expedienteacademico->DESCRIPCIONACADEMICA}}</textarea>
             </div>
 
             <div class="form-group" align=right>

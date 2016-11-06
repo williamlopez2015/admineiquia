@@ -204,6 +204,7 @@
     <!-- Plugin jquery dataTables CJavaScript -->
     <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('js/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/stacktable.min.js')}}"></script>
 
     <script > $(document).ready(function(){
     $('#tablaempleado').DataTable();
@@ -238,7 +239,21 @@
     <script > $(document).ready(function(){
     $('#tablaacuerdos').DataTable();
     });
-    </script>  
+    </script>
+    <script > $(document).ready(function(){
+    $('#tablaexpacad ').DataTable();
+    });
+    </script>
+    <script > $(document).ready(function(){
+    $('#tablaexplabacad ').DataTable();
+    });
+    </script>
+    //
+    <script type=”text/javascript”> $(document).ready(function() {
+    $('#tablaexpadmi').stacktable();
+    });
+    </script>
+
 
     <script > $(document).ready(function(){
     $('#horaentrada').timepicker({ 'timeFormat': 'h:i A',

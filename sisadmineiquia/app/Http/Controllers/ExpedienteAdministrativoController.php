@@ -10,7 +10,11 @@ use sisadmineiquia\Empleado;
 
 use sisadmineiquia\ExpedienteAdministrativo;
 
+use sisadmineiquia\Acuerdos;
+
 use sisadmineiquia\Puesto;
+
+use sisadmineiquia\Tiempo;
 
 use Illuminate\Support\Facades\Redirect;
 
@@ -34,12 +38,16 @@ class ExpedienteAdministrativoController extends Controller
     
 
     public function index(Request $request){
+        /*$users = DB::table('users')
+            ->join('contacts', 'users.id', '=', 'contacts.user_id')
+            ->join('orders', 'users.id', '=', 'orders.user_id')
+            ->select('users.*', 'contacts.phone', 'orders.price')
+            ->get();*/
         
         if ($request)
         {
-           
-            //
-            $expedienteadmin=DB::table('expedienteadminist')->get();
+                       //
+            $expedienteadmin=DB::table('expedienteadminist')->select( DB::raw("expedienteadminist.idexpediente,expedienteadminist.fechaapertura,expedienteadminist.fechaapertura,expedienteadminist.idpuesto,expedienteadminist.tiempointegral,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.dui,empleado.nit,empleado.estado,empleado.foto,puesto.idpuesto,puesto.nombrepuesto"))->join('empleado', 'expedienteadminist.idempleado', '=', 'empleado.idempleado')->join('puesto', 'expedienteadminist.idpuesto', '=', 'puesto.idpuesto')->get();
             //var_dump($expedienteadmin);
             return view('admin.expedienteadministrativo.index',["expedienteadministrativos"=>$expedienteadmin]);
             
@@ -89,14 +97,32 @@ class ExpedienteAdministrativoController extends Controller
                     $expedienteadministrativo->descripcionadmin=$request->get('descripcionadmin');
                     $expedienteadministrativo->save();
                     Session::flash('store','El Expediente creado correctamente!!!');
-                    return Redirect::to('admin/empleado');
+                    return Redirect::to('admin/expedienteadministrativo');
                 }
         }
         return Redirect::to('admin/expedienteadministrativo/create');
 
     }
     public function show($id){
-        return view("admin.empleado.show",["empleado"=>Empleado::findOrFail($id)]);
+        $expedienteadmin=DB::table('expedienteadminist')
+        ->select( 
+            DB::raw("expedienteadminist.idexpediente,expedienteadminist.fechaapertura,expedienteadminist.codigocontrato,expedienteadminist.idpuesto,expedienteadminist.tiempointegral,expedienteadminist.descripcionadmin,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.dui,empleado.nit,empleado.isss,empleado.afp,empleado.estado,empleado.foto,empleado.sexo,puesto.idpuesto,puesto.nombrepuesto,departamento.iddepartamento,departamento.nombredepartamento,departamento.descripciondeparta"))
+        ->join('empleado', 'expedienteadminist.idempleado', '=', 'empleado.idempleado')
+        ->join('puesto', 'expedienteadminist.idpuesto', '=', 'puesto.idpuesto')
+        ->join('departamento', 'puesto.iddepartamento', '=', 'departamento.iddepartamento')
+        ->where('idexpediente','=',$id)->get();
+
+        $queryacuerdos = DB::raw("idacuerdo,motivoacuerdo,estadoacuerdo,fechaacuerdo,archivoacuerdo");
+        $acuerdos=DB::table('acuerdoadministrat')->select($queryacuerdos)
+        ->where('idexpediente', '=',$id)->get();
+        $queryacuerdos = DB::raw("idacuerdo,motivoacuerdo,estadoacuerdo,fechaacuerdo,archivoacuerdo");
+        $acuerdos=DB::table('acuerdoadministrat')->select($queryacuerdos)
+        ->where('idexpediente', '=',$id)->get();
+        $querytiempoadicional = DB::raw("idtiempo,idexpediente,idciclo,fechainicio,fechafin,descripcion,ano");
+        $tiempoadicional=DB::table('tiempoadicional')->select($querytiempoadicional)
+        ->where('idexpediente', '=',$id)->orderBy('ano', 'desc')->orderBy('idciclo', 'desc')->get();
+        //dd($acuerdos);
+        return view('admin.expedienteadministrativo.show',["expedienteadministrativos"=>$expedienteadmin,"acuerdos"=>$acuerdos,"tiempo"=>$tiempoadicional]);
     }
 
     public function edit($id){
@@ -144,4 +170,5 @@ class ExpedienteAdministrativoController extends Controller
                     }
     
     }
+
 }

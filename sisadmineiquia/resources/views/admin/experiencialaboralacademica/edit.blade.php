@@ -25,20 +25,29 @@
             {!!Form::model($experiencialaboralacademica,['method'=>'PATCH','route'=>['admin.experiencialaboralacademica.update',$experiencialaboralacademica->IDEXPLABACADEMICA]])!!}
             {{Form::token()}}
             <div class="form-group">
+                  <label>Empleado</label>
+                  <select name="idexpedienteacadem" class="form-control" id="idexpedienteacadem">
+                   @foreach ($empleados as $emp)
+                         <option value="{{$emp->idexpedienteacadem}}">{{$emp->nombrecompleto}}</option>
+                   @endforeach
+                  </select>  
+                  <div id="mensajeEmp" class="errores">No se ha seleccionado un empleado</div>      
+            </div> 
+            <div class="form-group">
                 <label for="nombreinstitucionexplabacad">Nombre de la Institucion</label>
-                <input type="text" name="nombreinstitucionexplabacad" value="{{old('nombreinstitucionexplabacad')}}" required class="form-control" placeholder="Institucion..." id="nombreinstitucionexplabacad" ">
+                <input type="text" name="nombreinstitucionexplabacad" value="{{$experiencialaboralacademica->NOMBREINSTITUCIONEXPLABACAD}}" required class="form-control" placeholder="Institucion..." id="nombreinstitucionexplabacad" ">
             </div>
             <div class="form-group">
                 <label>Fecha de Inicio:</label>
-                <input  type="text" name="fechainicioexplabacad" id="fechainicioexplabacad" required class="tcal form-control" value="{{old('fechainicioexplabacad')}}" placeholder="00/00/0000" id="fechainicioexplabacad">
+                <input  type="text" name="fechainicioexplabacad" id="fechainicioexplabacad" required class="tcal form-control" value="{{$experiencialaboralacademica->FECHAINICIOEXPLABACAD}}" placeholder="00/00/0000" id="fechainicioexplabacad">
             </div>
             <div class="form-group">
                 <label>Fecha de Fin:</label>
-                <input type='text' name="fechafinalizacionexplabacad" id="fechafinalizacionexplabacad" required class="tcal form-control" value="{{old('fechafinalizacionexplabacad')}}" placeholder="00/00/0000" id="fechafinalizacionexplabacad"/>
+                <input type='text' name="fechafinalizacionexplabacad" id="fechafinalizacionexplabacad" required class="tcal form-control" value="{{$experiencialaboralacademica->FECHAFINALIZACIONEXPLABACAD}}" placeholder="00/00/0000" id="fechafinalizacionexplabacad"/>
             </div>
             <div class="form-group">
                      <label for="descripcionexplab">Descripcion Experiencia</label>
-                     <textarea  type="text" name="descripcionexplab" value="{{old('descripcionexplab')}}" class="form-control"  rows=""  placeholder="Descripcion..."></textarea>
+                     <textarea  type="text" name="descripcionexplab" value="{{old('descripcionexplab')}}" class="form-control"  rows=""  placeholder="Descripcion...">{{$experiencialaboralacademica->DESCRIPCIONEXPLAB}}</textarea>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" type="submit" id="guardar">Guardar</button>

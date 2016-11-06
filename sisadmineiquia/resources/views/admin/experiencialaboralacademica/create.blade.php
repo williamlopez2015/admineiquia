@@ -4,11 +4,11 @@
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
 			<li>
-				<i class="fa fa-home"></i> <a href="/admin/empleado"> Administrar Empleados</a>
+				<i class="fa fa-home"></i> <a href="/admin/expedienteacademico">Administrar Expediente Academico</a>
 			</li>
 			<li class="active">
 				<i class="fa fa-desktop"></i>
-				Gestion General de Expedientes Academicos
+				Gestion Experiencia Laboral Academica
 			</li>
 		</ol>
 	</div>
@@ -22,8 +22,17 @@
  <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             @include('mensajes.messages')
-			{!!Form::open(array('url'=>'admin/empleado','method'=>'POST','autocomplete'=>'off','files'=>true, 'id' => 'my-dropzone'))!!}
+			{!!Form::open(array('url'=>'admin/experiencialaboralacademica','method'=>'POST','autocomplete'=>'off','files'=>true, 'id' => 'my-dropzone'))!!}
             {{Form::token()}}
+            <div class="form-group">
+                  <label>Empleado</label>
+                  <select name="idexpedienteacadem" class="form-control" id="idexpedienteacadem">
+                   @foreach ($empleados as $emp)
+                         <option value="{{$emp->idexpedienteacadem}}">{{$emp->nombrecompleto}}</option>
+                   @endforeach
+                  </select>  
+                  <div id="mensajeEmp" class="errores">No se ha seleccionado un empleado</div>      
+            </div> 
             <div class="form-group">
             	<label for="nombreinstitucionexplabacad">Nombre de la Institucion</label>
             	<input type="text" name="nombreinstitucionexplabacad" value="{{old('nombreinstitucionexplabacad')}}" required class="form-control" placeholder="Institucion..." id="nombreinstitucionexplabacad" ">

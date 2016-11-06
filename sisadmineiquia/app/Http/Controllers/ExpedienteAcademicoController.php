@@ -32,9 +32,8 @@ public function index(Request $request){
         //dd($request);
         if ($request)
         {
-           
-            
-            $expedienteacad=DB::table('expedienteacademic')->get();
+                      
+            $expedienteacad=DB::table('expedienteacademic')->Select( DB::raw("expedienteacademic.idexpedienteacadem,expedienteacademic.fechaaperturaexpacad,expedienteacademic.tituloobtenido,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.dui,empleado.nit,empleado.estado,empleado.foto"))->join('empleado', 'expedienteacademic.idempleado', '=', 'empleado.idempleado')->get();
             
             return view('admin.expedienteacademico.index',["expedienteacademicos"=>$expedienteacad]);
             
@@ -80,7 +79,7 @@ public function index(Request $request){
                     $expedienteacademico->descripcionacademica=$request->get('descripcionacademica');
                     $expedienteacademico->save();
                     Session::flash('store','El Expediente creado correctamente!!!');
-                    return Redirect::to('admin/empleado');
+                    return Redirect::to('admin/expedienteacademico');
                 }
         }
         return Redirect::to('admin/expedienteacademico/create');
@@ -108,7 +107,7 @@ public function index(Request $request){
                      return view("admin/expedienteacademico.edit",["empleados"=>$empleado,"expedienteacademico"=>ExpedienteAcademico::findOrFail($expacademico),"expacads"=>$expacd]);
             }else{
                 Session::flash('edit','Aun no existe Expediente!!!');
-                return Redirect::to('admin/empleado');
+                return Redirect::to('admin/expedienteacademico');
 
             }
     }

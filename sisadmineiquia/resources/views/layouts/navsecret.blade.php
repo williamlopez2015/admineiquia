@@ -2,19 +2,18 @@
                 <a href="/"><i class="fa fa-fw fa-home"></i> Inicio</a>
              </li>
             <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-paperclip"></i> Administrar Expediente <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-paperclip"></i> <span>Gestion de Empleados</span> <i class="fa fa-angle-left pull-right"></i></a>
+
                 <ul id="demo" class="collapse">
-                    <li>
-                        <a href="/admin/empleado/create"><i class="fa fa-plus"></i> Agregar Empleados</a>
+
+                   <li>
+                        <a href="/admin/empleado/create"><i class="fa fa-plus"></i> Agregar Empleado</a>
                     </li>
                     <li>
-                        <a href="/admin/empleado"><i class="fa fa-users"></i> Gestionar Empleados</a>
+                        <a href="/admin/empleado"><i class="fa fa-users"></i> Administrar Empleados</a>
                     </li>
                     <li>
-                        <a href="/admin/tiempo/create"><i class="fa fa-plus"></i> Agregar Tiempo Adicional</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-file"></i> Nomina Empleados</a>
+                        <a href="empleado/nominareport"><i class="fa fa-file"></i> Nomina Empleados</a>
                     </li>
                 </ul>
             </li>

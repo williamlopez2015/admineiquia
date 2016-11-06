@@ -24,6 +24,7 @@ class ExperienciaLaboralAcademicaFormRequest extends Request
     public function rules()
     {
         return [
+            'idexpedienteacadem'=>'required',
             'nombreinstitucionexplabacad'=>'required|max:50',
             'fechainicioexplabacad'=>'required|max:15',
             'fechafinalizacionexplabacad'=>'required|max:15',

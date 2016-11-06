@@ -48,5 +48,4 @@ class EmpleadoFormRequest extends Request
 
 }
 
-}
 
