@@ -99,8 +99,8 @@
             </div>
 
              <div class="form-group">
-                <label>Responsabilidad Academica</label>
-                <textarea  name="responsabilidadacademica" id="responsabilidadacademica" class="form-control"  rows="3" placeholder="Responsabilidad  Academica">{{old('responsabilidadacademica')}}</textarea>
+                <label>Responsabilidad Administrativas</label>
+                <textarea  name="responsabilidadadministrativa" id="responsabilidadadministrativa" class="form-control"  rows="3" placeholder="Responsabilidad  Adaministrativas">{{old('responsabilidadadministrativa')}}</textarea>
             </div>
 
             <div class="form-group" align=right>

@@ -46,9 +46,9 @@ public function index(Request $request){
  public function create()
     {
      
-     $raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto");
-     $empleado  = Empleado::select($raw)->get();
      $ciclo=Ciclo::all();
+
+     $empleado  = DB::table('empleado')->Select( DB::raw("expedienteacademic.idexpedienteacadem,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto"))->join('expedienteacademic', 'empleado.idempleado', '=', 'expedienteacademic.idempleado')->get();    
     return view("admin.cargaacademica.create",["empleados"=>$empleado,"ciclos"=>$ciclo]);
     } //Fin de create
 
@@ -73,7 +73,7 @@ public function index(Request $request){
                     $cargaacademica->gdiscusion=$request->get('grupodiscusion');
                     $cargaacademica->glaboratorio=$request->get('grupolaboratorio');
                      $cargaacademica->tiempototal=$request->get('tiempototal');
-                    $cargaacademica->responsabilidadadmin=$request->get('responsabilidadacademica');
+                    $cargaacademica->responsabilidadadmin=$request->get('responsabilidadadministrativa');
                     $cargaacademica->save();
                    Session::flash('store','La carga Academica fue creada corectamente!!!');
                     return Redirect::to('admin/cargaacademica');
@@ -111,7 +111,7 @@ public function index(Request $request){
                             'gdiscusion' =>$request->get('grupodiscusion'),
                             'glaboratorio' =>$request->get('grupolaboratorio'),
                             'tiempototal' =>$request->get('tiempototal'),
-                            'responsabilidadadmin' =>$request->get('responsabilidadacademica'),
+                            'responsabilidadadmin' =>$request->get('responsabilidadadministrativa'),
                             ]);
                          Session::flash('update','La carga fue actualizada correctamente!!!');
                          return Redirect::to('admin/cargaacademica');
