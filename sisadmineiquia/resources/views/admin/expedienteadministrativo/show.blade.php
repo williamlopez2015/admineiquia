@@ -56,7 +56,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        
+                        <div style="overflow-x:auto;">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover stacktable" id="tabladetalleexpadmin">
                                 <thead>
@@ -77,7 +77,8 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>   
+                        </div>
+                        </div>    
                     </div>
                 </div>
                 <div class="page-header">
@@ -85,7 +86,7 @@
                 </div>    
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        
+                        <div style="overflow-x:auto;">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover stacktable" id="tabladetalleexpadmin">
                                 <thead>
@@ -115,6 +116,7 @@
                                 @endforeach 
                                 </tbody>
                             </table>
+                        </div>
                         </div>   
                     </div>
                 </div>
@@ -124,6 +126,7 @@
                 </div>
                 <div class="row">
         		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div style="overflow-x:auto;">
             	<div class="table-responsive">
                 <table class="table table-striped table-hover stacktable" id="tabladetalleacuerdos">
                     <thead>
@@ -151,12 +154,13 @@
                     </tbody>
                 </table>
             	</div>
-        		</div> 
+        		</div>
+                </div> 
         		</div>
                 @endif
                 @if(count($tiempo)!=0)
         		<div class="page-header">
-                	<h1>Tiempo Adicional Asociados</h1>
+                	<h3>Tiempo Adicional Asociados</h3>
                 </div>
                 <div class="row">
         		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

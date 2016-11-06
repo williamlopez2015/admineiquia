@@ -62,6 +62,7 @@
                                         <th>Institucion</th>
                                         <th>Direccion</th>
                                         <th>Descripcion</th>
+                                        <th>Post-Grados</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -71,6 +72,7 @@
                                         <td>{{ $exp->nombreinstitucion}}</td>
                                         <td>{{ $exp->direccioninstitucion}}</td>
                                         <td>{{ $exp->descripcionacademica}}</td>
+                                        <td>{{ $exp->postgrados}}</td>
                                     </tr>
                                 </tbody>
                             </table>

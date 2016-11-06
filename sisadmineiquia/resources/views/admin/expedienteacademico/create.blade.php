@@ -49,19 +49,13 @@
 				<input  type="text" name="anotitulacion" class="tcal form-control" placeholder="00/00/0000" id="anotitulacion" onkeyup="corregirFecha();">
 				<div id="mensajeFechaAper" class="errores">Fecha invalida</div> 
 			</div>
-			<div class="container">
-    
-</div>
-		</div>
-
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-		<div class="form-group">
-            	<label for="tituloobtenido">Titulo Obtenido</label>
-            	<input type="text" name="tituloobtenido" value="{{old('tituloobtenido')}}" class="form-control" placeholder="Titulo Obtenido..." id="tituloobtenido" onkeyup="tituloobtenido();">
-            	<div id="mensaje1" class="errores">Nombre invalido</div>
+            <div class="form-group">
+                <label for="tituloobtenido">Titulo Obtenido</label>
+                <input type="text" name="tituloobtenido" value="{{old('tituloobtenido')}}" class="form-control" placeholder="Titulo Obtenido..." id="tituloobtenido" onkeyup="tituloobtenido();">
+                <div id="mensaje1" class="errores">Nombre invalido</div>
             </div>
-
+        </div>   
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="form-group">
             	<label for="tituloestudio">Titulo Estudio</label>
             	<input type="text" name="tituloestudio" value="{{old('tituloestudio')}}" class="form-control" placeholder="Titulo Estudio..." id="tituloestudio" onkeyup="tituloestudio();">
@@ -73,12 +67,14 @@
             	<input type="text" name="direccioninstitucion" value="{{old('direccioninstitucion')}}" class="form-control" placeholder="Direccion Institucion..." id="direccioninstitucion" ">
             	<div id="mensaje1" class="errores">Direccion invalida</div>
             </div>
-
             <div class="form-group">
                 <label>Descripcion Academica</label>
                 <textarea  name="descripcionacademica" id="descripcionacademica" class="form-control"  rows="3" placeholder="Descripcion Academica">{{old('descripcionacademica')}}</textarea>
             </div>
-
+            <div class="form-group">
+                <label>Post-Grados</label>
+                <textarea  name="postgrados" id="postgrados" class="form-control"  rows="3" placeholder="postgrado 1, postgrado 2">{{old('postgrados')}}</textarea>
+            </div>
             <div class="form-group" align=right>
             	<button class="btn btn-primary" type="submit">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>

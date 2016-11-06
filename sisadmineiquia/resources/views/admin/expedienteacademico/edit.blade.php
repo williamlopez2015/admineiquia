@@ -26,7 +26,7 @@
 			@include('mensajes.messages')
 			{!!Form::model($expedienteacademico,['method'=>'PATCH','route'=>['admin.expedienteacademico.update',$expedienteacademico->IDEXPEDIENTEACADEM]])!!}
             {{Form::token()}}
-           <div class="form-group">
+      <div class="form-group">
 				<label>Fecha Apertura Expediente Academico</label>
 				<input  type="text" name="fechaaperturaexpacad" value="{{$expedienteacademico->FECHAAPERTURAEXPACAD}}" class="tcal form-control" required placeholder="00/00/0000" id="fechaaperturaexpacad">
 				<div id="mensajeFechaAper" class="errores">Fecha invalida</div> 
@@ -42,32 +42,26 @@
                   <div id="mensajeEmp" class="errores">No se ha seleccionado un empleado</div>      
 			</div>
 
-			<div class="form-group">
-            	<label for="nombreinstitucion">Nombre Institucion</label>
-            	<input type="text" name="nombreinstitucion" value="{{$expedienteacademico->NOMBREINSTITUCION}}" required class="form-control" placeholder="Nombre Institucion..." id="nombreinstitucion" >
-            	<div id="mensaje1" class="errores">Nombre invalido</div>
-            </div>
+      <div class="form-group">
+       <label for="nombreinstitucion">Nombre Institucion</label>
+       <input type="text" name="nombreinstitucion" value="{{$expedienteacademico->NOMBREINSTITUCION}}" required class="form-control" placeholder="Nombre Institucion..." id="nombreinstitucion" >
+       <div id="mensaje1" class="errores">Nombre invalido</div>
+     </div>
 
-            <div class="form-group">
-				<label>Año de Titulacion</label>
-				<input  type="text" name="anotitulacion" required class="tcal form-control" value="{{$expedienteacademico->ANOTITULACION}}" placeholder="00/00/0000" id="anotitulacion" >
-				<div id="mensajeFechaAper" class="errores">Fecha invalida</div> 
-			</div>
-			<div class="container">
+     <div class="form-group">
+      <label>Año de Titulacion</label>
+      <input  type="text" name="anotitulacion" required class="tcal form-control" value="{{$expedienteacademico->ANOTITULACION}}" placeholder="00/00/0000" id="anotitulacion" >
+      <div id="mensajeFechaAper" class="errores">Fecha invalida</div> 
+    </div>
+    <div class="form-group">
+      <label for="tituloobtenido">Titulo Obtenido</label>
+      <input type="text" name="tituloobtenido" value="{{$expedienteacademico->TITULOOBTENIDO}}" required class="form-control" placeholder="Titulo Obtenido..." id="tituloobtenido" >
+      <div id="mensaje1" class="errores">Nombre invalido</div>
+    </div>
 
-</div>
-			 
-		</div>
-
+    </div>
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-		<div class="form-group">
-            	<label for="tituloobtenido">Titulo Obtenido</label>
-            	<input type="text" name="tituloobtenido" value="{{$expedienteacademico->TITULOOBTENIDO}}" required class="form-control" placeholder="Titulo Obtenido..." id="tituloobtenido" >
-            	<div id="mensaje1" class="errores">Nombre invalido</div>
-            </div>
-
-        <div class="form-group">
+            <div class="form-group">
             	<label for="tituloestudio">Titulo Estudio</label>
             	<input type="text" name="tituloestudio" value="{{$expedienteacademico->TITULOESTUDIO}}" required  class="form-control" placeholder="Titulo Estudio..." id="tituloestudio" >
             	<div id="mensaje1" class="errores">Nombre invalido</div>
@@ -83,15 +77,15 @@
                 <label>Descripcion Academica</label>
                 <textarea  name="descripcionacademica" id="descripcionacademica" required  class="form-control"  rows="3" placeholder="Descripcion Academica">{{$expedienteacademico->DESCRIPCIONACADEMICA}}</textarea>
             </div>
-
+            <div class="form-group">
+                <label>Post-Grados</label>
+                <textarea  name="postgrados" id="postgrados" class="form-control"  rows="3" placeholder="postgrado 1, postgrado 2">{{$expedienteacademico->POSTGRADOS}}</textarea>
+            </div>
             <div class="form-group" align=right>
             	<button class="btn btn-primary" type="submit" >Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>
             </div>
-
 		</div>
-
-		
                     {!!Form::close()!!}		
 
 </div>

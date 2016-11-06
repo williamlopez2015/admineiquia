@@ -32,8 +32,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-
 </head>
 <body>
 <div id="contenedor">
@@ -54,51 +52,164 @@
         </div>
         <h1>{{$emp->nombrecompleto}}</h1>
         @if($emp->estado=='1')
-        <h2><b>ESTADO:</b> Activo</h2>
+        <h1><b>Estado:</b> Activo</h1>
         @else
-        <h2><b>ESTADO:</b> De Baja</h2>
+        <h1><b>Estado:</b> De Baja</h1>
+        @endif
+        @if($emp->sexo=='M')
+        <h1><b>Sexo: </b> Masculino</h1>
+        @else
+        <h1><b>Sexo: </b> Femenino</h1>
         @endif
     </div>
     <div style="clear:both;"></div>
 </header>
-<section>
 <div id="datospersonales">
-    <h2><b>DatosPersonales<b></h2>
-     @if($emp->sexo=='M')
-    <h3><b><i>SEXO:</i></b><i>Masculino</i></h3>
-    @else
-    <h3><b><i>SEXO:</i></b><i>Femenino</i></h3>
-    @endif
-    <h3><b><i>DUI:</i></b><i>{{$emp->dui}}</i></h3>
-    <h3><b><i>NIT:</i></b><i>{{$emp->nit}}</i></h3>
-    <h3><b><i>ISSS:</i></b><i>{{$emp->isss}}</i></h3>
-    <h3><b><i>AFP:</i></b><i>{{$emp->afp}}</i></h3>
-</div>
-</section>
-            <div style="clear:both"></div>
- @endforeach
- @if($expedienteadministrativo==null)
- <section>
- </section>
- @else
- @foreach ($expedienteadministrativo as $expadmin)
-<section>
+    <h2><b>Datos Personales<b></h2>
+    <div style="overflow-x:auto;">
+                <div class="table-responsive table-bordered">
+                    <table class="table" id="tablanommina">
+                        <thead>
+                            <tr>
+                                <th>Dui</th>
+                                <th>Nit</th>
+                                <th>Isss</th>
+                                <th>Afp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{$emp->dui}}</td>
+                                <td>{{$emp->nit}}</td>
+                                <td>{{$emp->isss}}</td>
+                                <td>{{$emp->afp}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div> 
+    </div>
+@endforeach
+@if($expedienteadministrativo==null)
+@else
 <div id="datosexpadmin">
-    <h2><b>Expediente Administrativo<b></h2>
-    <h3><b><i>Cod Expediente:</i></b><i>{{$expadmin->idexpediente}}</i></h3>
-    <h3><b><i>Fecha de Creacion:</i></b><i>{{$expadmin->fechaapertura}}</i></h3>
-    <h3><b><i>Codigo de Contrato:</i></b><i>{{$expadmin->codigocontrato}}</i></h3>
-    @if($expadmin->tiempointegral=='1')
-    <h3><b><i>TIEMPO INTEGRAL:</i></b><i>Si Posee</i></h3>
-    @else
-    <h3><b><i>TIEMPO INTEGRAL:</i></b><i>No Posee</i></h3>
-    @endif
-    <h3><b><i>DESCRIPCION:</i></b><i>{{$expadmin->descripcionadmin}}</i></h3>
+    <div class="page-header">
+        <h2>Datos Expediente</h2>
+    </div>    
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div style="overflow-x:auto;">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover" id="tabladetalleexpadmin">
+                    <thead>
+                        <tr>
+                            <th>Cod. Acuerdo</th>
+                            <th>Modalidad Contratacion</th>
+                            <th>Tiempo Integral</th>
+                            <th>Descripcion Exp.</th>
+                            <th>Puesto</th>
+                            <th>Salario del Puesto</th>
+                            <th>Departamento</th>
+                        </tr>
+                    </thead>
+                    @foreach ($expedienteadministrativo as $expadmin)
+                    <tbody>
+                        <tr>
+                            <td>{{ $expadmin->codigocontrato}}</td>
+                            <td>{{ $expadmin->modalidadcontratacion}}</td>
+                            @if($expadmin->tiempointegral=='1')
+                            <td>Si Posee</td>
+                            @else
+                            <td>No Posee</td>
+                            @endif
+                            <td>{{ $expadmin->descripcionadmin}}</td>
+                            <td>{{ $expadmin->nombrepuesto}}</td>
+                            <td>{{ $expadmin->salariopuesto}}</td>
+                            <td>{{ $expadmin->nombredepartamento}}</td>
+                        </tr>
+                    </tbody>
+                     @endforeach
+                </table>
+            </div>   
+        </div>
+        </div>
+    </div>
 </div>
-</section>
-            <div style="clear:both"></div>
- @endforeach
- @endif
+@endif
+@if(count($acuerdos)!=0)
+<div id="datosacuerdo">
+    <div class="page-header">
+        <h2>Acuerdos Asociados</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover" id="tabladetalleacuerdos">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Motivo</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+
+                        </tr>
+                    </thead>
+                    @foreach ($acuerdos as $ac)
+                    <tbody>
+                        <tr>
+                            <td>{{$ac->idacuerdo }}</td>
+                            <td>{{ $ac->motivoacuerdo }}</td>
+                            @if($ac->estadoacuerdo=='1')
+                            <td>Aprobado</td>
+                            @else
+                            <td>No Aprobado</td>
+                            @endif
+                            <td>{{ $ac->fechaacuerdo }}</td>
+                            <tr>
+                    </tbody>
+                    @endforeach 
+                </table>
+            </div>
+        </div> 
+    </div>
+</div>
+@endif
+@if(count($tiempo)!=0)
+<div id="datostiempo">
+    <div class="page-header">
+        <h2>Tiempo Adicional Asociados</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover" id="tabladetalletiempoadicional">
+                    <thead>
+                        <tr>
+                            <th>Año</th>
+                            <th>Ciclo</th>
+                            <th>Fecha de Inicio</th>
+                            <th>Fecha de Fin</th>
+                            <th>Descripcion</th>
+                        </tr>
+                    </thead>
+                    @foreach ($tiempo as $t)
+                    <tbody>
+                        <tr>
+                            <td>{{$t->ano }}</td>
+                            <td>{{$t->idciclo }}</td> 
+                            <td>{{$t->fechainicio}}</td>
+                            <td>{{$t->fechafin}}</td>
+                            <td>{{$t->descripcion}}</td>   
+                        <tr> 
+                    </tbody>
+                    @endforeach 
+                </table>
+            </div>
+        </div> 
+    </div>
+</div>
+@endif
 <!-- Fin Contenido-->
 </div>
 </body>
