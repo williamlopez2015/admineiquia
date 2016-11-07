@@ -9,8 +9,10 @@
 	var alerta = document.getElementById("alerta");
 	var fechaApertura = document.getElementById("fechaApertura");
 	var codCon = document.getElementById("codCon");
+	var grupoteorico = document.getElementById("gteorico");
 
 	function corregirPrimerNombre(){
+
 		var value = primernombre.value;
 		var longitudActual = value.length;
 		if(longitudActual){
@@ -265,6 +267,7 @@
 			segundonombre.value = value;
 		}
 	}
+
 
 	
 	
