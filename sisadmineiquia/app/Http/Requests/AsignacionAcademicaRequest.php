@@ -38,7 +38,7 @@ class AsignacionAcademicaRequest extends Request
 
     public function messages() { return [
         'anocarga.required' =>'El año de la carga es obligatoria', 
-        'codigoasignatura.required' =>'El codigo de la asignatura es obligatorio',
+        'codigoasignatura.required' =>'El codigo de la asignatura debe poseer forma XXX115',
          'nombreasignatura.required'=>'El nombre de la asignatura es obligatoria',
          'grupoteorico.required'=>'El campo del grupo teorico es obligatorio',
          'grupodiscusion'=>'El campo del grupo de discusion es obligatorio',

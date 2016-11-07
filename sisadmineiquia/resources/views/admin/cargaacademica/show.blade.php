@@ -13,7 +13,7 @@
     <link href="{{ public_path()}}/css/asignacionacademica.css" rel="stylesheet">
 <style>
 table, th, td {
-    border: 2px solid black;
+    border: 1px solid black;
     border-collapse: collapse;
 }
 th, td {
