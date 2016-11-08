@@ -47,7 +47,7 @@ class ExpedienteAdministrativoController extends Controller
         if ($request)
         {
                        //
-            $expedienteadmin=DB::table('expedienteadminist')->select( DB::raw("expedienteadminist.idexpediente,expedienteadminist.fechaapertura,expedienteadminist.fechaapertura,expedienteadminist.idpuesto,expedienteadminist.tiempointegral,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.dui,empleado.nit,empleado.estado,empleado.foto,puesto.idpuesto,puesto.nombrepuesto"))->join('empleado', 'expedienteadminist.idempleado', '=', 'empleado.idempleado')->join('puesto', 'expedienteadminist.idpuesto', '=', 'puesto.idpuesto')->get();
+            $expedienteadmin=DB::table('expedienteadminist')->select( DB::raw("expedienteadminist.idexpediente,expedienteadminist.fechaapertura,expedienteadminist.modalidadcontratacion,expedienteadminist.idpuesto,expedienteadminist.tiempointegral,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.dui,empleado.nit,empleado.estado,empleado.foto,puesto.idpuesto,puesto.nombrepuesto"))->join('empleado', 'expedienteadminist.idempleado', '=', 'empleado.idempleado')->join('puesto', 'expedienteadminist.idpuesto', '=', 'puesto.idpuesto')->get();
             //var_dump($expedienteadmin);
             return view('admin.expedienteadministrativo.index',["expedienteadministrativos"=>$expedienteadmin]);
             
@@ -94,6 +94,7 @@ class ExpedienteAdministrativoController extends Controller
                         $expedienteadministrativo->tiempointegral=$request->get('tiempointegral');
                     }
                     $expedienteadministrativo->codigocontrato=$request->get('codigocontrato');
+                    $expedienteadministrativo->modalidadcontratacion=$request->get('modalidadcontratacion');
                     $expedienteadministrativo->descripcionadmin=$request->get('descripcionadmin');
                     $expedienteadministrativo->save();
                     Session::flash('store','El Expediente creado correctamente!!!');
@@ -106,7 +107,7 @@ class ExpedienteAdministrativoController extends Controller
     public function show($id){
         $expedienteadmin=DB::table('expedienteadminist')
         ->select( 
-            DB::raw("expedienteadminist.idexpediente,expedienteadminist.fechaapertura,expedienteadminist.codigocontrato,expedienteadminist.idpuesto,expedienteadminist.tiempointegral,expedienteadminist.descripcionadmin,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.dui,empleado.nit,empleado.isss,empleado.afp,empleado.estado,empleado.foto,empleado.sexo,puesto.idpuesto,puesto.nombrepuesto,departamento.iddepartamento,departamento.nombredepartamento,departamento.descripciondeparta"))
+            DB::raw("expedienteadminist.idexpediente,expedienteadminist.fechaapertura,expedienteadminist.codigocontrato,expedienteadminist.modalidadcontratacion,expedienteadminist.idpuesto,expedienteadminist.tiempointegral,expedienteadminist.descripcionadmin,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.dui,empleado.nit,empleado.isss,empleado.afp,empleado.estado,empleado.foto,empleado.sexo,puesto.idpuesto,puesto.nombrepuesto,puesto.salariopuesto,departamento.iddepartamento,departamento.nombredepartamento,departamento.descripciondeparta"))
         ->join('empleado', 'expedienteadminist.idempleado', '=', 'empleado.idempleado')
         ->join('puesto', 'expedienteadminist.idpuesto', '=', 'puesto.idpuesto')
         ->join('departamento', 'puesto.iddepartamento', '=', 'departamento.iddepartamento')
@@ -159,14 +160,20 @@ class ExpedienteAdministrativoController extends Controller
 
         if ($request->get('tiempointegral')==null){
                         $tiempointegral=0;
-                        $affectedRows = ExpedienteAdministrativo::where('idexpediente','=',$id)->update(['fechaapertura' =>$request->get('fechaapertura'),'codigocontrato' =>$request->get('codigocontrato'),'tiempointegral' =>$tiempointegral,'descripcionadmin'=>$request->get('descripcionadmin')]);
+                        $affectedRows = ExpedienteAdministrativo::where('idexpediente','=',$id)->update([
+                            'fechaapertura' =>$request->get('fechaapertura'),
+                            'codigocontrato' =>$request->get('codigocontrato'),
+                            'modalidadcontratacion' =>$request->get('modalidadcontratacion'),
+                            'idpuesto' =>$request->get('idpuesto'),
+                            'tiempointegral' =>$tiempointegral,
+                            'descripcionadmin'=>$request->get('descripcionadmin')]);
         Session::flash('update','El Expediente actualizado correctamente!!!');
-        return Redirect::to('admin/empleado');
+        return Redirect::to('admin/expedienteadministrativo');
                     }else{
                         $tiempointegral=$request->get('tiempointegral');
-                        $affectedRows = ExpedienteAdministrativo::where('idexpediente','=',$id)->update(['fechaapertura' =>$request->get('fechaapertura'),'codigocontrato' =>$request->get('codigocontrato'),'tiempointegral' => $tiempointegral,'descripcionadmin'=>$request->get('descripcionadmin')]);
+                        $affectedRows = ExpedienteAdministrativo::where('idexpediente','=',$id)->update(['fechaapertura' =>$request->get('fechaapertura'),'codigocontrato' =>$request->get('codigocontrato'),'modalidadcontratacion' =>$request->get('modalidadcontratacion'),'tiempointegral' => $tiempointegral,'descripcionadmin'=>$request->get('descripcionadmin')]);
         Session::flash('update','El Expediente actualizado correctamente!!!');
-        return Redirect::to('admin/empleado');
+        return Redirect::to('admin/expedienteadministrativo');
                     }
     
     }

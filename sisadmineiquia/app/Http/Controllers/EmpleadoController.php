@@ -85,35 +85,75 @@ class EmpleadoController extends Controller
    
     public function show($id){
         $empleado = DB::table('empleado')->select(DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto,isss,afp,sexo"))->where('idempleado', '=', $id)->get();
-    	return view("admin.empleado.show",["empleado"=>$empleado]);
+
+
+            $expadmin=DB::table('expedienteadminist')
+        ->select( 
+            DB::raw("expedienteadminist.idexpediente,expedienteadminist.fechaapertura,expedienteadminist.codigocontrato,expedienteadminist.modalidadcontratacion,expedienteadminist.idpuesto,expedienteadminist.tiempointegral,expedienteadminist.descripcionadmin,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.dui,empleado.nit,empleado.isss,empleado.afp,empleado.estado,empleado.foto,empleado.sexo,puesto.idpuesto,puesto.nombrepuesto,puesto.salariopuesto,departamento.iddepartamento,departamento.nombredepartamento,departamento.descripciondeparta"))
+        ->join('empleado', 'expedienteadminist.idempleado', '=', 'empleado.idempleado')
+        ->join('puesto', 'expedienteadminist.idpuesto', '=', 'puesto.idpuesto')
+        ->join('departamento', 'puesto.iddepartamento', '=', 'departamento.iddepartamento')
+        ->where('expedienteadminist.idempleado', '=', $id)->get();
+
+            if(count($expadmin)!=0){
+            $idexp=$expadmin[0]->idexpediente;
+            }
+            else{
+            $idexp=[null];
+            }
+            
+
+
+ /******/
+        $queryacuerdos = DB::raw("idacuerdo,motivoacuerdo,estadoacuerdo,fechaacuerdo,archivoacuerdo");
+        $acuerdos=DB::table('acuerdoadministrat')->select($queryacuerdos)
+        ->where('idexpediente', '=',$idexp)->get();
+        $queryacuerdos = DB::raw("idacuerdo,motivoacuerdo,estadoacuerdo,fechaacuerdo,archivoacuerdo");
+        $acuerdos=DB::table('acuerdoadministrat')->select($queryacuerdos)
+        ->where('idexpediente', '=',$idexp)->get();
+        $querytiempoadicional = DB::raw("idtiempo,idexpediente,idciclo,fechainicio,fechafin,descripcion,ano");
+        $tiempoadicional=DB::table('tiempoadicional')->select($querytiempoadicional)
+        ->where('idexpediente', '=',$idexp)->orderBy('ano', 'desc')->orderBy('idciclo', 'desc')->get();
+        /******/
+    	return view("admin.empleado.show",["empleado"=>$empleado,"expedienteadministrativo"=>$expadmin,"acuerdos"=>$acuerdos,"tiempo"=>$tiempoadicional]);
     }
 
     public function perfilreport($id){
-        //dd($id);
-        /*$pdf = new PDF();    
-        $pdf::loadHtml('hello world');
-        $pdf::setPaper('A4', 'landscape');
-        dd($pdf);
-
-        return $pdf::stream();*/
-        //$perfil1::Output(public_path("/documentos/pdf/".'perfil'. $id . '.pdf'),'I');
-        //$perfil1::reset();
-        // Llamamos al método raw y le pasamos nuestra parte de consulta que queremos realizar.
-
-        /*$users = DB::table('users')
-                     ->select(DB::raw('count(*) as user_count, status'))
-                     ->where('status', '<>', 1)
-                     ->groupBy('status')
-                     ->get();*/
-            //$raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto")->where('idempleado', '<>', $id);
         
             // Llamamos a Persona, utilizamos el método select y le pasamos el $raw almacenado en la linea superior.
             $empleado = DB::table('empleado')->select(DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ', segundoapellido) as nombrecompleto,dui,nit,estado,foto,isss,afp,sexo"))->where('idempleado', '=', $id)->get();
 
 
-            $expadmin=DB::table('expedienteadminist')->select(DB::raw("idexpediente,idempleado,idpuesto,fechaapertura,codigocontrato,tiempointegral,descripcionadmin"))->where('idempleado', '=', $id)->get();
+            $expadmin=DB::table('expedienteadminist')
+        ->select( 
+            DB::raw("expedienteadminist.idexpediente,expedienteadminist.fechaapertura,expedienteadminist.codigocontrato,expedienteadminist.modalidadcontratacion,expedienteadminist.idpuesto,expedienteadminist.tiempointegral,expedienteadminist.descripcionadmin,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.dui,empleado.nit,empleado.isss,empleado.afp,empleado.estado,empleado.foto,empleado.sexo,puesto.idpuesto,puesto.nombrepuesto,puesto.salariopuesto,departamento.iddepartamento,departamento.nombredepartamento,departamento.descripciondeparta"))
+        ->join('empleado', 'expedienteadminist.idempleado', '=', 'empleado.idempleado')
+        ->join('puesto', 'expedienteadminist.idpuesto', '=', 'puesto.idpuesto')
+        ->join('departamento', 'puesto.iddepartamento', '=', 'departamento.iddepartamento')
+        ->where('expedienteadminist.idempleado', '=', $id)->get();
 
-        $pdf = PDF::loadView('admin.empleado.show',["empleado"=>$empleado,"expedienteadministrativo"=>$expadmin]);
+            if(count($expadmin)!=0){
+            $idexp=$expadmin[0]->idexpediente;
+            }
+            else{
+            $idexp=[null];
+            }
+            
+
+
+ /******/
+        $queryacuerdos = DB::raw("idacuerdo,motivoacuerdo,estadoacuerdo,fechaacuerdo,archivoacuerdo");
+        $acuerdos=DB::table('acuerdoadministrat')->select($queryacuerdos)
+        ->where('idexpediente', '=',$idexp)->get();
+        $queryacuerdos = DB::raw("idacuerdo,motivoacuerdo,estadoacuerdo,fechaacuerdo,archivoacuerdo");
+        $acuerdos=DB::table('acuerdoadministrat')->select($queryacuerdos)
+        ->where('idexpediente', '=',$idexp)->get();
+        $querytiempoadicional = DB::raw("idtiempo,idexpediente,idciclo,fechainicio,fechafin,descripcion,ano");
+        $tiempoadicional=DB::table('tiempoadicional')->select($querytiempoadicional)
+        ->where('idexpediente', '=',$idexp)->orderBy('ano', 'desc')->orderBy('idciclo', 'desc')->get();
+        /******/
+
+        $pdf = PDF::loadView('admin.empleado.show',["empleado"=>$empleado,"expedienteadministrativo"=>$expadmin,"acuerdos"=>$acuerdos,"tiempo"=>$tiempoadicional]);
         //215.9 × 279.4
         $papel_tamaño = array(0,0,216,279);
         $pdf->setPaper("letter" ,'portrait');

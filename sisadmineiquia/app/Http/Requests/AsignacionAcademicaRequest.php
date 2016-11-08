@@ -28,11 +28,11 @@ class AsignacionAcademicaRequest extends Request
         'anocarga'=>'required|max:10',
         'codigoasignatura'=>'required|max:6',
         'nombreasignatura'=>'required|max:50',
-        'grupoteorico'=>'required|max:2',
-        'grupolaboratorio'=>'required|max:2',
-        'grupodiscusion'=>'required|max:2',
+        'grupoteorico'=>'max:2',
+        'grupolaboratorio'=>'max:2',
+        'grupodiscusion'=>'max:2',
         'tiempototal'=>'required|max:3',
-        'responsabilidadacademica'=>'required|max:50'
+        'responsabilidadadministrativa'=>'max:100'
         ];
     }
 
@@ -40,10 +40,10 @@ class AsignacionAcademicaRequest extends Request
         'anocarga.required' =>'El año de la carga es obligatoria', 
         'codigoasignatura.required' =>'El codigo de la asignatura debe poseer forma XXX115',
          'nombreasignatura.required'=>'El nombre de la asignatura es obligatoria',
-         'grupoteorico.required'=>'El campo del grupo teorico es obligatorio',
-         'grupodiscusion'=>'El campo del grupo de discusion es obligatorio',
-         'grupolaboratorio'=>'El campo del grupo de laboratorio es obligatorio',
+         'grupoteorico.max'=>'El campo del grupo teorico max de numeros 2',
+         'grupodiscusion.max'=>'El campo del grupo de discusion max de numeros 2',
+         'grupolaboratorio.max'=>'El campo del grupo de laboratorio max de numeros 2',
          'tiempototal'=>'El campo del tiempo total es obligatorio',
-         'responsabilidadacademica'=>'El campo de la responsabilidad es obligatorio',
+         'responsabilidadadministrativa'=>'El campo de la responsabilidad administrativa es obligatorio',
          ]; }
 }

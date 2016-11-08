@@ -109,12 +109,10 @@
             	<input type="text" name="tiempototal" value="{{$cargaacademica->TIEMPOTOTAL}}" class="form-control" placeholder="Tiempo Total..." id="tiempototal" >
             	<div id="mensaje1" class="errores">Tiempo invalido</div>
             </div>
-
-             <div class="form-group">
-                <label>Responsabilidad Academica</label>
-                <textarea  name="responsabilidadacademica" id="responsabilidadacademica" class="form-control"  rows="3" placeholder="Responsabilidad  Academica">{{$cargaacademica->RESPONSABILIDADADMIN}}</textarea>
+            <div class="form-group">
+                <label>Responsabilidad Administrativas</label>
+                <textarea  name="responsabilidadadministrativa" id="responsabilidadadministrativa" class="form-control"  rows="3" placeholder="Responsabilidad  Administrativas">{{$cargaacademica->RESPONSABILIDADADMIN}}</textarea>
             </div>
-
             <div class="form-group" align=right>
             	<button class="btn btn-primary" type="submit" id="guardarExp">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>

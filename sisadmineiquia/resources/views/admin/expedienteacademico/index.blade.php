@@ -4,7 +4,7 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-home"></i> <a href="/"> Inicio</a>
+                                <i class="fa fa-home"></i> <a href="/admin/expedienteacademico">Administrar Expediente</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-desktop"></i>
@@ -14,10 +14,15 @@
                     </div>
                 </div>
                 <!-- /.row -->
+                <div class="row">
                 <div class="col-lg-12">
                 <label><a href="expedienteacademico/create" class="btn btn-primary btn-lg" role="button">Nuevo Expediente Academico</a></label>
                 </div>
+                </div>
+                <div class="row">
+                <div class="col-lg-12">
                 @include('mensajes.messages')
+                </div>
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -41,7 +46,8 @@
                                         <td>{{ $expacad->fechaaperturaexpacad}}</td>
                                         <td>{{ $expacad->tituloobtenido}}</td>
                                         <td>
-                                        <a href="{{URL::action('ExpedienteAcademicoController@edit',$expacad->idempleado)}}"><button type="button" class="btn btn-xs btn-info">Editar Expediente Academico</button></a>                            
+                                        <a href="{{URL::action('ExpedienteAcademicoController@edit',$expacad->idempleado)}}"><button type="button" class="btn btn-xs btn-info">Editar Expediente Academico</button></a>
+                                        <a href="{{URL::action('ExpedienteAcademicoController@show',$expacad->idexpedienteacadem)}}"><button type="button" class="btn btn-xs btn-success">Detalle</button></a>
                                         </td>
                                     </tr>
                                 @endforeach 

@@ -76,6 +76,7 @@ public function index(Request $request){
                     $expedienteacademico->tituloobtenido=$request->get('tituloobtenido');
                     $expedienteacademico->tituloestudio=$request->get('tituloestudio');
                     $expedienteacademico->direccioninstitucion=$request->get('direccioninstitucion');
+                    $expedienteacademico->postgrado=$request->get('postgrados');
                     $expedienteacademico->descripcionacademica=$request->get('descripcionacademica');
                     $expedienteacademico->save();
                     Session::flash('store','El Expediente creado correctamente!!!');
@@ -87,7 +88,20 @@ public function index(Request $request){
     }
 
     public function show($id){
-        return view("admin.empleado.show",["empleado"=>Empleado::findOrFail($id)]);
+        $expedienteacad=DB::table('expedienteacademic')->Select( DB::raw("expedienteacademic.idexpedienteacadem,expedienteacademic.fechaaperturaexpacad,expedienteacademic.nombreinstitucion,expedienteacademic.tituloobtenido,tituloestudio,expedienteacademic.direccioninstitucion,expedienteacademic.descripcionacademica,expedienteacademic.postgrados,
+        empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.estado,empleado.foto"))
+        ->join('empleado', 'expedienteacademic.idempleado', '=', 'empleado.idempleado')
+        ->where('idexpedienteacadem','=',$id)->get();
+
+        $queryexplabacad = DB::raw("idexplabacademica,descripcionexplab,nombreinstitucionexplabacad,fechainicioexplabacad,fechafinalizacionexplabacad");
+        $explabacad=DB::table('experiencialaboral')->select($queryexplabacad)
+        ->where('idexpedienteacadem', '=',$id)->get();
+
+        $queryasignacion = DB::raw("idasignacionacad,idciclo,ano,codasignatura,nombreasignatura,gteorico,gdiscusion,glaboratorio,tiempototal,responsabilidadadmin");
+        $asignacion=DB::table('asignacionacademic')->select($queryasignacion)
+        ->where('idexpedienteacadem', '=',$id)->orderBy('ano', 'desc')->orderBy('idciclo', 'desc')->get();;
+
+        return view("admin.expedienteacademico.show",["expedienteacademico"=>$expedienteacad,"experiencialaboral"=>$explabacad,"asignacionacademica"=>$asignacion]);
     }
 
 
@@ -101,7 +115,7 @@ public function index(Request $request){
                      $empleado  = Empleado::select($raw)->where('idempleado', '=',$query)->get(); //Obtiene nombre completo
                      $expacad  = DB::table('expedienteacademic')->select('idexpedienteacadem')->where('idempleado','=',$query)->get();//Obtiene el idexpediente
 
-                     $expacd= DB::table('expedienteacademic')->select('idexpedienteacadem','idempleado','fechaaperturaexpacad','nombreinstitucion','anotitulacion','tituloobtenido','tituloestudio','direccioninstitucion','descripcionacademica')->get();
+                     $expacd= DB::table('expedienteacademic')->select('idexpedienteacadem','idempleado','fechaaperturaexpacad','nombreinstitucion','anotitulacion','tituloobtenido','tituloestudio','direccioninstitucion','descripcionacademica','postgrados')->get();
                     
                      $expacademico=$expacad[0]->idexpedienteacadem;
                      return view("admin/expedienteacademico.edit",["empleados"=>$empleado,"expedienteacademico"=>ExpedienteAcademico::findOrFail($expacademico),"expacads"=>$expacd]);
@@ -124,9 +138,10 @@ public function index(Request $request){
                             'tituloestudio' =>$request->get('tituloestudio'),
                             'direccioninstitucion' =>$request->get('direccioninstitucion'),
                             'descripcionacademica' =>$request->get('descripcionacademica'),
+                            'postgrados' =>$request->get('postgrados')
                             ]);
                          Session::flash('update','El Expediente actualizado correctamente!!!');
-                         return Redirect::to('admin/empleado');
+                         return Redirect::to('admin/expedienteacademico');
                 }// END UPDATE
     
     

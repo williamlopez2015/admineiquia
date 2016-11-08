@@ -11,5 +11,5 @@ class ExpedienteAcademico extends Model
     protected $primaryKey='idexpedienteacadem';
     public $timestamps=false;
 
-    protected $fillable=['idempleado','fechaaperturaexpacad','nombreinstitucion','anotitulacion','tituloobtenido','direccioninstitucion','descripcionacademica'];
+    protected $fillable=['idempleado','fechaaperturaexpacad','nombreinstitucion','anotitulacion','tituloobtenido','direccioninstitucion','descripcionacademica','postgrados'];
 }

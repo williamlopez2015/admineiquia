@@ -27,7 +27,9 @@ class ExpedienteAdministrativoFormRequest extends Request
             //
         'fechaapertura'=>'required|max:50',
         'codigocontrato'=>'required|max:50',
-        'idpuesto'=>'required'
+        'idpuesto'=>'required',
+        'modalidadcontratacion'=>'required|max:60',
+        'idempleado'
         ];
     }
 
