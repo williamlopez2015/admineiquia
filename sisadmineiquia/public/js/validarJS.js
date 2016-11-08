@@ -156,7 +156,7 @@
 			if(!/\d/.test(ultimoCaracter)) {
 				value = value.substring(0, longitudActual - 1);
 			}
-			if(longitudActual > 12) {
+			if(longitudActual > 6) {
 				value = value.substring(0, longitudActual - 1);
 			}
 			nup.value = value;
@@ -178,18 +178,21 @@
 
 	
 	function corregirCodCon(){
-		var value = codCon.value;
+		var value = codCon.value.toUpperCase();
 		var longitudActual = value.length;
 		if(longitudActual){
 			var ultimoCaracter = value.substring(longitudActual - 1);
 			switch (longitudActual){
 				case 1:
+
 				case 2:	
 					if(!/[aA-zZ]/.test(ultimoCaracter)){
 						value = value.substring(0, longitudActual - 1);
 					}
 				break;
 				case 3:
+				
+
 				case 4:
 				case 5:
 				case 6:
@@ -204,4 +207,71 @@
 			codCon.value = value;
 		}
 	}
+
+	function corregirNombreInstitucion(){
+		var value = nombreinstitucion.value;
+		var longitudActual = value.length;
+		if(longitudActual){
+			var ultimoCaracter = value.substring(longitudActual - 1);
+			if(!/[aA-zZ]/.test(ultimoCaracter)) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			if(longitudActual > 50) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			segundonombre.value = value;
+		}
+	}
+
+	function corregirTituloObtenido(){
+		var value = tituloobtenido.value;
+		var longitudActual = value.length;
+		if(longitudActual){
+			var ultimoCaracter = value.substring(longitudActual - 1);
+			if(!/[aA-zZ]/.test(ultimoCaracter)) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			if(longitudActual > 50) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			segundonombre.value = value;
+		}
+	}
+
+	function corregirTituloEstudio(){
+		var value = tituloestudio.value;
+		var longitudActual = value.length;
+		if(longitudActual){
+			var ultimoCaracter = value.substring(longitudActual - 1);
+			if(!/[aA-zZ]/.test(ultimoCaracter)) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			if(longitudActual > 50) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			segundonombre.value = value;
+		}
+	}
+
+	function corregirDireccionInstitucion(){
+		var value = direccioninstitucion.value;
+		var longitudActual = value.length;
+		if(longitudActual){
+			var ultimoCaracter = value.substring(longitudActual - 1);
+			if(!/[aA-zZ]/.test(ultimoCaracter)) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			if(longitudActual > 50) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			segundonombre.value = value;
+		}
+	}
+
+	
+	
+	
+	
+	
+	
 	

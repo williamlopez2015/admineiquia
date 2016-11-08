@@ -20,8 +20,8 @@
 
                 <!-- Main jumbotron for a primary marketing message or call to action -->
                 <div class="jumbotron">
-                    <h1>Bienvenido!!!</h1>
-                    <p>Este es sistema informático para la gestión de expediente académico-administrativo del recurso humano de EIQUIA-FIA-UES.</p>
+                    <h1>¡Bienvenido!</h1>
+                    <p>Este es sistema informático para la gestión de expedientes académicos-administrativos del recurso humano de EIQUIA-FIA-UES.</p>
                     <p>
                     </p>
                 </div>

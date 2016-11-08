@@ -27,6 +27,12 @@
     <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">
     <!-- <link href="{{asset('css/dataTables.bootstrap.min.css')}}" rel="stylesheet">-->
 
+    <!-- Select-->
+    <link href="{{asset('css/bootstrap-select.min.css')}}" rel="stylesheet">
+
+    <!-- Picker -->
+    <link href="{{asset('css/jquery.timepicker.css')}}" rel="stylesheet">
+
     
 
       <!-- Custom CSS -->
@@ -69,7 +75,7 @@
             @if (Auth::guest())
             <!-- Aqui va el login--> 
             <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Login<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Ingresar<b class="caret"></b></a>
                     <ul id="login-dp" class="dropdown-menu">
                         <li>
                             <div class="col-md-12">
@@ -77,7 +83,7 @@
                                  {{ csrf_field() }}
                                         <div class="form-group">
                                              <label class="sr-only" for="usuario_login">Usuario</label>
-                                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Usuario">
+                                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="ejemplo@gmail.com">
                                             @if ($errors->has('email'))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first('email') }}</strong>
@@ -86,7 +92,7 @@
                                         </div>
                                         <div class="form-group">
                                              <label class="sr-only" for="password_login">Password</label>
-                                             <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                                             <input id="password" type="password" class="form-control" name="password" placeholder="contraseña">
 
                                             @if ($errors->has('password'))
                                                 <span class="help-block">
@@ -95,18 +101,9 @@
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                        <div class="col-md-6 col-md-offset-4">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="remember"> Remember Me
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="fa fa-btn fa-sign-in"></i> Login
+                                                    <i class="fa fa-btn fa-sign-in"></i> Ingresar
                                                 </button>
-                                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
                                         </div>
                                  </form>
                             </div>            
@@ -199,6 +196,7 @@
     <!-- jQuery -->
     <script type="text/javascript" src="{{asset('js/jquery-3.1.1.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
+    @stack('scripts')
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
@@ -206,14 +204,18 @@
     <!-- Plugin jquery dataTables CJavaScript -->
     <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('js/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/stacktable.min.js')}}"></script>
+
     <script > $(document).ready(function(){
     $('#tablaempleado').DataTable();
     });
     </script>
+
     <script > $(document).ready(function(){
     $('#tablapuesto').DataTable();
     });
     </script>
+
     <script > $(document).ready(function(){
     $('#tablaexpadmin').DataTable();
     });
@@ -222,11 +224,61 @@
     $('#tablausers').DataTable();
     });
     </script>
-     <script > $(document).ready(function(){
+    <script > $(document).ready(function(){
     $('#tablaperfilpuesto').DataTable();
     });
     </script>
+    <script > $(document).ready(function(){
+    $('#tablaasistencia').DataTable();
+    });
+    </script>
+    <script > $(document).ready(function(){
+    $('#tablapermiso').DataTable();
+    });
+    </script>
+    <script > $(document).ready(function(){
+    $('#tablaacuerdos').DataTable();
+    });
+    </script>
+    <script > $(document).ready(function(){
+    $('#tablaexpacad ').DataTable();
+    });
+    </script>
+    <script > $(document).ready(function(){
+    $('#tablaexplabacad ').DataTable();
+    });
+    </script>
+    //
+    <script type=”text/javascript”> $(document).ready(function() {
+    $('#tablaexpadmi').stacktable();
+    });
+    </script>
 
+
+    <script > $(document).ready(function(){
+    $('#horaentrada').timepicker({ 'timeFormat': 'h:i A',
+    'minTime': '6:00am',
+    'maxTime': '8:00pm',    
+    'disableTimeRanges': [['12:01pm','1pm'],['8pm','7am']],
+    'step': 15 
+    }); });
+    </script>
+
+    <script > $(document).ready(function(){
+    $('#horasalida').timepicker({ 'timeFormat': 'h:i A',
+    'minTime': '6:00am',
+    'maxTime': '8:00pm',    
+    'disableTimeRanges': [['12:01pm','1pm'],['8pm','7am']],
+    'step': 15
+    }); });
+    </script>
+
+     <!-- select -->
+     <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
+     <!-- picker -->
+     <script src="{{asset('js/jquery.timepicker.js')}}"></script>
+     <script src="{{asset('js/jquery.timepicker.min.js')}}"></script>
+    
 
     <script type="text/javascript" src="{{asset('js/validarJS.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/validarJQue.js')}}"></script>
