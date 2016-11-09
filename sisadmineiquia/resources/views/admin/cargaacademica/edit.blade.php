@@ -38,9 +38,9 @@
                   <label>Nombre de Ciclo</label>
                   <select name="idciclo" class="form-control" id="idciclo">
 
-                   @foreach ($empleados as $emp)
+                   @foreach ($ciclos as $ciclo)
 
-                   @if($emp->idciclo=='1')
+                   @if($ciclo->idciclo=='1')
                    <option value="1">Ciclo 1</option>
                    <option value="2">Ciclo 2</option>
                    @else
