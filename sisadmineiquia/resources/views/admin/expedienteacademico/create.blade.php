@@ -24,7 +24,7 @@
             {{Form::token()}}    
 			<div class="form-group">
 				<label>Fecha Apertura Expediente Academico</label>
-				<input  type="text" name="fechaaperturaexpacad" class="tcal form-control" placeholder="00/00/0000" id="fechaaperturaexpacad" onkeyup="corregirFecha();">
+				<input  type="text" name="fechaaperturaexpacad" class="tcal form-control" placeholder="00-00-0000" id="fechaaperturaexpacad" onkeyup="corregirFecha();">
 				<div id="mensajeFechaAper" class="errores">Fecha invalida</div> 
 			</div>
 			
@@ -46,7 +46,7 @@
 
             <div class="form-group">
 				<label>Año de Titulacion</label>
-				<input  type="text" name="anotitulacion" class="tcal form-control" placeholder="00/00/0000" id="anotitulacion" onkeyup="corregirFecha();">
+				<input  type="text" name="anotitulacion" class="tcal form-control" placeholder="00-00-0000" id="anotitulacion" onkeyup="corregirFecha();">
 				<div id="mensajeFechaAper" class="errores">Fecha invalida</div> 
 			</div>
             <div class="form-group">

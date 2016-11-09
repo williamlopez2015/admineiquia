@@ -98,20 +98,17 @@ public function index(Request $request){
     public function edit($id)
 
     { 
-     
-
-        return view("admin.cargaacademica.edit",["cargaacademica"=>CargaAcademica::findOrFail($id)]);
 
 
-    {   
-        $empleados=DB::table('asignacionacademic')->Select( DB::raw("asignacionacademic.idasignacionacad,asignacionacademic.codasignatura,asignacionacademic.nombreasignatura,asignacionacademic.idciclo,asignacionacademic.ano,expedienteacademic.idexpedienteacadem,expedienteacademic.fechaaperturaexpacad,expedienteacademic.tituloobtenido,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.dui,empleado.nit,empleado.estado,empleado.foto"))->join('expedienteacademic', 'asignacionacademic.idexpedienteacadem', '=', 'expedienteacademic.idexpedienteacadem')->join('empleado', 'expedienteacademic.idempleado', '=', 'empleado.idempleado')->where('idasignacionacad','=',$id)->get();
+        $ciclos = DB::table('ciclo')->select('idciclo','nombreciclo')->get(); 
 
-       $ciclos = DB::table('ciclo')->select('idciclo','nombreciclo')->get();
-        return view("admin.cargaacademica.edit",["cargaacademica"=>CargaAcademica::findOrFail($id),"empleados"=>$empleados,"ciclos"=>$ciclos]);    
+        $empleados=DB::table('asignacionacademic')->Select( DB::raw("asignacionacademic.idasignacionacad,asignacionacademic.idciclo,asignacionacademic.ano,asignacionacademic.codasignatura,asignacionacademic.nombreasignatura,asignacionacademic.gteorico,asignacionacademic.gdiscusion,asignacionacademic.glaboratorio,asignacionacademic.tiempototal,asignacionacademic.responsabilidadadmin,expedienteacademic.idexpedienteacadem,expedienteacademic.fechaaperturaexpacad,expedienteacademic.tituloobtenido,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.dui,empleado.nit,empleado.estado,empleado.foto"))
+        ->join('expedienteacademic', 'asignacionacademic.idexpedienteacadem', '=', 'expedienteacademic.idexpedienteacadem')
+        ->join('empleado', 'expedienteacademic.idempleado', '=', 'empleado.idempleado')->where('idasignacionacad','=',$id)->get();
 
-
+        return view("admin.cargaacademica.edit",["cargaacademica"=>CargaAcademica::findOrFail($id),"empleados"=>$empleados,"ciclos"=>$ciclos]);
     }//Fin del EDIT
-}
+
 
 
     public function update(AsignacionAcademicaRequest $request, $id){

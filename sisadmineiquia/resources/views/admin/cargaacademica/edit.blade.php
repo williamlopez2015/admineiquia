@@ -27,7 +27,7 @@
                   <label>Empleado</label>
                   <select name="idempleado" class="form-control" id="idempleados">
                    @foreach ($empleados as $emp)
-                         <option value="{{$emp->idempleado}}">{{$emp->nombrecompleto}}</option>
+                         <option value="{{$emp->idexpedienteacadem}}">{{$emp->nombrecompleto}}</option>
 
                    @endforeach
                   </select>  
@@ -37,16 +37,10 @@
 	           <div class="form-group">
                   <label>Nombre de Ciclo</label>
                   <select name="idciclo" class="form-control" id="idciclo">
-
+                   @foreach ($empleados as $emp)
                    @foreach ($ciclos as $ciclo)
-
-                   @if($ciclo->idciclo=='1')
-                   <option value="1">Ciclo 1</option>
-                   <option value="2">Ciclo 2</option>
-                   @else
-                   <option value="2">Ciclo 2</option>
-                   <option value="1">Ciclo 1</option>
-                   @endif      
+                   <option value="{{$ciclo->idciclo}}" @if ($ciclo->idciclo==$emp->idciclo)selected="selected" @endif>{{$ciclo->nombreciclo}}</option>
+                   @endforeach
                    @endforeach
                   </select>  
               </div>

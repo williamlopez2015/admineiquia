@@ -39,11 +39,11 @@
             </div>
             <div class="form-group">
                 <label>Fecha de Inicio:</label>
-                <input  type="text" name="fechainicioexplabacad" id="fechainicioexplabacad" required class="tcal form-control" value="{{$experiencialaboralacademica->FECHAINICIOEXPLABACAD}}" placeholder="00/00/0000" id="fechainicioexplabacad">
+                <input  type="text" name="fechainicioexplabacad" id="fechainicioexplabacad" required class="tcal form-control" value="{{$experiencialaboralacademica->FECHAINICIOEXPLABACAD}}" placeholder="00-00-0000" id="fechainicioexplabacad">
             </div>
             <div class="form-group">
                 <label>Fecha de Fin:</label>
-                <input type='text' name="fechafinalizacionexplabacad" id="fechafinalizacionexplabacad" required class="tcal form-control" value="{{$experiencialaboralacademica->FECHAFINALIZACIONEXPLABACAD}}" placeholder="00/00/0000" id="fechafinalizacionexplabacad"/>
+                <input type='text' name="fechafinalizacionexplabacad" id="fechafinalizacionexplabacad" required class="tcal form-control" value="{{$experiencialaboralacademica->FECHAFINALIZACIONEXPLABACAD}}" placeholder="00-00-0000" id="fechafinalizacionexplabacad"/>
             </div>
             <div class="form-group">
                      <label for="descripcionexplab">Descripcion Experiencia</label>

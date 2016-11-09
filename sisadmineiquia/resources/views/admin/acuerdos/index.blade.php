@@ -29,7 +29,7 @@
                     <thead>
                         <tr>
                             <th>Código</th>
-                            <th>Foto</th>
+                            <th>Archivo</th>
                             <th>Empleado</th>
                             <th>Motivo</th>
                             <th>Estado</th>
@@ -42,8 +42,11 @@
                             <tr>
                                 <td>{{ $ac->idacuerdo }}</td>
                                 <td>
-                                    <img src="{{asset('acuerdos/'.$ac->archivoacuerdo)}}" alt="{{$ac->idacuerdo}}" height="110px" width="110px" class="img-thumbnail">
-
+                                @if(($ac->archivoacuerdo)!="")
+                                    <a href="{{ URL::asset('acuerdos/'.$ac->archivoacuerdo) }}" target="_blank">
+                                        {{ $ac->idacuerdo }}
+                                    </a>
+                                @endif
                                 </td>
                                 <td>{{ $ac->nombrecompleto }}</td>
                                 <td>{{ $ac->motivoacuerdo }}</td>

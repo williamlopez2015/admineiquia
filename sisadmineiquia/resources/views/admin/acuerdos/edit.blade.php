@@ -28,10 +28,12 @@
                   <input type="text" name="idacuerdo" class="form-control" required value="{{$acuerdos->IDACUERDO}}" id="idacuerdo" readonly="readonly">
             </div> 
             <div class="form-group">
-                  <label for="foto"> Documento Acuerdo Administrativo</label>
+                  <label for="foto">Documento</label>
                   <input type="file"  class="form-control" name="archivoacuerdo">
-                        @if(($acuerdos->archivoacuerdo)!=" ")
-                              <img class="img-thumbnail" src="{{asset('acuerdos/'.$acuerdos->ARCHIVOACUERDO)}}" alt="{{$acuerdos->IDACUERDO}}" height="110px" width="110px">
+                        @if(($acuerdos->archivoacuerdo)!="")
+                              <a href="{{ URL::asset('acuerdos/'.$acuerdos->ARCHIVOACUERDO) }}" target="_blank">
+                                    {{ $acuerdos->IDACUERDO }}
+                              </a>
                         @endif
             </div>
             <div class="form-group">
@@ -44,19 +46,19 @@
             </div>
             <div class="form-group">
                   <label for="motivoacuerdo">Motivo</label>
-                  <input type="text" name="motivoacuerdo" class="form-control" required value="{{$acuerdos->MOTIVOACUERDO}}" id="motivoacuerdo">
+                  <input type="text" name="motivoacuerdo" class="form-control" required value="{{$acuerdos->MOTIVOACUERDO}}" id="motivoAcuerdo" onkeyup="corregirMotivoAcuerdo();">
             </div>
              <div class="form-group">
                   <label for="descripcionacuerdo">Descripción</label>
-                  <input class="form-control" name="descripcionacuerdo" class="form-control" required value="{{$acuerdos->DESCRIPCIONACUERDO}}" id="descripcionacuerdo">
+                  <input class="form-control" name="descripcionacuerdo" class="form-control" required value="{{$acuerdos->DESCRIPCIONACUERDO}}" id="descripcionAcuerdo" onkeyup="corregirDescripcionAcuerdo();">
             </div>
             <div class="form-group">
                   <label for="fechaacuerdo">Fecha</label>
-                  <input name="fechaacuerdo" class="tcal form-control" required value="{{$acuerdos->FECHAACUERDO}}" id="fechaacuerdo">
+                  <input name="fechaacuerdo" class="tcal form-control" required value="{{$acuerdos->FECHAACUERDO}}" id="fechaAcuerdo" onkeyup="corregirFechaAcuerdo();">
             </div>
             <div class="form-Sroup">
                   <button class="btn btn-primary" type="submit">Guardar</button>
-                  <button class="btn btn-danger" type="reset">Cancelar</button>
+                  <a href="/admin/acuerdos" class="btn btn-danger" role="button">Cancelar</a>
             </div>
       </div>
                   {!!Form::close()!!}           

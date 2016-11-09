@@ -28,7 +28,7 @@
             {{Form::token()}}
 			<div class="form-group">
 				<label>Fecha Apertura Expediente Administrativo</label>
-				<input  type="text" name="fechaapertura" value="{{$expedienteadministrativo->FECHAAPERTURA}}" required class="tcal form-control"placeholder="00/00/0000" id="fechaApertura" onkeyup="corregirFecha();">
+				<input  type="text" name="fechaapertura" value="{{$expedienteadministrativo->FECHAAPERTURA}}" required class="tcal form-control" placeholder="00-00-0000" id="fechaApertura" onkeyup="corregirFecha();">
 				<div id="mensajeFechaAper" class="errores">Fecha invalida</div> 
 			</div>
 			<div class="form-group">

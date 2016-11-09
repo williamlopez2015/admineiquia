@@ -50,7 +50,7 @@
 
      <div class="form-group">
       <label>Año de Titulacion</label>
-      <input  type="text" name="anotitulacion" required class="tcal form-control" value="{{$expedienteacademico->ANOTITULACION}}" placeholder="00/00/0000" id="anotitulacion" >
+      <input  type="text" name="anotitulacion" required class="tcal form-control" value="{{$expedienteacademico->ANOTITULACION}}" placeholder="00-00-0000" id="anotitulacion" >
       <div id="mensajeFechaAper" class="errores">Fecha invalida</div> 
     </div>
     <div class="form-group">
