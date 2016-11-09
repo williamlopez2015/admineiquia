@@ -129,6 +129,7 @@ public function index(Request $request){
                          return Redirect::to('admin/cargaacademica');
                 }// END UPDATE
 
+
     public function destroy($id)
     {
         $query=trim($id);
@@ -136,6 +137,7 @@ public function index(Request $request){
             Session::flash('destroy','¡La Carga Academica se ha eliminado correctamente!');
             return Redirect::to('admin/cargaacademica');
     }
+
 
     public function asignacionacadreport($id){
 

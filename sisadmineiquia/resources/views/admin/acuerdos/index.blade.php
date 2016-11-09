@@ -5,20 +5,25 @@
         <div class="col-lg-12">
             <ol class="breadcrumb">
                 <li>
-                    <i class="fa fa-home"></i> <a href="/admin/acuerdos"> Administrar Acuerdos Administrativos</a>
+                    <i class="fa fa-home"></i> <a href="/admin/acuerdos"> Gestionar Acuerdos</a>
                 </li>
                 <li class="active">
-                    <i class="fa fa-desktop"></i>Gestion General de los Acuerdos Administrativos
+                    <i class="fa fa-desktop"></i> Administrar Acuerdos
                 </li>
             </ol>
         </div>
     </div>
-
+    <div class="row">
     <div class="col-lg-12">
-        <label><a href="acuerdos/create" class="btn btn-primary btn-lg" role="button">Nuevo Acuerdo Administrativo</a></label>
+        <label><a href="acuerdos/create" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus "></i> Nuevo Acuerdo Administrativo</a></label>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-lg-12">
         
         @include('mensajes.messages') 
 
+    </div>
     </div>
                  
     <div class="row">
@@ -57,9 +62,11 @@
                                                     @endif
                                 <td>{{ $ac->fechaacuerdo }}</td>
                                 <td>
-                                    <a href="" data-target="#modal-delete2-{{$ac->idacuerdo}}" data-toggle="modal"><button  class="btn btn-sm btn-success">Cambiar Estado</button></a>
-                                    <a href="{{URL::action('AcuerdosController@edit',$ac->idacuerdo)}}"><button type="button" class="btn btn-sm btn-primary">Editar</button></a>
-                                    <a href="" data-target="#modal-delete-{{$ac->idacuerdo}}" data-toggle="modal"><button class="btn btn-sm btn-danger">Eliminar</button></a>
+                                    <a href="{{URL::action('AcuerdosController@edit',$ac->idacuerdo)}}"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Editar</button></a>
+                                    <a href="" data-target="#modal-delete-{{$ac->idacuerdo}}" data-toggle="modal"><button class="btn btn-xs btn-danger"><i class="fa fa-remove"></i> Eliminar</button></a>
+                                    <a href="" data-target="#modal-delete2-{{$ac->idacuerdo}}" data-toggle="modal"><button  class="btn btn-xs btn-success"><i class="glyphicon glyphicon-retweet"></i> Cambiar Estado</button></a>
+                                    </td>
+                                </tr>
                                 @include('admin.acuerdos.modal')
                         @endforeach 
                     </tbody>

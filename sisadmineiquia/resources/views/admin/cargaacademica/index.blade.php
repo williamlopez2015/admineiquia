@@ -15,7 +15,7 @@
                 </div>
                 <!-- /.row -->
                 <div class="col-lg-12">
-                <label><a href="cargaacademica/create" class="btn btn-primary btn-lg" role="button">Nueva Carga Academica</a></label>
+                <label><a href="cargaacademica/create" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus"></i> Nueva Carga Academica</a></label>
 
                 <!--
                 @include('admin.empleado.search')-->
@@ -25,7 +25,7 @@
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <h2>Listado de Carga Academica</h2>
+                        <h2>Listado de Cargas Academicas</h2>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover" id="tablaexpadmin">
                                 <thead>
@@ -49,10 +49,10 @@
                                         <td>{{ $cargaacad->idciclo}}</td>
                                         <td>{{ $cargaacad->ano}}</td>
                                         <td>
-                                         <a href="{{URL::action('AsignacionAcademicaController@edit',$cargaacad->idasignacionacad)}}"><button type="button" class="btn btn-xs btn-primary">Editar Carga Academica</button></a>
-                                         <a href="" data-target="#modal-delete-{{$cargaacad->idasignacionacad}}" data-toggle="modal"><button class="btn btn-xs btn-danger">Eliminar</button></a>
+                                         <a href="{{URL::action('AsignacionAcademicaController@edit',$cargaacad->idasignacionacad)}}"><button type="button" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</button></a>
+                                         <a href="" data-target="#modal-delete-{{$cargaacad->idasignacionacad}}" data-toggle="modal"><button class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i> Eliminar</button></a>
 
-                                         <a href="{{URL::action('AsignacionAcademicaController@asignacionacadreport',$cargaacad->idasignacionacad)}}"><button class="btn btn-xs btn-success">Imprimir</button></a>
+                                         <a href="{{URL::action('AsignacionAcademicaController@asignacionacadreport',$cargaacad->idasignacionacad)}}"><button class="btn btn-xs btn-success"> <i class="glyphicon glyphicon-print"></i> Imprimir</button></a>
                                          
 
                                         </td>
