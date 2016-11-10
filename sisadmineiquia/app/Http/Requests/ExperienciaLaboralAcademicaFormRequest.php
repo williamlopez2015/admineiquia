@@ -34,7 +34,9 @@ class ExperienciaLaboralAcademicaFormRequest extends Request
 
     public function messages()
     {
-        return ['nombreinstitucionexplabacad.required' =>'El campo Nombre Institucion es obligatorio',
+        return [
+                'idexpedienteacadem.required' =>'El campo Empleado es obligatorio',
+                'nombreinstitucionexplabacad.required' =>'El campo Nombre Institucion es obligatorio',
                 'fechainicioexplabacad.required' =>'El campo Fecha Inicio es obligatorio',
                 'fechafinalizacionexplabacad.required' =>'El campo Fecha Fin es obligatorio',
                 'fechainicioexplabacad.date' =>'El campo Fecha de Inicio debe ser tipo fecha',

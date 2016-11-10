@@ -25,7 +25,7 @@
             
             <div class="form-group">
                   <label for="idacuerdo">Código</label>
-                  <input type="text" name="idacuerdo" class="form-control" required value="{{$acuerdos->IDACUERDO}}" id="idacuerdo" readonly="readonly">
+                  <input type="text" name="idacuerdo" class="form-control" placeholder="AC-000/0000" required value="{{$acuerdos->IDACUERDO}}" id="idacuerdo" readonly="readonly">
             </div> 
             <div class="form-group">
                   <label for="foto">Documento</label>
