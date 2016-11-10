@@ -75,26 +75,26 @@
 
 		<div class="form-group">
             	<label for="grupoteorico">Grupo Teorico</label>
-            	<input type="text" name="grupoteorico" value="{{old('grupoteorico')}}" class="form-control" placeholder="Grupo Teorico..." id="grupoteorico" >
+            	<input type="text" name="grupoteorico" value="{{old('grupoteorico')}}" class="form-control" placeholder="1,2,3,4,5..." id="grupoteorico" >
             	<div id="mensaje1" class="errores">Nombre invalido</div>
             </div>
 
             <div class="form-group">
             	<label for="grupodiscusion">Grupo Discusion</label>
-            	<input type="text" name="grupodiscusion" value="{{old('grupodiscusion')}}" class="form-control" placeholder="Grupo Discusion..." id="grupodiscusion" >
+            	<input type="text" name="grupodiscusion" value="{{old('grupodiscusion')}}" class="form-control" placeholder="1,2,3,4,5..." id="grupodiscusion" >
             	<div id="mensaje1" class="errores">Grupo invalido</div>
             </div>
 
             <div class="form-group">
             	<label for="grupolaboratorio">Grupo Laboratorio</label>
-            	<input type="text" name="grupolaboratorio" value="{{old('grupolaboratorio')}}" class="form-control" placeholder="Grupo Laboratorio..." id="grupolaboratorio" >
+            	<input type="text" name="grupolaboratorio" value="{{old('grupolaboratorio')}}" class="form-control" placeholder="1,2,3,4,5..." id="grupolaboratorio" >
             	<div id="mensaje1" class="errores">Grupo invalido</div>
             </div>
 
 
             <div class="form-group">
             	<label for="tiempototal">Tiempo Total</label>
-            	<input type="text" name="tiempototal" value="{{old('tiempototal')}}" class="form-control" placeholder="Tiempo Total..." id="tiempototal" >
+            	<input type="text" name="tiempototal" value="{{old('tiempototal')}}" class="form-control" placeholder="1..." id="tiempototal" >
             	<div id="mensaje1" class="errores">Tiempo invalido</div>
             </div>
 

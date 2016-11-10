@@ -55,7 +55,7 @@
             </div>
             <div class="form-group">
                 <label>Tiempo Adicional Fin:</label>
-                <input type='text' name="tiempoadicionalfin" id="tiempoadicionalfin" class="tcal form-control" required value="{{old('tiempoadicionalfin')}}" placeholder="00-00-0000" id="tiempoadicionalfin"/>
+                <input type='text' name="tiempoadicionalfin" id="tiempoadicionalfin" class="tcal form-control" required value="{{old('tiempoadicionalfin')}}" placeholder="00-00-0000" id="tiempoadicionalfin" onkeyup="corregirFechaFinTiempoAdicional();"/>
             </div>
                     
             <div class="form-group">

@@ -27,7 +27,7 @@ class ExperienciaLaboralAcademicaFormRequest extends Request
             'idexpedienteacadem'=>'required',
             'nombreinstitucionexplabacad'=>'required|max:50',
             'fechainicioexplabacad'=>'required|max:15',
-            'fechafinalizacionexplabacad'=>'required|max:15',
+            'fechafinalizacionexplabacad'=>'required|max:12|date|after:fechainicioexplabacad',
             'descripcionexplab'=>'max:200'
         ];
     }
@@ -37,6 +37,9 @@ class ExperienciaLaboralAcademicaFormRequest extends Request
         return ['nombreinstitucionexplabacad.required' =>'El campo Nombre Institucion es obligatorio',
                 'fechainicioexplabacad.required' =>'El campo Fecha Inicio es obligatorio',
                 'fechafinalizacionexplabacad.required' =>'El campo Fecha Fin es obligatorio',
+                'fechainicioexplabacad.date' =>'El campo Fecha de Inicio debe ser tipo fecha',
+                'fechafinalizacionexplabacad.after' =>'El campo Fecha de Fin debe ser mayor a la Fecha de inicio',
                 'descripcionexplab.max'=>'El maximo de letras es 200 en la descriptcion de la experiencia'];
     }
+
 }

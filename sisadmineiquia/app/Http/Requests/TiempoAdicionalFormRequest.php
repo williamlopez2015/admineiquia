@@ -25,12 +25,20 @@ class TiempoAdicionalFormRequest extends Request
     {
         return [
             'idempleado'=>'required',
-            'idciclo'=>'required|max:2',
+            'idciclo'=>'required|max:1',
             'tiempoadicionalinicio'=>'required|max:12',
-            'tiempoadicionalfin'=>'required|max:12',
+            'tiempoadicionalfin'=>'required|max:12|date|after:tiempoadicionalinicio',
             'ano'=>'required|max:4',
             'descripcion'=>'max:250'
 
         ];
+    }
+
+
+    public function messages()
+    {
+        return ['tiempoadicionalfin.required' =>'El campo Tiempo Adicional Fin es obligatorio',
+                'tiempoadicionalinicio.required' =>'El campo Tiempo Adicional Inicio es obligatorio',
+                'tiempoadicionalfin.after' =>'El campo Tiempo Adicional Fin debe ser mayor al Tiempo Adicional Inicio '];
     }
 }

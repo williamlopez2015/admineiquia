@@ -81,19 +81,19 @@
 
 		<div class="form-group">
             	<label for="grupoteorico">Grupo Teorico</label>
-            	<input type="text" name="grupoteorico" value="{{$cargaacademica->GTEORICO}}" class="form-control" placeholder="Grupo Teorico..." id="grupoteorico" >
+            	<input type="text" name="grupoteorico" value="{{$cargaacademica->GTEORICO}}" class="form-control" placeholder="1,2,3,4,5..." id="grupoteorico" >
             	<div id="mensaje1" class="errores">Nombre invalido</div>
             </div>
 
             <div class="form-group">
             	<label for="grupodiscusion">Grupo Discusion</label>
-            	<input type="text" name="grupodiscusion" value="{{$cargaacademica->GDISCUSION}}" class="form-control" placeholder="Grupo Discusion..." id="grupodiscusion" >
+            	<input type="text" name="grupodiscusion" value="{{$cargaacademica->GDISCUSION}}" class="form-control" placeholder="1,2,3,4,5..." id="grupodiscusion" >
             	<div id="mensaje1" class="errores">Grupo invalido</div>
             </div>
 
             <div class="form-group">
             	<label for="grupolaboratorio">Grupo Laboratorio</label>
-            	<input type="text" name="grupolaboratorio" value="{{$cargaacademica->GLABORATORIO}}" class="form-control" placeholder="Grupo Laboratorio..." id="grupolaboratorio" >
+            	<input type="text" name="grupolaboratorio" value="{{$cargaacademica->GLABORATORIO}}" class="form-control" placeholder="1,2,3,4,5..." id="grupolaboratorio" >
             	<div id="mensaje1" class="errores">Grupo invalido</div>
             </div>
 
