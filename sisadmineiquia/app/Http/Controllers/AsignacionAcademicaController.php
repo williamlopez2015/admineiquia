@@ -146,11 +146,9 @@ public function index(Request $request){
          
 
          $asignacionacad=DB::table('asignacionacademic')->select(DB::raw("idasignacionacad,idexpedienteacadem,idciclo,ano,codasignatura,nombreasignatura,gteorico,gdiscusion,glaboratorio,tiempototal,responsabilidadadmin"))->where('idasignacionacad', '=', $id)->get();
-
-       $ciclos = DB::table('ciclo')->select('idciclo','nombreciclo')->where('idciclo', '=', $id)->get();
     
 
-        $pdf = PDF::loadView('admin.cargaacademica.show',["empleado"=>$empleados,"cargaacademica"=>$asignacionacad,"ciclos"=>$ciclos]);
+        $pdf = PDF::loadView('admin.cargaacademica.show',["empleado"=>$empleados,"cargaacademica"=>$asignacionacad]);
         $papel_tamaño = array(0,0,216,279);
         $pdf->setPaper("letter" ,'portrait');
         return $pdf->stream('carga-Academica.pdf');
