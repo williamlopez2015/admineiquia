@@ -203,12 +203,15 @@
 				case 4:
 				case 5:
 				case 6:
+				case 7:
+				case 8:
+				case 9:
 					if(!/\d/.test(ultimoCaracter)){
 						value = value.substring(0, longitudActual - 1);
 					}
 				break;
 			}
-			if(longitudActual > 6) {
+			if(longitudActual > 9) {
 				value = value.substring(0, longitudActual - 1);
 			}
 			codCon.value = value;
