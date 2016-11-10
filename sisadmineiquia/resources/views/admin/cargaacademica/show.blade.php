@@ -9,11 +9,10 @@
 
     <title>SEIQUIA - FIAUES</title>
 
-    <!-- Bootstrap Core CSS -->
     <link href="{{ public_path()}}/css/asignacionacademica.css" rel="stylesheet">
 <style>
 table, th, td {
-    border: 2px solid black;
+    border: 1px solid black;
     border-collapse: collapse;
 }
 th, td {
@@ -23,36 +22,49 @@ th, td {
 </head>
 <body>
 <div id="contenedor">
-<!--Contenido -->
-
 <header>
-    <center>
+<div id="logo">
+        @if(is_file(public_path().'/fotos/logo/logoUES.png'))
+        <div class="foto">
+            <img src="{{ public_path()}}/fotos/logo/logoUES.png" height="110px" width="110px" class="img-thumbnail">
+        </div>
+        @else
+        <div class="foto">
+            <img src=""  class="img-thumbnail">
+        </div>
+        @endif
+    </div>
+    <div>
         <h3>UNIVERSIDAD DE EL SALVADOR</h3>
         <h3>FACULTAD DE INGENIERIA Y ARQUITECTURA</h3>
         <h3>ESCUELA DE INGENIERIA QUIMICA E INGENIERIA DE ALIMENTOS</h3>
-    </center>
+    </div>
 </header>
+
 @foreach ($empleado as $emp)
-<section>
-<hr width=100% align="left"> 
+<section> 
 <h3><b><i>Docente:</i></b><i>{{$emp->nombrecompleto}}</i></h3>
 </section>
 @endforeach
 @foreach ($cargaacademica as $asigacad)
 <section>
 <div id="reporteacademico">
-    @foreach ($ciclos as $ciclo)
     <table style="width:100%">
 <tr>
 <td>Ciclo</td>
 <td>Año</td>
 </tr>
+
 <tr>
-<td>{{$ciclo->nombreciclo}}</td>
+@if($asigacad->idciclo=='1')
+        <td>Ciclo I</td>
+        @else
+        <td>Ciclo II</td>
+        @endif
 <td>{{$asigacad->ano}}</td>
 </tr>
     </table>
-     @endforeach
+   
 <br></br>
     <table style="width:100%">
 <tr>
