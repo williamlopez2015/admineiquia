@@ -78,8 +78,8 @@
                   <div id="mensajeSex" class="errores">No se ha seleccionado un puesto</div>     
 			</div>  
 			<div class="form-group">
-            	<button class="btn btn-primary" type="submit" id="guardar">Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
+            	<button class="btn btn-primary" type="submit" id="guardar"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+            	<button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
             </div>
 		</div>            
  </div>

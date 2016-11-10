@@ -51,11 +51,11 @@
             </div>
             <div class="form-group">
                 <label>Tiempo Adicional Inicio:</label>
-                <input  type="text" name="tiempoadicionalinicio" id="tiempoadicionalinicio" class="tcal form-control" required  value="{{old('tiempoadicionalinicio')}}" placeholder="00/00/0000" id="tiempoadicionalinicio">
+                <input  type="text" name="tiempoadicionalinicio" id="tiempoadicionalinicio" class="tcal form-control" required  value="{{old('tiempoadicionalinicio')}}" placeholder="00-00-0000" id="tiempoadicionalinicio">
             </div>
             <div class="form-group">
                 <label>Tiempo Adicional Fin:</label>
-                <input type='text' name="tiempoadicionalfin" id="tiempoadicionalfin" class="tcal form-control" required value="{{old('tiempoadicionalfin')}}" placeholder="00/00/0000" id="tiempoadicionalfin"/>
+                <input type='text' name="tiempoadicionalfin" id="tiempoadicionalfin" class="tcal form-control" required value="{{old('tiempoadicionalfin')}}" placeholder="00-00-0000" id="tiempoadicionalfin" onkeyup="corregirFechaFinTiempoAdicional();"/>
             </div>
                     
             <div class="form-group">
@@ -63,8 +63,8 @@
                 <textarea  name="descripcion" id="descripcion" class="form-control"  rows="3" placeholder="Descripcion de el Tiempo Adicional">{{old('descripcion')}}</textarea>
             </div>
             <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Guardar</button>
-                        <button class="btn btn-danger" type="reset">Cancelar</button>
+                        <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+                        <button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
 			</div>
 		</div>            
  </div>

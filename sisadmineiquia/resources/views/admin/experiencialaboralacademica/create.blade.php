@@ -39,19 +39,19 @@
             </div>
             <div class="form-group">
                 <label>Fecha de Inicio:</label>
-                <input  type="text" name="fechainicioexplabacad" id="fechainicioexplabacad" required class="tcal form-control" value="{{old('fechainicioexplabacad')}}" placeholder="00/00/0000" id="fechainicioexplabacad">
+                <input  type="text" name="fechainicioexplabacad" id="fechainicioexplabacad" required class="tcal form-control" value="{{old('fechainicioexplabacad')}}" placeholder="00-00-0000" id="fechainicioexplabacad">
             </div>
             <div class="form-group">
                 <label>Fecha de Fin:</label>
-                <input type='text' name="fechafinalizacionexplabacad" id="fechafinalizacionexplabacad" required class="tcal form-control" value="{{old('fechafinalizacionexplabacad')}}" placeholder="00/00/0000" id="fechafinalizacionexplabacad"/>
+                <input type='text' name="fechafinalizacionexplabacad" id="fechafinalizacionexplabacad" required class="tcal form-control" value="{{old('fechafinalizacionexplabacad')}}" placeholder="00-00-0000" id="fechafinalizacionexplabacad"/>
             </div>
             <div class="form-group">
                      <label for="descripcionexplab">Descripcion Experiencia</label>
                      <textarea  type="text" name="descripcionexplab" value="{{old('descripcionexplab')}}" class="form-control"  rows=""  placeholder="Descripcion..."></textarea>
             </div>
             <div class="form-group">
-            	<button class="btn btn-primary" type="submit" id="guardar">Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
+            	<button class="btn btn-primary" type="submit" id="guardar"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+            	<button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
             </div>
 		</div> 
 			{!!Form::close()!!}	        

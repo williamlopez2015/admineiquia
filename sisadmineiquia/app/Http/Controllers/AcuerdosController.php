@@ -74,10 +74,10 @@ class AcuerdosController extends Controller
 
     public function edit($id){
 
-        $raw = DB::raw("CONCAT(em.primernombre,' ', em.segundonombre,' ',em.primerapellido,' ',em.segundoapellido) as nombrecompleto");
-        $empleados=DB::table('empleado as em')
-        ->join('expedienteadminist as ex','em.idempleado','=','ex.idempleado')
-        ->select('ex.idexpediente',$raw)->get();
+        $empleados  = DB::table('acuerdoadministrat')->Select( DB::raw("
+                expedienteadminist.idexpediente,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto"))
+            ->join('expedienteadminist', 'acuerdoadministrat.idexpediente', '=', 'expedienteadminist.idexpediente')
+            ->join('empleado', 'expedienteadminist.idempleado', '=', 'empleado.idempleado')->where('acuerdoadministrat.idacuerdo','=',$id)->get();
 
     	return view("admin.acuerdos.edit",["acuerdos"=>Acuerdos::findOrFail($id),"empleados"=>$empleados]);
 

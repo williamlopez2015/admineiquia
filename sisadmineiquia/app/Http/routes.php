@@ -17,10 +17,11 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth','alltype']], function () {
 	  Route::get('admin/empleado/report/{id}', 'EmpleadoController@perfilreport');
+    Route::get('admin/cargaacademica/report/{id}', 'AsignacionAcademicaController@asignacionacadreport');
 	  Route::get('admin/empleado/nominareport', 'EmpleadoController@nominareport');
     Route::get('admin/empleado/nominareportdownload', 'EmpleadoController@nominareportdownload');
 	  Route::get('admin/empleado/reportdownload/{id}', 'EmpleadoController@perfilreportdownload');
-      Route::resource('admin/empleado','EmpleadoController');
+    Route::resource('admin/empleado','EmpleadoController');
 });
 
 

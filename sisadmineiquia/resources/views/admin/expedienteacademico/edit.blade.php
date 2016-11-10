@@ -50,7 +50,7 @@
 
      <div class="form-group">
       <label>Año de Titulacion</label>
-      <input  type="text" name="anotitulacion" required class="tcal form-control" value="{{$expedienteacademico->ANOTITULACION}}" placeholder="00/00/0000" id="anotitulacion" >
+      <input  type="text" name="anotitulacion" required class="tcal form-control" value="{{$expedienteacademico->ANOTITULACION}}" placeholder="00-00-0000" id="anotitulacion" >
       <div id="mensajeFechaAper" class="errores">Fecha invalida</div> 
     </div>
     <div class="form-group">
@@ -81,9 +81,9 @@
                 <label>Post-Grados</label>
                 <textarea  name="postgrados" id="postgrados" class="form-control"  rows="3" placeholder="postgrado 1, postgrado 2">{{$expedienteacademico->POSTGRADOS}}</textarea>
             </div>
-            <div class="form-group" align=right>
-            	<button class="btn btn-primary" type="submit" >Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
+            <div class="form-group">
+                  <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-refresh"></i> Actualizar</button>
+                  <a href="/admin/expedienteacademico" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
             </div>
 		</div>
                     {!!Form::close()!!}		

@@ -16,7 +16,7 @@
                 <!-- /.row -->
                 <div class="row">
                 <div class="col-lg-12">
-                <label><a href="expedienteacademico/create" class="btn btn-primary btn-lg" role="button">Nuevo Expediente Academico</a></label>
+                <label><a href="expedienteacademico/create" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus"></i> Nuevo Expediente Academico</a></label>
                 </div>
                 </div>
                 <div class="row">
@@ -46,8 +46,9 @@
                                         <td>{{ $expacad->fechaaperturaexpacad}}</td>
                                         <td>{{ $expacad->tituloobtenido}}</td>
                                         <td>
-                                        <a href="{{URL::action('ExpedienteAcademicoController@edit',$expacad->idempleado)}}"><button type="button" class="btn btn-xs btn-info">Editar Expediente Academico</button></a>
-                                        <a href="{{URL::action('ExpedienteAcademicoController@show',$expacad->idexpedienteacadem)}}"><button type="button" class="btn btn-xs btn-success">Detalle</button></a>
+                                        <a href="{{URL::action('ExpedienteAcademicoController@edit',$expacad->idempleado)}}"><button type="button" class="btn btn-xs btn-primary">
+                                        <i class="fa fa-edit"></i> Editar</button></a>
+                                        <a href="{{URL::action('ExpedienteAcademicoController@show',$expacad->idexpedienteacadem)}}"><button type="button" class="btn btn-xs btn-default"><i class="glyphicon glyphicon-book"></i> Detalle</button></a>
                                         </td>
                                     </tr>
                                 @endforeach 

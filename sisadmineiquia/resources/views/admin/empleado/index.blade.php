@@ -15,8 +15,8 @@
                 </div>
                 <!-- /.row -->
                 <div class="col-lg-12">
-                <label><a href="/admin/expedienteadministrativo" class="btn btn-primary btn-lg" role="button">Expediente Administrativo</a></label>
-                <label><a href="/admin/expedienteacademico" class="btn btn-primary btn-lg" role="button">Expediente Academico</a></label>
+                <label><a href="/admin/expedienteadministrativo" class="btn btn-primary btn-lg" role="button"><i class="fa fa-folder-open"></i>  Expediente Administrativo</a></label>
+                <label><a href="/admin/expedienteacademico" class="btn btn-primary btn-lg" role="button"><i class="glyphicon glyphicon-education"></i> Expediente Academico</a></label>
                 </div>
                 <div class="row">
                 <div class="col-lg-12">
@@ -75,9 +75,9 @@
                                                      <td>De Baja</td>
                                                     @endif
                                                     <td>
-                                                    <a href="" data-target="#modal-delete-{{$emp->idempleado}}" data-toggle="modal"><button  class="btn btn-xs btn-danger">Cambiar</button></a>
-                                                    <a href="{{URL::action('EmpleadoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-primary">Editar</button></a>
-                                                    <a href="{{URL::action('EmpleadoController@perfilreport',$emp->idempleado)}}"><button class="btn btn-xs btn-success">Perfil</button></a>
+                                                    <a href="" data-target="#modal-delete-{{$emp->idempleado}}" data-toggle="modal"><button  class="btn btn-xs btn-danger"><i class="fa fa-retweet"></i> Cambiar</button></a>
+                                                    <a href="{{URL::action('EmpleadoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Editar </button></a>
+                                                    <a href="{{URL::action('EmpleadoController@perfilreport',$emp->idempleado)}}"><button class="btn btn-xs btn-success"><i class="fa fa-user"></i> Perfil</button></a>
                                                     </td>
                                                 </tr>
                                                 @include('admin.empleado.modal')

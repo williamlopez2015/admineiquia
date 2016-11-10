@@ -9,6 +9,13 @@
 	var alerta = document.getElementById("alerta");
 	var fechaApertura = document.getElementById("fechaApertura");
 	var codCon = document.getElementById("codCon");
+	var codAcuerdo = document.getElementById("codAcuerdo");
+	var fechaAcuerdo = document.getElementById("fechaAcuerdo");
+	var motivoAcuerdo = document.getElementById("motivoAcuerdo");
+	var descripcionAcuerdo = document.getElementById("descripcionAcuerdo");
+	var tiempoadicionalinicio = document.getElementById("tiempoadicionalinicio");
+	var tiempoadicionalfin = document.getElementById("tiempoadicionalfin");
+
 
 	function corregirPrimerNombre(){
 		var value = primernombre.value;
@@ -269,9 +276,134 @@
 	}
 
 	
+	function corregirCodAcuerdo(){
+		var value = codAcuerdo.value.toUpperCase();
+		var longitudActual = value.length;
+		if(longitudActual){
+			var ultimoCaracter = value.substring(longitudActual - 1);
+			switch (longitudActual){
+				case 1:
+
+				case 2:	
+					if(!/[aA-zZ]/.test(ultimoCaracter)){
+						value = value.substring(0, longitudActual - 1);
+					}
+				break;
+				case 3:
+				case 4:
+				case 5:
+				case 6:
+				case 7:
+				case 8:
+				case 9:
+					if(!/\d/.test(ultimoCaracter)){
+						value = value.substring(0, longitudActual - 1);
+					}
+				break;
+			}
+			if(longitudActual > 9) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			codAcuerdo.value = value;
+		}
+	}
 	
+	function corregirFechaAcuerdo(){
+		var value = fechaAcuerdo.value;
+		var longitudActual = value.length;
+		if(longitudActual){
+			var ultimoCaracter = value.substring(longitudActual - 1);
+			switch (longitudActual){
+				case 3:
+				case 6:
+					if(ultimoCaracter != '-'){
+						value = value.substring(0,longitudActual - 1);
+					}
+				break;
+				default:
+					if(!/\d/.test(ultimoCaracter)) {
+						value = value.substring(0,longitudActual - 1);
+					}
+				}
+			if(longitudActual > 10) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			longitudActual = value.length;
+			switch (longitudActual) {
+				case 2:
+				case 5:
+					value += "-";
+			}
+
+			fechaAcuerdo.value = value;
+		}
+	}
+
+	function corregirMotivoAcuerdo(){
+		var value = motivoAcuerdo.value;
+		var longitudActual = value.length;
+		if(longitudActual){
+			var ultimoCaracter = value.substring(longitudActual - 1);
+			if(!/[aA-zZ]/.test(ultimoCaracter)) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			if(longitudActual > 50) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			motivoAcuerdo.value = value;
+		}
+	}
+
+	function corregirDescripcionAcuerdo(){
+		var value = descripcionAcuerdo.value;
+		var longitudActual = value.length;
+
+		if(longitudActual > 250) {
+			value = value.substring(0, longitudActual - 1);
+		}
+
+		descripcionAcuerdo.value = value;
+	}
+
+	function corregirFecha1Fin){
+		var value = fechaAcuerdo.value;
+		var longitudActual = value.length;
+		if(longitudActual){
+			var ultimoCaracter = value.substring(longitudActual - 1);
+			switch (longitudActual){
+				case 3:
+				case 6:
+					if(ultimoCaracter != '-'){
+						value = value.substring(0,longitudActual - 1);
+					}
+				break;
+				default:
+					if(!/\d/.test(ultimoCaracter)) {
+						value = value.substring(0,longitudActual - 1);
+					}
+				}
+			if(longitudActual > 10) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			longitudActual = value.length;
+			switch (longitudActual) {
+				case 2:
+				case 5:
+					value += "-";
+			}
+
+			fechaAcuerdo.value = value;
+		}
+	}
 	
-	
-	
-	
-	
+
+	function corregirFechaFinTiempoAdicional(){
+		var valueinicio = Date.parse(tiempoadicionalinicio.value);
+		var valuefin = Date.parse(tiempoadicionalfin.value);
+		var longitudActual = value.length;
+		if (< valuefin > valueinicio ){
+		    alert("La fecha fin debe ser mayor a la fecha inicio ");
+		} 
+		
+	}
+

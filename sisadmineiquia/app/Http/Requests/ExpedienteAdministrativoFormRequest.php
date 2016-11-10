@@ -26,7 +26,7 @@ class ExpedienteAdministrativoFormRequest extends Request
         return [
             //
         'fechaapertura'=>'required|max:50',
-        'codigocontrato'=>'required|max:50',
+        'codigocontrato'=>'required|max:9|regex:/^[aA-zZ]{2}\d{7}+$/i',
         'idpuesto'=>'required',
         'modalidadcontratacion'=>'required|max:60',
         'idempleado'

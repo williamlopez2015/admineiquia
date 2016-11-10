@@ -4,18 +4,21 @@
    <div class="col-lg-12">
        <ol class="breadcrumb">
           <li><i class="fa fa-home"></i> <a href="/admin/puesto"> Gestionar Puesto</a></li>
-          <li class="active"><i class="fa fa-desktop"></i> Gestion General de los Puestos</li>
+          <li class="active"><i class="fa fa-desktop"></i> Administrar Puesto</li>
        </ol>
     </div>
 </div>
                
   <div class="col-lg-12">
-  	 <label><a href="puesto/create" class="btn btn-primary btn-lg" role="button">Nuevo Puesto</a></label>
+  	 <label><a href="puesto/create" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus"></i> Nuevo Puesto</a></label>
+     @include('mensajes.messages')
+  </div>
+  <div class="col-lg-12">
      @include('mensajes.messages')
   </div>
 <div class="row">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <h2>Listado de Puesto</h2>
+      <h2>Listado de Puestos</h2>
 	</div>
 </div>
 
@@ -41,9 +44,9 @@
 				    <td>{{ $pues->profesion}}</td>
 				    <td>{{ $pues->reporta}}</td>
 					<td>
-						<a href="{{URL::action('PuestoController@edit',$pues->idpuesto)}}"><button class="btn btn-xs btn-primary">Editar</button></a>
-                        <a href="" data-target="#modal-delete-{{$pues->idpuesto}}" data-toggle="modal"><button class="btn btn-xs btn-danger">Eliminar</button></a>
-                        <a href="{{URL::action('PuestoController@show',$pues->idpuesto)}}"><button class="btn btn-xs btn-primary">Detalle</button></a>
+						<a href="{{URL::action('PuestoController@edit',$pues->idpuesto)}}"><button class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Editar</button></a>
+                        <a href="" data-target="#modal-delete-{{$pues->idpuesto}}" data-toggle="modal"><button class="btn btn-xs btn-danger"><i class="fa fa-remove"></i> Eliminar</button></a>
+                        <a href="{{URL::action('PuestoController@show',$pues->idpuesto)}}"><button class="btn btn-xs btn-default"><i class="fa fa-book"></i> Detalle</button></a>
 					</td>
 				</tr>
 				@include('admin.puesto.modal')

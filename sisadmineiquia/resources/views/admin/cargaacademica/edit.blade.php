@@ -27,7 +27,7 @@
                   <label>Empleado</label>
                   <select name="idempleado" class="form-control" id="idempleados">
                    @foreach ($empleados as $emp)
-                         <option value="{{$emp->idempleado}}">{{$emp->nombrecompleto}}</option>
+                         <option value="{{$emp->idexpedienteacadem}}">{{$emp->nombrecompleto}}</option>
 
                    @endforeach
                   </select>  
@@ -37,16 +37,10 @@
 	           <div class="form-group">
                   <label>Nombre de Ciclo</label>
                   <select name="idciclo" class="form-control" id="idciclo">
-
                    @foreach ($empleados as $emp)
-
-                   @if($emp->idciclo=='1')
-                   <option value="1">Ciclo 1</option>
-                   <option value="2">Ciclo 2</option>
-                   @else
-                   <option value="2">Ciclo 2</option>
-                   <option value="1">Ciclo 1</option>
-                   @endif      
+                   @foreach ($ciclos as $ciclo)
+                   <option value="{{$ciclo->idciclo}}" @if ($ciclo->idciclo==$emp->idciclo)selected="selected" @endif>{{$ciclo->nombreciclo}}</option>
+                   @endforeach
                    @endforeach
                   </select>  
               </div>
@@ -55,15 +49,11 @@
 			      <div class="form-group">
               <label for="anocarga">Año</label>
               <select name="anocarga" class="form-control" id="anocarga">
-              @foreach ($empleados as $emp)
-                @for($i=date('o'); $i>=$emp->ano; $i--)
-                @if ($i == date('o'))
-                <option value="{{$i}}" selected>{{$i}}</option>
-                @else
-                <option value="{{$i}}">{{$i}}</option>
-                @endif
+                @foreach ($empleados as $emp)
+                @for($i=date('o'); $i>=1910; $i--)
+                <option value="{{$i}}" @if ($i == $emp->ano) selected @endif>{{$i}}</option>
                 @endfor
-              @endforeach
+                @endforeach
                 </select>
             </div>
 
@@ -87,19 +77,19 @@
 
 		<div class="form-group">
             	<label for="grupoteorico">Grupo Teorico</label>
-            	<input type="text" name="grupoteorico" value="{{$cargaacademica->GTEORICO}}" class="form-control" placeholder="Grupo Teorico..." id="grupoteorico" >
+            	<input type="text" name="grupoteorico" value="{{$cargaacademica->GTEORICO}}" class="form-control" placeholder="1,2,3,4,5..." id="grupoteorico" >
             	<div id="mensaje1" class="errores">Nombre invalido</div>
             </div>
 
             <div class="form-group">
             	<label for="grupodiscusion">Grupo Discusion</label>
-            	<input type="text" name="grupodiscusion" value="{{$cargaacademica->GDISCUSION}}" class="form-control" placeholder="Grupo Discusion..." id="grupodiscusion" >
+            	<input type="text" name="grupodiscusion" value="{{$cargaacademica->GDISCUSION}}" class="form-control" placeholder="1,2,3,4,5..." id="grupodiscusion" >
             	<div id="mensaje1" class="errores">Grupo invalido</div>
             </div>
 
             <div class="form-group">
             	<label for="grupolaboratorio">Grupo Laboratorio</label>
-            	<input type="text" name="grupolaboratorio" value="{{$cargaacademica->GLABORATORIO}}" class="form-control" placeholder="Grupo Laboratorio..." id="grupolaboratorio" >
+            	<input type="text" name="grupolaboratorio" value="{{$cargaacademica->GLABORATORIO}}" class="form-control" placeholder="1,2,3,4,5..." id="grupolaboratorio" >
             	<div id="mensaje1" class="errores">Grupo invalido</div>
             </div>
 
@@ -116,6 +106,10 @@
             <div class="form-group" align=right>
             	<button class="btn btn-primary" type="submit" id="guardarExp">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>
+            </div>
+            <div class="form-group">
+                  <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-refresh"></i> Actualizar</button>
+                  <a href="/admin/cargaacademica" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
             </div>
 
 		</div>

@@ -24,6 +24,12 @@ use Carbon\Carbon;
 
 use Session;
 
+use Illuminate\Support\Facades\Input;
+
+use PDF;
+
+use Illuminate\Http\Response;
+
 class AsignacionAcademicaController extends Controller
 {
     
@@ -31,8 +37,8 @@ class AsignacionAcademicaController extends Controller
     public function __construct(){ }
 
 
-public function index(Request $request){
 
+public function index(Request $request){
         
         if ($request)
         {
@@ -90,13 +96,19 @@ public function index(Request $request){
     }
 
     public function edit($id)
-    {   
-        $empleados=DB::table('asignacionacademic')->Select( DB::raw("asignacionacademic.idasignacionacad,asignacionacademic.codasignatura,asignacionacademic.nombreasignatura,asignacionacademic.idciclo,asignacionacademic.ano,expedienteacademic.idexpedienteacadem,expedienteacademic.fechaaperturaexpacad,expedienteacademic.tituloobtenido,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.dui,empleado.nit,empleado.estado,empleado.foto"))->join('expedienteacademic', 'asignacionacademic.idexpedienteacadem', '=', 'expedienteacademic.idexpedienteacadem')->join('empleado', 'expedienteacademic.idempleado', '=', 'empleado.idempleado')->where('idasignacionacad','=',$id)->get();
 
-       $ciclos = DB::table('ciclo')->select('idciclo','nombreciclo')->get();
-        return view("admin.cargaacademica.edit",["cargaacademica"=>CargaAcademica::findOrFail($id),"empleados"=>$empleados,"ciclos"=>$ciclos]);    
+    { 
 
+
+        $ciclos = DB::table('ciclo')->select('idciclo','nombreciclo')->get(); 
+
+        $empleados=DB::table('asignacionacademic')->Select( DB::raw("asignacionacademic.idasignacionacad,asignacionacademic.idciclo,asignacionacademic.ano,asignacionacademic.codasignatura,asignacionacademic.nombreasignatura,asignacionacademic.gteorico,asignacionacademic.gdiscusion,asignacionacademic.glaboratorio,asignacionacademic.tiempototal,asignacionacademic.responsabilidadadmin,expedienteacademic.idexpedienteacadem,expedienteacademic.fechaaperturaexpacad,expedienteacademic.tituloobtenido,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.dui,empleado.nit,empleado.estado,empleado.foto"))
+        ->join('expedienteacademic', 'asignacionacademic.idexpedienteacadem', '=', 'expedienteacademic.idexpedienteacadem')
+        ->join('empleado', 'expedienteacademic.idempleado', '=', 'empleado.idempleado')->where('idasignacionacad','=',$id)->get();
+
+        return view("admin.cargaacademica.edit",["cargaacademica"=>CargaAcademica::findOrFail($id),"empleados"=>$empleados,"ciclos"=>$ciclos]);
     }//Fin del EDIT
+
 
 
     public function update(AsignacionAcademicaRequest $request, $id){
@@ -116,6 +128,8 @@ public function index(Request $request){
                          Session::flash('update','La carga fue actualizada correctamente!!!');
                          return Redirect::to('admin/cargaacademica');
                 }// END UPDATE
+
+
     public function destroy($id)
     {
         $query=trim($id);
@@ -123,5 +137,20 @@ public function index(Request $request){
             Session::flash('destroy','¡La Carga Academica se ha eliminado correctamente!');
             return Redirect::to('admin/cargaacademica');
     }
+
+
+    public function asignacionacadreport($id){
+       $empleados=DB::table('asignacionacademic')->Select( DB::raw("asignacionacademic.idasignacionacad,asignacionacademic.codasignatura,asignacionacademic.nombreasignatura,asignacionacademic.idciclo,asignacionacademic.ano,expedienteacademic.idexpedienteacadem,expedienteacademic.fechaaperturaexpacad,expedienteacademic.tituloobtenido,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto,empleado.dui,empleado.nit,empleado.estado,empleado.foto"))->join('expedienteacademic', 'asignacionacademic.idexpedienteacadem', '=', 'expedienteacademic.idexpedienteacadem')->join('empleado', 'expedienteacademic.idempleado', '=', 'empleado.idempleado')->where('idasignacionacad','=',$id)->get();
+       
+       $asignacionacad=DB::table('asignacionacademic')->select(DB::raw("idasignacionacad,idexpedienteacadem,idciclo,ano,codasignatura,nombreasignatura,gteorico,gdiscusion,glaboratorio,tiempototal,responsabilidadadmin"))->where('idasignacionacad', '=', $id)->get();
+       
+       $pdf = PDF::loadView('admin.cargaacademica.show',["empleado"=>$empleados,"cargaacademica"=>$asignacionacad]);
+       $papel_tamaño = array(0,0,216,279);
+       $pdf->setPaper("letter" ,'portrait');
+       return $pdf->stream('carga-Academica.pdf');
+       
+    }//FIN asignacionacadreport
+
+
     
 } //Llave Final

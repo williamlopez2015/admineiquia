@@ -248,11 +248,16 @@
     $('#tablaexplabacad ').DataTable();
     });
     </script>
+    <script > $(document).ready(function(){
+    $('#tablatiempo').DataTable();
+    });
+    </script>
     //
     <script type=”text/javascript”> $(document).ready(function() {
     $('#tablaexpadmi').stacktable();
     });
     </script>
+
 
 
     <script > $(document).ready(function(){
