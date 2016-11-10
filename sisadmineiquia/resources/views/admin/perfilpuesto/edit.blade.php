@@ -56,9 +56,9 @@
                      <textarea  type="text" name="responsabilidades" required value="{{old('responsabilidades')}}" class="form-control"  rows=""  placeholder="Responsabilidades Principales...">{{$perfil->RESPONSABILIDADES}}</textarea>
                   </div>
                   <div class="form-group">
-            	     <button class="btn btn-primary" type="submit">Guardar</button>
-            	     <button class="btn btn-danger" type="reset">Cancelar</button>
-                  </div>
+                  <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-refresh"></i> Actualizar</button>
+                  <a href="/admin/perfilpuesto" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
+            </div>
                </div>
              </div>     
 		{!!Form::close()!!}			

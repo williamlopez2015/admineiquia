@@ -76,8 +76,8 @@
                 <textarea  name="postgrados" id="postgrados" class="form-control"  rows="3" placeholder="postgrado 1, postgrado 2">{{old('postgrados')}}</textarea>
             </div>
             <div class="form-group" align=right>
-            	<button class="btn btn-primary" type="submit">Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
+            	<button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+            	<button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
             </div>
 
 		</div>

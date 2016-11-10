@@ -56,9 +56,9 @@
                   <label for="fechaacuerdo">Fecha</label>
                   <input name="fechaacuerdo" class="tcal form-control" required value="{{$acuerdos->FECHAACUERDO}}" id="fechaAcuerdo" onkeyup="corregirFechaAcuerdo();">
             </div>
-            <div class="form-Sroup">
-                  <button class="btn btn-primary" type="submit">Guardar</button>
-                  <a href="/admin/acuerdos" class="btn btn-danger" role="button">Cancelar</a>
+            <div class="form-group">
+                  <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-refresh"></i> Actualizar</button>
+                  <a href="/admin/acuerdos" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
             </div>
       </div>
                   {!!Form::close()!!}           

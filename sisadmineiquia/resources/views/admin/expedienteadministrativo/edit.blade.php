@@ -79,10 +79,10 @@
                      <label for="descripcionadmin">Descripcion</label>
                      <textarea  type="text" name="descripcionadmin" required value="{{old('descripcionadmin')}}" class="form-control"  rows=""  placeholder="Descripcion...">{{$expedienteadministrativo->DESCRIPCIONADMIN}}</textarea>
             </div>
-			<div class="form-group" align=right>
-            	<button class="btn btn-primary" type="submit" id="guardarExp">Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
-            </div>    
+            <div class="form-group align=right">
+                  <button class="btn btn-primary" type="submit" id="guardarExp"><i class="glyphicon glyphicon-refresh"></i> Actualizar</button>
+                  <a href="/admin/expedienteadministrativo" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
+            </div>   
 		</div>
 		
                     {!!Form::close()!!}		

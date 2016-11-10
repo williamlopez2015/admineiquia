@@ -66,8 +66,8 @@
                      <textarea  type="text" name="descripcionadmin" required value="{{old('descripcionadmin')}}" class="form-control"  rows=""  placeholder="Descripcion..."></textarea>
             </div>
 			<div class="form-group" align=right>
-            	<button class="btn btn-primary" type="submit" id="guardarExp">Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
+            	<button class="btn btn-primary" type="submit" id="guardarExp"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+            	<button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
             </div>    
 		</div>
                     {!!Form::close()!!}		

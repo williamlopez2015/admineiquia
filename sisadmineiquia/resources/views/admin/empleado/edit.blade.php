@@ -82,9 +82,9 @@
                   </select>
                   <div id="mensajeSex" class="errores">No se ha seleccionado un sexo</div>     
 			</div> 
-			<div class="form-group">
-            	<button class="btn btn-primary" type="submit" id="guardar">Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
+            <div class="form-group">
+                  <button class="btn btn-primary" type="submit" id="guardar"><i class="glyphicon glyphicon-refresh"></i> Actualizar</button>
+                  <a href="/admin/empleado" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
             </div>       
 		</div>            
 </div>

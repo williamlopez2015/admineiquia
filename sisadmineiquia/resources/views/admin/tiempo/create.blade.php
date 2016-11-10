@@ -63,8 +63,8 @@
                 <textarea  name="descripcion" id="descripcion" class="form-control"  rows="3" placeholder="Descripcion de el Tiempo Adicional">{{old('descripcion')}}</textarea>
             </div>
             <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Guardar</button>
-                        <button class="btn btn-danger" type="reset">Cancelar</button>
+                        <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+                        <button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
 			</div>
 		</div>            
  </div>

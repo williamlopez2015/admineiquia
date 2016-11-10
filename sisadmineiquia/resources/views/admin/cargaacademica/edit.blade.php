@@ -49,15 +49,11 @@
 			      <div class="form-group">
               <label for="anocarga">Año</label>
               <select name="anocarga" class="form-control" id="anocarga">
-              @foreach ($empleados as $emp)
-                @for($i=date('o'); $i>=$emp->ano; $i--)
-                @if ($i == date('o'))
-                <option value="{{$i}}" selected>{{$i}}</option>
-                @else
-                <option value="{{$i}}">{{$i}}</option>
-                @endif
+                @foreach ($empleados as $emp)
+                @for($i=date('o'); $i>=1910; $i--)
+                <option value="{{$i}}" @if ($i == $emp->ano) selected @endif>{{$i}}</option>
                 @endfor
-              @endforeach
+                @endforeach
                 </select>
             </div>
 
@@ -110,6 +106,10 @@
             <div class="form-group" align=right>
             	<button class="btn btn-primary" type="submit" id="guardarExp">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>
+            </div>
+            <div class="form-group">
+                  <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-refresh"></i> Actualizar</button>
+                  <a href="/admin/cargaacademica" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
             </div>
 
 		</div>

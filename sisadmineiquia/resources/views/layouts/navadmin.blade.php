@@ -29,7 +29,7 @@
                 <a href="/admin/expedienteadministrativo"><i class="glyphicon glyphicon-tasks"></i> Administrar Expedientes</a>
             </li>
             <li>
-                <a href="/admin/tiempo/create"><i class="glyphicon glyphicon-time"></i> Agregar Tiempo Adicional</a>
+                <a href="/admin/tiempo"><i class="glyphicon glyphicon-time"></i> Administrar Tiempo Adicional </a>
             </li>
         </ul>
     </li>
