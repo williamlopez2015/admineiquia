@@ -3,7 +3,7 @@
 	var exprNit = /^\d{4}-\d{6}-\d{3}-\d{1}$/;
 	var exprIsss = /^\d{9}$/;
 	var exprAfp = /^\d{12}$/;
-	var exprCodCon = /^[aA-zZ]{2}\d{4}$/;
+	var exprCodCon = /^[aA-zZ]{2}\d{7}$/;
 
 	$(document).ready(function(){
 		$("#guardar").click(function(){
