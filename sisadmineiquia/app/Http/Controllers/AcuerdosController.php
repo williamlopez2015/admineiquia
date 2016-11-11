@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Input;
 
 class AcuerdosController extends Controller
 {
-
+    //pruebas
     public function __construct(){
 
     }
