@@ -25,8 +25,9 @@ class ExpedienteAdministrativoFormRequest extends Request
     {
         return [
             //
+        'idempleado'=>'required',
         'fechaapertura'=>'required|max:50',
-        'codigocontrato'=>'required|max:9|regex:/^[aA-zZ]{2}\d{7}+$/i',
+        'codigocontrato'=>'required|max:11|regex:/^[aA-zZ]{2}[-]{1}\d{3}[\/]{1}\d{4}$/i',
         'idpuesto'=>'required',
         'modalidadcontratacion'=>'required|max:60',
         'idempleado'
@@ -37,7 +38,9 @@ class ExpedienteAdministrativoFormRequest extends Request
     {
         return ['fechaApertura.required' =>'El campo Fecha Apertura es obligatorio',
                 'codigocontrato.required' =>'El campo Codigo de Acuerdo es obligatorio',
-                'idpuesto.required' =>'El Campo Puesto es obligatorio'
+                'idpuesto.required' =>'El Campo Puesto es obligatorio',
+                'idempleado.required' =>'El Campo Empleado es obligatorio',
+                'modalidadcontratacion.required' =>'El Campo Modalidad Contratacion es obligatorio'
                ];
     }
 }

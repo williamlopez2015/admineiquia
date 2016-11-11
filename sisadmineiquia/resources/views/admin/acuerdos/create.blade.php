@@ -23,7 +23,7 @@
             {{Form::token()}}
             <div class="form-group">
             	<label for="idacuerdo">Código</label>
-            	<input type="text" name="idacuerdo" class="form-control" required value="{{old('idacuerdo')}}" placeholder="AA0000000" id="codAcuerdo" onkeyup="corregirCodAcuerdo();">
+            	<input type="text" name="idacuerdo" class="form-control" required value="{{old('idacuerdo')}}" placeholder="AC-000/0000" id="codAcuerdo" onkeyup="corregirCodAcuerdo();">
             </div>
             <div class="form-group">
 				<label for="foto">Documento</label>
