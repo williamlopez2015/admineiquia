@@ -154,7 +154,7 @@
 		  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="btn_guardar"> 
         <div class="form-group">
           <input type="hidden" name="_token" value="{{csrf_token()}}"></input>
-          <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+          <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-refresh"></i></i> Guardar</button>
           <button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
         </div>
       </div>

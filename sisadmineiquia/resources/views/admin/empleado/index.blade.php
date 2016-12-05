@@ -39,13 +39,13 @@
                                          <a href="{{url('/admin/empleado/create')}}"><button class="btn btn-success">Agregar Nuevo <i class="fa fa-plus"></i></button></a>
                                       </div>
                                       <div class="btn-group pull-right">
-                                         <button data-toggle="dropdown" class="btn dropdown-toggle">Opciones <span class="caret"></span></button>
+                                         <button data-toggle="dropdown" class="btn btn-primary" class="btn dropdown-toggle"><i class="glyphicon glyphicon-save-file"></i> Opciones <span class="caret"></span></button>
                                          <ul class="dropdown-menu">
                                             <li><a href="{{url('/admin/empleado/nominareport')}}">Generar Nomina Como PDF</a></li>
                                             <li><a href="{{url('/admin/empleado/nominareportdownload')}}">Descargar Nomina Como PDF</a></li>
                                          </ul>
                                       </div>
-                                   </div>
+                                   </div><br><br>
                                         <table class="table table-bordered table-hover" id="tablaempleado">
                                             <thead>
                                                 <tr>
@@ -75,8 +75,8 @@
                                                      <td>De Baja</td>
                                                     @endif
                                                     <td>
-                                                    <a href="" data-target="#modal-delete-{{$emp->idempleado}}" data-toggle="modal"><button  class="btn btn-xs btn-danger"><i class="fa fa-retweet"></i> Cambiar</button></a>
-                                                    <a href="{{URL::action('EmpleadoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Editar </button></a>
+                                                    <a href="{{URL::action('EmpleadoController@edit',$emp->idempleado)}}"><button type="button" class="btn btn-xs btn-primary"><i class="glyphicon  glyphicon-edit"></i> Editar </button></a>
+                                                    <a href="" data-target="#modal-delete-{{$emp->idempleado}}" data-toggle="modal"><button  class="btn btn-xs btn-danger"><i class="fa fa-retweet"></i> Estado</button></a>
                                                     <a href="{{URL::action('EmpleadoController@perfilreport',$emp->idempleado)}}"><button class="btn btn-xs btn-success"><i class="fa fa-user"></i> Perfil</button></a>
                                                     </td>
                                                 </tr>

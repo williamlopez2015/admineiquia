@@ -15,7 +15,7 @@
                 </div>
                 <!-- /.row -->
                 <div class="col-lg-12">
-                <label><a href="{{url('admin/tiempo/create')}}" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus"></i> Crear Tiempo</a></label>
+                <label><a href="{{url('admin/tiempo/create')}}" class="btn btn-success btn-lg" role="button"><i class="fa fa-plus"></i> Crear Tiempo</a></label>
 
                 <!--
                 @include('admin.empleado.search')-->

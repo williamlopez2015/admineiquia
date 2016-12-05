@@ -9,7 +9,7 @@
 </div>
 
 <div class="col-lg-12">
-	<label><a href="{{url('admin/asistencia/create')}}" role="button" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Nueva Asistencia</a></label>
+	<label><a href="{{url('admin/asistencia/create')}}" role="button" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-plus"></i> Nueva Asistencia</a></label>
 	@include('mensajes.messages')
 </div>
 </div>
@@ -26,7 +26,7 @@
 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
 <div class="table-toolbar">
 <div class="btn-group pull-right">
-	<button data-toggle="dropdown" class="btn btn-success" class="btn dropdown-toggle"> <i class="glyphicon glyphicon-save-file"></i> Reporte de Asistencia <span class="caret"></span> </button>
+	<button data-toggle="dropdown" class="btn btn-primary" class="btn dropdown-toggle"> <i class="glyphicon glyphicon-save-file"></i> Reporte de Asistencia <span class="caret"></span> </button>
 	<ul class="dropdown-menu">
 		<li><a href="{{url('admin/asistencia/reporte/1')}}">Enero</a></li>
 		<li><a href="{{url('admin/asistencia/reporte/2')}}">Febrero</a></li>
@@ -69,9 +69,9 @@
                        <td>Tarde</td>
                     @endif
 					<td>
-						<a href="{{URL::action('AsistenciaController@show',$asis->idasistencia)}}"><button class="btn btn-xs btn-info"> <i class="glyphicon glyphicon-list-alt"></i> Detalles</button></a>
-                        <a href="{{URL::action('AsistenciaController@edit',$asis->idasistencia)}}"><button class="btn btn-xs btn-primary"> <i class="fa fa-edit"></i> Editar</button></a>
+                        <a href="{{URL::action('AsistenciaController@edit',$asis->idasistencia)}}"><button class="btn btn-xs btn-primary"><i class="glyphicon  glyphicon-edit"></i> Editar</button></a>
                         <a href="" data-target="#modal-delete-{{$asis->idasistencia}}" data-toggle="modal"><button class="btn btn-xs btn-danger"> <i class="glyphicon glyphicon-remove-circle"></i> Eliminar</button></a>
+                        <a href="{{URL::action('AsistenciaController@show',$asis->idasistencia)}}"><button class="btn btn-xs btn-info"> <i class="glyphicon glyphicon-list-alt"></i> Detalles</button></a>
 					</td>
 				</tr>
 				@include('admin.asistencia.modal')

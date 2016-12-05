@@ -226,8 +226,8 @@ class AsistenciaController extends Controller
             ->orderBy('iddetalle','asc')
             ->get();
         
-        $date=Carbon::now();
-        $date = $date->format('m-Y');
+       
+        $date = $mes.'-'.$year;
 
         Excel::create('Registro de Asistencia '.$date, function($excel) use($detalles) 
         {

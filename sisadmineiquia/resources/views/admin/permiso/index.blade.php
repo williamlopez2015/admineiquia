@@ -13,7 +13,7 @@
           
 <div class="row">
     <div class="col-lg-12">
-        <label><a href="{{url('/admin/permiso/create')}}" class="btn btn-success btn-lg" role="button"> <i class="glyphicon glyphicon-plus"></i> Nueva Permiso</a></label>
+        <label><a href="{{url('/admin/permiso/create')}}" class="btn btn-success btn-lg" role="button"> <i class="glyphicon glyphicon-plus"></i>  Nueva Permiso</a></label>
         @include('mensajes.messages')
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -52,7 +52,7 @@
                     @endif
 					<td>
 						
-                        <a href="{{URL::action('PermisoController@edit',$per->idpermiso)}}"><button class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Editar</button></a>
+                        <a href="{{URL::action('PermisoController@edit',$per->idpermiso)}}"><button class="btn btn-xs btn-primary"><i class="glyphicon  glyphicon-edit"></i> Editar</button></a>
                         <a href="" data-target="#modal-delete-{{$per->idpermiso}}" data-toggle="modal"><button class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove-circle"></i> Eliminar</button></a>
 					</td>
 				</tr>

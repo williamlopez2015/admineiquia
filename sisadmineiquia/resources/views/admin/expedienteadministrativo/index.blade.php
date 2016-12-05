@@ -16,7 +16,7 @@
                 <!-- /.row -->
                 <div class="row">
                 <div class="col-lg-12">
-                <label><a href="{{url('/admin/expedienteadministrativo/create')}}" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus"></i> Nuevo Expediente Administrativo</a></label>
+                <label><a href="{{url('/admin/expedienteadministrativo/create')}}" class="btn btn-success btn-lg" role="button"><i class="fa fa-plus"></i> Nuevo Expediente Administrativo</a></label>
                 <!--
                 @include('admin.empleado.search')-->
                 
@@ -58,8 +58,8 @@
                                         <td>No Posee</td>
                                         @endif
                                         <td>
-                                        <a href="{{URL::action('ExpedienteAdministrativoController@edit',$exp->idempleado)}}"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Editar</button></a>
-                                        <a href="{{URL::action('ExpedienteAdministrativoController@show',$exp->idexpediente)}}"><button class="btn btn-xs btn-default"><i class="glyphicon glyphicon-book"></i> Detalle</button></a>
+                                        <a href="{{URL::action('ExpedienteAdministrativoController@edit',$exp->idempleado)}}"><button type="button" class="btn btn-xs btn-primary"><i class="glyphicon  glyphicon-edit"></i> Editar</button></a>
+                                        <a href="{{URL::action('ExpedienteAdministrativoController@show',$exp->idexpediente)}}"><button class="btn btn-xs btn-info"><i class="glyphicon glyphicon-list-alt"></i> Detalles</button></a>
                                         <a href="{{URL::action('EmpleadoController@perfilreport',$exp->idempleado)}}"><button class="btn btn-xs btn-success"><i class="fa fa-user"></i> Perfil</button></a>
                                         </td>
                                     </tr>
