@@ -131,8 +131,8 @@
               <tr>
                 <td>
                     <select name="eliminardetalle[]" id="eliminardetaller" class="btn btn-danger">
-                    <option value="0" selected><i class="glyphicon glyphicon-trash"> X</option>
-                    <option value="1">SI.</option></select>
+                    <option value="0" selected><i class="glyphicon glyphicon-trash"></i> Borrar</option>
+                    <option value="1">SI</option></select>
                 <input type="hidden" name="iddetalle[]" id="iddetalle" value="{{$det->iddetalle}}">{{$det->iddetalle}}
                 </td>
                 <td><input type="hidden" name="idexpediente[]" id="idexpediente" value="{{$det->idexpediente}}">{{$det->idexpediente}}</td>
@@ -193,7 +193,7 @@ $(document).ready(function(){
 
       if(idexpediente!="" && nombre!="" &&  horaentrada!="" && horasalida!="")
       {
-        var fila='<tr class="selected" id="fila'+cont+'"> <td> <input type="hidden" name="iddetalle[]" value="'+iddetalle+'"> <button type="button" class="btn btn-danger" class="col-xs-1" onclick="eliminar('+cont+');"><i class="glyphicon glyphicon-trash"> Borrar</button></td> <td><input type="hidden" name="idexpediente[]" value="'+idexpediente+'">'+idexpediente+'</td> <td><input type="hidden" name="idempleado[]" value="'+idexpediente+'">'+nombre+' </td> <td><input type="time" class="form-control" name="horaentrada[]" value="'+horaentrada+'"></td> <td><input type="time" class="form-control" name="horasalida[]" value="'+horasalida+'"></td> <td><input type="text" class="form-control" name="observaciones[]" value="'+observaciones+'"></td></tr>';
+        var fila='<tr class="selected" id="fila'+cont+'"> <td> <input type="hidden" name="iddetalle[]" value="'+iddetalle+'"> <button type="button" class="btn btn-danger" onclick="eliminar('+cont+');"><i class="glyphicon glyphicon-trash"></i> Borrar</button></td> <td><input type="hidden" name="idexpediente[]" value="'+idexpediente+'">'+idexpediente+'</td> <td><input type="hidden" name="idempleado[]" value="'+idexpediente+'">'+nombre+' </td> <td><input type="time" class="form-control" name="horaentrada[]" value="'+horaentrada+'"></td> <td><input type="time" class="form-control" name="horasalida[]" value="'+horasalida+'"></td> <td><input type="text" class="form-control" name="observaciones[]" value="'+observaciones+'"></td></tr>';
       
         cont++;
         cant++;
