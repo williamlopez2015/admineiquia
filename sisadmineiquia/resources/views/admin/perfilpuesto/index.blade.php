@@ -4,7 +4,7 @@
                 <div class="col-lg-12">
                      <ol class="breadcrumb">
                           <li>
-                              <i class="fa fa-home"></i> <a href="/admin/perfilpuesto">Administrar Perfiles</a>
+                              <i class="fa fa-home"></i> <a href="{{url('/admin/perfilpuesto')}}">Administrar Perfiles</a>
                           </li>
                           <li class="active">
                               <i class="fa fa-desktop"></i>
@@ -15,7 +15,7 @@
                
                 <!-- /.row -->
          <div class="col-lg-12">
-               <label><a href="perfilpuesto/create" class="btn btn-primary btn-lg" role="button"> <i class="fa fa-plus"></i> Nuevo Perfil</a></label>
+               <label><a href="{{url('/admin/perfilpuesto/create')}}" class="btn btn-primary btn-lg" role="button"> <i class="fa fa-plus"></i> Nuevo Perfil</a></label>
         </div>
         <div class="col-lg-12">
         @include('mensajes.messages')

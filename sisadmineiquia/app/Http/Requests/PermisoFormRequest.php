@@ -25,14 +25,14 @@ class PermisoFormRequest extends Request
     {
         return [
             'idexpediente'=>'required',
-            'fechasolicitud'=>'required|max:10',
+            'fechasolicitud'=>'required|max:10|min:10',
             'motivopermiso'=>'required|max:250',
-            'tiemposolicitado'=>'required|max:10',
+            'tiemposolicitadohora'=>'required|numeric|min:0',
+            'tiemposolicitadomin'=>'required|numeric|min:0|max:59',
             'gocesueldo'=>'required',
             'estadopermiso'=>'required',
-            'fechapermiso'=>'required|max:10',
-            'cargodocente'=>'max:25',
-            'numerotarjeta'=>'max:6'
+            'fechapermiso'=>'required|max:10|min:10',
+            'cargoempleado'=>'max:50' 
         ];
     }
 }

@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-lg-12">
     <ol class="breadcrumb">
-      <li> <i class="fa fa-home"></i> <a href="/admin/tiempo"> Administrar Tiempo Adicional</a>
+      <li> <i class="fa fa-home"></i> <a href="{{url('/admin/tiempo')}}"> Administrar Tiempo Adicional</a>
       </li>
       <li class="active">
         <i class="fa fa-desktop"></i> Editar Tiempo Adicional</li>
@@ -63,7 +63,7 @@
             </div>
             <div class="form-group">
                   <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-refresh"></i> Actualizar</button>
-                  <a href="/admin/tiempo" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
+                  <a href="{{url('/admin/tiempo')}}" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
             </div>
 		</div>            
  </div>

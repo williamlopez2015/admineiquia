@@ -4,7 +4,7 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-home"></i> <a href="/admin/cargaacademica"> Administrar Carga Academica</a>
+                                <i class="fa fa-home"></i> <a href="{{url('/admin/cargaacademica')}}"> Administrar Carga Academica</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-desktop"></i>
@@ -15,7 +15,7 @@
                 </div>
                 <!-- /.row -->
                 <div class="col-lg-12">
-                <label><a href="cargaacademica/create" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus"></i> Nueva Carga Academica</a></label>
+                <label><a href="{{url('admin/cargaacademica/create')}}" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus"></i> Nueva Carga Academica</a></label>
 
                 <!--
                 @include('admin.empleado.search')-->

@@ -3,14 +3,14 @@
 <div class="row">
    <div class="col-lg-12">
        <ol class="breadcrumb">
-          <li><i class="fa fa-home"></i> <a href="/admin/puesto"> Gestionar Puesto</a></li>
+          <li><i class="fa fa-home"></i> <a href="{{url('/admin/puesto')}}"> Gestionar Puesto</a></li>
           <li class="active"><i class="fa fa-desktop"></i> Administrar Puesto</li>
        </ol>
     </div>
 </div>
                
   <div class="col-lg-12">
-  	 <label><a href="puesto/create" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus"></i> Nuevo Puesto</a></label>
+  	 <label><a href="{{url('/admin/puesto/create')}}" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus"></i> Nuevo Puesto</a></label>
      @include('mensajes.messages')
   </div>
   <div class="col-lg-12">

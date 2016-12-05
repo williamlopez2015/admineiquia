@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-12">
 	<ol class="breadcrumb">
-		<li> <i class="fa fa-home"></i> <a href="admin/users"> Administrar Usuario</a>
+		<li> <i class="fa fa-home"></i> <a href="{{url('admin/users')}}"> Administrar Usuario</a>
 		</li>
  		<li class="active">
  		<i class="fa fa-desktop"></i> Actualizar Usuario</li>

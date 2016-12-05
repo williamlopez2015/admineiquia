@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-lg-12">
       <ol class="breadcrumb">
-        <li><i class="fa fa-home"></i> <a href="/admin/permiso"> Gestionar Permisos</a></li>
+        <li><i class="fa fa-home"></i> <a href="{{url('/admin/permiso')}}"> Gestionar Permisos</a></li>
         <li class="active"><i class="fa fa-desktop"></i> Nuevo Permiso</li>
       </ol>
     </div>
@@ -13,51 +13,47 @@
     <div class="col-lg-12">
        <h3>Solicitud de Permiso</h3>
     </div>
- </div>
-  @include('mensajes.errores')
-<div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-         @include('mensajes.messages')
-      </div>
+
+    @include('mensajes.errores')
+    @include('mensajes.messages')
 </div>
+
   @foreach ($permiso as $per)         
   @endforeach
   {!!Form::model($permiso,['method'=>'PATCH','route'=>['admin.permiso.update',$per->idpermiso]])!!}
-  {{Form::token()}}          
+  {{Form::token()}}  
+
   <div class="row col-xs-10">
     <div class="panel panel-primary">
       <div class="panel-body">
 
         <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
-              <label for="cargodocente">Cargo Docente</label>
-              <input type="text" name="cargodocente" value="{{$per->cargodocente}}" value="{{old('cargodocente')}}" class="form-control">
-            </div>
-
-            <div class="form-group">
-              <label for="numerotarjeta">Numero Tarjeta</label>
-              <input type="text" name="numerotarjeta" value="{{$per->numerotarjeta}}" value="{{old('numerotarjeta')}}" class="form-control" >
+              <br><label for="cargoempleado">Cargo Empleado</label>
+              <input type="text" id="cargoempleado" value="{{$per->nombrepuesto}}" class="form-control" placeholder="Cargo del Empleado..." disabled>
             </div>
           </div>
       </div>
 
-        <div class="row">
-         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <div class="form-group">
-              <label for="empleado"> Empleado </label>
-              <select name="idempleado" class="form-control selectpicker" id="idempleado" class="form-control" data-live-search="true">
-                  @foreach ($permiso as $per)
-                    <option value="{{$per->idempleado}}">{{$per->nombre}}</option>
-                  @endforeach
-              </select>     
-            </div>
-    
-            <div class="form-group">
-              <label for="tiemposolicitado">Tiempo solicitado</label>
-              <input type="text" name="tiemposolicitado"  required value="{{$per->tiemposolicitado}}" value="{{old('tiemposolicitado')}}" class="form-control" >
-            </div>
+
+      <div class="row">
+        <br><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="form-group">
+            <label for="empleado"> Empleado </label>
+            <input type="text" name="idexpediente" id="idexpediente" value="{{$per->nombre}}" class="form-control" placeholder="Cargo del Empleado..." disabled>     
           </div>
+          
+          <div class="form-group">
+            <br><label for="tiemposolicitado">Tiempo solicitado</label><br>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <input type="number" name="tiemposolicitadohora" required value="{{$per->tiemposolicitadohora}}" class="form-control" min="0"  placeholder="Horas...">
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <input type="number" name="tiemposolicitadomin" required value="{{$per->tiemposolicitadomin}}" class="form-control" min="0" max="59" placeholder="Minutos...">
+              </div> 
+          </div>
+         </div>
       
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-group">
@@ -67,7 +63,7 @@
 
             <div class="form-group">
               <label for="motivopermiso">Motivo</label>
-              <textarea type="text" name="motivopermiso" required value="{{$per->motivopermiso}}" value="{{old('motivopermiso')}}" class="form-control"  rows="">{{$per->motivopermiso}}</textarea>
+              <textarea type="text" name="motivopermiso" required value="{{$per->motivopermiso}}" value="{{old('motivopermiso')}}" class="form-control"  rows="3">{{$per->motivopermiso}}</textarea>
             </div>
 
             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
@@ -91,7 +87,7 @@
                 <label for="estadopermiso">Estado</label>
                 <select name="estadopermiso" class="form-control">
                   @if($per->gocesueldo==0)
-                    <option value="0" selected>En espera</option>
+                    <option value="" selected>En espera</option>
                     <option value="1" >Aprobado</option>
                     <option value="2" >Denegado</option>
                   @else @if($per->gocesueldo==1)
@@ -113,7 +109,7 @@
                 <label for="gocesueldo">Goce de Sueldo </label>
                 <select name="gocesueldo" id="gocesueldo" class="form-control">
                   @if($per->gocesueldo==0)
-                    <option value="0" selected>Sin contestar</option>
+                    <option value="" selected>Sin contestar</option>
                     <option value="1">Si</option>
                     <option value="2">No</option>
                   @else @if($per->gocesueldo==1)
@@ -133,7 +129,7 @@
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
               <label for="fechapermiso">Fecha Ingreso</label>
-              <input type="text" name="fechapermiso" class="tcal form-control" required value="{{$per->fechapermiso}}" value="{{old('fechapermiso')}}" class="form-control" >
+              <input type="text" name="fechapermiso" class="tcal form-control" value="{{$per->fechapermiso}}" required value="{{old('fechapermiso')}}" class="form-control" >
             </div>
           </div>
       </div>
@@ -142,12 +138,26 @@
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> 
         <div class="form-group">
-          <button class="btn btn-primary" type="submit">Guardar</button>
-          <button class="btn btn-danger" type="reset">Cancelar</button>
+          <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+          <button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
         </div>
       </div>
     </div>    
 
-	{!!Form::close()!!}		
-            
+{!!Form::close()!!}		
+@push('scripts')
+
+<script>
+
+$("#idexpediente").change(mostrarPuesto);
+
+function mostrarPuesto()
+{
+  dato=document.getElementById('idexpediente').value.split('_');
+  $("#cargoempleado").val(dato[1]);
+}
+
+</script>
+
+@endpush         
 @endsection

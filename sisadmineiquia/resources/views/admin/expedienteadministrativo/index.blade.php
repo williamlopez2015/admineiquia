@@ -4,7 +4,7 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-home"></i> <a href="/admin/expedienteadministrativo"> Administrar Expediente</a>
+                                <i class="fa fa-home"></i> <a href="{{url('/admin/expedienteadministrativo')}}"> Administrar Expediente</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-desktop"></i>
@@ -16,7 +16,7 @@
                 <!-- /.row -->
                 <div class="row">
                 <div class="col-lg-12">
-                <label><a href="expedienteadministrativo/create" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus"></i> Nuevo Expediente Administrativo</a></label>
+                <label><a href="{{url('/admin/expedienteadministrativo/create')}}" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus"></i> Nuevo Expediente Administrativo</a></label>
                 <!--
                 @include('admin.empleado.search')-->
                 

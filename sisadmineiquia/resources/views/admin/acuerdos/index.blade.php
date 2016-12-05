@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <ol class="breadcrumb">
                 <li>
-                    <i class="fa fa-home"></i> <a href="/admin/acuerdos"> Gestionar Acuerdos</a>
+                    <i class="fa fa-home"></i> <a href="{{url('/admin/acuerdos')}}"> Gestionar Acuerdos</a>
                 </li>
                 <li class="active">
                     <i class="fa fa-desktop"></i> Administrar Acuerdos
@@ -15,7 +15,7 @@
     </div>
     <div class="row">
     <div class="col-lg-12">
-        <label><a href="acuerdos/create" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus "></i> Nuevo Acuerdo Administrativo</a></label>
+        <label><a href="{{url('admin/acuerdos/create')}}" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus "></i> Nuevo Acuerdo Administrativo</a></label>
     </div>
     </div>
     <div class="row">

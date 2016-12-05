@@ -39,6 +39,7 @@ Route::group(['middleware' =>  ['auth','admin']], function () {
 
 Route::group(['middleware' =>  ['auth','secret']], function () {
   Route::resource('admin/asistencia','AsistenciaController');
+  Route::resource('admin/asistencia/reporte','AsistenciaController@reporte');
 });
 
 Route::group(['middleware' =>  ['auth','alltype']], function () {

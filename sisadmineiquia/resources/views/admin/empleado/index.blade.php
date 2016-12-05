@@ -4,7 +4,7 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-home"></i> <a href="/admin/empleado"> Administrar Empleados</a>
+                                <i class="fa fa-home"></i> <a href="{{url('/admin/empleado')}}"> Administrar Empleados</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-desktop"></i>
@@ -15,8 +15,8 @@
                 </div>
                 <!-- /.row -->
                 <div class="col-lg-12">
-                <label><a href="/admin/expedienteadministrativo" class="btn btn-primary btn-lg" role="button"><i class="fa fa-folder-open"></i>  Expediente Administrativo</a></label>
-                <label><a href="/admin/expedienteacademico" class="btn btn-primary btn-lg" role="button"><i class="glyphicon glyphicon-education"></i> Expediente Academico</a></label>
+                <label><a href="{{url('/admin/expedienteadministrativo')}}" class="btn btn-primary btn-lg" role="button"><i class="fa fa-folder-open"></i>  Expediente Administrativo</a></label>
+                <label><a href="{{url('/admin/expedienteacademico')}}" class="btn btn-primary btn-lg" role="button"><i class="glyphicon glyphicon-education"></i> Expediente Academico</a></label>
                 </div>
                 <div class="row">
                 <div class="col-lg-12">
@@ -36,13 +36,13 @@
                                 <div class="span12">
                                    <div class="table-toolbar">
                                       <div class="btn-group">
-                                         <a href="empleado/create"><button class="btn btn-success">Agregar Nuevo <i class="fa fa-plus"></i></button></a>
+                                         <a href="{{url('/admin/empleado/create')}}"><button class="btn btn-success">Agregar Nuevo <i class="fa fa-plus"></i></button></a>
                                       </div>
                                       <div class="btn-group pull-right">
                                          <button data-toggle="dropdown" class="btn dropdown-toggle">Opciones <span class="caret"></span></button>
                                          <ul class="dropdown-menu">
-                                            <li><a href="empleado/nominareport">Generar Nomina Como PDF</a></li>
-                                            <li><a href="empleado/nominareportdownload">Descargar Nomina Como PDF</a></li>
+                                            <li><a href="{{url('/admin/empleado/nominareport')}}">Generar Nomina Como PDF</a></li>
+                                            <li><a href="{{url('/admin/empleado/nominareportdownload')}}">Descargar Nomina Como PDF</a></li>
                                          </ul>
                                       </div>
                                    </div>
