@@ -133,7 +133,7 @@
                     <select name="eliminardetalle[]" id="eliminardetaller" class="btn btn-danger">
                     <option value="0" selected><i class="glyphicon glyphicon-trash"></i> Borrar</option>
                     <option value="1">SI</option></select>
-                <input type="hidden" name="iddetalle[]" id="iddetalle" value="{{$det->iddetalle}}">{{$det->iddetalle}}
+                <input type="hidden" name="iddetalle[]" id="iddetalle" value="{{$det->iddetalle}}">
                 </td>
                 <td><input type="hidden" name="idexpediente[]" id="idexpediente" value="{{$det->idexpediente}}">{{$det->idexpediente}}</td>
                 <td><input type="hidden" name="idempleado[]" value="{{$det->idempleado}}">{{$det->nombre}}</td>
@@ -199,7 +199,7 @@ $(document).ready(function(){
         cant++;
         limpiar();
         evaluar();
-        $("#cantidad").html("Detalles"+": "+cant);
+        $("#cantidad").html("Nuevos Detalles"+": "+cant);
         $('#detalles').append(fila);
           
       }
@@ -229,7 +229,7 @@ $(document).ready(function(){
   function eliminar(index)
   {
       cant--;
-      $("#cantidad").html("Detalles"+": "+cant);
+      $("#cantidad").html("Nuevos Detalles"+": "+cant);
       $('#fila'+index).remove();
       evaluar();    
   }
