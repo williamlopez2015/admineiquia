@@ -64,14 +64,4 @@
                     </div>
                     <!-- /.col-sm-4 -->
                 </div>
-
-
-               
-               
-                <div class="page-header">
-                    <h1>Informacion General</h1>
-                </div>
-                <div class="well">
-                    
-                </div>
 @endsection
