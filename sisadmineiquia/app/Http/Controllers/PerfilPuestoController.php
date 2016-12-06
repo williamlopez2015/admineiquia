@@ -59,10 +59,7 @@ class PerfilPuestoController extends Controller
         
     public function edit($id)
     {   
-        $departamentos=DB::table('departamento as d')
-        ->select('d.iddepartamento','d.nombredepartamento')->get();
-        dd($departamentos);
-
+        
         return view("admin.perfilpuesto.edit",["perfil"=>PerfilPuesto::findOrFail($id)]);
 
     }

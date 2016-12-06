@@ -7,7 +7,7 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-home"></i>  <a href="/home">Inicio</a>
+                                <i class="fa fa-home"></i>  <a href="{{url('/home')}}">Inicio</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-desktop"></i> Pagina Principal
@@ -72,6 +72,6 @@
                     <h1>Informacion General</h1>
                 </div>
                 <div class="well">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
+                    
                 </div>
 @endsection

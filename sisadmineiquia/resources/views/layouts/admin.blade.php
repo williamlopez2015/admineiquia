@@ -259,25 +259,6 @@
     </script>
 
 
-
-    <script > $(document).ready(function(){
-    $('#horaentrada').timepicker({ 'timeFormat': 'h:i A',
-    'minTime': '6:00am',
-    'maxTime': '8:00pm',    
-    'disableTimeRanges': [['12:01pm','1pm'],['8pm','7am']],
-    'step': 15 
-    }); });
-    </script>
-
-    <script > $(document).ready(function(){
-    $('#horasalida').timepicker({ 'timeFormat': 'h:i A',
-    'minTime': '6:00am',
-    'maxTime': '8:00pm',    
-    'disableTimeRanges': [['12:01pm','1pm'],['8pm','7am']],
-    'step': 15
-    }); });
-    </script>
-
      <!-- select -->
      <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
      <!-- picker -->

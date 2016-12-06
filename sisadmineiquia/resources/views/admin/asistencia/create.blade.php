@@ -3,7 +3,7 @@
  <div class="row">
     <div class="col-lg-12">
       <ol class="breadcrumb">
-        <li><i class="fa fa-home"></i> <a href="/admin/asistencia"> Gestionar Asistencia</a></li>
+        <li><i class="fa fa-home"></i> <a href="{{url('/admin/asistencia')}}"> Gestionar Asistencia</a></li>
         <li class="active"><i class="fa fa-desktop"></i> Ingresar Asistencia</li>
       </ol>
     </div>
@@ -19,15 +19,17 @@
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
       @include('mensajes.messages')
     </div>
+  </div>
+
  {!!Form::open(array('url'=>'admin/asistencia','method'=>'POST','autocomplete'=>'off'))!!}
     {{Form::token()}}
 
-  <div class="row">
+  <div class="row"> 
  
      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="form-group">
           <label for="fechaasistencia">Fecha</label>
-          <input type="text" name="fechaasistencia" class="tcal form-control" id="fechaapertura" required value="{{old('fechaasistencia')}}" class="form-control" >
+          <input type="text" name="fechaasistencia" class="tcal form-control" id="fechaapertura" required value="{{old('fechaasistencia')}}" class="form-control" placeholder="00/00/0000" >
         </div>
      </div>
 
@@ -42,7 +44,6 @@
         </div>
      </div>
   </div>
-
 
 	<div class="row col-xs-12">
     <div class="panel panel-primary">
@@ -62,14 +63,14 @@
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
             <div class="form-group">
               <label for="horaentrada">Hora de Entrada</label>
-              <input type="text" name="horaentrada"  id="horaentrada" value="{{old('horaentrada')}}" class="form-control" >
+              <input type="time" name="horaentrada"  id="horaentrada" value="06:00" max="22:30" min="05:00" value="{{old('horaentrada')}}" class="form-control" >
             </div>
           </div>
 
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
             <div class="form-group">
               <label for="horasalida">Hora de Salida</label>
-              <input type="text" name="horasalida"  id="horasalida" value="{{old('horasalida')}}" class="form-control" >
+              <input type="time" name="horasalida"  id="horasalida" value="06:00" max="22:30" min="05:00" value="{{old('horasalida')}}" class="form-control" >
             </div>
           </div>
 
@@ -82,16 +83,16 @@
 
             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
               <div class="form-group">
-                 <label></label>
-                 <button type="button" id="bt_add" class="btn btn-primary">Agregar</button>
+                 <br>
+                 <button type="button" id="bt_add" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Agregar</button>
               </div>
             </div> 
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
                   <thead style="background-color: #A9D0F5">
-                      <th>Opciones</th>
-                      <th>Id Expediente</th>
+                      <th>Eliminar</th>
+                      <th>Expediente</th>
                       <th>Empleado</th>
                       <th>Hora Entrada</th>
                       <th>Hora Salida</th>
@@ -116,8 +117,8 @@
 		  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="btn_guardar"> 
         <div class="form-group">
           <input type="hidden" name="_token" value="{{csrf_token()}}"></input>
-          <button class="btn btn-primary" type="submit">Guardar</button>
-          <button class="btn btn-danger" type="reset">Cancelar</button>
+          <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+          <button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
         </div>
       </div>
   </div>
@@ -148,7 +149,7 @@
 
       if(idexpediente!="" && nombre!="" &&  horaentrada!="" && horasalida!="")
       {
-        var fila='<tr class="selected" id="fila'+cont+'"> <td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td> <td><input type="hidden" name="idexpediente[]" value="'+idexpediente+'">'+idexpediente+'</td> <td><input type="hidden" name="idempleado[]" value="'+idexpediente+'">'+nombre+' </td> <td><input type="hidden" name="horaentrada[]" value="'+horaentrada+'">'+horaentrada+'</td> <td><input type="hidden" name="horasalida[]" value="'+horasalida+'">'+horasalida+'</td> <td><input type="text" name="observaciones[]" value="'+observaciones+'"></td> </tr>';
+        var fila='<tr class="selected" id="fila'+cont+'"> <td><button type="button" class="btn btn-danger" onclick="eliminar('+cont+');"><i class="glyphicon glyphicon-trash"></i></button></td> <td><input type="hidden" name="idexpediente[]" value="'+idexpediente+'">'+idexpediente+'</td> <td><input type="hidden" name="idempleado[]" value="'+idexpediente+'">'+nombre+' </td> <td><input type="time" name="horaentrada[]" class="form-control" value="'+horaentrada+'"></td> <td><input type="time" name="horasalida[]" class="form-control" value="'+horasalida+'"></td> <td><input type="text" name="observaciones[]" class="form-control" value="'+observaciones+'"></td> </tr>';
       
         cont++;
         cant++;

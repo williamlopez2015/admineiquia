@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-12">
 	<ol class="breadcrumb">
-		<li> <i class="fa fa-home"></i> <a href="admin/users"> Administrar Usuario</a>
+		<li> <i class="fa fa-home"></i> <a href="{{url('admin/users')}}"> Administrar Usuario</a>
 		</li>
  		<li class="active">
  		<i class="fa fa-desktop"></i> Actualizar Usuario</li>
@@ -89,7 +89,7 @@
             <div class="form-group">
             	<div class="col-md-6 col-md-offset-4">
             		<button type="submit" class="btn btn-primary">
-            			<i class="fa fa-btn fa-user"></i> Actualizar
+            			<i class="glyphicon glyphicon-refresh"></i> Actualizar
             		</button>
             	</div>
             </div>

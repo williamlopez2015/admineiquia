@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-12">
 	<ol class="breadcrumb">
-		<li> <i class="fa fa-home"></i> <a href="/admin/expedienteadministrativo">Expediente Administrativo </a>
+		<li> <i class="fa fa-home"></i> <a href="{{url('/admin/expedienteadministrativo')}}">Expediente Administrativo </a>
 		</li>
  		<li class="active">
  		<i class="fa fa-desktop"></i> Editar Expediente Administrativo
@@ -81,7 +81,7 @@
             </div>
             <div class="form-group align=right">
                   <button class="btn btn-primary" type="submit" id="guardarExp"><i class="glyphicon glyphicon-refresh"></i> Actualizar</button>
-                  <a href="/admin/expedienteadministrativo" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
+                  <a href="{{url('/admin/expedienteadministrativo')}}" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
             </div>   
 		</div>
 		

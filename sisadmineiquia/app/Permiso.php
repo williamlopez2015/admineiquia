@@ -17,11 +17,11 @@ class Permiso extends Model
     	'idexpediente',
     	'fechasolicitud',
     	'motivopermiso',
-    	'tiemposolicitado',
+    	'tmposolicitadohora',
+        'tmposolicitadomin',
     	'gocesueldo',
     	'estadopermiso',
     	'fechapermiso',
-    	'cargodocente',
-    	'numerotarjeta'
+    	'cargodocente'
     ];
 }

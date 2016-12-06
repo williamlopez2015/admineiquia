@@ -4,7 +4,7 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-home"></i> <a href="/admin/tiempo"> Administrar Tiempo Adicional</a>
+                                <i class="fa fa-home"></i> <a href="{{url('/admin/tiempo')}}"> Administrar Tiempo Adicional</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-desktop"></i>
@@ -15,7 +15,7 @@
                 </div>
                 <!-- /.row -->
                 <div class="col-lg-12">
-                <label><a href="tiempo/create" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus"></i> Crear Tiempo</a></label>
+                <label><a href="{{url('admin/tiempo/create')}}" class="btn btn-success btn-lg" role="button"><i class="fa fa-plus"></i> Crear Tiempo</a></label>
 
                 <!--
                 @include('admin.empleado.search')-->

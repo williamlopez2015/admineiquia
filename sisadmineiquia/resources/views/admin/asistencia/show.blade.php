@@ -3,7 +3,7 @@
  <div class="row">
   <div class="col-lg-12">
   <ol class="breadcrumb">
-    <li> <i class="fa fa-home"></i> <a href="/admin/asistencia"> Gestionar Asistencia</a>
+    <li> <i class="fa fa-home"></i> <a href="{{url('admin/asistencia')}}"> Gestionar Asistencia</a>
     </li>
     <li class="active">
     <i class="fa fa-desktop"></i>Registro de Aistencia</li>
@@ -15,22 +15,19 @@
     <div class="col-lg-12">
        <h3>Listado de Asistencia</h3>
     </div>
-    
      @foreach($asistencia as $asis)
-     @endforeach
-     
+     @endforeach 
  </div>
 
 	<div class="row">
-     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
       <div class="form-group">
           <h4 for="fechaasistencia">Fecha : {{$asis->fechaasistencia}}</h4> 
       </div>
       </div>
 
-      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-        <div class="form-group">
+       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+       <div class="form-group">
           @if ($asis->turno=='0')
               <h4 for="turno" >Turno : {{"Mañana"}}</h4>
             @else
@@ -38,8 +35,8 @@
           @endif
         </div>
       </div>
+  </div>
 
-    </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="form-group">                
         </div>
@@ -84,7 +81,7 @@
 <script>
 
 $(document).ready(function(){
-    $('#detalles').DataTable();
+    $('#tabladetalles').DataTable();
     });
 
 </script>

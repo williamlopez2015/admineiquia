@@ -4,7 +4,7 @@
                 <div class="col-lg-12">
                      <ol class="breadcrumb">
                           <li>
-                              <i class="fa fa-home"></i> <a href="/admin/perfilpuesto">Administrar Perfiles</a>
+                              <i class="fa fa-home"></i> <a href="{{url('/admin/perfilpuesto')}}">Administrar Perfiles</a>
                           </li>
                           <li class="active">
                               <i class="fa fa-desktop"></i>
@@ -15,7 +15,7 @@
                
                 <!-- /.row -->
          <div class="col-lg-12">
-               <label><a href="perfilpuesto/create" class="btn btn-primary btn-lg" role="button"> <i class="fa fa-plus"></i> Nuevo Perfil</a></label>
+               <label><a href="{{url('/admin/perfilpuesto/create')}}" class="btn btn-success btn-lg" role="button"> <i class="fa fa-plus"></i> Nuevo Perfil</a></label>
         </div>
         <div class="col-lg-12">
         @include('mensajes.messages')
@@ -54,7 +54,7 @@
 				    <td>{{ $per->responsabilidades}}</td>
 				    <td>{{ $per->sustituye}}</td>
 					<td>
-						<a href="{{URL::action('PerfilPuestoController@edit',$per->idperfilpuesto)}}"><button class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Editar</button></a>
+						<a href="{{URL::action('PerfilPuestoController@edit',$per->idperfilpuesto)}}"><button class="btn btn-xs btn-primary"><i class="glyphicon  glyphicon-edit"></i> Editar</button></a>
                         <a href="" data-target="#modal-delete-{{$per->idperfilpuesto}}" data-toggle="modal"><button class="btn btn-xs btn-danger">
                         <i class="glyphicon glyphicon-remove"></i> Eliminar</button></a>
 					</td>
