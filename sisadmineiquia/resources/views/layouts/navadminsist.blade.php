@@ -16,7 +16,7 @@
                 <a href="/admin/empleado"><i class="fa fa-users"></i> Administrar Empleados</a>
             </li>
             <li>
-                <a href="empleado/nominareport"><i class="glyphicon glyphicon-print"></i> Nomina Empleados</a>
+                <a href="{{url('admin/empleado/nominareport')}}"><i class="glyphicon glyphicon-print"></i> Nomina Empleados</a>
             </li>
         </ul>
     </li>
