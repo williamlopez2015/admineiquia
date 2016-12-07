@@ -43,7 +43,15 @@
                                     	<td>{{ $u->id}}</td>
                                         <td>{{ $u->name }}</td>
                                         <td>{{ $u->email }}</td>
-                                        <td>{{ $u->type}}</td>
+                                        @if($u->type=='adminsist')
+                                        <td>Administrador del Sistema</td>
+                                        @endif
+                                        @if($u->type=='admin')
+                                        <td>Administrador</td>
+                                        @endif
+                                        @if($u->type=='secret')
+                                        <td>Secretaria</td>
+                                        @endif
                                         <td>
                                         <a href="{{URL::action('UsersController@edit',$u->id)}}"><button type="button" class="btn btn-xs btn-primary"><i class="glyphicon  glyphicon-edit"></i> Editar</button></a>
                                         <a href="" data-target="#modal-delete-{{$u->id}}" data-toggle="modal"><button  class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove-circle"></i> Eliminar</button></a>
