@@ -2,7 +2,7 @@
         <a href="{{url('/home')}}"><i class="fa fa-fw fa-home"></i> Inicio</a>
     </li>
     <li>
-        <a href="{{url('/admin/users')}}"><i class="glyphicon glyphicon-user"></i> Gestionar Usuarios</a>
+        <a href="{{url('admin/users')}}"><i class="glyphicon glyphicon-user"></i> Gestionar Usuarios</a>
     </li>
     <li >
         <a href="#" data-toggle="collapse" data-target="#demo"><i class="glyphicon glyphicon-th-list"></i> <span> Gestionar Empleados</span> <i class="fa fa-angle-left pull-right"></i></a>

@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     6/12/2016 9:36:33 p. m.                      */
+/* Created on:     7/12/2016 8:51:16 a. m.                      */
 /*==============================================================*/
 
 
@@ -38,7 +38,7 @@ drop table if exists TIEMPOADICIONAL;
 create table ACUERDOADMINISTRAT
 (
    IDACUERDO            varchar(10) not null,
-   IDEXPEDIENTE         varchar(1000) not null,
+   IDEXPEDIENTE         varchar(20) not null,
    MOTIVOACUERDO        varchar(50) not null,
    DESCRIPCIONACUERDO   varchar(250) not null,
    ESTADOACUERDO        varchar(10) not null,
@@ -53,7 +53,7 @@ create table ACUERDOADMINISTRAT
 create table ASIGNACIONACADEMIC
 (
    IDASIGNACIONACAD     int not null auto_increment,
-   IDEXPEDIENTEACADEM   varchar(1000) not null,
+   IDEXPEDIENTEACADEM   varchar(20) not null,
    IDCICLO              int not null,
    ANO                  varchar(10) not null,
    CODASIGNATURA        varchar(6),
@@ -104,7 +104,7 @@ create table DEPARTAMENTO
 create table DETALLEASISTENCIA
 (
    IDDETALLEASISTENCIA  int not null auto_increment,
-   IDEXPEDIENTE         varchar(1000) not null,
+   IDEXPEDIENTE         varchar(20) not null,
    IDASISTENCIA         int not null,
    HORAENTRADA          char(8) not null,
    HORASALIDA           char(8) not null,
@@ -137,7 +137,7 @@ create table EMPLEADO
 /*==============================================================*/
 create table EXPEDIENTEACADEMIC
 (
-   IDEXPEDIENTEACADEM   varchar(1000) not null,
+   IDEXPEDIENTEACADEM   varchar(20) not null,
    IDEMPLEADO           int not null,
    FECHAAPERTURAEXPACAD varchar(12) not null,
    NOMBREINSTITUCION    varchar(50),
@@ -155,7 +155,7 @@ create table EXPEDIENTEACADEMIC
 /*==============================================================*/
 create table EXPEDIENTEADMINIST
 (
-   IDEXPEDIENTE         varchar(1000) not null,
+   IDEXPEDIENTE         varchar(20) not null,
    IDEMPLEADO           int not null,
    IDPUESTO             int not null,
    FECHAAPERTURA        varchar(20) not null,
@@ -172,7 +172,7 @@ create table EXPEDIENTEADMINIST
 create table EXPERIENCIALABORAL
 (
    IDEXPLABACADEMICA    int not null auto_increment,
-   IDEXPEDIENTEACADEM   varchar(1000) not null,
+   IDEXPEDIENTEACADEM   varchar(20) not null,
    DESCRIPCIONEXPLAB    varchar(250) not null,
    NOMBREINSTITUCIONEXPLABACAD varchar(50) not null,
    FECHAINICIOEXPLABACAD varchar(12) not null,
@@ -190,7 +190,7 @@ create table PERFILPUESTO
    REPORTA              varchar(100) not null,
    SUSTITUTO            varchar(150) not null,
    RELACIONES           varchar(150) not null,
-   RESPONSABILIDADES    varchar(2000) not null,
+   RESPONSABILIDADES    longtext not null,
    SUSTITUYE            varchar(50) not null,
    primary key (IDPERFILPUESTO)
 );
@@ -201,7 +201,7 @@ create table PERFILPUESTO
 create table PERMISO
 (
    IDPERMISO            int not null auto_increment,
-   IDEXPEDIENTE         varchar(1000) not null,
+   IDEXPEDIENTE         varchar(20) not null,
    FECHAPERMISO         char(10) not null,
    FECHASOLICITUD       char(10) not null,
    MOTIVOPERMISO        varchar(250) not null,
@@ -222,7 +222,7 @@ create table PUESTO
    IDPERFILPUESTO       int not null,
    NOMBREPUESTO         varchar(50) not null,
    DESCRIPCIONPUESTO    varchar(250) not null,
-   SALARIOPUESTO        float(16) not null,
+   SALARIOPUESTO        float not null,
    primary key (IDPUESTO)
 );
 
@@ -232,7 +232,7 @@ create table PUESTO
 create table TIEMPOADICIONAL
 (
    IDTIEMPO             int not null auto_increment,
-   IDEXPEDIENTE         varchar(1000) not null,
+   IDEXPEDIENTE         varchar(20) not null,
    IDCICLO              int not null,
    FECHAINICIO          varchar(12) not null,
    FECHAFIN             varchar(12) not null,
