@@ -29,8 +29,7 @@ class ExpedienteAdministrativoFormRequest extends Request
         'fechaapertura'=>'required|max:50',
         'codigocontrato'=>'required|max:11|regex:/^[aA-zZ]{2}[-]{1}\d{3}[\/]{1}\d{4}$/i',
         'idpuesto'=>'required',
-        'modalidadcontratacion'=>'required|max:60',
-        'idempleado'
+        'modalidadcontratacion'=>'required|max:60'
         ];
     }
 

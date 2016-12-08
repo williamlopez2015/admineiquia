@@ -30,7 +30,7 @@ class EmpleadoFormRequest extends Request
         'primerapellido'=>'required|max:50',
         'dui'=>'required|max:10|regex:/^[0-9]{8}[-]{1}[0-9]{1}$/i',
         'nit'=>'required|max:20|regex:/^[0-9]{4}[-]{1}[0-9]{6}[-]{1}[0-9]{3}[-]{1}[0-9]{1}$/i',
-        'isss'=>'required|max:10',
+        'isss'=>'required|max:9',
         'afp'=>'required|max:12',
         'sexo'=>'required|in:F,M',
         'foto' => 'mimes:jpeg,bmp,png'

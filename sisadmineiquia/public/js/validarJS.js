@@ -163,7 +163,7 @@
 			if(!/\d/.test(ultimoCaracter)) {
 				value = value.substring(0, longitudActual - 1);
 			}
-			if(longitudActual > 6) {
+			if(longitudActual > 12) {
 				value = value.substring(0, longitudActual - 1);
 			}
 			nup.value = value;

@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-lg-12">
     <ol class="breadcrumb">
-      <li> <i class="fa fa-home"></i> <a href="{{url('/admin/empleado')}}"> Administrar Empleados</a>
+      <li> <i class="fa fa-home"></i> <a href="{{url('/admin/tiempo')}}"> Administrar Tiempo Adicional</a>
       </li>
       <li class="active">
         <i class="fa fa-desktop"></i> Crear Tiempo Adicional</li>

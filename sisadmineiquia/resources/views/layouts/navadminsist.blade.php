@@ -100,7 +100,7 @@
         </ul>
     </li>
     <li>
-        <a href="#" data-toggle="collapse" data-target="#demo6"><i class="glyphicon glyphicon-transfer"></i> Gestionar Acuerdos de Contrartacion <i class="fa fa-angle-left pull-right"></i></a>
+        <a href="#" data-toggle="collapse" data-target="#demo6"><i class="glyphicon glyphicon-transfer"></i> Gestionar Acuerdos de Contratacion <i class="fa fa-angle-left pull-right"></i></a>
         <ul id="demo6" class="collapse">
             <li>
                 <a href="{{url('/admin/acuerdos/create')}}"><i class="glyphicon glyphicon-floppy-open"></i> Agregar Acuerdo</a>
