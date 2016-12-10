@@ -37,7 +37,7 @@ Route::group(['middleware' =>  ['auth','admin']], function () {
   Route::resource('admin/perfilpuesto','PerfilPuestoController');
 });
 
-Route::group(['middleware' =>  ['auth','secret']], function () {
+Route::group(['middleware' =>  ['auth','admin']], function () {
   Route::resource('admin/asistencia','AsistenciaController');
   Route::resource('admin/asistencia/reporte','AsistenciaController@reporte');
 });

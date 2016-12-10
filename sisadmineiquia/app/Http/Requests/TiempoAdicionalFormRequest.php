@@ -40,7 +40,7 @@ class TiempoAdicionalFormRequest extends Request
         return ['tiempoadicionalfin.required' =>'El campo Tiempo Adicional Fin es obligatorio',
                 'tiempoadicionalinicio.required' =>'El campo Tiempo Adicional Inicio es obligatorio',
                 'idempleado.required' =>'El Campo Empleado es obligatorio',
-                'idciclo.required' =>'El Campo Ciclo es obligatorio',
+                'idciclo.required' =>'El Campo Codigo de Ciclo es obligatorio',
                 'ano.required' =>'El Campo Año es obligatorio',
                 'tiempoadicionalfin.after' =>'El campo Tiempo Adicional Fin debe ser mayor al Tiempo Adicional Inicio ',
                 'descripcion.max' =>'El Campo Descripcion tiene un maximo de caracteres de 250',];
