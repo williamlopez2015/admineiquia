@@ -75,7 +75,7 @@ class TiempoAdicionalController extends Controller
                 $tiempo->descripcion=$request->get('descripcion');
                 $tiempo->save();
                 Session::flash('store','El tiempo adicional fue anexado  correctamente!!!');
-                return Redirect::to('admin/tiempo/create');
+                return Redirect::to('admin/tiempo');
             }else{
                     Session::flash('store','aun no existe Expediente Administrativo del Empleado!!!');
                     return Redirect::to('admin/tiempo/create');
