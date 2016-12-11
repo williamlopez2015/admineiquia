@@ -15,10 +15,12 @@
       <h3>Nuevo Puesto</h3>
   </div>
  </div>
+
 @include('mensajes.errores')
+@include('mensajes.messages') 
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    @include('mensajes.messages') 
+    
 			{!!Form::open(array('url'=>'admin/puesto','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}   
 

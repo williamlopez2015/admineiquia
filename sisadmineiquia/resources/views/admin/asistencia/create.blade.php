@@ -149,7 +149,29 @@
 
       if(idexpediente!="" && nombre!="" &&  horaentrada!="" && horasalida!="")
       {
-        var fila='<tr class="selected" id="fila'+cont+'"> <td><button type="button" class="btn btn-danger" onclick="eliminar('+cont+');"><i class="glyphicon glyphicon-trash"></i></button></td> <td><input type="hidden" name="idexpediente[]" value="'+idexpediente+'">'+idexpediente+'</td> <td><input type="hidden" name="idempleado[]" value="'+idexpediente+'">'+nombre+' </td> <td><input type="time" name="horaentrada[]" class="form-control" value="'+horaentrada+'"></td> <td><input type="time" name="horasalida[]" class="form-control" value="'+horasalida+'"></td> <td><input type="text" name="observaciones[]" class="form-control" value="'+observaciones+'"></td> </tr>';
+        var Hora1 = horaentrada; 
+        var Hora2 = horasalida;
+
+        var h="";
+        var m="";
+      
+
+        h = Hora1.substr(0,2); 
+        m = Hora1.substr(3,4);
+
+        var hh1 = parseInt(h); 
+        var mm1 = parseInt(m); 
+
+        h = Hora2.substr(0,2); 
+        m = Hora2.substr(3,4);
+
+        var hh2 = parseInt(h); 
+        var mm2 = parseInt(m);  
+     
+        // Comparar 
+        if (hh1<hh2 || (hh1==hh2 && mm1<mm2))
+        {
+          var fila='<tr class="selected" id="fila'+cont+'"> <td><button type="button" class="btn btn-danger" onclick="eliminar('+cont+');"><i class="glyphicon glyphicon-trash"></i></button></td> <td><input type="hidden" name="idexpediente[]" value="'+idexpediente+'">'+idexpediente+'</td> <td><input type="hidden" name="idempleado[]" value="'+idexpediente+'">'+nombre+' </td> <td><input type="time" name="horaentrada[]" class="form-control" value="'+horaentrada+'"></td> <td><input type="time" name="horasalida[]" class="form-control" value="'+horasalida+'"></td> <td><input type="text" name="observaciones[]" class="form-control" value="'+observaciones+'"></td> </tr>';
       
         cont++;
         cant++;
@@ -157,6 +179,15 @@
         evaluar();
         $("#cantidad").html("Detalles"+": "+cant);
         $('#detalles').append(fila);
+
+        } 
+        else{
+            if(hh1>hh2 || (hh1==hh2 && mm1>mm2))  
+              alert("¡Error, Hora Entrada es mayor que Hora Salida!"); 
+            else   
+              alert("¡Error, Hora Entrada es igual que Hora Salida!"); 
+        }    
+        
           
       }
       else{

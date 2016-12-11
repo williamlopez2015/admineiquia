@@ -33,7 +33,7 @@
 			</div>
 			<div class="form-group">
 				<label>Codigo Acuerdo</label>
-				<input class="form-control" name="codigocontrato" required class="form-control" value="{{$expedienteadministrativo->CODIGOCONTRATO}}" placeholder="AC-000/0000" id="codCon" onkeyup="corregirCodCon();">
+				<input class="form-control" name="codigocontrato" required class="form-control" value="{{$expedienteadministrativo->CODIGOCONTRATO}}" placeholder="AC-000-0000" id="codCon" onkeyup="corregirCodCon();">
         	<div id="mensajeCodCon" class="errores">Código invalido</div>
       </div>
       <div class="form-group">

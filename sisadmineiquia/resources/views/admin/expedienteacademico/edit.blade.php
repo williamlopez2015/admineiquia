@@ -62,8 +62,8 @@
     </div>
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-group">
-            	<label for="tituloestudio">Titulo Estudio</label>
-            	<input type="text" name="tituloestudio" value="{{$expedienteacademico->TITULOESTUDIO}}" required  class="form-control" placeholder="Titulo Estudio..." id="tituloestudio" >
+            	<label for="maestria">Maestria</label>
+            	<input type="text" name="maestria" value="{{$expedienteacademico->TITULOESTUDIO}}" required  class="form-control" placeholder="Maestria..." id="maestria" >
             	<div id="mensaje1" class="errores">Nombre invalido</div>
             </div>
 
