@@ -70,7 +70,7 @@ class PermisoController extends Controller
                 }
             }
          
-          if($nump>=15){
+          if($nump>=5){
 
              Session::flash('store','¡El empleado ya ha alcanzado el maximo de permisos!'); 
              return Redirect::to('admin/permiso/create'); 

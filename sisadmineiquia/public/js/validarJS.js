@@ -210,7 +210,7 @@
 						}
 				break;
 				case 7:
-				if(!/[/]/.test(ultimoCaracter)){
+				if(!/[-]/.test(ultimoCaracter)){
 							value = value.substring(0, longitudActual - 1);
 						}
 				break;

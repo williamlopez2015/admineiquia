@@ -66,7 +66,7 @@
 
           <div class="form-group">
               <label for="motivopermiso">Motivo</label>
-              <textarea type="text" name="motivopermiso"  required value="{{old('motivopermiso')}}" class="form-control"  rows="3"  placeholder="Motivo del Permiso..."></textarea> 
+              <textarea type="text" name="motivopermiso"  required value="{{old('motivopermiso')}}" class="form-control"  rows="3"  placeholder="Motivo del Permiso...">{{old('motivopermiso')}}</textarea> 
             </div>
             
           </div>
@@ -125,7 +125,7 @@
 @push('scripts')
 <script>
 
-$('#panelpermiso').hide();
+//$('#panelpermiso').hide();
 $("#idexpediente").change(mostrarPuesto);
 
 function mostrarPuesto()

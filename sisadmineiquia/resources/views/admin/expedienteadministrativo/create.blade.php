@@ -28,7 +28,7 @@
 			</div>
 			<div class="form-group">
 				<label>Codigo Acuerdo</label>
-				<input class="form-control" name="codigocontrato" required class="form-control" placeholder="AC-000/0000" id="codCon" value="{{old('codigocontrato')}}" onkeyup="corregirCodCon();">
+				<input class="form-control" name="codigocontrato" required class="form-control" placeholder="AC-000-0000" id="codCon" value="{{old('codigocontrato')}}" onkeyup="corregirCodCon();">
         	<div id="mensajeCodCon" class="errores">Código invalido</div>
 			</div>
 			<div class="form-group">
@@ -37,7 +37,7 @@
      		</div>
 			<div class="form-group">
                   <label>Empleado</label>
-                  <select name="idempleado" required class="form-control" id="idempleados">
+                  <select name="idempleado" required class="form-control" class="form-control selectpicker" id="idempleados">
                    @foreach ($empleados as $emp)
                          <option value="{{$emp->idempleado}}">{{$emp->nombrecompleto}}</option>
                    @endforeach
@@ -63,7 +63,7 @@
 			</div>
 			<div class="form-group">
                      <label for="descripcionadmin">Descripcion</label>
-                     <textarea  type="text" name="descripcionadmin" required value="{{old('descripcionadmin')}}" class="form-control"  rows=""  placeholder="Descripcion..."></textarea>
+                     <textarea  type="text" name="descripcionadmin" value="{{old('descripcionadmin')}}" class="form-control"  rows=""  placeholder="Descripcion..."></textarea>
             </div>
 			<div class="form-group" align=right>
             	<button class="btn btn-primary" type="submit" id="guardarExp"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>

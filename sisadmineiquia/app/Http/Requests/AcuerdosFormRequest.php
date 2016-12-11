@@ -25,7 +25,7 @@ class AcuerdosFormRequest extends Request
     {
         return [
             //
-        'idacuerdo'=>'required|max:9|regex:/^[aA-zZ]{2}[-]{1}\d{3}[\/]{1}\d{4}$/i',
+        'idacuerdo'=>'required|max:11|regex:/^[aA-zZ]{2}[-]{1}\d{3}[-]{1}\d{4}$/i',
         'idexpediente'=>'required|max:6',
         'motivoacuerdo'=>'required|max:50',
         'descripcionacuerdo'=>'required|max:250',
@@ -36,7 +36,7 @@ class AcuerdosFormRequest extends Request
 
     public function messages()
     {
-        return ['idacuerdo.regex' =>'Formato del Código del acuerdo: AA0000000',
+        return ['idacuerdo.regex' =>'Formato del Código del acuerdo: AA-000-0000',
                 'fechaacuerdo.regex'=>'Formato de Fecha del acuerdo: 00-00-0000',
                 'archivoacuerdo.mimes'=>'Documento del acuerdo solo con extensión .pdf',
                 'idacuerdo.max'=>'Código del acuerdo debe contener 9 caracteres como máximo',

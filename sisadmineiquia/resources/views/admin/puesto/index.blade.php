@@ -11,7 +11,7 @@
                
   <div class="col-lg-12">
   	 <label><a href="{{url('/admin/puesto/create')}}" class="btn btn-success btn-lg" role="button"><i class="fa fa-plus"></i> Nuevo Puesto</a></label>
-     @include('mensajes.messages')
+  	 
   </div>
   <div class="col-lg-12">
      @include('mensajes.messages')

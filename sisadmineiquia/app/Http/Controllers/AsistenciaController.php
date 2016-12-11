@@ -54,6 +54,25 @@ class AsistenciaController extends Controller
         try{
             DB::beginTransaction();
 
+            $fecha=$request->get('fechaasistencia');
+            
+            $asistencias=DB::table('asistencia')
+            ->select('turno')
+            ->where('fechaasistencia','=',$fecha)
+            ->get();
+
+                foreach ($asistencias as $asis)
+                {  
+                    if($asis->turno==0){
+                        Session::flash('store','¡El turno "Mañana" ya esta registrado para esta fecha: '.$fecha);
+                    }
+
+                    if($asis->turno==1)                
+                        Session::flash('store','¡El turno "Tarde" ya esta registrado para esta fecha: '.$fecha);
+                
+                return Redirect::to('admin/asistencia/create');                                  
+                }
+
     		$asistencia=new Asistencia;
             $asistencia->idasistencia=$request->get('idasistencia');
         	$asistencia->fechaasistencia=$request->get('fechaasistencia');
@@ -214,7 +233,7 @@ class AsistenciaController extends Controller
     public function reporte($mes) 
     {  
          $year=Carbon::now()->year;
-         $date=$mes.'/'.$year;
+         $date=$mes.'-'.$year;
        
          $detalles=DB::table('detalleasistencia as det')
             ->join('expedienteadminist as exp','exp.idexpediente','=','det.idexpediente')
