@@ -40,7 +40,7 @@
             <div class="form-group">
               <label for="empleado"> Empleado </label>
               <select name="idexpediente" class="form-control selectpicker" id="idexpediente" class="form-control" value="{{old('idexpediente')}}" data-live-search="true">
-                    <option selected>Seleccinar Empleado</option>
+                    <option value="0" selected>Seleccionar Empleado</option>
                   @foreach ($empleados as $emp)
                     <option value="{{$emp->idexpediente}}_{{$emp->nombrepuesto}}">{{$emp->nombre}}</option>
                   @endforeach
@@ -48,9 +48,9 @@
             </div>
           
             <div class="form-group">
-              <br><label for="tiemposolicitado">Tiempo solicitado</label><br>
+              <br><label for="tiemposolicitado">Tiempo Solicitado</label><br>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                  <input type="number" name="tiemposolicitadohora" required value="{{old('tiemposolicitadohora')}}" class="form-control" min="0"  placeholder="Horas...">
+                  <input type="number" name="tiemposolicitadohora" required value="{{old('tiemposolicitadohora')}}" class="form-control" min="0" max="72" placeholder="Horas...">
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <input type="number" name="tiemposolicitadomin" required value="{{old('tiemposolicitadomin')}}" class="form-control" min="0" max="59" placeholder="Minutos...">
@@ -60,7 +60,7 @@
       
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-group">
-              <label for="fechasolicitud">Fecha Solucitud</label>
+              <label for="fechasolicitud">Fecha Solicitud</label>
               <input type="text" name="fechasolicitud" class="tcal form-control" required value="{{old('fechasolicitud')}}" class="form-control" >
             </div>
 
@@ -95,7 +95,7 @@
               <div class="form-group">
                 <label for="gocesueldo">Goce de Sueldo </label>
                 <select name="gocesueldo" id="gocesueldo" class="form-control">    
-                  <option value="0">Sin contestar</option>
+                  <option value="">Sin contestar</option>
                   <option value="1">Si</option>
                   <option value="2">No</option>
                 </select>     
@@ -105,7 +105,7 @@
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
               <label for="fechapermiso">Fecha de Ingreso</label>
-              <input type="text" name="fechapermiso" class="tcal form-control" value="00/00/0000" class="form-control" >
+              <input type="text" name="fechapermiso" class="tcal form-control" value="{{old('fechapermiso')}}" placeholder="00-00-0000" class="form-control" >
             </div>
           </div>
       </div>

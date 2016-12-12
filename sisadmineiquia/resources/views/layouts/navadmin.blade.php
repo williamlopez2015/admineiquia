@@ -80,9 +80,6 @@
             <li>
                 <a href="{{url('/admin/asistencia')}}"><i class="fa fa-users"></i> Administrar Asistencias</a>
             </li>
-            <li>
-                <a href="#"><i class="glyphicon glyphicon-sort-by-alphabet"></i> Reporte de asistencias</a>
-            </li>
         </ul>
     </li>
     <li>
