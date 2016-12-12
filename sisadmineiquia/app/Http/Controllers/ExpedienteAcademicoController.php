@@ -135,7 +135,7 @@ public function index(Request $request){
                             'nombreinstitucion' =>$request->get('nombreinstitucion'),
                             'anotitulacion' =>$request->get('anotitulacion'),
                             'tituloobtenido' =>$request->get('tituloobtenido'),
-                            'tituloestudio' =>$request->get('tituloestudio'),
+                            'tituloestudio' =>$request->get('maestria'),
                             'direccioninstitucion' =>$request->get('direccioninstitucion'),
                             'descripcionacademica' =>$request->get('descripcionacademica'),
                             'postgrados' =>$request->get('postgrados')

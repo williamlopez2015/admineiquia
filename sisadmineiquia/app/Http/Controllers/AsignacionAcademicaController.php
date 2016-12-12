@@ -119,7 +119,7 @@ public function index(Request $request){
                             'idciclo' =>$request->get('idciclo'),
                             'codasignatura' =>$request->get('codigoasignatura'),
                             'nombreasignatura' =>$request->get('nombreasignatura'),
-                            'gteorico' =>$request->get('grupolaboratorio'),
+                            'gteorico' =>$request->get('grupoteorico'),
                             'gdiscusion' =>$request->get('grupodiscusion'),
                             'glaboratorio' =>$request->get('grupolaboratorio'),
                             'tiempototal' =>$request->get('tiempototal'),
@@ -128,8 +128,7 @@ public function index(Request $request){
                          Session::flash('update','La carga fue actualizada correctamente!!!');
                          return Redirect::to('admin/cargaacademica');
                 }// END UPDATE
-
-
+                
     public function destroy($id)
     {
         $query=trim($id);

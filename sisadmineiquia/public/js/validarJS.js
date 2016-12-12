@@ -198,9 +198,11 @@
 					}
 				break;
 				case 3:
+					codCon.value += "-";
 					if(!/[-]/.test(ultimoCaracter)){
 							value = value.substring(0, longitudActual - 1);
 						}
+
 				break;
 				case 4:
 				case 5:
@@ -210,6 +212,7 @@
 						}
 				break;
 				case 7:
+				codCon.value += "-";
 				if(!/[-]/.test(ultimoCaracter)){
 							value = value.substring(0, longitudActual - 1);
 						}
@@ -225,6 +228,15 @@
 			}
 			if(longitudActual > 11) {
 				value = value.substring(0, longitudActual - 1);
+			}
+			longitudActual = value.length;
+			switch (longitudActual) {
+				case 2:
+					value += "-";
+				break;
+				case 6:
+					value += "-";
+				break;
 			}
 			codCon.value = value;
 		}
@@ -332,6 +344,16 @@
 			}
 			if(longitudActual > 11) {
 				value = value.substring(0, longitudActual - 1);
+			}
+			codAcuerdo.value = value;
+			longitudActual = value.length;
+			switch (longitudActual) {
+				case 2:
+					value += "-";
+				break;
+				case 6:
+					value += "-";
+				break;
 			}
 			codAcuerdo.value = value;
 		}

@@ -15,7 +15,7 @@
                 </div>
                 <!-- /.row -->
                 <div class="col-lg-12">
-                <label><a href="{{url('admin/cargaacademica/create')}}" class="btn btn-primary btn-lg" role="button"><i class="fa fa-plus"></i> Nueva Carga Academica</a></label>
+                <label><a href="{{url('admin/cargaacademica/create')}}" class="btn btn-success btn-lg" role="button"><i class="fa fa-plus"></i> Nueva Carga Academica</a></label>
 
                 <!--
                 @include('admin.empleado.search')-->

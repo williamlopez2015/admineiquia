@@ -4,7 +4,7 @@
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
 			<li>
-				<i class="fa fa-home"></i> <a href="{{url('/admin/expedienteacademico')}}">Administrar Expediente Academico</a>
+				<i class="fa fa-home"></i> <a href="{{url('/admin/experiencialaboralacademica')}}"> Administrar Experiencia Academica</a>
 			</li>
 			<li class="active">
 				<i class="fa fa-desktop"></i>
@@ -30,8 +30,7 @@
                    @foreach ($empleados as $emp)
                          <option value="{{$emp->idexpedienteacadem}}">{{$emp->nombrecompleto}}</option>
                    @endforeach
-                  </select>  
-                  <div id="mensajeEmp" class="errores">No se ha seleccionado un empleado</div>      
+                  </select>     
             </div> 
             <div class="form-group">
             	<label for="nombreinstitucionexplabacad">Nombre de la Institucion</label>

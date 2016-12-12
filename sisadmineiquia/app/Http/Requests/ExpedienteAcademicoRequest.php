@@ -25,24 +25,29 @@ class ExpedienteAcademicoRequest extends Request
     {
         return [
             //
+        'idempleado'=>'required|not_in:0',
         'fechaaperturaexpacad'=>'required|max:10',
         'nombreinstitucion'=>'required|max:50',
         'tituloobtenido'=>'required|max:50',
-        //'tituloestudio'=>'required|max:50',
-        'direccioninstitucion'=>'max:60',
+        'direccioninstitucion'=>'required|max:60',
         'descripcionacademica'=>'max:200',
         'posgrados'=>'max:2000',
-        'maestria'=>'required'
+        'maestria'=>'max:100'
         ];
     }
 
-    public function messages() { return [
+    public function messages() { 
+        return [
+        'idempleado.required' =>'El Empleado  es  obligatoria',
+        'idempleado.not_in' =>'El escoja un Empleado',
         'fechaaperturaexpacad.required' =>'La fecha de Apertura es  obligatoria', 
-        'nombreinstitucion.required' =>'El campo nombre de institucion es obligatorio', 
-        'tituloobtenido.required' =>'El campo titulo obtenido obligatorio',
+        'nombreinstitucion.required' =>'El campo Nombre de Institucion es obligatorio', 
+        'tituloobtenido.required' =>'El campo Titulo Obtenido es obligatorio',
         'direccioninstitucion.required'=>'El campo direccion de institucion es obligatorio',
+        'direccioninstitucion.max'=>'El campo Direccion de Institucion tiene un maximo de caracteres de 60',
         'descripcionacademica.max'=>'El campo descripcion academica tiene un limite de 200 letras',
         'posgrados.max'=>'El campo Postgrados tiene un limite de 2000 letras',
-        'maestria.required' =>'El campo Maestria es obligatorio',
-         ]; }
+        'maestria.max' =>'El campo Maestria tiene un maximo de caracteres de 100',
+         ]; 
+     }
 }

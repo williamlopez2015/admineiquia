@@ -24,9 +24,9 @@ class ExperienciaLaboralAcademicaFormRequest extends Request
     public function rules()
     {
         return [
-            'idexpedienteacadem'=>'required',
+            'idexpedienteacadem'=>'required|not_in:0',
             'nombreinstitucionexplabacad'=>'required|max:50',
-            'fechainicioexplabacad'=>'required|max:15',
+            'fechainicioexplabacad'=>'required|max:12|date',
             'fechafinalizacionexplabacad'=>'required|max:12|date|after:fechainicioexplabacad',
             'descripcionexplab'=>'max:200'
         ];
@@ -36,6 +36,7 @@ class ExperienciaLaboralAcademicaFormRequest extends Request
     {
         return [
                 'idexpedienteacadem.required' =>'El campo Empleado es obligatorio',
+                'idexpedienteacadem.not_in' =>'El campo Empleado debe ser valido',
                 'nombreinstitucionexplabacad.required' =>'El campo Nombre Institucion es obligatorio',
                 'fechainicioexplabacad.required' =>'El campo Fecha Inicio es obligatorio',
                 'fechafinalizacionexplabacad.required' =>'El campo Fecha Fin es obligatorio',

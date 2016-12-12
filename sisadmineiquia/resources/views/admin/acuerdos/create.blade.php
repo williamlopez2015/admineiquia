@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
 				<label for="descripcionacuerdo">Descripción</label>
-				<input class="form-control" required value="{{old('descripcionacuerdo')}}" placeholder="Escribir descripción" name="descripcionacuerdo" id="descripcionAcuerdo" onkeyup="corregirDescripcionAcuerdo();"></input>
+                <textarea  name="descripcionacuerdo" id="descripcionAcuerdo" class="form-control"  rows="3" placeholder="Escribir descripción" onkeyup="corregirDescripcionAcuerdo();">{{old('descripcionacuerdo')}}</textarea>
 			</div>
             <div class="form-group">
 				<label for="fechaacuerdo">Fecha</label>

@@ -39,7 +39,7 @@ class AcuerdosFormRequest extends Request
         return ['idacuerdo.regex' =>'Formato del Código del acuerdo: AA-000-0000',
                 'fechaacuerdo.regex'=>'Formato de Fecha del acuerdo: 00-00-0000',
                 'archivoacuerdo.mimes'=>'Documento del acuerdo solo con extensión .pdf',
-                'idacuerdo.max'=>'Código del acuerdo debe contener 9 caracteres como máximo',
+                'idacuerdo.max'=>'Código del acuerdo debe contener 11 caracteres como máximo',
                 'motivoacuerdo.max'=>'Motivo del acuerdo debe contener 50 caracteres como máximo',
                 'descripcionacuerdo.max'=>'Descripción del acuerdo debe contener 250 caracteres como máximo',
                 'fechaacuerdo.max'=>'Fecha del acuerdo debe contener 10 caracteres como máximo',

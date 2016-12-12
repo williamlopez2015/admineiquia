@@ -56,16 +56,13 @@
             </div>
         </div>   
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <div class="form-group">
-            	<label for="tituloestudio">Maestria</label>
-            	<input type="text" name="maestria" value="{{old('maestria')}}" class="form-control" placeholder="Maestrias..." id="maestria" onkeyup="tituloestudio();">
-            	<div id="mensaje1" class="errores">Nombre invalido</div>
+            <div class="form-group">
+            	<label for="maestria">Maestria</label>
+            	<input type="text" name="maestria" value="{{old('maestria')}}" class="form-control" placeholder="Maestrias..." id="maestria">
             </div>
-
             <div class="form-group">
             	<label for="direccioninstitucion">Direccion Institucion </label>
             	<input type="text" name="direccioninstitucion" value="{{old('direccioninstitucion')}}" class="form-control" placeholder="Direccion Institucion..." id="direccioninstitucion" ">
-            	<div id="mensaje1" class="errores">Direccion invalida</div>
             </div>
             <div class="form-group">
                 <label>Descripcion Academica</label>
