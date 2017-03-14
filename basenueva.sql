@@ -37,7 +37,7 @@ drop table if exists TIEMPOADICIONAL;
 /*==============================================================*/
 create table ACUERDOADMINISTRAT
 (
-   IDACUERDO            varchar(10) not null,
+   IDACUERDO            varchar(11) not null,
    IDEXPEDIENTE         varchar(20) not null,
    MOTIVOACUERDO        varchar(50) not null,
    DESCRIPCIONACUERDO   varchar(250) not null,
