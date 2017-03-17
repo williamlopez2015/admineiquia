@@ -317,7 +317,7 @@
 						}
 				break;
 				case 7:
-				if(!/[/]/.test(ultimoCaracter)){
+				if(!/[-]/.test(ultimoCaracter)){
 							value = value.substring(0, longitudActual - 1);
 						}
 				break;
@@ -333,9 +333,16 @@
 			if(longitudActual > 11) {
 				value = value.substring(0, longitudActual - 1);
 			}
+			longitudActual = value.length;
+			switch (longitudActual) {
+				case 2:
+				case 6:
+					value += "-";
+			}
 			codAcuerdo.value = value;
 		}
 	}
+
 	
 	function corregirFechaAcuerdo(){
 		var value = fechaAcuerdo.value;
