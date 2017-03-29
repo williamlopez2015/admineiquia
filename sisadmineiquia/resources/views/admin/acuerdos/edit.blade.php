@@ -37,10 +37,10 @@
                         @endif
             </div>
             <div class="form-group">
-                  <label for="idexpediente">Empleado</label>
-                  <select name="idexpediente" class="form-control" id="idexpediente">
+                  <label for="idempleado">Empleado</label>
+                  <select name="idempleado" class="form-control" id="idempleado">
                         @foreach ($empleados as $emp)
-                              <option required value="{{$emp->idexpediente}}">{{$emp->nombrecompleto}}</option>
+                              <option required value="{{$emp->idempleado}}">{{$emp->nombrecompleto}}</option>
                         @endforeach
                   </select>
             </div>

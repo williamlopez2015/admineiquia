@@ -29,8 +29,7 @@ class AcuerdosController extends Controller
             $raw = DB::raw("CONCAT(em.primernombre,' ', em.segundonombre,' ',em.primerapellido,' ',em.segundoapellido) as nombrecompleto");
             $query=trim($request->get('searchText'));
             $acuerdos=DB::table('acuerdoadministrat as a')
-            ->join('expedienteadminist as ex','ex.idexpediente','=','a.idexpediente')
-            ->join('empleado as em','em.idempleado','=','ex.idempleado')
+            ->join('empleado as em','em.idempleado','=','a.idempleado')
             ->select($raw,'a.idacuerdo','a.motivoacuerdo','a.estadoacuerdo','a.fechaacuerdo','a.archivoacuerdo')
             ->where('idacuerdo','LIKE','%'.$query.'%')
             ->orderBy('fechaacuerdo','desc')->paginate();
@@ -42,12 +41,9 @@ class AcuerdosController extends Controller
 
     public function create(){
 
-        $raw = DB::raw("CONCAT(em.primernombre,' ', em.segundonombre,' ',em.primerapellido,' ',em.segundoapellido) as nombrecompleto");
-        $empleados=DB::table('empleado as em')
-        ->join('expedienteadminist as ex','em.idempleado','=','ex.idempleado')
-        ->select('ex.idexpediente',$raw)->get();
-
-    	return view("admin.acuerdos.create",["empleados"=>$empleados]);
+        $raw = DB::raw("idempleado,CONCAT(primernombre,' ', segundonombre,' ',primerapellido,' ',segundoapellido) as nombrecompleto");
+        $empleado  = Empleado::select($raw)->get();
+        return view("admin.acuerdos.create",["empleado"=>$empleado]);
 
     }
 
@@ -61,7 +57,7 @@ class AcuerdosController extends Controller
         }
         $idacuerdo=$request->get('idacuerdo');
         $acuerdos->idacuerdo=strtoupper($idacuerdo);
-		$acuerdos->idexpediente=$request->get('idexpediente');
+		$acuerdos->idempleado=$request->get('idempleado');
 		$acuerdos->motivoacuerdo=$request->get('motivoacuerdo');
 		$acuerdos->descripcionacuerdo=$request->get('descripcionacuerdo');
         $acuerdos->estadoacuerdo='1';
@@ -74,10 +70,9 @@ class AcuerdosController extends Controller
 
     public function edit($id){
 
-        $empleados  = DB::table('acuerdoadministrat')->Select( DB::raw("
-                expedienteadminist.idexpediente,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto"))
-            ->join('expedienteadminist', 'acuerdoadministrat.idexpediente', '=', 'expedienteadminist.idexpediente')
-            ->join('empleado', 'expedienteadminist.idempleado', '=', 'empleado.idempleado')->where('acuerdoadministrat.idacuerdo','=',$id)->get();
+        $empleados  = DB::table('acuerdoadministrat')->Select( DB::raw("empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto"))
+            ->join('empleado','empleado.idempleado','=','acuerdoadministrat.idempleado')
+            ->where('acuerdoadministrat.idacuerdo','=',$id)->get();
 
     	return view("admin.acuerdos.edit",["acuerdos"=>Acuerdos::findOrFail($id),"empleados"=>$empleados]);
 
