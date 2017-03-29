@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-lg-12">
   <ol class="breadcrumb">
-    <li> <i class="fa fa-home"></i> <a href="/admin/puesto"> Gestionar Puesto</a>
+    <li> <i class="fa fa-home"></i> <a href="{{url('/admin/puesto')}}"> Gestionar Puesto</a>
     </li>
     <li class="active">
     <i class="fa fa-desktop"></i> Crear Puesto</li>
@@ -15,10 +15,12 @@
       <h3>Nuevo Puesto</h3>
   </div>
  </div>
+
 @include('mensajes.errores')
+@include('mensajes.messages') 
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    @include('mensajes.messages') 
+    
 			{!!Form::open(array('url'=>'admin/puesto','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}   
 
@@ -56,8 +58,8 @@
             </div>
 
             <div class="form-group">
-            	<button class="btn btn-primary" type="submit">Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
+            	<button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+            	<button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
             </div>
 			{!!Form::close()!!}		     
 		</div>

@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-12">
 	<ol class="breadcrumb">
-		<li> <i class="fa fa-home"></i> <a href="/admin/expedienteacademico">Administrar Expediente Academico</a>
+		<li> <i class="fa fa-home"></i> <a href="{{url('/admin/expedienteacademico')}}">Administrar Expediente Academico</a>
 		</li>
  		<li class="active">
  		<i class="fa fa-desktop"></i> Editar Expediente Academico
@@ -50,7 +50,7 @@
 
      <div class="form-group">
       <label>Año de Titulacion</label>
-      <input  type="text" name="anotitulacion" required class="tcal form-control" value="{{$expedienteacademico->ANOTITULACION}}" placeholder="00/00/0000" id="anotitulacion" >
+      <input  type="text" name="anotitulacion" required class="tcal form-control" value="{{$expedienteacademico->ANOTITULACION}}" placeholder="00-00-0000" id="anotitulacion" >
       <div id="mensajeFechaAper" class="errores">Fecha invalida</div> 
     </div>
     <div class="form-group">
@@ -62,8 +62,8 @@
     </div>
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-group">
-            	<label for="tituloestudio">Titulo Estudio</label>
-            	<input type="text" name="tituloestudio" value="{{$expedienteacademico->TITULOESTUDIO}}" required  class="form-control" placeholder="Titulo Estudio..." id="tituloestudio" >
+            	<label for="maestria">Maestria</label>
+            	<input type="text" name="maestria" value="{{$expedienteacademico->TITULOESTUDIO}}" required  class="form-control" placeholder="Maestria..." id="maestria" >
             	<div id="mensaje1" class="errores">Nombre invalido</div>
             </div>
 
@@ -81,9 +81,9 @@
                 <label>Post-Grados</label>
                 <textarea  name="postgrados" id="postgrados" class="form-control"  rows="3" placeholder="postgrado 1, postgrado 2">{{$expedienteacademico->POSTGRADOS}}</textarea>
             </div>
-            <div class="form-group" align=right>
-            	<button class="btn btn-primary" type="submit" >Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
+            <div class="form-group">
+                  <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-refresh"></i> Actualizar</button>
+                  <a href="{{url('/admin/expedienteacademico')}}" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
             </div>
 		</div>
                     {!!Form::close()!!}		

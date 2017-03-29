@@ -9,7 +9,17 @@
 	var alerta = document.getElementById("alerta");
 	var fechaApertura = document.getElementById("fechaApertura");
 	var codCon = document.getElementById("codCon");
+<<<<<<< HEAD
 	var grupoteorico = document.getElementById("gteorico");
+=======
+	var codAcuerdo = document.getElementById("codAcuerdo");
+	var fechaAcuerdo = document.getElementById("fechaAcuerdo");
+	var motivoAcuerdo = document.getElementById("motivoAcuerdo");
+	var descripcionAcuerdo = document.getElementById("descripcionAcuerdo");
+	var tiempoadicionalinicio = document.getElementById("tiempoadicionalinicio");
+	var tiempoadicionalfin = document.getElementById("tiempoadicionalfin");
+
+>>>>>>> origin/wen
 
 	function corregirPrimerNombre(){
 
@@ -158,7 +168,7 @@
 			if(!/\d/.test(ultimoCaracter)) {
 				value = value.substring(0, longitudActual - 1);
 			}
-			if(longitudActual > 6) {
+			if(longitudActual > 12) {
 				value = value.substring(0, longitudActual - 1);
 			}
 			nup.value = value;
@@ -193,17 +203,32 @@
 					}
 				break;
 				case 3:
-				
-
+					if(!/[-]/.test(ultimoCaracter)){
+							value = value.substring(0, longitudActual - 1);
+						}
+				break;
 				case 4:
 				case 5:
 				case 6:
+					if(!/\d/.test(ultimoCaracter)){
+							value = value.substring(0, longitudActual - 1);
+						}
+				break;
+				case 7:
+				if(!/[-]/.test(ultimoCaracter)){
+							value = value.substring(0, longitudActual - 1);
+						}
+				break;
+				case 8:
+				case 9:
+				case 10:
+				case 11:
 					if(!/\d/.test(ultimoCaracter)){
 						value = value.substring(0, longitudActual - 1);
 					}
 				break;
 			}
-			if(longitudActual > 6) {
+			if(longitudActual > 11) {
 				value = value.substring(0, longitudActual - 1);
 			}
 			codCon.value = value;
@@ -272,9 +297,111 @@
 
 
 	
+	function corregirCodAcuerdo(){
+		var value = codAcuerdo.value.toUpperCase();
+		var longitudActual = value.length;
+		if(longitudActual){
+			var ultimoCaracter = value.substring(longitudActual - 1);
+			switch (longitudActual){
+				case 1:
+
+				case 2:	
+					if(!/[aA-zZ]/.test(ultimoCaracter)){
+						value = value.substring(0, longitudActual - 1);
+					}
+				break;
+				case 3:
+					if(!/[-]/.test(ultimoCaracter)){
+							value = value.substring(0, longitudActual - 1);
+						}
+				break;
+				case 4:
+				case 5:
+				case 6:
+					if(!/\d/.test(ultimoCaracter)){
+							value = value.substring(0, longitudActual - 1);
+						}
+				break;
+				case 7:
+				if(!/[/]/.test(ultimoCaracter)){
+							value = value.substring(0, longitudActual - 1);
+						}
+				break;
+				case 8:
+				case 9:
+				case 10:
+				case 11:
+					if(!/\d/.test(ultimoCaracter)){
+						value = value.substring(0, longitudActual - 1);
+					}
+				break;
+			}
+			if(longitudActual > 11) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			codAcuerdo.value = value;
+		}
+	}
+	
+	function corregirFechaAcuerdo(){
+		var value = fechaAcuerdo.value;
+		var longitudActual = value.length;
+		if(longitudActual){
+			var ultimoCaracter = value.substring(longitudActual - 1);
+			switch (longitudActual){
+				case 3:
+				case 6:
+					if(ultimoCaracter != '-'){
+						value = value.substring(0,longitudActual - 1);
+					}
+				break;
+				default:
+					if(!/\d/.test(ultimoCaracter)) {
+						value = value.substring(0,longitudActual - 1);
+					}
+				}
+			if(longitudActual > 10) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			longitudActual = value.length;
+			switch (longitudActual) {
+				case 2:
+				case 5:
+					value += "-";
+			}
+
+			fechaAcuerdo.value = value;
+		}
+	}
+
+	function corregirMotivoAcuerdo(){
+		var value = motivoAcuerdo.value;
+		var longitudActual = value.length;
+		if(longitudActual){
+			var ultimoCaracter = value.substring(longitudActual - 1);
+			if(!/[aA-zZ]/.test(ultimoCaracter)) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			if(longitudActual > 50) {
+				value = value.substring(0, longitudActual - 1);
+			}
+			motivoAcuerdo.value = value;
+		}
+	}
+
+	function corregirDescripcionAcuerdo(){
+		var value = descripcionAcuerdo.value;
+		var longitudActual = value.length;
+
+		if(longitudActual > 250) {
+			value = value.substring(0, longitudActual - 1);
+		}
+
+		descripcionAcuerdo.value = value;
+	}
+
 	
 	
-	
-	
-	
-	
+
+
+

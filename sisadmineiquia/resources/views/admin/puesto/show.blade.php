@@ -4,7 +4,7 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-home"></i> <a href="/admin/puesto"> Administrar puesto</a>
+                                <i class="fa fa-home"></i> <a href="{{url('/admin/puesto')}}"> Administrar puesto</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-desktop"></i>

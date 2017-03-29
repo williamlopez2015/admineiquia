@@ -4,7 +4,7 @@
     <div class="col-lg-12">
         <ol class="breadcrumb">
             <li>
-                <i class="fa fa-home"></i> <a href="/admin/empleado"> Administrar Empleados</a>
+                <i class="fa fa-home"></i> <a href="{{url('/admin/empleado')}}"> Administrar Empleados</a>
             </li>
             <li class="active">
                 <i class="fa fa-desktop"></i>
@@ -39,11 +39,11 @@
             </div>
             <div class="form-group">
                 <label>Fecha de Inicio:</label>
-                <input  type="text" name="fechainicioexplabacad" id="fechainicioexplabacad" required class="tcal form-control" value="{{$experiencialaboralacademica->FECHAINICIOEXPLABACAD}}" placeholder="00/00/0000" id="fechainicioexplabacad">
+                <input  type="text" name="fechainicioexplabacad" id="fechainicioexplabacad" required class="tcal form-control" value="{{$experiencialaboralacademica->FECHAINICIOEXPLABACAD}}" placeholder="00-00-0000" id="fechainicioexplabacad">
             </div>
             <div class="form-group">
                 <label>Fecha de Fin:</label>
-                <input type='text' name="fechafinalizacionexplabacad" id="fechafinalizacionexplabacad" required class="tcal form-control" value="{{$experiencialaboralacademica->FECHAFINALIZACIONEXPLABACAD}}" placeholder="00/00/0000" id="fechafinalizacionexplabacad"/>
+                <input type='text' name="fechafinalizacionexplabacad" id="fechafinalizacionexplabacad" required class="tcal form-control" value="{{$experiencialaboralacademica->FECHAFINALIZACIONEXPLABACAD}}" placeholder="00-00-0000" id="fechafinalizacionexplabacad"/>
             </div>
             <div class="form-group">
                      <label for="descripcionexplab">Descripcion Experiencia</label>

@@ -31,9 +31,17 @@ class TiempoAdicionalController extends Controller
 
     } 
 
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request)
+        {
+            $tiempos  = DB::table('tiempoadicional')->Select( DB::raw("
+                tiempoadicional.idtiempo,tiempoadicional.idciclo,tiempoadicional.ano,tiempoadicional.fechainicio,tiempoadicional.fechafin,tiempoadicional.descripcion,
+                expedienteadminist.idexpediente,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto"))
+            ->join('expedienteadminist', 'tiempoadicional.idexpediente', '=', 'expedienteadminist.idexpediente')
+            ->join('empleado', 'expedienteadminist.idempleado', '=', 'empleado.idempleado')->get();
+            return view('admin.tiempo.index',["tiempos"=>$tiempos]);
+        }
     }
 
     public function create()
@@ -85,16 +93,38 @@ class TiempoAdicionalController extends Controller
     public function edit($id)
     {
         //
+        $ciclos = DB::table('ciclo')->select('idciclo','nombreciclo')->get(); 
+        $empleado  = DB::table('tiempoadicional')->Select( DB::raw("
+                tiempoadicional.idtiempo,tiempoadicional.idciclo,tiempoadicional.ano,tiempoadicional.fechainicio,tiempoadicional.fechafin,tiempoadicional.descripcion,
+                expedienteadminist.idexpediente,empleado.idempleado,CONCAT(empleado.primernombre,' ', empleado.segundonombre,' ',empleado.primerapellido,' ', empleado.segundoapellido) as nombrecompleto"))
+            ->join('expedienteadminist', 'tiempoadicional.idexpediente', '=', 'expedienteadminist.idexpediente')
+            ->join('empleado', 'expedienteadminist.idempleado', '=', 'empleado.idempleado')->where('tiempoadicional.idtiempo','=',$id)->get();
+            return view('admin.tiempo.edit',["tiempo"=>Tiempo::findOrFail($id),"empleados"=>$empleado,"ciclos"=>$ciclos]);
+        
     }
 
    
-    public function update(Request $request, $id)
-    {
-        //
-    }
+     public function update(TiempoAdicionalFormRequest $request, $id){
+
+                        $affectedRows = tiempo::where('idtiempo','=',$id)
+                        ->update([
+                            'idciclo' =>$request->get('idciclo'),
+                            'ano' =>$request->get('ano'),
+                            'fechainicio' =>$request->get('tiempoadicionalinicio'),
+                            'fechafin' =>$request->get('tiempoadicionalfin'),
+                            'descripcion' =>$request->get('descripcion')
+                            ]);
+                         Session::flash('update','El Tiempo Adicional fue actualizado correctamente!!!');
+                         return Redirect::to('admin/tiempo');
+                }// END UPDATE
+
 
     public function destroy($id)
     {
         //
+        $query=trim($id);
+            $affectedRows = Tiempo::where('idtiempo','=',$query)->delete();
+            Session::flash('destroy','¡El  Tiempo Adicional se ha eliminado correctamente!');
+            return Redirect::to('admin/tiempo');
     }
 }

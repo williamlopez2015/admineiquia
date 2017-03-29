@@ -166,7 +166,7 @@
                             <td>No Aprobado</td>
                             @endif
                             <td>{{ $ac->fechaacuerdo }}</td>
-                            <tr>
+                        </tr>
                     </tbody>
                     @endforeach 
                 </table>
@@ -201,7 +201,7 @@
                             <td>{{$t->fechainicio}}</td>
                             <td>{{$t->fechafin}}</td>
                             <td>{{$t->descripcion}}</td>   
-                        <tr> 
+                        </tr> 
                     </tbody>
                     @endforeach 
                 </table>

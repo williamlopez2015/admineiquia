@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-lg-12">
 	<ol class="breadcrumb">
-		<li> <i class="fa fa-home"></i> <a href="/admin/cargaacademica">Administrar Carga Academica</a>
+		<li> <i class="fa fa-home"></i> <a href="{{url('/admin/cargaacademica')}}">Administrar Carga Academica</a>
 		</li>
  		<li class="active">
  		<i class="fa fa-desktop"></i> Nueva Carga Academica</li>
@@ -75,26 +75,42 @@
 
 		<div class="form-group">
             	<label for="grupoteorico">Grupo Teorico</label>
+<<<<<<< HEAD
             	<input  name="grupoteorico" value="{{old('grupoteorico')}}" class="form-control" placeholder="Grupo Teorico..." id="grupoteorico" type="number" min="1" max="99" >
+=======
+            	<input type="text" name="grupoteorico" value="{{old('grupoteorico')}}" class="form-control" placeholder="1,2,3,4,5..." id="grupoteorico" >
+>>>>>>> origin/wen
             	<div id="mensaje1" class="errores">Nombre invalido</div>
             </div>
 
             <div class="form-group">
             	<label for="grupodiscusion">Grupo Discusion</label>
+<<<<<<< HEAD
             	<input  name="grupodiscusion" value="{{old('grupodiscusion')}}" class="form-control" placeholder="Grupo Discusion..." id="grupodiscusion" type="number" min="1" max="99" >
+=======
+            	<input type="text" name="grupodiscusion" value="{{old('grupodiscusion')}}" class="form-control" placeholder="1,2,3,4,5..." id="grupodiscusion" >
+>>>>>>> origin/wen
             	<div id="mensaje1" class="errores">Grupo invalido</div>
             </div>
 
             <div class="form-group">
             	<label for="grupolaboratorio">Grupo Laboratorio</label>
+<<<<<<< HEAD
             	<input  name="grupolaboratorio" value="{{old('grupolaboratorio')}}" class="form-control" placeholder="Grupo Laboratorio..." id="grupolaboratorio" type="number" min="1" max="99">
+=======
+            	<input type="text" name="grupolaboratorio" value="{{old('grupolaboratorio')}}" class="form-control" placeholder="1,2,3,4,5..." id="grupolaboratorio" >
+>>>>>>> origin/wen
             	<div id="mensaje1" class="errores">Grupo invalido</div>
             </div>
 
 
             <div class="form-group">
             	<label for="tiempototal">Tiempo Total</label>
+<<<<<<< HEAD
             	<input  name="tiempototal" value="{{old('tiempototal')}}" class="form-control" placeholder="Tiempo Total..." id="tiempototal" type="number" min="1" max="150">
+=======
+            	<input type="text" name="tiempototal" value="{{old('tiempototal')}}" class="form-control" placeholder="1..." id="tiempototal" >
+>>>>>>> origin/wen
             	<div id="mensaje1" class="errores">Tiempo invalido</div>
             </div>
 
@@ -104,12 +120,13 @@
             </div>
 
             <div class="form-group" align=right>
-            	<button class="btn btn-primary" type="submit" >Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
+            	<button class="btn btn-primary" type="submit" ><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+            	<button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
             </div>
 
 		</div>
-                    {!!Form::close()!!}		
+
+{!!Form::close()!!}		
 
 </div>
 

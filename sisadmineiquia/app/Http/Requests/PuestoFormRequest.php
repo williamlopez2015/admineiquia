@@ -28,7 +28,16 @@ class PuestoFormRequest extends Request
             'iddepartamento'=>'required',
             'idperfilpuesto'=>'required',
             'descripcionpuesto'=>'max:250',
-            'salariopuesto'=>'required|numeric',
+            'salariopuesto'=>'numeric',
         ];
+    }
+    public function messages()
+    {
+        return ['nombrepuesto.required' =>'El campo "Nombre de Puesto" es obligatorio',
+                'iddepartamento.required' =>'El "campo Departamento" es obligatorio',
+                'idperfilpuesto.required' =>'El Campo "Perfil del Puesto" es obligatorio',
+                'salariopuesto.numeric.' =>'El campo "Salario Puesto" obligatorio',
+                'descripcionpuesto.max' =>'El Campo "Descripcion" tiene un maximo de caracteres de 250'
+            ];
     }
 }

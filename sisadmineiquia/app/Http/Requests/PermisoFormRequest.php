@@ -25,14 +25,29 @@ class PermisoFormRequest extends Request
     {
         return [
             'idexpediente'=>'required',
-            'fechasolicitud'=>'required|max:10',
+            'fechasolicitud'=>'required|max:10|min:10',
             'motivopermiso'=>'required|max:250',
-            'tiemposolicitado'=>'required|max:10',
+            'tiemposolicitadohora'=>'required|numeric|min:0',
+            'tiemposolicitadomin'=>'required|numeric|min:0|max:59',
             'gocesueldo'=>'required',
             'estadopermiso'=>'required',
-            'fechapermiso'=>'required|max:10',
-            'cargodocente'=>'max:25',
-            'numerotarjeta'=>'max:6'
+            'fechapermiso'=>'required|max:10|min:10',
+            //'cargoempleado'=>'required|max:50' 
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'idexpediente.required'=>'El campo "id expediente" es obligatorio',
+            'fechasolicitud.required'=>'El campo "Fecha Solicitud" es obligatorio',
+            'motivopermiso.required'=>'El campo "Motivo permiso" debe tener como maximo 250 caracteres',
+            'tiemposolicitadohora.required'=>'El campo "tiempo solicitado : Horas" debe ser numerico y maximo 8 ',
+            'tiemposolicitadomin.required'=>'El campo "tiempo solicitado : Minutos" debe ser numerico de "0 a 59"',
+            'gocesueldo.required'=>'El campo "Goce de Sueldo" es obligatorio',
+            'estadopermiso.required'=>'El campo "Estado permiso" es obligatorio',
+            'fechapermiso.required'=>'El campo "Fecha Registro" es obligatorio',
+           // 'cargoempleado.required'=>'El campo "Cargo empleado" es obligatorio, Seleccione un Empleado'
         ];
     }
 }

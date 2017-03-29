@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
-			<li> <i class="fa fa-home"></i> <a href="/admin/empleado"> Administrar Empleados</a>
+			<li> <i class="fa fa-home"></i> <a href="{{url('/admin/empleado')}}"> Administrar Empleados</a>
 			</li>
 			<li class="active">
 				<i class="fa fa-desktop"></i> Crear Empleado</li>
@@ -66,7 +66,7 @@
 			</div>
 			<div class="form-group">
 				<label>Numero de AFP</label>
-				<input class="form-control" name="afp" value="{{old('afp')}}" required class="form-control" placeholder="000000" id="nup" onkeyup="corregirNup();">
+				<input class="form-control" name="afp" value="{{old('afp')}}" required class="form-control" placeholder="000000000000" id="nup" onkeyup="corregirNup();">
 				<div id="mensaje8" class="errores">No. AFP invalido</div>
 			</div>
 			<div class="form-group">
@@ -78,8 +78,8 @@
                   <div id="mensajeSex" class="errores">No se ha seleccionado un puesto</div>     
 			</div>  
 			<div class="form-group">
-            	<button class="btn btn-primary" type="submit" id="guardar">Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
+            	<button class="btn btn-primary" type="submit" id="guardar"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+            	<button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</button>
             </div>
 		</div>            
  </div>

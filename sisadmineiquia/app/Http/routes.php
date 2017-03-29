@@ -37,8 +37,9 @@ Route::group(['middleware' =>  ['auth','admin']], function () {
   Route::resource('admin/perfilpuesto','PerfilPuestoController');
 });
 
-Route::group(['middleware' =>  ['auth','secret']], function () {
+Route::group(['middleware' =>  ['auth','admin']], function () {
   Route::resource('admin/asistencia','AsistenciaController');
+  Route::resource('admin/asistencia/reporte','AsistenciaController@reporte');
 });
 
 Route::group(['middleware' =>  ['auth','alltype']], function () {
@@ -70,7 +71,7 @@ Route::group(['middleware' => ['auth','adminsist']], function () {
 	Route::resource('admin/users','UsersController');
 });
 
-Route::group(['middleware' =>  ['auth','alltype']], function () {
+Route::group(['middleware' =>  ['auth','admin']], function () {
     Route::get('admin/acuerdos/destroy2/{id}', 'AcuerdosController@destroy2');
     Route::resource('admin/acuerdos','AcuerdosController');
 });

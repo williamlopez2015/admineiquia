@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-12">
 	<ol class="breadcrumb">
-		<li> <i class="fa fa-home"></i> <a href="/admin/expedienteadministrativo">Expediente Administrativo </a>
+		<li> <i class="fa fa-home"></i> <a href="{{url('/admin/expedienteadministrativo')}}">Expediente Administrativo </a>
 		</li>
  		<li class="active">
  		<i class="fa fa-desktop"></i> Editar Expediente Administrativo
@@ -28,12 +28,12 @@
             {{Form::token()}}
 			<div class="form-group">
 				<label>Fecha Apertura Expediente Administrativo</label>
-				<input  type="text" name="fechaapertura" value="{{$expedienteadministrativo->FECHAAPERTURA}}" required class="tcal form-control"placeholder="00/00/0000" id="fechaApertura" onkeyup="corregirFecha();">
+				<input  type="text" name="fechaapertura" value="{{$expedienteadministrativo->FECHAAPERTURA}}" required class="tcal form-control" placeholder="00-00-0000" id="fechaApertura" onkeyup="corregirFecha();">
 				<div id="mensajeFechaAper" class="errores">Fecha invalida</div> 
 			</div>
 			<div class="form-group">
 				<label>Codigo Acuerdo</label>
-				<input class="form-control" name="codigocontrato" required class="form-control" value="{{$expedienteadministrativo->CODIGOCONTRATO}}" placeholder="AA0000" id="codCon" onkeyup="corregirCodCon();">
+				<input class="form-control" name="codigocontrato" required class="form-control" value="{{$expedienteadministrativo->CODIGOCONTRATO}}" placeholder="AC-000-0000" id="codCon" onkeyup="corregirCodCon();">
         	<div id="mensajeCodCon" class="errores">Código invalido</div>
       </div>
       <div class="form-group">
@@ -79,10 +79,10 @@
                      <label for="descripcionadmin">Descripcion</label>
                      <textarea  type="text" name="descripcionadmin" required value="{{old('descripcionadmin')}}" class="form-control"  rows=""  placeholder="Descripcion...">{{$expedienteadministrativo->DESCRIPCIONADMIN}}</textarea>
             </div>
-			<div class="form-group" align=right>
-            	<button class="btn btn-primary" type="submit" id="guardarExp">Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
-            </div>    
+            <div class="form-group align=right">
+                  <button class="btn btn-primary" type="submit" id="guardarExp"><i class="glyphicon glyphicon-refresh"></i> Actualizar</button>
+                  <a href="{{url('/admin/expedienteadministrativo')}}" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
+            </div>   
 		</div>
 		
                     {!!Form::close()!!}		

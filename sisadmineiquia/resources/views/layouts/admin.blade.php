@@ -81,25 +81,22 @@
                             <div class="col-md-12">
                                  <form class="form" name="formu"role="form" method="post" action="{{ url('/login') }}" accept-charset="UTF-8" id="login-nav">
                                  {{ csrf_field() }}
-                                        <div class="form-group">
+                                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                              <label class="sr-only" for="usuario_login">Usuario</label>
                                              <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="ejemplo@gmail.com">
-                                            @if ($errors->has('email'))
+                                        </div>
+                                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                             <label class="sr-only" for="password_login">Contraseña</label>
+                                             <input id="password" type="password" class="form-control" name="password" placeholder="********">
+                                        </div>
+                                        @if ($errors->has('email')||$errors->has('password'))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first('email') }}</strong>
                                                 </span>
-                                            @endif
-                                        </div>
-                                        <div class="form-group">
-                                             <label class="sr-only" for="password_login">Password</label>
-                                             <input id="password" type="password" class="form-control" name="password" placeholder="contraseña">
-
-                                            @if ($errors->has('password'))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first('password') }}</strong>
                                                 </span>
-                                            @endif
-                                        </div>
+                                        @endif
                                         <div class="form-group">
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-btn fa-sign-in"></i> Ingresar
@@ -248,30 +245,16 @@
     $('#tablaexplabacad ').DataTable();
     });
     </script>
+    <script > $(document).ready(function(){
+    $('#tablatiempo').DataTable();
+    });
+    </script>
     //
     <script type=”text/javascript”> $(document).ready(function() {
     $('#tablaexpadmi').stacktable();
     });
     </script>
 
-
-    <script > $(document).ready(function(){
-    $('#horaentrada').timepicker({ 'timeFormat': 'h:i A',
-    'minTime': '6:00am',
-    'maxTime': '8:00pm',    
-    'disableTimeRanges': [['12:01pm','1pm'],['8pm','7am']],
-    'step': 15 
-    }); });
-    </script>
-
-    <script > $(document).ready(function(){
-    $('#horasalida').timepicker({ 'timeFormat': 'h:i A',
-    'minTime': '6:00am',
-    'maxTime': '8:00pm',    
-    'disableTimeRanges': [['12:01pm','1pm'],['8pm','7am']],
-    'step': 15
-    }); });
-    </script>
 
      <!-- select -->
      <script src="{{asset('js/bootstrap-select.min.js')}}"></script>

@@ -74,9 +74,9 @@ public function index(Request $request){
                     $expedienteacademico->nombreinstitucion=$request->get('nombreinstitucion');
                     $expedienteacademico->anotitulacion=$request->get('anotitulacion');
                     $expedienteacademico->tituloobtenido=$request->get('tituloobtenido');
-                    $expedienteacademico->tituloestudio=$request->get('tituloestudio');
+                    $expedienteacademico->tituloestudio=$request->get('maestria');
                     $expedienteacademico->direccioninstitucion=$request->get('direccioninstitucion');
-                    $expedienteacademico->postgrado=$request->get('postgrados');
+                    $expedienteacademico->postgrados=$request->get('postgrados');
                     $expedienteacademico->descripcionacademica=$request->get('descripcionacademica');
                     $expedienteacademico->save();
                     Session::flash('store','El Expediente creado correctamente!!!');
