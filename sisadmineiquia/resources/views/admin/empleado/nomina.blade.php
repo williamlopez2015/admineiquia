@@ -40,7 +40,25 @@
 <!--Contenido -->
 	<div class="col-lg-12">
 	    <div class="row-fluid">
+	    <div id="logo">
+        @if(is_file(public_path().'/fotos/logo/logoUES.png'))
+        <div class="foto">
+            <img src="{{ public_path()}}/fotos/logo/logoUES.png" height="110px" width="110px" class="img-thumbnail">
+        </div>
+        @else
+        <div class="foto">
+            <img src=""  class="img-thumbnail">
+        </div>
+        @endif
+    	</div>
+		    <div class="encabezado" id="encabezado">
+		    	<h4>UNIVERSIDAD DE EL SALVADOR</h4>
+			    <h4>FACULTAD DE INGENIERIA Y ARQUITECTURA</h4>
+			    <h4>ESCUELA DE INGENIERIA QUIMICA E INGENIERIA DE ALIMENTOS</h4>
+		    </div>
+
 	    	<div class="panel-heading">
+		        
 	    		<h1>Nomina de Empleados</h1>
 	    	</div>
 	    	<!-- /.panel-heading -->

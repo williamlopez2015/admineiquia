@@ -16,6 +16,29 @@ h2 {
 h3 {
     text-align: right;
 }
+/* Styles Encabezado */
+.encabezado h4 {
+    margin: 2mm 2mm 2mm 2mm;
+    text-align: left;
+}
+
+#logo{
+    height:50px;
+    width:40px;
+    float:right;
+    margin-top: 0px;
+    margin-bottom: 100px;
+    margin-left: 0px; 
+}
+#logo img {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 5px;
+    width: 75px; height: 75px;
+    margin-right:20px;
+    margin-bottom:20px;
+}
+
 /* Styles Tabla Nomina */
 table {
     border-collapse: collapse;
@@ -34,10 +57,10 @@ table {
 }
 
 th {
-    height: 10px;
+    height: 5px;
 }
 td {
-    height: 20px;
+    height: 10px;
     vertical-align: bottom;
 }
 
@@ -46,7 +69,7 @@ th {
 }
 
 th, td {
-    padding: 15px;
+    padding: 10px;
     text-align: left;
 }
 
