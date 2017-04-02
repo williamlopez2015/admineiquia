@@ -13,5 +13,5 @@ class Acuerdos extends Model
     protected $primaryKey='idacuerdo';
     public $timestamps=false;
 
-    protected $fillable=['idexpediente','motivoacuerdo','descripcionacuerdo','estadoacuerdo','fechaacuerdo','archivoacuerdo'];
+    protected $fillable=['idempleado','motivoacuerdo','descripcionacuerdo','estadoacuerdo','fechaacuerdo','archivoacuerdo'];
 }

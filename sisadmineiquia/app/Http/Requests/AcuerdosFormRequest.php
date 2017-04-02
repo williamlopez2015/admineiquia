@@ -26,7 +26,7 @@ class AcuerdosFormRequest extends Request
         return [
             //
         'idacuerdo'=>'required|max:11|regex:/^[aA-zZ]{2}[-]{1}\d{3}[-]{1}\d{4}$/i',
-        'idexpediente'=>'required|max:6',
+        'idempleado'=>'required',
         'motivoacuerdo'=>'required|max:50',
         'descripcionacuerdo'=>'required|max:250',
         'fechaacuerdo'=>'required|max:10|regex:/^\d{2}-\d{2}-\d{4}$/',

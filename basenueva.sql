@@ -38,7 +38,11 @@ drop table if exists TIEMPOADICIONAL;
 create table ACUERDOADMINISTRAT
 (
    IDACUERDO            varchar(11) not null,
+<<<<<<< HEAD
    IDEXPEDIENTE         varchar(20) not null,
+=======
+   IDEMPLEADO           int not null,
+>>>>>>> origin/fabi
    MOTIVOACUERDO        varchar(50) not null,
    DESCRIPCIONACUERDO   varchar(250) not null,
    ESTADOACUERDO        varchar(10) not null,
@@ -241,8 +245,8 @@ create table TIEMPOADICIONAL
    primary key (IDTIEMPO)
 );
 
-alter table ACUERDOADMINISTRAT add constraint FK_FK_EXPEDIENTEACAD_ACUERDADMIN foreign key (IDEXPEDIENTE)
-      references EXPEDIENTEADMINIST (IDEXPEDIENTE) on delete restrict on update restrict;
+alter table ACUERDOADMINISTRAT add constraint FK_FK_EMPLEADO_ACUERDADMIN foreign key (IDEMPLEADO)
+      references EMPLEADO (IDEMPLEADO) on delete restrict on update restrict;
 
 alter table ASIGNACIONACADEMIC add constraint FK_FK_CICLO_ASIGNACIONACAD foreign key (IDCICLO)
       references CICLO (IDCICLO) on delete restrict on update restrict;

@@ -30,10 +30,10 @@
 				<input type="file"  class="form-control" name="archivoacuerdo">
 			</div>
             <div class="form-group">
-            	<label for="idexpediente">Empleado</label>
-            	<select name="idexpediente" class="form-control" id="idexpediente">
-	            	@foreach ($empleados as $emp)
-	                        <option value="{{$emp->idexpediente}}">{{$emp->nombrecompleto}}</option>
+            	<label for="idempleado">Empleado</label>
+            	<select name="idempleado" class="form-control" id="idempleado">
+	            	@foreach ($empleado as $emp)
+	                        <option value="{{$emp->idempleado}}">{{$emp->nombrecompleto}}</option>
 	                @endforeach
             	</select>
             </div>
